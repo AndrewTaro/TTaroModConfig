@@ -1,3 +1,9 @@
+(def constant TT_ELEMENT_NAME "'ttaroModConfig'")
+(def constant TT_ELEMENT_SIZE {
+	WIDTH: 40,
+	HEIGHT: 30
+})
+
 (def constant TT_CONFIG_RENDERER_ELEMENTS {
 	TITLE:			'TT_TT_TitleElement',
 	CHECKBOX:		'TT_CheckBoxElement',
@@ -9,88 +15,33 @@
 	{
 		sectionTitle: 'Circle Opacity',
 		sectionElements: [
-			{configTitle: 'Ready',	key: '3dRadarCircleOpacityReady',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 7.0, step:0.1}},
-			{configTitle: 'Reload',	key: '3dRadarCircleOpacityReload',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 7.0, step:0.1}},
-			{configTitle: 'Active',	key: '3dRadarCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 10.0, step:0.1}},
+			{configTitle: 'Ready',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleOpacityReady',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 7.0, step:0.1}},
+			{configTitle: 'Reload',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReload',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 7.0, step:0.1}},
+			{configTitle: 'Active',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dRadarCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 10.0, step:0.1}},
 		]
 	},
 	{
 		sectionTitle: 'Circle Opacity (Enemy in Range)',
 		sectionElements: [
-			{configTitle: 'Ready',	key: '3dRadarCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 7.0, step:0.1}},
-			{configTitle: 'Reload',	key: '3dRadarCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 7.0, step:0.1}},
-			{configTitle: 'Active',	key: '3dRadarCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
+			{configTitle: 'Ready',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 7.0, step:0.1}},
+			{configTitle: 'Reload',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 7.0, step:0.1}},
+			{configTitle: 'Active',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dRadarCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
 		]
-	},
-	#{
-	#	sectionTitle: 'Animation',
-	#	sectionElements: [
-	#		{configTitle: 'Ending Blink Start Time', key: '3dRadarCircleBlinkStartTime', renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_INT", args: {min: 0,	max: 15.0, default: 7.0, step: 1}},
-	#	]
-	#}
+	}
 ])
 
 #TODO: should get actual numbers from py code
 (def constant MOD_3DHYDRO_CONFIGS [
-	{
-		title: '3D Hydro', renderer: TT_CONFIG_RENDERER_ELEMENTS.TITLE
-	},
-	{
-		title: 'Circle Opacity',
-		elements: [
-			{title: 'Ready',	min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT},
-			{title: 'Ready',	min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT},
-			{title: 'Reload',	min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT},
-			{title: 'Active',	min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT},
-		]
-	},
-	{
-		title: 'Animation',
-		element: [
-			{title: 'Ending Blink Start Time',	min: 0,	max: 15.0, default: 30.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_INT},
-		]
-	}
+
 ])
 
 #TODO: should get actual numbers from py code
 (def constant MOD_3DRADIO_CONFIGS [
-	{name: 'Cone Opacity',			min: 0,	max: 1.0,	default: 1.0},
-	{name: 'Cone Color',			min: 0,	max: 0xFFFFFF,	default: 0xFFFFFF},
-])
 
-(def constant MOD_3DRADIO_CONFIGS [
-	{
-		title: '3D RPF', renderer: TT_CONFIG_RENDERER_ELEMENTS.TITLE
-	},
-	{
-		title: 'Cone',
-		elements: [
-			{title: 'Opacity',	min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT},
-			{title: 'Red',		min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT},
-			{title: 'Green',	min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT},
-			{title: 'Blue',		min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT},
-		]
-	}
 ])
 
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
-	{
-		title: 'Consumables Monitor', renderer: TT_CONFIG_RENDERER_ELEMENTS.TITLE
-	},
-	{
-		title: 'Ignore Consumables',
-		elements: [
-			{title: 'IDS_HELP_CONSUME_TITLE_CRASHCREW',	default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.CHECKBOX},
-			{title: 'Reload',	min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.CHECKBOX},
-			{title: 'Active',	min: 0,	max: 1.0, default: 1.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.CHECKBOX},
-		]
-	},
-	{
-		title: 'Animation',
-		element: [
-			{title: 'Ending Blink Start Time',	min: 0,	max: 15.0, default: 15.0, renderer: TT_CONFIG_RENDERER_ELEMENTS.SLIDER_INT},
-		]
-	}
+
 ])
 
 #TODO: should get actual numbers from py code
@@ -122,28 +73,43 @@
 
 (def element TTaroModConfig() layout=true
 	(scope
-		#(var parameterCol:gfx = "$datahub.getCollection(CC.parameter)")
-		#(var smokeTimersContainerEntity:gfx = "$datahub.getPrimaryCompositeEntity(CC.parameter, 0, 'modSmokeTimerEntityList')" (event "parameterCol.evAdded") (event "parameterCol.evRemoved"))
-		#(var dataComponent:gfx = "smokeTimersContainerEntity.data")
+		(var defaultPos:dict = "{'positionX': 100, 'positionY': 0}")
+		(macro DRAGGABLE_GET_DROP_POSITION _wndName="TT_ELEMENT_NAME" _defaults="defaultPos")
 	)
 
 	(block
-		(mc contrast_panel
-			(class $FullsizeAbsolute)
-			(style
-				(alpha = "0.4")
-				(hitTest = false)
-			)
+		(style
+			(position = absolute)
+			(bind left "drogPosX")
+			(bind top "drogPosY")
+			(width = "TT_ELEMENT_SIZE.WIDTH")
+			(height = "TT_ELEMENT_SIZE.HEIGHT")
 		)
-		(controller $Repeat renderer='TT_ModElement'
-			(bind count "TT_MODS_CONFIG_LIST.length")
-			(args "TT_MODS_CONFIG_LIST[$index]")
+		(element ModDraggableElement _wndName="TT_ELEMENT_NAME" _defaults="defaultPos" _elmSize="{width: TT_ELEMENT_SIZE.WIDTH, height: TT_ELEMENT_SIZE.HEIGHT}")
+		(element TT_OptionButton)
+	)
+)
+
+(def element TT_ModConfigs ()layout=true
+	(mc contrast_panel
+		(class $FullsizeAbsolute)
+		(style
+			(alpha = "0.4")
+			(hitTest = "true")
 		)
+	)
+
+	(controller $Repeat renderer='TT_ModElement'
+		(bind count "TT_MODS_CONFIG_LIST.length")
+		(args "TT_MODS_CONFIG_LIST[$index]")
 	)
 )
 
 (def element TT_ModElement (modConfigsData:dict)layout=true
-	(element TT_ModTitleElement "modConfigsData.modName")
+	(style (align = "center"))
+
+	(element TT_ModTitleElement "modConfigsData")
+
 	(controller $Repeat renderer='TT_SectionElement'
 		(bind count "modConfigsData.configSections.length")
 		(args "modConfigsData.configSections[$index]")
@@ -151,7 +117,11 @@
 )
 
 (def element TT_SectionElement (sectionData:dict)layout=true
-	(element TT_SectionTitleElement "sectionData.sectionTitle")
+	#(style (align = "center"))
+	(macro TT_HorizontalDevider)
+
+	(element TT_SectionTitleElement "sectionData")
+
 	(controller $Repeat renderer='TT_ConfigElement'
 		(bind count "sectionData.sectionElements.length")
 		(args "sectionData.sectionElements[$index]")
@@ -160,8 +130,12 @@
 
 (def element TT_ConfigElement (configData:dict)layout=true
 	(hblock
-		(element TT_ConfigTitleElement "configData.configTitle")
-		#(macro trace "configData")
+		(style
+			(align = "middle")
+		)
+
+		(element TT_ConfigTitleElement "configData")
+
 		(controller $Instance
 			(bind renderer "configData.renderer")
 			(args
@@ -172,37 +146,54 @@
 	)
 )
 
-(def element TT_ModTitleElement (_title:str) layout=true
+(def element TT_ModTitleElement (_data:dict) layout=true
+	(scope
+		(var titleText:str = "_data.modName")
+		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
+	)
 	(tf
-		(bind text "_title")
-		(style
-			(marginBottom = 10px)
-		)
 		(class $TextDefaultBoldNM)
+		(bind text "titleText")
+		(style
+			(margin = [10, 10, 6, 10])
+			(bind textColor "titleColor")
+			(fontSize = 17)
+		)
 	)
 )
 
-(def element TT_SectionTitleElement (_title:str) layout=true
+(def element TT_SectionTitleElement (_data:dict) layout=true
+	(scope
+		(var titleText:str = "_data.sectionTitle")
+		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
+	)
 	(tf
-		(bind text "_title")
+		(class $TextDefaultBoldNM)
+		(bind text "titleText")
 		(style
 			(marginLeft = 10px)
 			(marginBottom = 10px)
+			(bind textColor "titleColor")
 		)
-		(class $TextDefaultBoldNM)
 	)
 )
 
-(def element TT_ConfigTitleElement (_title:str) layout=true
+(def element TT_ConfigTitleElement (_data:dict) layout=true
+	(scope
+		(var titleText:str = "_data.configTitle")
+		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
+	)
 	(tf
-		(bind text "_title")
+		(bind text "titleText")
+		(class $TextDefaultNM)
 		(style
-			(marginLeft = 20px)
+			(marginLeft = 30px)
 			(marginBottom = 10px)
 			(width = 80)
+			(bind textColor "titleColor")
 		)
-		(class $TextDefaultBoldNM)
 	)
+	#(macro trace "titleColor")
 )
 
 (def element TT_CheckBoxElement () layout=true
@@ -232,14 +223,15 @@
 		(var step:number = "'step' in _args ? _args.step : 1")
 		(var prefValue:number = "prefKey in userPrefsNum ? round(userPrefsNum[prefKey]) : defaultValue")
 		(var displayedCount:str = "minValue + prefValue * step")
+		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': defaultValue + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
 
 	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged"))
 	#(macro trace "prefKey")
 	(block
 		(style
-			(width = "180px")
-			(align = "center")
+			(width = "220px")
+			(align = "left")
 			(marginLeft = 8px)
 			(marginRight = 8px)
 		)
@@ -264,6 +256,17 @@
 					(width = 40px)
 				)
 			)
+			(controller $Instance renderer='ImageButton'
+				(bind enabled "prefValue != defaultValue")
+				(args
+					_width = 18
+					_height = 18
+					_backgroundImage = 'url:../service_kit/buttons/context/update.png'
+					_hitAreaMargin = "[-XS, -14, -18, -14]"
+					_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
+					_methods = "resetMethods"
+				)
+			)
 		)
 	)
 )
@@ -281,7 +284,7 @@
 	(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
 
 	(controller $Tooltip
-		(renderer='BuildViewerSizeOption')
+		(renderer='TT_ModConfigs')
 		(bindcall show animation={duration:0.1, easing:"Easing.cubic_in", from:{alpha:1}, to:{alpha:1}} (event "evOnButtonClicked"))
 		(bindcall hide animation={duration:0.1, easing:"Easing.cubic_out", from:{alpha:1}, to:{alpha:0}} on='evClickOutside' (event "evHideInfotip"))
 		(bind infotipVisible "true" init=false on='evShow')
@@ -290,12 +293,35 @@
 		(macro MINIMAP_TOOLTIP_COMMON_PARAMS)
 	)
 
+	(mc contrast_panel
+		(class $FullsizeAbsolute)
+		(style
+			(alpha = "0.4")
+			(hitTest = "false")
+			(bind visible "isMouseActive")
+		)
+	)
 	
 	(element ButtonSettingsSmall
 		(style
-			(position = "absolute") #(right = "-20px") (top = "-18px")
+			(position = "absolute")
+			#(right = "-20px")
+			#(top = "-18px")
 			(left = "3px")
 			(top = "3px")
+			(bind alpha "isMouseActive ? 1.0 : 0.4")
+		)
+	)
+)
+
+(def macro TT_HorizontalDevider() layout=true
+	(element HorizontalDivider
+		(style
+			(paddingLeft = 10)
+			#(marginTop = 5px)
+			(marginBottom = 5px)
+			(paddingRight = 10)
+			(alpha = 2)
 		)
 	)
 )
