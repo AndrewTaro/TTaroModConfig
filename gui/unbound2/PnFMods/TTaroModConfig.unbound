@@ -30,7 +30,6 @@
 	}
 ])
 
-#TODO: should get actual numbers from py code
 (def constant MOD_3DHYDRO_CONFIGS [
 	{
 		sectionTitle: 'Circle Opacity',
@@ -51,6 +50,29 @@
 ])
 
 #TODO: should get actual numbers from py code
+#Used postfix: PLAYER_RELATION.VALUE_TO_NAME
+(def constant MOD_REGENMONITOR_CONFIGS [
+	{
+		sectionTitle: 'Bar Color (Ally)',
+		sectionElements: [
+			{configTitle: 'Opacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
+			{configTitle: 'Red',		titleColor: "0xFFFF6666",	key: 'regenMonitorBarRedAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'Green',		titleColor: "0xFF66FF66",	key: 'regenMonitorBarGreenAlly',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'Blue',		titleColor: "0xFF6666FF",	key: 'regenMonitorBarBlueAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+		]
+	},
+	{
+		sectionTitle: 'Bar Color (Enemy for Observer)',
+		sectionElements: [
+			{configTitle: 'Opacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
+			{configTitle: 'Red',		titleColor: "0xFFFF6666",	key: 'regenMonitorBarRedEnemy',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'Green',		titleColor: "0xFF66FF66",	key: 'regenMonitorBarGreenEnemy'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'Blue',		titleColor: "0xFF6666FF",	key: 'regenMonitorBarBlueEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+		]
+	},
+])
+
+#TODO: should get actual numbers from py code
 (def constant MOD_3DRADIO_CONFIGS [
 
 ])
@@ -60,30 +82,23 @@
 ])
 
 #TODO: should get actual numbers from py code
-(def constant MOD_REGENMONITOR_CONFIGS [
-	{name: 'Bar Opacity',			min: 0,	max: 1.0,	default: 1.0},
-	{name: 'Bar Color',				min: 0,	max: 0xFFFFFF,	default: 0xFFFFFF},
-])
-
-#TODO: should get actual numbers from py code
 (def constant MOD_MODULESTATEVIEWER_CONFIGS [
-	{name: 'Ignore Modules',		min: 0,	max: 1.0,	default: 1.0},
+
 ])
 
 #TODO: should get actual numbers from py code
 (def constant MOD_SMOKETIMER_CONFIGS [
-	{name: 'World Marker Opacity',	min: 0,	max: 1.0,	default: 1.0},
-	{name: 'Map Marker Opacity',	min: 0,	max: 0xFFFFFF,	default: 0xFFFFFF},
+
 ])
 
 (def constant TT_MODS_CONFIG_LIST [
 	{modName: '3D Radar',				configSections: "MOD_3DRADAR_CONFIGS"},
 	{modName: '3D Hydro',				configSections: "MOD_3DHYDRO_CONFIGS"},
+	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS"},
 ])
 	#
 	#{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS"},
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
-	#{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS"},
 	#{modName: 'Module State Viewer',	configSections: "MOD_MODULESTATEVIEWER_CONFIGS"},
 	#{modName: 'Smoke Timer',			configSections: "MOD_SMOKETIMER_CONFIGS"},
 
