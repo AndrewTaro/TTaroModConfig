@@ -27,7 +27,13 @@
 			{configTitle: 'Reload',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 7.0, step:0.1}},
 			{configTitle: 'Active',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dRadarCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
 		]
-	}
+	},
+	{
+		sectionTitle: '"Enemy in Range" Distance Offset',
+		sectionElements: [
+			{configTitle: 'Offset (km)',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleRangeOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.5}},
+		]
+	},
 ])
 
 (def constant MOD_3DHYDRO_CONFIGS [
@@ -36,7 +42,7 @@
 		sectionElements: [
 			{configTitle: 'Ready',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleOpacityReady',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.1}},
 			{configTitle: 'Reload',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dHydroCircleOpacityReload',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.1}},
-			{configTitle: 'Active',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dHydroCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 5.0, step:0.1}},
+			{configTitle: 'Active',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dHydroCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.1}},
 		]
 	},
 	{
@@ -46,10 +52,15 @@
 			{configTitle: 'Reload',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dHydroCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 2.0, step:0.1}},
 			{configTitle: 'Active',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dHydroCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 5.0, step:0.1}},
 		]
-	}
+	},
+	{
+		sectionTitle: '"Enemy in Range" Distance Offset',
+		sectionElements: [
+			{configTitle: 'Offset (km)',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleRangeOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.5}},
+		]
+	},
 ])
 
-#TODO: should get actual numbers from py code
 #Used postfix: PLAYER_RELATION.VALUE_TO_NAME
 (def constant MOD_REGENMONITOR_CONFIGS [
 	{
@@ -92,9 +103,9 @@
 ])
 
 (def constant TT_MODS_CONFIG_LIST [
-	{modName: '3D Radar',				configSections: "MOD_3DRADAR_CONFIGS"},
-	{modName: '3D Hydro',				configSections: "MOD_3DHYDRO_CONFIGS"},
-	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS"},
+	{modName: '3D Radar',				configSections: "MOD_3DRADAR_CONFIGS", 		isInstalled: "TT_3DRADAR_INSTALLED"},
+	{modName: '3D Hydro',				configSections: "MOD_3DHYDRO_CONFIGS", 		isInstalled: "TT_3DHYDRO_INSTALLED"},
+	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", isInstalled: "TT_REGENMONITOR_INSTALLED"},
 ])
 	#
 	#{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS"},
@@ -148,6 +159,7 @@
 		(style
 			(flow = "Flow.TILE_HORIZONTAL")
 			(width=360)
+			(align="center")
 		)
 		(controller $Repeat renderer='SecondaryTabButton'
 			(bind count "TT_MODS_CONFIG_LIST.length")
@@ -158,6 +170,7 @@
 				_dispatchedEv="'evTabClicked'"
 				_dispatchParams="{index: $index}"
 				_name="'TTaroModConfigTabButton' + TT_MODS_CONFIG_LIST[$index].modName"
+				_isDisabled="!TT_MODS_CONFIG_LIST[$index].isInstalled"
 			)
 		)
 	)
