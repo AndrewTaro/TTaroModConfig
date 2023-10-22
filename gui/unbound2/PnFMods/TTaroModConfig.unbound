@@ -21,7 +21,7 @@
 		]
 	},
 	{
-		sectionTitle: 'Circle Opacity (Enemy in Range)',
+		sectionTitle: 'Circle Opacity (With Enemy in Range)',
 		sectionElements: [
 			{configTitle: 'Ready',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 7.0, step:0.1}},
 			{configTitle: 'Reload',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 7.0, step:0.1}},
@@ -40,7 +40,7 @@
 		]
 	},
 	{
-		sectionTitle: 'Circle Opacity (Enemy in Range)',
+		sectionTitle: 'Circle Opacity (With Enemy in Range)',
 		sectionElements: [
 			{configTitle: 'Ready',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 2.0, step:0.1}},
 			{configTitle: 'Reload',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dHydroCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 2.0, step:0.1}},
