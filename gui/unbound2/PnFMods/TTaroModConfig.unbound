@@ -122,6 +122,19 @@
 )
 
 (def element TT_ModConfigs ()layout=true
+	(scope
+		(event evTabClicked)
+		(var selectedIndex:number = "0")
+		(bind selectedIndex "$event.index" init=false (event "evTabClicked"))
+	)
+
+	(style 
+		(align = "middle|center")
+		(width=364)
+	)
+
+	(element InfotipSystemBlur)
+
 	(mc contrast_panel
 		(class $FullsizeAbsolute)
 		(style
@@ -130,16 +143,50 @@
 		)
 	)
 
+	#Tab Buttons
+	(hblock
+		(style
+			(flow = "Flow.TILE_HORIZONTAL")
+			(width=360)
+		)
+		(controller $Repeat renderer='SecondaryTabButton'
+			(bind count "TT_MODS_CONFIG_LIST.length")
+			(args
+				_label="TT_MODS_CONFIG_LIST[$index].modName"
+				_isSelected="$index == selectedIndex"
+				_width="120px"
+				_dispatchedEv="'evTabClicked'"
+				_dispatchParams="{index: $index}"
+				_name="'TTaroModConfigTabButton' + TT_MODS_CONFIG_LIST[$index].modName"
+			)
+		)
+	)
+
+	#Config Elements
 	(controller $Repeat renderer='TT_ModElement'
 		(bind count "TT_MODS_CONFIG_LIST.length")
 		(args "TT_MODS_CONFIG_LIST[$index]")
+		(exprs
+			(scope
+				(bind _isSelected "$index == selectedIndex")
+			)
+		)
 	)
 )
 
 (def element TT_ModElement (modConfigsData:dict)layout=true
-	(style (align = "center"))
+	(scope
+		(var _isSelected:bool = "false")
+	)
 
-	(element TT_ModTitleElement "modConfigsData")
+	(style
+		(align = "middle|center")
+		(width=100%)
+		(marginBottom = 15px)
+	)
+	(bind visible "_isSelected")
+
+	#(element TT_ModTitleElement "modConfigsData")
 
 	(controller $Repeat renderer='TT_SectionElement'
 		(bind count "modConfigsData.configSections.length")
@@ -148,10 +195,16 @@
 )
 
 (def element TT_SectionElement (sectionData:dict)layout=true
-	#(style (align = "center"))
-	(macro TT_HorizontalDevider)
+	(style
+		(align = "middle|center")
+		(width=100%)
+		(marginBottom = 15px)
+		(bind marginTop "$index == 0 ? 10px : 0")
+	)
 
 	(element TT_SectionTitleElement "sectionData")
+
+	(macro TT_HorizontalDeviderShort)
 
 	(controller $Repeat renderer='TT_ConfigElement'
 		(bind count "sectionData.sectionElements.length")
@@ -162,7 +215,10 @@
 (def element TT_ConfigElement (configData:dict)layout=true
 	(hblock
 		(style
-			(align = "middle")
+			(align = "middle|center")
+			(width = 100%)
+			(marginBottom = 4px)
+			(marginTop = 4px)
 		)
 
 		(element TT_ConfigTitleElement "configData")
@@ -183,10 +239,9 @@
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
 	)
 	(tf
-		(class $TextDefaultBoldNM)
+		(class $TextDefaultBold)
 		(bind text "titleText")
 		(style
-			(margin = [10, 10, 6, 10])
 			(bind textColor "titleColor")
 			(fontSize = 17)
 		)
@@ -199,11 +254,10 @@
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
 	)
 	(tf
-		(class $TextDefaultBoldNM)
+		(class $TextDefaultBold)
 		(bind text "titleText")
 		(style
-			(marginLeft = 10px)
-			(marginBottom = 10px)
+			(fontSize = 18)
 			(bind textColor "titleColor")
 		)
 	)
@@ -218,13 +272,10 @@
 		(bind text "titleText")
 		(class $TextDefaultNM)
 		(style
-			(marginLeft = 30px)
-			(marginBottom = 10px)
 			(width = 80)
 			(bind textColor "titleColor")
 		)
 	)
-	#(macro trace "titleColor")
 )
 
 (def element TT_CheckBoxElement () layout=true
@@ -237,7 +288,6 @@
 )
 
 (def macro TT_GET_UPREFS ()
-	#isActive:expression = if uPrefsNum is active. Using mouseActive is recommended
 	(var userPrefsComponent:gfx = "$datahub.getSingleComponent(CC.userPrefs)")
 	(var userPrefsNum:dict = "userPrefsComponent.userPrefs.chatBoxWidth" (event "userPrefsComponent.evUserPrefsChanged"))
 	(var userPrefsBool:dict = "userPrefsComponent.userPrefs.elementsGroupExpand" (event "userPrefsComponent.evUserPrefsChanged"))
@@ -253,50 +303,40 @@
 		(var maxValue:number = "'max' in _args ? _args.max : 10")
 		(var step:number = "'step' in _args ? _args.step : 1")
 		(var prefValue:number = "prefKey in userPrefsNum ? round(userPrefsNum[prefKey]) : defaultValue")
-		(var displayedCount:str = "minValue + prefValue * step")
+		(var displayedCount:str = "formatFloatingPoint(minValue + prefValue * step, 2)")
 		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': defaultValue + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
 
 	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged"))
-	#(macro trace "prefKey")
-	(block
+
+	(hblock
 		(style
-			(width = "220px")
-			(align = "left")
-			(marginLeft = 8px)
-			(marginRight = 8px)
+			(width = "200px")
+			(align = "left|middle")
 		)
-		
-		(hblock
+		(element DefaultSlider
+			_value = "prefValue"
+			_intervalsCount = "maxValue"
+			_unitsInStepInterval = "step"
+			_width = 140
+		)
+		(tf
+			(class $TextDefault)
+			(alpha = "TA")
+			(bind text "displayedCount")
 			(style
-				(align = "center|middle")
-				(marginBottom = 5px)
+				(marginLeft = 5px)
+				(width = 40px)
 			)
-			(element DefaultSlider
-				_value = "prefValue"
-				_intervalsCount = "maxValue"
-				_unitsInStepInterval = "step"
-				_width = 140
-			)
-			(tf
-				(class $TextDefault)
-				(alpha = "TA")
-				(bind text "displayedCount")
-				(style
-					(marginLeft = 5px)
-					(width = 40px)
-				)
-			)
-			(controller $Instance renderer='ImageButton'
-				(bind enabled "prefValue != defaultValue")
-				(args
-					_width = 18
-					_height = 18
-					_backgroundImage = 'url:../service_kit/buttons/context/update.png'
-					_hitAreaMargin = "[-XS, -14, -18, -14]"
-					_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
-					_methods = "resetMethods"
-				)
+		)
+		(controller $Instance renderer='ImageButton'
+			(bind enabled "prefValue != defaultValue")
+			(args
+				_width = 18
+				_height = 18
+				_backgroundImage = 'url:../service_kit/buttons/context/update.png'
+				_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
+				_methods = "resetMethods"
 			)
 		)
 	)
@@ -345,13 +385,13 @@
 	)
 )
 
-(def macro TT_HorizontalDevider() layout=true
+(def macro TT_HorizontalDeviderShort() layout=true
 	(element HorizontalDivider
 		(style
-			(paddingLeft = 10)
-			#(marginTop = 5px)
+			(paddingLeft = 40)
+			(paddingRight = 40)
+			(marginTop = 5px)
 			(marginBottom = 5px)
-			(paddingRight = 10)
 			(alpha = 2)
 		)
 	)
