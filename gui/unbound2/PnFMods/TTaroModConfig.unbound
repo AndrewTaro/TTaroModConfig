@@ -1,6 +1,6 @@
 (def constant TT_ELEMENT_NAME "'ttaroModConfig'")
 (def constant TT_ELEMENT_SIZE {
-	WIDTH: 40,
+	WIDTH: 50,
 	HEIGHT: 30
 })
 
@@ -115,7 +115,7 @@
 
 (def element TTaroModConfig() layout=true
 	(scope
-		(var defaultPos:dict = "{'positionX': 100, 'positionY': 0}")
+		(var defaultPos:dict = "{'positionX': 200, 'positionY': 0}")
 		(macro DRAGGABLE_GET_DROP_POSITION _wndName="TT_ELEMENT_NAME" _defaults="defaultPos")
 	)
 
@@ -128,7 +128,11 @@
 			(height = "TT_ELEMENT_SIZE.HEIGHT")
 		)
 		(element ModDraggableElement _wndName="TT_ELEMENT_NAME" _defaults="defaultPos" _elmSize="{width: TT_ELEMENT_SIZE.WIDTH, height: TT_ELEMENT_SIZE.HEIGHT}")
-		(element TT_OptionButton)
+		(hblock
+			(align = "middle|center")
+			(element TT_OptionButton)
+			(element TT_DragTitleElement)
+		)
 	)
 )
 
@@ -242,6 +246,22 @@
 				_prefKey="configData.key"
 				_args="configData.args"
 			)
+		)
+	)
+)
+
+(def element TT_DragTitleElement () layout=true
+	(scope
+		(var mouse:gfx = "$datahub.getSingleComponent(CC.mouse)")
+		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
+	)
+	(tf
+		(class $TextDefaultBold)
+		(bind text "'T'")
+		(style
+			(bind alpha "isMouseActive ? 0.6 : 0.0")
+			(hitTest = false)
+			(fontSize = 18)
 		)
 	)
 )
@@ -377,13 +397,9 @@
 		(macro MINIMAP_TOOLTIP_COMMON_PARAMS)
 	)
 
-	(mc contrast_panel
-		(class $FullsizeAbsolute)
-		(style
-			(alpha = "0.4")
-			(hitTest = "false")
-			(bind visible "isMouseActive")
-		)
+	(style
+		(width = 30)
+		(height = 30)
 	)
 	
 	(element ButtonSettingsSmall
