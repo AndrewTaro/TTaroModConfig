@@ -202,18 +202,11 @@
 )
 
 (def element TT_ModElement (modConfigsData:dict)layout=true
-	(scope
-		#(var _isSelected:bool = "false")
-	)
-
 	(style
 		(align = "middle|center")
 		(width=100%)
 		(marginBottom = 15px)
 	)
-	#(bind visible "_isSelected")
-
-	#(element TT_ModTitleElement "modConfigsData")
 
 	(controller $Repeat renderer='TT_SectionElement'
 		(bind count "modConfigsData.configSections.length")
@@ -394,9 +387,6 @@
 		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
 
 		(var infotipVisible:bool = false)
-		(var isConfigVisible:bool = false)
-		(bind isConfigVisible "!isConfigVisible" init=false watch=false (event "evOnButtonClicked"))
-		(bind isConfigVisible "false" init=false watch=false (event "evHideInfotip"))
 	)
 	(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
 
@@ -418,8 +408,6 @@
 	(element ButtonSettingsSmall
 		(style
 			(position = "absolute")
-			#(right = "-20px")
-			#(top = "-18px")
 			(left = "3px")
 			(top = "3px")
 			(bind alpha "isMouseActive ? 1.0 : 0.4")
