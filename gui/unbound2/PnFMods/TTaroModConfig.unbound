@@ -6,7 +6,7 @@
 
 (def constant TT_CONFIG_RENDERER_ELEMENTS {
 	TITLE:			'TT_TT_TitleElement',
-	CHECKBOX:		'TT_CheckBoxElement',
+	SWITCH:			'TT_SwitchOption',
 	SLIDER_FLOAT:	'TT_SliderOption',
 	SLIDER_INT:		'TT_SliderOption'
 })
@@ -85,6 +85,12 @@
 
 #TODO: should get actual numbers from py code
 (def constant MOD_3DRADIO_CONFIGS [
+	# {
+	# 	sectionTitle: 'Visibility',
+	# 	sectionElements: [
+	# 		{configTitle: 'Visible only on Alt-key',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+	# 	]
+	# },
 	{
 		sectionTitle: 'Line Color',
 		sectionElements: [
@@ -97,10 +103,16 @@
 	{
 		sectionTitle: 'Sector Color',
 		sectionElements: [
-			{configTitle: 'Opacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioSectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 1.0, step:0.1}},
+			{configTitle: 'Opacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioSectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.01}},
 			{configTitle: 'Red',		titleColor: "0xFFFF6666",	key: '3dRadioSectorColorRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
 			{configTitle: 'Green',		titleColor: "0xFF66FF66",	key: '3dRadioSectorColorGreen'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
 			{configTitle: 'Blue',		titleColor: "0xFF6666FF",	key: '3dRadioSectorColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
+		]
+	},
+	{
+		sectionTitle: 'Animation on Direction Change',
+		sectionElements: [
+			{configTitle: 'Max Brightness',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioAnimationMaxOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:1.0}},
 		]
 	},
 ])
@@ -122,6 +134,7 @@
 (def constant TT_MODS_CONFIG_LIST [
 	{modName: '3D Radar',				configSections: "MOD_3DRADAR_CONFIGS", 		isInstalled: "TT_3DRADAR_INSTALLED"},
 	{modName: '3D Hydro',				configSections: "MOD_3DHYDRO_CONFIGS", 		isInstalled: "TT_3DHYDRO_INSTALLED"},
+	{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",		isInstalled: "TT_3DRADIO_INSTALLED"},
 	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", isInstalled: "TT_REGENMONITOR_INSTALLED"},
 ])
 	#
@@ -314,7 +327,38 @@
 	)
 )
 
-(def element TT_CheckBoxElement () layout=true
+(def element TT_SwitchOption (_prefKey:str, _args:dict) layout=true
+	(scope
+		(macro TT_GET_UPREFS)
+		(var prefKey:str = "_prefKey")
+		(var defaultValue:bool = "'default' in _args ? _args.default : false")
+		(var prefValue:bool = "prefKey in userPrefsNum ? round(userPrefsNum[prefKey]) : defaultValue")
+		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': defaultValue + 0.00001, 'name': 'userPrefsNum', 'subName': prefKey}}]")
+		(var saveMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': !prefValue + 0.00001, 'name': 'userPrefsNum', 'subName': prefKey}}]")
+	)
+
+	(style (marginTop = "19px"))
+
+	(hblock
+		(style
+			(width = "200px")
+			(align = "center|middle")
+		)
+		(element SwitchWithoutLabel
+			_state = "prefValue"
+			_methods = "saveMethods"
+		)
+		(controller $Instance renderer='ImageButton'
+			(bind enabled "prefValue != defaultValue")
+			(args
+				_width = 18
+				_height = 18
+				_backgroundImage = 'url:../service_kit/buttons/context/update.png'
+				_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
+				_methods = "resetMethods"
+			)
+		)
+	)
 )
 
 (def element TT_SliderIntElement () layout=true
