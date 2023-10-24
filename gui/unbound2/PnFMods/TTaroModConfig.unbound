@@ -125,7 +125,7 @@
 	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", isInstalled: "TT_REGENMONITOR_INSTALLED"},
 ])
 	#
-	#{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS"},
+	#{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",		isInstalled: "TT_3DRADIO_INSTALLED"},
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
 	#{modName: 'Module State Viewer',	configSections: "MOD_MODULESTATEVIEWER_CONFIGS"},
 	#{modName: 'Smoke Timer',			configSections: "MOD_SMOKETIMER_CONFIGS"},
@@ -197,20 +197,13 @@
 	)
 
 	#Config Elements
-	(controller $Repeat renderer='TT_ModElement'
-		(bind count "TT_MODS_CONFIG_LIST.length")
-		(args "TT_MODS_CONFIG_LIST[$index]")
-		(exprs
-			(scope
-				(bind _isSelected "$index == selectedIndex")
-			)
-		)
-	)
+	#DO NOT USE PEPEAT!: IT freezes the screen as the number of elements increases
+	(element TT_ModElement "TT_MODS_CONFIG_LIST[selectedIndex]")
 )
 
 (def element TT_ModElement (modConfigsData:dict)layout=true
 	(scope
-		(var _isSelected:bool = "false")
+		#(var _isSelected:bool = "false")
 	)
 
 	(style
@@ -218,7 +211,7 @@
 		(width=100%)
 		(marginBottom = 15px)
 	)
-	(bind visible "_isSelected")
+	#(bind visible "_isSelected")
 
 	#(element TT_ModTitleElement "modConfigsData")
 
@@ -228,7 +221,7 @@
 	)
 )
 
-(def element TT_SectionElement (sectionData:dict)layout=true
+(def element TT_SectionElement (sectionData:dict) layout=true
 	(style
 		(align = "middle|center")
 		(width=100%)
@@ -250,7 +243,7 @@
 	(hblock
 		(style
 			(align = "middle|center")
-			(width = 100%)
+			#(width = 100%) it breaks layout for some reason
 			(marginBottom = 4px)
 			(marginTop = 4px)
 		)
@@ -401,6 +394,9 @@
 		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
 
 		(var infotipVisible:bool = false)
+		(var isConfigVisible:bool = false)
+		(bind isConfigVisible "!isConfigVisible" init=false watch=false (event "evOnButtonClicked"))
+		(bind isConfigVisible "false" init=false watch=false (event "evHideInfotip"))
 	)
 	(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
 
