@@ -61,36 +61,13 @@
 	},
 ])
 
-#Used postfix: PLAYER_RELATION.VALUE_TO_NAME
-(def constant MOD_REGENMONITOR_CONFIGS [
-	{
-		sectionTitle: 'Bar Color (Ally)',
-		sectionElements: [
-			{configTitle: 'Opacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
-			{configTitle: 'Red',		titleColor: "0xFFFF6666",	key: 'regenMonitorBarRedAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-			{configTitle: 'Green',		titleColor: "0xFF66FF66",	key: 'regenMonitorBarGreenAlly',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-			{configTitle: 'Blue',		titleColor: "0xFF6666FF",	key: 'regenMonitorBarBlueAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'Bar Color (Enemy for Observer)',
-		sectionElements: [
-			{configTitle: 'Opacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
-			{configTitle: 'Red',		titleColor: "0xFFFF6666",	key: 'regenMonitorBarRedEnemy',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-			{configTitle: 'Green',		titleColor: "0xFF66FF66",	key: 'regenMonitorBarGreenEnemy'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-			{configTitle: 'Blue',		titleColor: "0xFF6666FF",	key: 'regenMonitorBarBlueEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-		]
-	},
-])
-
-#TODO: should get actual numbers from py code
 (def constant MOD_3DRADIO_CONFIGS [
-	# {
-	# 	sectionTitle: 'Visibility',
-	# 	sectionElements: [
-	# 		{configTitle: 'Visible only on Alt-key',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-	# 	]
-	# },
+	{
+		sectionTitle: 'Visibility',
+		sectionElements: [
+			{configTitle: 'Visible only on Alt-key',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+		]
+	},
 	{
 		sectionTitle: 'Line Color',
 		sectionElements: [
@@ -117,6 +94,28 @@
 	},
 ])
 
+#Used postfix: PLAYER_RELATION.VALUE_TO_NAME
+(def constant MOD_REGENMONITOR_CONFIGS [
+	{
+		sectionTitle: 'Bar Color (Ally)',
+		sectionElements: [
+			{configTitle: 'Opacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
+			{configTitle: 'Red',		titleColor: "0xFFFF6666",	key: 'regenMonitorBarRedAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'Green',		titleColor: "0xFF66FF66",	key: 'regenMonitorBarGreenAlly',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'Blue',		titleColor: "0xFF6666FF",	key: 'regenMonitorBarBlueAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+		]
+	},
+	{
+		sectionTitle: 'Bar Color (Enemy for Observer)',
+		sectionElements: [
+			{configTitle: 'Opacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
+			{configTitle: 'Red',		titleColor: "0xFFFF6666",	key: 'regenMonitorBarRedEnemy',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'Green',		titleColor: "0xFF66FF66",	key: 'regenMonitorBarGreenEnemy'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'Blue',		titleColor: "0xFF6666FF",	key: 'regenMonitorBarBlueEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+		]
+	},
+])
+
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
 
 ])
@@ -137,8 +136,7 @@
 	{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",		isInstalled: "TT_3DRADIO_INSTALLED"},
 	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", isInstalled: "TT_REGENMONITOR_INSTALLED"},
 ])
-	#
-	#{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",		isInstalled: "TT_3DRADIO_INSTALLED"},
+
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
 	#{modName: 'Module State Viewer',	configSections: "MOD_MODULESTATEVIEWER_CONFIGS"},
 	#{modName: 'Smoke Timer',			configSections: "MOD_SMOKETIMER_CONFIGS"},
@@ -331,23 +329,26 @@
 	(scope
 		(macro TT_GET_UPREFS)
 		(var prefKey:str = "_prefKey")
-		(var defaultValue:bool = "'default' in _args ? _args.default : false")
-		(var prefValue:bool = "prefKey in userPrefsNum ? round(userPrefsNum[prefKey]) : defaultValue")
-		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': defaultValue + 0.00001, 'name': 'userPrefsNum', 'subName': prefKey}}]")
-		(var saveMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': !prefValue + 0.00001, 'name': 'userPrefsNum', 'subName': prefKey}}]")
+		(var defaultValue:number = "'default' in _args ? _args.default : false")
+		(var prefValue:number = "prefKey in userPrefsNum ? round(userPrefsNum[prefKey]) : defaultValue")
+		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(defaultValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
+		(var saveMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(!prefValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
-
-	(style (marginTop = "19px"))
 
 	(hblock
 		(style
 			(width = "200px")
-			(align = "center|middle")
+			(align = "left|middle")
 		)
 		(element SwitchWithoutLabel
 			_state = "prefValue"
 			_methods = "saveMethods"
+			(style
+				(width = 185)
+				(paddingLeft = 25%)
+			)
 		)
+
 		(controller $Instance renderer='ImageButton'
 			(bind enabled "prefValue != defaultValue")
 			(args
