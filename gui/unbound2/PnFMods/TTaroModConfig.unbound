@@ -126,8 +126,16 @@
 ])
 
 #TODO: should get actual numbers from py code
-(def constant MOD_SMOKETIMER_CONFIGS [
-
+(def constant MOD_SMOKEMARKER_CONFIGS [
+	{
+		sectionTitle: 'Smoke Color on Minimap',
+		sectionElements: [
+			{configTitle: 'Opacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'smokeMarkerMinimapOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
+			{configTitle: 'Red',		titleColor: "0xFFFF6666",	key: 'smokeMarkerMinimapRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 8.0, step:0.1}},
+			{configTitle: 'Green',		titleColor: "0xFF66FF66",	key: 'smokeMarkerMinimapGreen'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 8.0, step:0.1}},
+			{configTitle: 'Blue',		titleColor: "0xFF6666FF",	key: 'smokeMarkerMinimapBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 8.0, step:0.1}},
+		]
+	},
 ])
 
 (def constant TT_MODS_CONFIG_LIST [
@@ -135,11 +143,12 @@
 	{modName: '3D Hydro',				configSections: "MOD_3DHYDRO_CONFIGS", 		isInstalled: "TT_3DHYDRO_INSTALLED"},
 	{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",		isInstalled: "TT_3DRADIO_INSTALLED"},
 	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", isInstalled: "TT_REGENMONITOR_INSTALLED"},
+	{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",	isInstalled: "TT_SMOKEMARKER_INSTALLED"},
 ])
 
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
 	#{modName: 'Module State Viewer',	configSections: "MOD_MODULESTATEVIEWER_CONFIGS"},
-	#{modName: 'Smoke Timer',			configSections: "MOD_SMOKETIMER_CONFIGS"},
+	#{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",	isInstalled: "TT_SMOKEMARKER_INSTALLED"},
 
 (def element TTaroModConfig() layout=true
 	(scope
@@ -377,19 +386,23 @@
 (def element TT_SliderOption (_prefKey:str, _args:dict) layout=true
 	(scope
 		(event evSliderValueChanged) #slider event
+		(event evValueReset) #image button event
+		(event evReinitialized) #Element is being reused while the contents change
 		(macro TT_GET_UPREFS)
 		(var prefKey:str = "_prefKey")
 		(var defaultValue:number = "'default' in _args ? _args.default : 0")
 		(var minValue:number = "'min' in _args ? _args.min : 0")
 		(var maxValue:number = "'max' in _args ? _args.max : 10")
 		(var step:number = "'step' in _args ? _args.step : 1")
-		(var prefValue:number = "prefKey in userPrefsNum ? round(userPrefsNum[prefKey]) : defaultValue")
+		(var prefValue:number = "prefKey in userPrefsNum ? round(userPrefsNum[prefKey]) : defaultValue" watch=false (event "evReinitialized"))
+		(bind prefValue "$event.value" watch=false init=false (event "evValueReset")(event "evSliderValueChanged"))
 		(var displayedCount:str = "formatFloatingPoint(minValue + prefValue * step, 2)")
-		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': defaultValue + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
 
-	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged"))
-
+	(dispatch evReinitialized (bind trigger "prefKey"))
+	(dispatch evReinitialized (bind trigger "defaultValue"))
+	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged")(event "evValueReset"))
+	
 	(hblock
 		(style
 			(width = "200px")
@@ -410,14 +423,17 @@
 				(width = 40px)
 			)
 		)
-		(controller $Instance renderer='ImageButton'
-			(bind enabled "prefValue != defaultValue")
-			(args
-				_width = 18
-				_height = 18
-				_backgroundImage = 'url:../service_kit/buttons/context/update.png'
-				_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
-				_methods = "resetMethods"
+		(block
+			(bind visible "prefValue != defaultValue")
+			(controller $Instance renderer='ImageButton'
+				(args
+					_width = 18
+					_height = 18
+					_backgroundImage = 'url:../service_kit/buttons/context/update.png'
+					_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
+					_dispatchedEv = "'evValueReset'"
+					_dispatchParams = "{'value': defaultValue}"
+				)
 			)
 		)
 	)
