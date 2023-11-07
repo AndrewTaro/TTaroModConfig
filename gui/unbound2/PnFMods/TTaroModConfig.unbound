@@ -94,7 +94,6 @@
 	},
 ])
 
-#Used postfix: PLAYER_RELATION.VALUE_TO_NAME
 (def constant MOD_REGENMONITOR_CONFIGS [
 	{
 		sectionTitle: 'Bar Color (Ally)',
@@ -116,16 +115,6 @@
 	},
 ])
 
-(def constant MOD_CONSUMABLESMONITOR_CONFIGS [
-
-])
-
-#TODO: should get actual numbers from py code
-(def constant MOD_MODULESTATEVIEWER_CONFIGS [
-
-])
-
-#TODO: should get actual numbers from py code
 (def constant MOD_SMOKEMARKER_CONFIGS [
 	{
 		sectionTitle: 'Smoke Color on Minimap',
@@ -138,6 +127,16 @@
 	},
 ])
 
+(def constant MOD_CONSUMABLESMONITOR_CONFIGS [
+
+])
+
+#TODO: should get actual numbers from py code
+(def constant MOD_MODULESTATEVIEWER_CONFIGS [
+
+])
+
+
 (def constant TT_MODS_CONFIG_LIST [
 	{modName: '3D Radar',				configSections: "MOD_3DRADAR_CONFIGS", 		isInstalled: "TT_3DRADAR_INSTALLED"},
 	{modName: '3D Hydro',				configSections: "MOD_3DHYDRO_CONFIGS", 		isInstalled: "TT_3DHYDRO_INSTALLED"},
@@ -148,7 +147,6 @@
 
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
 	#{modName: 'Module State Viewer',	configSections: "MOD_MODULESTATEVIEWER_CONFIGS"},
-	#{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",	isInstalled: "TT_SMOKEMARKER_INSTALLED"},
 
 (def element TTaroModConfig() layout=true
 	(scope
