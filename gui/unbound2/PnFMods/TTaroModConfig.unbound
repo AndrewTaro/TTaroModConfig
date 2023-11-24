@@ -1,4 +1,5 @@
 (def constant TT_ELEMENT_NAME "'ttaroModConfig'")
+(def constant TT_CONFIG_WINDOW_WIDTH 360)
 (def constant TT_ELEMENT_SIZE {
 	WIDTH: 50,
 	HEIGHT: 30
@@ -127,6 +128,69 @@
 	},
 ])
 
+(def constant MOD_SIDEPANEL_CONFIGS [
+	{
+		sectionTitle: 'Position',
+		sectionElements: [
+			{configTitle: 'Height Offset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttSidePanelPosOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
+			{configTitle: 'Size Scale',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttSidePanelScaleOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
+		]
+	},
+	{
+		sectionTitle: 'Basic Info',
+		sectionElements: [
+			{configTitle: 'Clan Name',		key: 'ttSidePanelClanNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Player Name',	key: 'ttSidePanelPlayerNameVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Ship Name',		key: 'ttSidePanelShipNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Tier',			key: 'ttSidePanelShipTierVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Class Icon',		key: 'ttSidePanelShipIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Kill Count',		key: 'ttSidePanelPlayerKillsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'Ship Stats',
+		sectionElements: [
+			{configTitle: 'Visible only on Alt-key',	key: 'ttSidePanelShipStatsVisibleOnAlt',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+			{configTitle: 'Show Units',					key: 'ttSidePanelShipStatsUnitsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'Artillery',
+		sectionElements: [
+			{configTitle: 'Range',			key: 'ttSidePanelArtilleryRangeVisible', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Reload',			key: 'ttSidePanelArtilleryReloadVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'Torpedo',
+		sectionElements: [
+			{configTitle: 'Range',			key: 'ttSidePanelTorpedoRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Reload',			key: 'ttSidePanelTorpedoReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'Air Strike/Support',
+		sectionElements: [
+			{configTitle: 'Range',			key: 'ttSidePanelAirSupportRangeVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Reload',			key: 'ttSidePanelAirSupportReloadVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'Speed',
+		sectionElements: [
+			{configTitle: 'Surface',		key: 'ttSidePanelSpeedSurfaceVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Underwater',		key: 'ttSidePanelSpeedUnderwaterVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'Visibility',
+		sectionElements: [
+			{configTitle: 'Surface',		key: 'ttSidePanelVisibilitySurfaceVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Air',			key: 'ttSidePanelVisibilityAirVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+])
+
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
 
 ])
@@ -143,6 +207,7 @@
 	{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",		isInstalled: "TT_3DRADIO_INSTALLED"},
 	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", isInstalled: "TT_REGENMONITOR_INSTALLED"},
 	{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",	isInstalled: "TT_SMOKEMARKER_INSTALLED"},
+	{modName: 'Side Panel',				configSections: "MOD_SIDEPANEL_CONFIGS",	isInstalled: "TT_SIDEPANEL_INSTALLED"},
 ])
 
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
@@ -171,7 +236,7 @@
 	)
 )
 
-(def element TT_ModConfigs ()layout=true
+(def element TT_ModConfigs (_userPrefsNum:dict=null)layout=true
 	(scope
 		(event evTabClicked)
 		(var selectedIndex:number = "0")
@@ -197,7 +262,7 @@
 	(hblock
 		(style
 			(flow = "Flow.TILE_HORIZONTAL")
-			(width=360)
+			(width="TT_CONFIG_WINDOW_WIDTH")
 			(align="center")
 		)
 		(controller $Repeat renderer='SecondaryTabButton'
@@ -216,23 +281,65 @@
 
 	#Config Elements
 	#DO NOT USE PEPEAT!: IT freezes the screen as the number of elements increases
-	(element TT_ModElement "TT_MODS_CONFIG_LIST[selectedIndex]")
+	(element TT_ModElement "TT_MODS_CONFIG_LIST[selectedIndex]" _userPrefsNum="_userPrefsNum")
 )
 
-(def element TT_ModElement (modConfigsData:dict)layout=true
+(def element TT_ModElement (modConfigsData:dict, _userPrefsNum:dict=null)layout=true
 	(style
 		(align = "middle|center")
-		(width=100%)
+		(width="TT_CONFIG_WINDOW_WIDTH")
 		(marginBottom = 15px)
+		#(maxHeight = 800)
 	)
 
-	(controller $Repeat renderer='TT_SectionElement'
-		(bind count "modConfigsData.configSections.length")
-		(args "modConfigsData.configSections[$index]")
+	# (controller $Repeat renderer='TT_SectionElement'
+	# 	(bind count "modConfigsData.configSections.length")
+	# 	(args "modConfigsData.configSections[$index]")
+	# )
+	(scrollArea
+		(style
+			#(backgroundColor = 0x01000000)
+			#(align = "bottom")
+			#(bind hitTest "isChatExpanded")
+			(width = "TT_CONFIG_WINDOW_WIDTH")
+			(maxHeight = 650)
+		)
+
+		(verticalSlider='ScrollBarVLight')
+		(topShadow='ScrollAreaShadowTop')
+		(bottomShadow='ScrollAreaShadowBottom')
+
+		(activeControlsAlpha=0.7)
+		(inactiveControlsAlpha=0.2)
+		
+		(wheelScrollSpeed = "1.0")
+		(wheelScrollAcceleration = "0.9")
+		(maxScrollingAnimatedDistance = "150")
+
+		(animationDuration=0.2)
+		(animationEasing="Easing.cubic_out")
+
+		(hscrollPolicy='off')
+		(vscrollPolicy='auto')
+		(repeatController='TT_SectionElementRepeat')
+
+		(content
+			(name = 'TT_SectionElementRepeat')
+
+			(style
+				(width = "TT_CONFIG_WINDOW_WIDTH")
+			)
+
+			(controller $Repeat renderer='TT_SectionElement' name='TT_SectionElementRepeat'
+				(bind count "modConfigsData.configSections.length")
+				(args "modConfigsData.configSections[$index]" _userPrefsNum="_userPrefsNum")
+			)
+		)
+		#(bindcall scrollToEnd (event "evNewMessageEvent"))
 	)
 )
 
-(def element TT_SectionElement (sectionData:dict) layout=true
+(def element TT_SectionElement (sectionData:dict, _userPrefsNum:dict=null) layout=true
 	(style
 		(align = "middle|center")
 		(width=100%)
@@ -246,11 +353,11 @@
 
 	(controller $Repeat renderer='TT_ConfigElement'
 		(bind count "sectionData.sectionElements.length")
-		(args "sectionData.sectionElements[$index]")
+		(args "sectionData.sectionElements[$index]" _userPrefsNum="_userPrefsNum")
 	)
 )
 
-(def element TT_ConfigElement (configData:dict)layout=true
+(def element TT_ConfigElement (configData:dict, _userPrefsNum:dict=null)layout=true
 	(hblock
 		(style
 			(align = "middle|center")
@@ -266,6 +373,7 @@
 			(args
 				_prefKey="configData.key"
 				_args="configData.args"
+				_userPrefsNum="_userPrefsNum"
 			)
 		)
 	)
@@ -332,12 +440,12 @@
 	)
 )
 
-(def element TT_SwitchOption (_prefKey:str, _args:dict) layout=true
+(def element TT_SwitchOption (_prefKey:str, _args:dict, _userPrefsNum:dict=null) layout=true
 	(scope
-		(macro TT_GET_UPREFS)
+		#(macro TT_GET_UPREFS)
 		(var prefKey:str = "_prefKey")
 		(var defaultValue:number = "'default' in _args ? _args.default : false")
-		(var prefValue:number = "prefKey in userPrefsNum ? round(userPrefsNum[prefKey]) : defaultValue")
+		(var prefValue:number = "prefKey in _userPrefsNum ? round(_userPrefsNum[prefKey]) : defaultValue")
 		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(defaultValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 		(var saveMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(!prefValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
@@ -345,6 +453,7 @@
 	(hblock
 		(style
 			(width = "200px")
+			(height = "18px")
 			(align = "left|middle")
 		)
 		(element SwitchWithoutLabel
@@ -377,22 +486,21 @@
 
 (def macro TT_GET_UPREFS ()
 	(var userPrefsComponent:gfx = "$datahub.getSingleComponent(CC.userPrefs)")
-	(var userPrefsNum:dict = "userPrefsComponent.userPrefs.chatBoxWidth" (event "userPrefsComponent.evUserPrefsChanged"))
-	(var userPrefsBool:dict = "userPrefsComponent.userPrefs.elementsGroupExpand" (event "userPrefsComponent.evUserPrefsChanged"))
+	(var _userPrefsNum:dict = "userPrefsComponent.userPrefs.chatBoxWidth" (event "userPrefsComponent.evUserPrefsChanged"))
 )
 
-(def element TT_SliderOption (_prefKey:str, _args:dict) layout=true
+(def element TT_SliderOption (_prefKey:str, _args:dict, _userPrefsNum:dict=null) layout=true
 	(scope
 		(event evSliderValueChanged) #slider event
 		(event evValueReset) #image button event
 		(event evReinitialized) #Element is being reused while the contents change
-		(macro TT_GET_UPREFS)
+		#(macro TT_GET_UPREFS)
 		(var prefKey:str = "_prefKey")
 		(var defaultValue:number = "'default' in _args ? _args.default : 0")
 		(var minValue:number = "'min' in _args ? _args.min : 0")
 		(var maxValue:number = "'max' in _args ? _args.max : 10")
 		(var step:number = "'step' in _args ? _args.step : 1")
-		(var prefValue:number = "prefKey in userPrefsNum ? round(userPrefsNum[prefKey]) : defaultValue" watch=false (event "evReinitialized"))
+		(var prefValue:number = "prefKey in _userPrefsNum ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false (event "evReinitialized"))
 		(bind prefValue "$event.value" watch=false init=false (event "evValueReset")(event "evSliderValueChanged"))
 		(var displayedCount:str = "formatFloatingPoint(minValue + prefValue * step, 2)")
 	)
@@ -446,11 +554,13 @@
 		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
 
 		(var infotipVisible:bool = false)
+		(macro TT_GET_UPREFS)
 	)
 	(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
 
 	(controller $Tooltip
 		(renderer='TT_ModConfigs')
+		(args _userPrefsNum = "_userPrefsNum")
 		(bindcall show animation={duration:0.1, easing:"Easing.cubic_in", from:{alpha:1}, to:{alpha:1}} (event "evOnButtonClicked"))
 		(bindcall hide animation={duration:0.1, easing:"Easing.cubic_out", from:{alpha:1}, to:{alpha:0}} on='evClickOutside' (event "evHideInfotip"))
 		(bind infotipVisible "true" init=false on='evShow')
