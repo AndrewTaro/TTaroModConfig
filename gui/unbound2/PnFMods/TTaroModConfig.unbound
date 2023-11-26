@@ -458,7 +458,7 @@
 	(hblock
 		(style
 			(width = "200px")
-			(height = "18px")
+			(height = "23px")
 			(align = "left|middle")
 		)
 		(element SwitchWithoutLabel
@@ -517,6 +517,7 @@
 	(hblock
 		(style
 			(width = "200px")
+			(height = "23px")
 			(align = "left|middle")
 		)
 		(element DefaultSlider
