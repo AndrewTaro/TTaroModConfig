@@ -167,7 +167,13 @@
 		sectionTitle: 'Torpedo',
 		sectionElements: [
 			{configTitle: 'Range',			key: 'ttSidePanelTorpedoRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Reload',			key: 'ttSidePanelTorpedoReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			#{configTitle: 'Reload',			key: 'ttSidePanelTorpedoReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'Anti Air',
+		sectionElements: [
+			{configTitle: 'Range',			key: 'ttSidePanelAntiAirRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
