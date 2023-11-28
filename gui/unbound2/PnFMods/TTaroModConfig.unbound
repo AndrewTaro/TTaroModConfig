@@ -252,6 +252,45 @@
 	)
 )
 
+(def element TT_OptionButton () layout=true
+	(scope
+		(event evHideInfotip)
+		(event evOnButtonClicked)
+
+		(var mouse:gfx = "$datahub.getSingleComponent(CC.mouse)")
+		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
+
+		(var infotipVisible:bool = false)
+		(macro TT_GET_UPREFS)
+	)
+	(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
+
+	(controller $Tooltip
+		(renderer='TT_ModConfigs')
+		(args _userPrefsNum = "_userPrefsNum")
+		(bindcall show animation={duration:0.1, easing:"Easing.cubic_in", from:{alpha:1}, to:{alpha:1}} (event "evOnButtonClicked"))
+		(bindcall hide animation={duration:0.1, easing:"Easing.cubic_out", from:{alpha:1}, to:{alpha:0}} on='evClickOutside' (event "evHideInfotip"))
+		(bind infotipVisible "true" init=false on='evShow')
+		(bind infotipVisible "false" init=false on='evHide')
+		(priority=1)
+		(macro MINIMAP_TOOLTIP_COMMON_PARAMS)
+	)
+
+	(style
+		(width = 30)
+		(height = 30)
+	)
+	
+	(element ButtonSettingsSmall
+		(style
+			(position = "absolute")
+			(left = "3px")
+			(top = "3px")
+			(bind alpha "isMouseActive ? 1.0 : 0.4")
+		)
+	)
+)
+
 (def element TT_ModConfigs (_userPrefsNum:dict=null)layout=true
 	(scope
 		(event evTabClicked)
@@ -562,45 +601,6 @@
 					_dispatchParams = "{'value': defaultValue}"
 				)
 			)
-		)
-	)
-)
-
-(def element TT_OptionButton () layout=true
-	(scope
-		(event evHideInfotip)
-		(event evOnButtonClicked)
-
-		(var mouse:gfx = "$datahub.getSingleComponent(CC.mouse)")
-		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
-
-		(var infotipVisible:bool = false)
-		(macro TT_GET_UPREFS)
-	)
-	(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
-
-	(controller $Tooltip
-		(renderer='TT_ModConfigs')
-		(args _userPrefsNum = "_userPrefsNum")
-		(bindcall show animation={duration:0.1, easing:"Easing.cubic_in", from:{alpha:1}, to:{alpha:1}} (event "evOnButtonClicked"))
-		(bindcall hide animation={duration:0.1, easing:"Easing.cubic_out", from:{alpha:1}, to:{alpha:0}} on='evClickOutside' (event "evHideInfotip"))
-		(bind infotipVisible "true" init=false on='evShow')
-		(bind infotipVisible "false" init=false on='evHide')
-		(priority=1)
-		(macro MINIMAP_TOOLTIP_COMMON_PARAMS)
-	)
-
-	(style
-		(width = 30)
-		(height = 30)
-	)
-	
-	(element ButtonSettingsSmall
-		(style
-			(position = "absolute")
-			(left = "3px")
-			(top = "3px")
-			(bind alpha "isMouseActive ? 1.0 : 0.4")
 		)
 	)
 )
