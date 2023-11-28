@@ -1,5 +1,6 @@
 (def constant TT_ELEMENT_NAME "'ttaroModConfig'")
 (def constant TT_CONFIG_WINDOW_WIDTH 360)
+(def constant TT_CONFIG_WINDOW_MAXHEIGHT 725)
 (def constant TT_ELEMENT_SIZE {
 	WIDTH: 50,
 	HEIGHT: 30
@@ -310,6 +311,10 @@
 		#(maxHeight = 800)
 	)
 
+	(controller $Animation
+		(bindcall play duration="0.25"  from={alpha:0} to={alpha:1} watch=false action="killAll" easing="Easing.cubic_in" (bind trigger "modConfigsData"))
+	)
+
 	#THIS IS MANDATORY FOR SCROLL IN BATTLE
 	(bindcall externalCall 'inputMapping.onAction' "['battleChat.rollOverChanged', { rollOver: rollOver }]" init=false watch=false (bind trigger "rollOver"))
 	(macro MOUSE_EVENTS_DISPATCHER)
@@ -319,7 +324,7 @@
 		(style
 			(backgroundColor = 0x01000000) #THIS IS MANDATORY FOR SCROLL IN BATTLE
 			(width = "TT_CONFIG_WINDOW_WIDTH")
-			(maxHeight = 650)
+			(maxHeight = "TT_CONFIG_WINDOW_MAXHEIGHT")
 		)
 
 		(verticalSlider='ScrollBarVLight')
@@ -329,7 +334,7 @@
 		(activeControlsAlpha=0.7)
 		(inactiveControlsAlpha=0.2)
 		
-		(wheelScrollSpeed = "1.0")
+		(wheelScrollSpeed = "1.5")
 		(wheelScrollAcceleration = "0.9")
 		(maxScrollingAnimatedDistance = "150")
 
@@ -508,21 +513,22 @@
 		(event evSliderValueChanged) #slider event
 		(event evValueReset) #image button event
 		(event evReinitialized) #Element is being reused while the contents change
-		#(macro TT_GET_UPREFS)
 		(var prefKey:str = "_prefKey")
 		(var defaultValue:number = "'default' in _args ? _args.default : 0")
 		(var minValue:number = "'min' in _args ? _args.min : 0")
 		(var maxValue:number = "'max' in _args ? _args.max : 10")
 		(var step:number = "'step' in _args ? _args.step : 1")
+		#watch=false is necessary to prevent the flickering slider
 		(var prefValue:number = "prefKey in _userPrefsNum ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false (event "evReinitialized"))
 		(bind prefValue "$event.value" watch=false init=false (event "evValueReset")(event "evSliderValueChanged"))
 		(var displayedCount:str = "formatFloatingPoint(minValue + prefValue * step, 2)")
 	)
 
-	(dispatch evReinitialized (bind trigger "prefKey"))
-	(dispatch evReinitialized (bind trigger "defaultValue"))
+	#(dispatch evReinitialized (bind trigger "prefKey"))
+	#_prefKey changes before _arg, resulting in an incorrect defaultValue
+	(dispatch evReinitialized (bind trigger "_args"))
 	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged")(event "evValueReset"))
-	
+
 	(hblock
 		(style
 			(width = "200px")
