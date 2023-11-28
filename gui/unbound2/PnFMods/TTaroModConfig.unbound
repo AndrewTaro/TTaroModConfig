@@ -197,6 +197,13 @@
 			{configTitle: 'Air',			key: 'ttSidePanelVisibilityAirVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
+	{
+		sectionTitle: 'Consumable Range',
+		sectionElements: [
+			{configTitle: 'Radar',		key: 'ttSidePanelRadarRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Hydro',		key: 'ttSidePanelHydroRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
 ])
 
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
@@ -308,13 +315,9 @@
 	(macro MOUSE_EVENTS_DISPATCHER)
 	#THIS IS MANDATORY FOR SCROLL IN BATTLE
 
-	# (controller $Repeat renderer='TT_SectionElement'
-	# 	(bind count "modConfigsData.configSections.length")
-	# 	(args "modConfigsData.configSections[$index]")
-	# )
 	(scrollArea
 		(style
-			(backgroundColor = 0x00FFFFFF) #THIS IS MANDATORY FOR SCROLL IN BATTLE
+			(backgroundColor = 0x01000000) #THIS IS MANDATORY FOR SCROLL IN BATTLE
 			(width = "TT_CONFIG_WINDOW_WIDTH")
 			(maxHeight = 650)
 		)
