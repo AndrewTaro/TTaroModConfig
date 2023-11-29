@@ -129,81 +129,81 @@
 	},
 ])
 
-(def constant MOD_SIDEPANEL_CONFIGS [
+(def constant MOD_TEAMPANEL_CONFIGS [
 	{
 		sectionTitle: 'Position',
 		sectionElements: [
-			{configTitle: 'Height Offset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttSidePanelPosOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
-			{configTitle: 'Size Scale',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttSidePanelScaleOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
+			{configTitle: 'Height Offset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelPosOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
+			{configTitle: 'Size Scale',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelScaleOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
 		]
 	},
 	{
 		sectionTitle: 'Basic Info',
 		sectionElements: [
-			{configTitle: 'Clan Name',		key: 'ttSidePanelClanNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Clan Icon',		key: 'ttSidePanelClanIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'Player Name',	key: 'ttSidePanelPlayerNameVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Ship Name',		key: 'ttSidePanelShipNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Tier',			key: 'ttSidePanelShipTierVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Class Icon',		key: 'ttSidePanelShipIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Kill Count',		key: 'ttSidePanelPlayerKillsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Detection',		key: 'ttSidePanelShipDetectionVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Bar Opacity',	key: 'ttSidePanelHealthBarOpacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
+			{configTitle: 'Clan Name',		key: 'ttTeamPanelClanNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Clan Icon',		key: 'ttTeamPanelClanIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+			{configTitle: 'Player Name',	key: 'ttTeamPanelPlayerNameVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Ship Name',		key: 'ttTeamPanelShipNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Tier',			key: 'ttTeamPanelShipTierVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Class Icon',		key: 'ttTeamPanelShipIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Kill Count',		key: 'ttTeamPanelPlayerKillsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Detection',		key: 'ttTeamPanelShipDetectionVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Bar Opacity',	key: 'ttTeamPanelHealthBarOpacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
 		]
 	},
 	{
 		sectionTitle: 'Ship Stats',
 		sectionElements: [
-			{configTitle: 'Visible only on Alt-key',	key: 'ttSidePanelShipStatsVisibleOnAlt',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'Show Units',					key: 'ttSidePanelShipStatsUnitsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Visible only on Alt-key',	key: 'ttTeamPanelShipStatsVisibleOnAlt',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+			{configTitle: 'Show Units',					key: 'ttTeamPanelShipStatsUnitsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'Artillery',
 		sectionElements: [
-			{configTitle: 'Range',			key: 'ttSidePanelArtilleryRangeVisible', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Reload',			key: 'ttSidePanelArtilleryReloadVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Range',			key: 'ttTeamPanelArtilleryRangeVisible', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Reload',			key: 'ttTeamPanelArtilleryReloadVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'Torpedo',
 		sectionElements: [
-			{configTitle: 'Range',			key: 'ttSidePanelTorpedoRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			#{configTitle: 'Reload',			key: 'ttSidePanelTorpedoReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Range',			key: 'ttTeamPanelTorpedoRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			#{configTitle: 'Reload',			key: 'ttTeamPanelTorpedoReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'Anti Air',
 		sectionElements: [
-			{configTitle: 'Range',			key: 'ttSidePanelAntiAirRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Range',			key: 'ttTeamPanelAntiAirRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'Air Strike/Support',
 		sectionElements: [
-			{configTitle: 'Range',			key: 'ttSidePanelAirSupportRangeVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Reload',			key: 'ttSidePanelAirSupportReloadVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Range',			key: 'ttTeamPanelAirSupportRangeVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Reload',			key: 'ttTeamPanelAirSupportReloadVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'Speed',
 		sectionElements: [
-			{configTitle: 'Surface',		key: 'ttSidePanelSpeedSurfaceVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Underwater',		key: 'ttSidePanelSpeedUnderwaterVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Surface',		key: 'ttTeamPanelSpeedSurfaceVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Underwater',		key: 'ttTeamPanelSpeedUnderwaterVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'Visibility',
 		sectionElements: [
-			{configTitle: 'Surface',		key: 'ttSidePanelVisibilitySurfaceVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Air',			key: 'ttSidePanelVisibilityAirVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Surface',		key: 'ttTeamPanelVisibilitySurfaceVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Air',			key: 'ttTeamPanelVisibilityAirVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'Consumable Range',
 		sectionElements: [
-			{configTitle: 'Radar',		key: 'ttSidePanelRadarRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Hydro',		key: 'ttSidePanelHydroRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Radar',		key: 'ttTeamPanelRadarRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'Hydro',		key: 'ttTeamPanelHydroRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 ])
@@ -224,7 +224,7 @@
 	{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",		isInstalled: "TT_3DRADIO_INSTALLED"},
 	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", isInstalled: "TT_REGENMONITOR_INSTALLED"},
 	{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",	isInstalled: "TT_SMOKEMARKER_INSTALLED"},
-	{modName: 'Side Panel',				configSections: "MOD_SIDEPANEL_CONFIGS",	isInstalled: "TT_SIDEPANEL_INSTALLED"},
+	{modName: 'Team Panel',				configSections: "MOD_TEAMPANEL_CONFIGS",	isInstalled: "TT_TEAMPANEL_INSTALLED"},
 ])
 
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
