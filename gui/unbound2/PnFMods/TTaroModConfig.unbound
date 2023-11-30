@@ -131,10 +131,17 @@
 
 (def constant MOD_TEAMPANEL_CONFIGS [
 	{
-		sectionTitle: 'Position',
+		sectionTitle: 'General',
 		sectionElements: [
 			{configTitle: 'Height Offset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelPosOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
 			{configTitle: 'Size Scale',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelScaleOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
+		]
+	},
+	{
+		sectionTitle: 'Background Contrast Panel',
+		sectionElements: [
+			{configTitle: 'Visible only on Alt-key',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
+			{configTitle: 'Opacity',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 10, default: 0.0, step:0.1}},
 		]
 	},
 	{
@@ -148,7 +155,7 @@
 			{configTitle: 'Class Icon',		key: 'ttTeamPanelShipIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'Kill Count',		key: 'ttTeamPanelPlayerKillsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'Detection',		key: 'ttTeamPanelShipDetectionVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'Bar Opacity',	key: 'ttTeamPanelHealthBarOpacity',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
+			{configTitle: 'Bar Opacity',	key: 'ttTeamPanelHealthBarOpacity',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
 		]
 	},
 	{
