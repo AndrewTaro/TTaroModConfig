@@ -133,8 +133,9 @@
 	{
 		sectionTitle: 'General',
 		sectionElements: [
+			{configTitle: 'Show Dead Players',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", 	key: 'ttTeamPanelDeadPlayerVisible',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'Height Offset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelPosOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
-			{configTitle: 'Size Scale',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelScaleOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
+			{configTitle: 'Size Scale',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelScaleOffset',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
 		]
 	},
 	{
@@ -501,6 +502,7 @@
 		(class $TextDefaultNM)
 		(style
 			(width = 80)
+			(leading = -4)
 			(bind textColor "titleColor")
 		)
 	)
