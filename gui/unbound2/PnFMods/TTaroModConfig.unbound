@@ -78,13 +78,17 @@
     IDS_TT_AIR                                   : ['Air', '航空', '공중', 'С Воздуха ', 'З повітря', 'Powietrze', 'Vzduch', 'Luft', 'Aérienne', ],
     IDS_TT_RADAR                                 : ['Radar', 'レーダー', '레이더', 'РЛС', 'РЛС', 'Radar', 'Radar', 'Überwachungsradar', 'Radar', ],
     IDS_TT_HYDRO                                 : ['Hydro', '水中聴音', '음파탐지', 'ГАП', 'ГАП', 'Sonda Hydroakustyczna', 'Hydro', 'Hydroakustische Suche', 'Hydroacoustique', ],
+    IDS_TT_SUB_RADAR                             : ['Submarine Locator', '潜水艦探知機', '', '', '', '', '', '', '', ],
+    IDS_TT_SUB_HYDRO                             : ['Hydrophone', 'ハイドロフォン', '', '', '', '', '', '', '', ],
     IDS_TT_TITLE_ARTILLERY                       : ['Artillery', '主砲', '주함포', 'Артиллерия ', 'Гармати', 'Artyleria', 'Artilerie', 'Hauptbatterie', 'Artillerie', ],
     IDS_TT_TITLE_TORPEDO                         : ['Torpedo', '魚雷', '어뢰 발사관', 'Торпеды', 'Торпеди', 'Torpedy', 'Torpéda', 'Torpedos', 'Torpilles', ],
+    IDS_TT_TITLE_ATBA                            : ['Secondary', '副砲', '', '', '', '', '', '', '', ],
     IDS_TT_TITLE_AIR_DEFENSE                     : ['Anti Air', '対空', '대공', 'ПВО', 'ППО', 'Broń Plot.', 'Protivzdušná obrana', 'Flugabwehr', 'DCA', ],
     IDS_TT_TITLE_AIR_STRIKE                      : ['Air Strike', '空襲', '공습', 'Авиаудар', 'Авіаудар', 'Nalot/Wsparcie', 'Nálety/Hlubinné nálety', 'Luftschlag', 'Frappe aérienne', ],
     IDS_TT_TITLE_SPEED                           : ['Speed', '速力', '속력', 'Скорость', 'Швидкість', 'Prędkość', 'Rychlost', 'Geschwindigkeit', 'Vitesse', ],
     IDS_TT_TITLE_VISIBILITY                      : ['Visibility', '被発見距離', '탐지 범위', 'Заметность ', 'Помітність', 'Widoczność', 'Viditelnost', 'Verborgenheit', 'Visibilité', ],
-    IDS_TT_TITLE_CONSUMABLE_RANGE                : ['Consumable Range', '消耗品射程', '소모품 범위', 'Дальность Расходников ', 'Дальність розхідників', 'Zasięg Sprzętu Eksploatacyjnego', 'Dosah spotřebních doplňků', 'Reichweite des Verbrauchsmaterials', 'Portée du consomable', ],
+    IDS_TT_TITLE_SURFACE_CONSUMABLE_RANGE        : ['Consumable Range', '消耗品射程', '소모품 범위', 'Дальность Расходников ', 'Дальність розхідників', 'Zasięg Sprzętu Eksploatacyjnego', 'Dosah spotřebních doplňků', 'Reichweite des Verbrauchsmaterials', 'Portée du consomable', ],
+    IDS_TT_TITLE_SUBMARINE_CONSUMABLE_RANGE      : ['Submarine Consumable Range', '潜水艦消耗品射程', '', '', '', '', '', '', '', ],
 })
 
 (def constant MOD_3DRADAR_CONFIGS [
@@ -267,6 +271,12 @@
 		]
 	},
 	{
+		sectionTitle: 'IDS_TT_TITLE_ATBA',
+		sectionElements: [
+			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelAtbaRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
 		sectionTitle: 'IDS_TT_TITLE_AIR_DEFENSE',
 		sectionElements: [
 			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelAntiAirRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
@@ -295,10 +305,17 @@
 		]
 	},
 	{
-		sectionTitle: 'IDS_TT_TITLE_CONSUMABLE_RANGE',
+		sectionTitle: 'IDS_TT_TITLE_SURFACE_CONSUMABLE_RANGE',
 		sectionElements: [
 			{configTitle: 'IDS_TT_HYDRO',		key: 'ttTeamPanelHydroRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_RADAR',		key: 'ttTeamPanelRadarRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'IDS_TT_TITLE_SUBMARINE_CONSUMABLE_RANGE',
+		sectionElements: [
+			{configTitle: 'IDS_TT_SUB_HYDRO',		key: 'ttTeamPanelSubHydroRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_SUB_RADAR',		key: 'ttTeamPanelSubRadarRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 ])
