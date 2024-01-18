@@ -273,7 +273,7 @@
 
 	(block
 		(style
-			(position = absolute)
+			(position = "absolute")
 			(bind left "drogPosX")
 			(bind top "drogPosY")
 			(width = "TT_ELEMENT_SIZE.WIDTH")
