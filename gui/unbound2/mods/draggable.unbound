@@ -12,11 +12,13 @@
 		(event name = "evMouseDown")
 		(event name = "evMouseUp")
 
+		(event evElementSizeChange)
+
 		(macro DRAGGABLE_GET_MOUSE_COMPONENT)
 		(macro DRAGGABLE_GET_MOUSE_POSITION isActive="isMouseActive")
 
-		(var __dragMouseDown:bool = "$event.isDown" init=false watch=false (event "$scope[evMouseDown]") (event "$scope[evMouseUp]"))
-		(bind __dragMouseDown "false" (event "mouse.evActiveChanged"))
+		(var isDragging:bool = "$event.isDragging" init=false watch=false (event "$scope[evMouseDown]") (event "$scope[evMouseUp]"))
+		(bind isDragging "false" (event "mouse.evActiveChanged"))
 
 		(macro STAGE_SIZE)
 
@@ -30,8 +32,8 @@
 		(var curPosX:number = "mouseX - diffPosX")
 		(var curPosY:number = "mouseY - diffPosY")
 
-		(var elementWidth:number = "_elmSize ? _elmSize.width : DRAGGABLE_MIN_ELEMENT_SIZE")
-		(var elementHeight:number = "_elmSize ? _elmSize.height : DRAGGABLE_MIN_ELEMENT_SIZE")
+		(var elementWidth:number = "_elmSize ? _elmSize.width : $event.width" watch=false (event "evElementSizeChange"))
+		(var elementHeight:number = "_elmSize ? _elmSize.height : $event.height" watch=false (event "evElementSizeChange"))
 
 		(var stageX:number = "stageWidth  - elementWidth")
 		(var stageY:number = "stageHeight - elementHeight")
@@ -39,9 +41,9 @@
 		(var clampedCurPosX:number = "min(max(curPosX, 0), stageX)")
 		(var clampedCurPosY:number = "min(max(curPosY, 0), stageY)")
 
-		#(dispatch "'ev' + _wndName" args = "{x: curPosX > 0 ? curPosX : 0, y: curPosY > 0 ? curPosY : 0}" dir=1 (bind enabled "__dragMouseDown && isMouseActive") (bind trigger "curPosX") (bind trigger "curPosY"))
-		(dispatch "'ev' + _wndName" args = "{x: clampedCurPosX, y: clampedCurPosY}" dir=1 (bind enabled "__dragMouseDown && isMouseActive") (bind trigger "clampedCurPosX") (bind trigger "clampedCurPosY"))
-		(dispatch "'ev' + _wndName + 'IconVisibleChanged'" args = "{visible: __dragMouseDown}" dir=1 (bind trigger "__dragMouseDown"))
+		#(dispatch "'ev' + _wndName" args = "{x: curPosX > 0 ? curPosX : 0, y: curPosY > 0 ? curPosY : 0}" dir=1 (bind enabled "isDragging && isMouseActive") (bind trigger "curPosX") (bind trigger "curPosY"))
+		(dispatch "'ev' + _wndName" args = "{x: clampedCurPosX, y: clampedCurPosY}" dir=1 (bind enabled "isDragging && isMouseActive") (bind trigger "clampedCurPosX") (bind trigger "clampedCurPosY"))
+		(dispatch "'ev' + _wndName + 'IconVisibleChanged'" args = "{visible: isDragging}" dir=1 (bind trigger "isDragging"))
 	)
 
 	(class $FullsizeAbsolute)
@@ -52,13 +54,15 @@
 		(bind visible "isMouseActive")
 	)
 
-	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': clampedCurPosX + 0.00001, 'name': 'chatBoxWidth', 'subName': _wndName + '_positionX'}]" init=false watch=false (bind trigger "__dragMouseDown"))
+	(dispatch evElementSizeChange args="{width: $globalLayoutBounds[2], height: $globalLayoutBounds[3]}" (bind enabled "!_elmSize") (event "$evLayoutBoundsChanged"))
 
-	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': clampedCurPosY + 0.00001, 'name': 'chatBoxWidth', 'subName': _wndName + '_positionY'}]" init=false watch=false (bind trigger "__dragMouseDown"))
+	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': clampedCurPosX + 0.00001, 'name': 'chatBoxWidth', 'subName': _wndName + '_positionX'}]" init=false watch=false (bind trigger "isDragging"))
 
-	(dispatch "evMouseDown" args="{isDown: true}" on='mouseDown')
+	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': clampedCurPosY + 0.00001, 'name': 'chatBoxWidth', 'subName': _wndName + '_positionY'}]" init=false watch=false (bind trigger "isDragging"))
 
-	(dispatch "evMouseUp" args="{isDown: false}" on='mouseUp')
+	(dispatch "evMouseDown" args="{isDragging: true}" on='mouseDown')
+
+	(dispatch "evMouseUp" args="{isDragging: false}" on='stageMouseUp')
 
 	#(macro trace "$scope")
 )
@@ -104,9 +108,9 @@
 
 	(var name = "'dragDropUserPrefsEntity'" type=gfx value="$datahub.getSingleEntity(CC.userPrefs)")
 	(var name = "'dragDropUserPrefsNum'" type=gfx value="dragDropUserPrefsEntity.userPrefs.userPrefs.chatBoxWidth")
-	(var name = "'drogPosX'" type=number value="toString(dragDropUserPrefsNum[_wndName + '_' + 'positionX']) != null ? round(dragDropUserPrefsNum[_wndName + '_' + 'positionX']) : _defaults['positionX']" watch=false)
-	(var name = "'drogPosY'" type=number value="toString(dragDropUserPrefsNum[_wndName + '_' + 'positionY']) != null ? round(dragDropUserPrefsNum[_wndName + '_' + 'positionY']) : _defaults['positionY']" watch=false)
+	(var name = "'dragPosX'" type=number value="toString(dragDropUserPrefsNum[_wndName + '_' + 'positionX']) != null ? round(dragDropUserPrefsNum[_wndName + '_' + 'positionX']) : _defaults['positionX']" watch=false)
+	(var name = "'dragPosY'" type=number value="toString(dragDropUserPrefsNum[_wndName + '_' + 'positionY']) != null ? round(dragDropUserPrefsNum[_wndName + '_' + 'positionY']) : _defaults['positionY']" watch=false)
 
-	(bind drogPosX "$event.x" init=false watch=false (event "$scope['ev' + _wndName]"))
-	(bind drogPosY "$event.y" init=false watch=false (event "$scope['ev' + _wndName]"))
+	(bind dragPosX "$event.x" init=false watch=false (event "$scope['ev' + _wndName]"))
+	(bind dragPosY "$event.y" init=false watch=false (event "$scope['ev' + _wndName]"))
 )
