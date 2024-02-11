@@ -275,8 +275,8 @@
 	(block
 		(style
 			(position = "absolute")
-			(bind left "drogPosX")
-			(bind top "drogPosY")
+			(bind left "dragPosX")
+			(bind top "dragPosY")
 			(width = "TT_ELEMENT_SIZE.WIDTH")
 			(height = "TT_ELEMENT_SIZE.HEIGHT")
 		)
