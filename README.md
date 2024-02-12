@@ -16,6 +16,10 @@ By default, the config element is located at the top-left of the screen. It supp
 - **[Regen Monitor](../../../RegenMonitorPublic)** - Opacity and color of regeneratable HP bar
 - **[Smoke Marker](../../../SmokeMarkerPublic)** - Opacity and color of smoke marker on minimap
 
+# Requirements
+You must install the following for this mod to work:
+- [DraggableUnbound2](../../../DraggableUnbound2)
+
 # Install
 1. Download a zip.
 2. Unzip the archive and you should get `gui`, `PnFMods` folders and `PnFModsLoader.py`.
