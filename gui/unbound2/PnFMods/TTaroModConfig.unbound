@@ -367,7 +367,7 @@
 			(width="TT_CONFIG_WINDOW_WIDTH")
 			(align="center")
 		)
-		(controller $Repeat renderer='SecondaryTabButton'
+		(controller $Repeat renderer='TabButton'
 			(bind count "TT_MODS_CONFIG_LIST.length")
 			(args
 				_label="TT_MODS_CONFIG_LIST[$index].modName"
