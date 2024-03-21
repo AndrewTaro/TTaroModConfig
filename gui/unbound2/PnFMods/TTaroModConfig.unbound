@@ -307,7 +307,6 @@
 		)
 		(element ModDraggableElement _wndName="TT_ELEMENT_NAME" _defaults="defaultPos" _elmSize="{width: TT_ELEMENT_SIZE.WIDTH, height: TT_ELEMENT_SIZE.HEIGHT}")
 		(hblock
-			(align = "middle|center")
 			(element TT_OptionButton)
 			(element TT_DragTitleElement)
 		)
