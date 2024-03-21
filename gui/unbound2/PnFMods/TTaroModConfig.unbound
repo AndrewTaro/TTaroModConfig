@@ -18,23 +18,23 @@
 	{
 		sectionTitle: 'IDS_TT_TITLE_CIRCLE_OPACITY',
 		sectionElements: [
-			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleOpacityReady',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 7.0, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReload',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 7.0, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dRadarCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 10.0, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleOpacityReady',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.7, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReload',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.7, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dRadarCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_CIRCLE_OPACITY_WITH_ENEMY',
 		sectionElements: [
-			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 7.0, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 7.0, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dRadarCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.7, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.7, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dRadarCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 1.0, step:0.1}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_WITH_ENEMY_DISTANCE_OFFSET',
 		sectionElements: [
-			{configTitle: 'IDS_TT_DISTANCE_OFFSET',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleRangeOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.5}},
+			{configTitle: 'IDS_TT_DISTANCE_OFFSET',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleRangeOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 1.0, step:0.5}},
 		]
 	},
 ])
@@ -43,23 +43,23 @@
 	{
 		sectionTitle: 'IDS_TT_TITLE_CIRCLE_OPACITY',
 		sectionElements: [
-			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleOpacityReady',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dHydroCircleOpacityReload',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dHydroCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleOpacityReady',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.2, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dHydroCircleOpacityReload',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.2, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dHydroCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.2, step:0.1}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_CIRCLE_OPACITY_WITH_ENEMY',
 		sectionElements: [
-			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 2.0, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dHydroCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 2.0, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dHydroCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 5.0, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.2, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dHydroCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.2, step:0.1}},
+			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dHydroCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.5, step:0.1}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_WITH_ENEMY_DISTANCE_OFFSET',
 		sectionElements: [
-			{configTitle: 'IDS_TT_DISTANCE_OFFSET',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleRangeOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.5}},
+			{configTitle: 'IDS_TT_DISTANCE_OFFSET',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleRangeOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 1.0, step:0.5}},
 		]
 	},
 ])
@@ -74,19 +74,19 @@
 	{
 		sectionTitle: 'IDS_TT_TITLE_LINE_COLOR',
 		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioLineOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:0.1}},
-			{configTitle: 'IDS_TT_RED',		titleColor: "0xFFFF6666",	key: '3dRadioLineColorRed',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",	key: '3dRadioLineColorGreen',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",	key: '3dRadioLineColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioLineOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.2, step:0.1}},
+			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: '3dRadioLineColorRed',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: '3dRadioLineColorGreen',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: '3dRadioLineColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_SECTOR_COLOR',
 		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioSectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.01}},
-			{configTitle: 'IDS_TT_RED',		titleColor: "0xFFFF6666",	key: '3dRadioSectorColorRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",	key: '3dRadioSectorColorGreen'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",	key: '3dRadioSectorColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioSectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 0.1, default: 0.04, step:0.01}},
+			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: '3dRadioSectorColorRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: '3dRadioSectorColorGreen'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: '3dRadioSectorColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
 		]
 	},
 	{
@@ -101,19 +101,19 @@
 	{
 		sectionTitle: 'IDS_TT_TITLE_REGENBAR_COLOR_ALLY',
 		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
-			{configTitle: 'IDS_TT_RED',		titleColor: "0xFFFF6666",	key: 'regenMonitorBarRedAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",	key: 'regenMonitorBarGreenAlly',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",	key: 'regenMonitorBarBlueAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
+			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'regenMonitorBarRedAlly',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'regenMonitorBarGreenAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
+			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'regenMonitorBarBlueAlly',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_REGENBAR_COLOR_ENEMY',
 		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
-			{configTitle: 'IDS_TT_RED',		titleColor: "0xFFFF6666",	key: 'regenMonitorBarRedEnemy',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",	key: 'regenMonitorBarGreenEnemy'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",	key: 'regenMonitorBarBlueEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 9.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
+			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'regenMonitorBarRedEnemy',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'regenMonitorBarGreenEnemy'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
+			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'regenMonitorBarBlueEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
 		]
 	},
 ])
@@ -122,19 +122,19 @@
 	{
 		sectionTitle: 'IDS_TT_SMOKEMARKER_COLOR_MINIMAP',
 		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'smokeMarkerMinimapOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
-			{configTitle: 'IDS_TT_RED',		titleColor: "0xFFFF6666",	key: 'smokeMarkerMinimapRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 8.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",	key: 'smokeMarkerMinimapGreen'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 8.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",	key: 'smokeMarkerMinimapBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 8.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'smokeMarkerMinimapOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
+			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'smokeMarkerMinimapRed',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'smokeMarkerMinimapGreen'		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
+			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'smokeMarkerMinimapBlue',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_SMOKEMARKER_COLOR_WORLD',
 		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'smokeMarkerWorldOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 10.0, step:0.1}},
-			{configTitle: 'IDS_TT_RED',		titleColor: "0xFFFF6666",	key: 'smokeMarkerWorldRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",	key: 'smokeMarkerWorldGreen'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",	key: 'smokeMarkerWorldBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10.0, default: 10.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'smokeMarkerWorldOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'smokeMarkerWorldRed',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'smokeMarkerWorldGreen'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'smokeMarkerWorldBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
 		]
 	},
 ])
@@ -143,17 +143,17 @@
 	{
 		sectionTitle: 'IDS_TT_TITLE_GENERAL',
 		sectionElements: [
-			{configTitle: 'IDS_TT_SHOW_DEAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", 	key: 'ttTeamPanelDeadPlayerVisible',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_DISPLAY_HEIGHT_OFFSET',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelPosOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
-			{configTitle: 'IDS_TT_UI_SCALE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelScaleOffset',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
+			{configTitle: 'IDS_TT_SHOW_DEAD',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", 	key: 'ttTeamPanelDeadPlayerVisible',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_DISPLAY_HEIGHT_OFFSET',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelPosOffset',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 5, default: 0, step:1}},
+			{configTitle: 'IDS_TT_UI_SCALE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelScaleOffset',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 5, default: 0, step:1}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
 		sectionElements: [
-			{configTitle: 'IDS_TT_USE_BLUR',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: true}},
-			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 10, default: 0.0, step:0.1}},
+			{configTitle: 'IDS_TT_USE_BLUR',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: true}},
+			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
+			{configTitle: 'IDS_TT_OPACITY',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.0, step:0.1}},
 		]
 	},
 	{
@@ -161,30 +161,30 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_CLAN_NAME',		key: 'ttTeamPanelClanNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_CLAN_ICON',		key: 'ttTeamPanelClanIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_PLAYER_NAME',	key: 'ttTeamPanelPlayerNameVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_PLAYER_NAME',		key: 'ttTeamPanelPlayerNameVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_SHIP_NAME',		key: 'ttTeamPanelShipNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_NATIONAL_FLAG',	key: 'ttTeamPanelShipNationVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+			{configTitle: 'IDS_TT_NATIONAL_FLAG',	key: 'ttTeamPanelShipNationVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 			{configTitle: 'IDS_TT_TIER',			key: 'ttTeamPanelShipTierVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_CLASS_ICON',		key: 'ttTeamPanelShipIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_CLASS_ICON_COLOR',	key: 'ttTeamPanelShipIconColorPreset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['None', 'Aslain v1', 'Aslain v2', 'AutoSpy', 'Roslich', 'DeCease', 'Hakabase'], default: 0}},
+			{configTitle: 'IDS_TT_CLASS_ICON_COLOR',key: 'ttTeamPanelShipIconColorPreset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['None', 'Aslain v1', 'Aslain v2', 'AutoSpy', 'Roslich', 'DeCease', 'Hakabase'], default: 0}},
 			{configTitle: 'IDS_TT_KILL_COUNT',		key: 'ttTeamPanelPlayerKillsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_DETECTION',		key: 'ttTeamPanelShipDetectionVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_BAR_OPACITY',	key: 'ttTeamPanelHealthBarOpacity',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 4.0, step:0.1}},
-			{configTitle: 'IDS_TT_BAR_WIDTH',	key: 'ttTeamPanelHealthBarWidth',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 10, default: 5.0, step:1}},
+			{configTitle: 'IDS_TT_BAR_OPACITY',		key: 'ttTeamPanelHealthBarOpacity',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
+			{configTitle: 'IDS_TT_BAR_WIDTH',		key: 'ttTeamPanelHealthBarWidth',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 5, default: 0, step:1}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_SHIP_STATS',
 		sectionElements: [
 			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	key: 'ttTeamPanelShipStatsVisibleOnAlt',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_SHOW_UNIT',					key: 'ttTeamPanelShipStatsUnitsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_SHOW_UNIT',		key: 'ttTeamPanelShipStatsUnitsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_ARTILLERY',
 		sectionElements: [
-			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelArtilleryRangeVisible', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_RELOAD',			key: 'ttTeamPanelArtilleryReloadVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelArtilleryRangeVisible', 	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_RELOAD',			key: 'ttTeamPanelArtilleryReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
@@ -197,7 +197,7 @@
 	{
 		sectionTitle: 'IDS_TT_TITLE_ATBA',
 		sectionElements: [
-			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelAtbaRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelAtbaRangeVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
@@ -210,22 +210,22 @@
 	{
 		sectionTitle: 'IDS_TT_TITLE_AIR_STRIKE',
 		sectionElements: [
-			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelAirSupportRangeVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_RELOAD',			key: 'ttTeamPanelAirSupportReloadVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelAirSupportRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_RELOAD',			key: 'ttTeamPanelAirSupportReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_SPEED',
 		sectionElements: [
-			{configTitle: 'IDS_TT_SURFACE',		key: 'ttTeamPanelSpeedSurfaceVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_UNDERWATER',		key: 'ttTeamPanelSpeedUnderwaterVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_SURFACE',			key: 'ttTeamPanelSpeedSurfaceVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_UNDERWATER',		key: 'ttTeamPanelSpeedUnderwaterVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_VISIBILITY',
 		sectionElements: [
-			{configTitle: 'IDS_TT_SURFACE',		key: 'ttTeamPanelVisibilitySurfaceVisible',titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_AIR',			key: 'ttTeamPanelVisibilityAirVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_SURFACE',		key: 'ttTeamPanelVisibilitySurfaceVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_AIR',			key: 'ttTeamPanelVisibilityAirVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 		]
 	},
 	{
@@ -240,6 +240,30 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_SUB_HYDRO',		key: 'ttTeamPanelSubHydroRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_SUB_RADAR',		key: 'ttTeamPanelSubRadarRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+])
+
+(def constant MOD_FPSPINGMETER_CONFIGS [
+	{
+		sectionTitle: 'IDS_TT_TITLE_FONT_STYLE',
+		sectionElements: [
+			{configTitle: 'IDS_TT_SIZE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterFontSize',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['Default', 'Medium', 'Big'], default: 0}},
+			{configTitle: 'IDS_TT_THEME',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterFontStyle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['Default', 'Light'], default: 0}},
+		]
+	},
+	{
+		sectionTitle: 'IDS_TT_TITLE_FPS_THRESHOLD',
+		sectionElements: [
+			{configTitle: 'IDS_TT_WARNING',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterFpsWarnThreshold',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 30, max: 150, default: 55, step:5, round: 0}},
+			{configTitle: 'IDS_TT_CRITICAL',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterFpsCritThreshold',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 30, max: 150, default: 30, step:5, round: 0}},
+		]
+	},
+	{
+		sectionTitle: 'IDS_TT_TITLE_PING_THRESHOLD',
+		sectionElements: [
+			{configTitle: 'IDS_TT_WARNING',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterPingWarnThreshold',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 50, max: 150, default: 100, step:10, round: 0}},
+			{configTitle: 'IDS_TT_CRITICAL',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterPingCritThreshold',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 50, max: 150, default: 150, step:10, round: 0}},
 		]
 	},
 ])
@@ -261,6 +285,7 @@
 	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", isInstalled: "TT_REGENMONITOR_INSTALLED"},
 	{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",	isInstalled: "TT_SMOKEMARKER_INSTALLED"},
 	{modName: 'Team Panel',				configSections: "MOD_TEAMPANEL_CONFIGS",	isInstalled: "TT_TEAMPANEL_INSTALLED"},
+	{modName: 'FPS/Ping Meter',			configSections: "MOD_FPSPINGMETER_CONFIGS",	isInstalled: "TT_FPSPINGMETER_INSTALLED"},
 ])
 
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
@@ -645,21 +670,20 @@
 	(scope
 		(event evSliderValueChanged) #slider event
 		(event evValueReset) #image button event
-		(event evReinitialized) #Element is being reused while the contents change
 		(var prefKey:str = "_prefKey")
-		(var defaultValue:number = "'default' in _args ? _args.default : 0")
 		(var minValue:number = "'min' in _args ? _args.min : 0")
 		(var maxValue:number = "'max' in _args ? _args.max : 10")
 		(var step:number = "'step' in _args ? _args.step : 1")
+		(var steps:number = "(maxValue - minValue) / step")
+		(var default:number = "'default' in _args ? _args.default : 0")
+		(var defaultValue:number = "(default - minValue) / step")
+		(var rounding:number = "'round' in _args ? _args.round : 2")
 		#watch=false is necessary to prevent the slider from flickering
-		(var prefValue:number = "prefKey in _userPrefsNum ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false (event "evReinitialized"))
+		(var prefValue:number = "prefKey in _userPrefsNum ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false)
 		(bind prefValue "$event.value" watch=false init=false (event "evValueReset")(event "evSliderValueChanged"))
-		(var displayedCount:str = "formatFloatingPoint(minValue + prefValue * step, 2)")
+		(var displayedCount:str = "formatFloatingPoint(minValue + prefValue * step, rounding)")
 	)
-
-	#(dispatch evReinitialized (bind trigger "prefKey"))
-	#_prefKey changes before _arg, resulting in an incorrect defaultValue
-	(dispatch evReinitialized (bind trigger "_args"))
+	#(macro trace "steps") (macro trace "step") (macro trace "defaultValue") (macro trace "prefValue")
 	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged")(event "evValueReset"))
 
 	(hblock
@@ -670,7 +694,7 @@
 		)
 		(element DefaultSlider
 			_value = "prefValue"
-			_intervalsCount = "maxValue"
+			_intervalsCount = "steps"
 			_unitsInStepInterval = "step"
 			_width = 140
 		)
