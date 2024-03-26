@@ -15,6 +15,8 @@ By default, the config element is located at the top-left of the screen. It supp
 - **[3D Radio/RPF](../../../ThreeDimentionalRadioPublic)** - Opacity and color of RPF sector/lines.
 - **[Regen Monitor](../../../RegenMonitorPublic)** - Opacity and color of regeneratable HP bar
 - **[Smoke Marker](../../../SmokeMarkerPublic)** - Opacity and color of smoke marker on minimap
+- **[TTaro Team Panel](../../../TTaroTeamPanel)** - Various elements
+- **[FPS/Ping Meter](../../../FpsPingMeter)** - Color, style, thresholds for indicator text
 
 # Requirements
 You must install the following for this mod to work:
