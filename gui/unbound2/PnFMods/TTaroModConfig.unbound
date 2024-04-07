@@ -85,7 +85,7 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioSectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 0.1, default: 0.04, step:0.01}},
 			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: '3dRadioSectorColorRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: '3dRadioSectorColorGreen'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: '3dRadioSectorColorGreen',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
 			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: '3dRadioSectorColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
 		]
 	},
@@ -112,7 +112,7 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
 			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'regenMonitorBarRedEnemy',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'regenMonitorBarGreenEnemy'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'regenMonitorBarGreenEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
 			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'regenMonitorBarBlueEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
 		]
 	},
@@ -124,7 +124,7 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'smokeMarkerMinimapOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
 			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'smokeMarkerMinimapRed',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'smokeMarkerMinimapGreen'		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'smokeMarkerMinimapGreen',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
 			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'smokeMarkerMinimapBlue',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
 		]
 	},
@@ -133,7 +133,7 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'smokeMarkerWorldOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
 			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'smokeMarkerWorldRed',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'smokeMarkerWorldGreen'	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'smokeMarkerWorldGreen',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
 			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'smokeMarkerWorldBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
 		]
 	},
