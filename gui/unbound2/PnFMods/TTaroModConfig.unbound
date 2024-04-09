@@ -268,6 +268,15 @@
 	},
 ])
 
+(def constant MOD_STREAMERMODE_CONFIGS [
+	{
+		sectionTitle: 'IDS_TT_TITLE_ANONYMOUS_MODE',
+		sectionElements: [
+			{configTitle: 'IDS_TT_ANONYMIZE_MODE',	tooltipHint: 'IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH',	key: 'streamerModeEnabled',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+])
+
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
 
 ])
@@ -286,6 +295,7 @@
 	{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",	isInstalled: "TT_SMOKEMARKER_INSTALLED"},
 	{modName: 'Team Panel',				configSections: "MOD_TEAMPANEL_CONFIGS",	isInstalled: "TT_TEAMPANEL_INSTALLED"},
 	{modName: 'FPS/Ping Meter',			configSections: "MOD_FPSPINGMETER_CONFIGS",	isInstalled: "TT_FPSPINGMETER_INSTALLED"},
+	{modName: 'Streamer Mode',			configSections: "MOD_STREAMERMODE_CONFIGS",	isInstalled: "TT_STREAMERMODE_INSTALLED"},
 ])
 
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
@@ -529,6 +539,14 @@
 				init	 = true
 			)
 		)
+
+		# For tooltip hint
+		(var languagePrefKey:str = "TT_ELEMENT_NAME + 'Language'")
+		(var languageIndex:number = "(_userPrefsNum && languagePrefKey in _userPrefsNum) ? round(_userPrefsNum[languagePrefKey]) : 0")
+		(var hintKey:str = "'tooltipHint' in _configData ? _configData.tooltipHint : null")
+		(var hintTranslations:array = "hintKey ? TT_CONFIG_LOCALIZATIONS[hintKey] : null")
+		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
+		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
 	)
 
 	(style
@@ -548,6 +566,7 @@
 			#(width = 100%) it breaks layout for some reason
 			(marginBottom = 4px)
 			(marginTop = 4px)
+			(backgroundColor = 0x01000000)
 		)
 
 		(element TT_ConfigTitleElement _data="_configData" _userPrefsNum="_userPrefsNum")
@@ -560,6 +579,15 @@
 				_args="_configData.args"
 				_userPrefsNum="_userPrefsNum"
 			)
+		)
+
+		(controller $Tooltip (renderer = 'SimpleStatusTooltip')
+			(bind enabled "hintKey")
+			(args
+				_text = "localizedHintText"
+				_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.INFO"
+			)
+			(macro TT_TOOLTIP_BEHAVIOUR)
 		)
 	)
 )
@@ -609,12 +637,12 @@
 (def element TT_ConfigTitleElement (_data:dict, _userPrefsNum:dict=null) layout=true
 	(scope
 		(var titleKey:str = "_data.configTitle")
-		(var translations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
+		(var titleTranslations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
 		(var languagePrefKey:str = "TT_ELEMENT_NAME + 'Language'")
 		(var languageIndex:number = "(_userPrefsNum && languagePrefKey in _userPrefsNum) ? round(_userPrefsNum[languagePrefKey]) : 0")
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
-		(var isValidLocalization:bool = "translations.length > languageIndex && !isIn(translations[languageIndex], ['', ' '])")
-		(var localizedTitleText:str = "isValidLocalization ? translations[languageIndex] : translations[0]")
+		(var isTitleValidLocalization:bool = "titleTranslations.length > languageIndex && !isIn(titleTranslations[languageIndex], ['', ' '])")
+		(var localizedTitleText:str = "isTitleValidLocalization ? titleTranslations[languageIndex] : titleTranslations[0]")
 	)
 	(tf
 		(bind text "localizedTitleText")
@@ -788,4 +816,37 @@
 (def macro TT_GET_UPREFS ()
 	(var userPrefsComponent:gfx = "$datahub.getSingleComponent(CC.userPrefs)")
 	(var _userPrefsNum:dict = "userPrefsComponent.userPrefs.chatBoxWidth" (event "userPrefsComponent.evUserPrefsChanged"))
+)
+
+(def macro TT_TOOLTIP_BEHAVIOUR (_priority:expression = "0")
+
+	(bindcall show animation =	{	duration:	"0.15",
+									delay:		"0.01",
+									easing:		"Easing.cubic_out",
+									from:		{ alpha: 0, top: 5 },
+									to:			{ alpha: 1, top: 0 }
+								}
+								on = 'rollOver'
+	)
+
+	(bindcall hide animation = {	duration:	"0.05",
+									delay:		"0",
+									easing:		"Easing.cubic_out",
+									from:		{ alpha: 1, top: 0 },
+									to:			{ alpha: 0, top: -5}
+								}
+								on = 'rollOut'
+	)
+
+	(offset = {	x: 0, y: 15})
+
+	(screenBoundsOffset = {			left:	10,
+									top:	10,
+									right:	10,
+									bottom:	10 })
+	
+	(priority = "_priority")
+
+	(align="bottom|right")
+	(position="trackMouse")
 )

@@ -81,6 +81,7 @@
     IDS_TT_ADVANCED_SETTINGS                     : ['Advanced Settings', '詳細設定', '', 'Дополнительные настройки', 'Розширені налаштування', 'Zaawansowane ustawienia', 'Pokročilé nastavení', '', 'Réglages avancés', '', ],
     IDS_TT_ANONYMIZE_FRIEND                      : ['Anonymize Friends', 'フレンドを匿名化', '', 'Анонимизировать Друзей', 'Анонімізувати друзів', 'Anonimizuj znajomych', 'Anonymizovat přátele', '', 'Anonymiser les amis/contacts', '', ],
     IDS_TT_ANONYMIZE_CLANMATE                    : ['Anonymize Clanmate', 'クランメイトを匿名化', '', 'Анонимизировать Соклановцев', 'Анонімізувати сокланів', 'Anonimizuj członków klanu', 'Anonymizovat členy klanu', '', 'Anonymiser les menbres du clan', '', ],
+    IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH       : ['This change will be effective from the next game.', 'この変更は次の試合以降有効になります。', '', '', '', '', '', '', '', '', ],
     IDS_TT_TITLE_FONT_STYLE                      : ['Font Style', 'フォントスタイル', '', 'Стиль Шрифта', 'Стиль шрифту', 'Styl czcionki', 'Styl písma', '', 'Style de police', '', ],
     IDS_TT_SIZE                                  : ['Size', '文字サイズ', '', 'Размер', 'Розмір', 'Rozmiar', 'Velikost', '', 'Taille', '', ],
     IDS_TT_THEME                                 : ['Theme', 'テーマ', '', 'Тема', 'Тема', 'Motyw', 'Motiv', '', 'Thème', '', ],
