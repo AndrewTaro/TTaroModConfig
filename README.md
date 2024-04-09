@@ -16,7 +16,8 @@ By default, the config element is located at the top-left of the screen. It supp
 - **[Regen Monitor](../../../RegenMonitorPublic)** - Opacity and color of regeneratable HP bar
 - **[Smoke Marker](../../../SmokeMarkerPublic)** - Opacity and color of smoke marker on minimap
 - **[TTaro Team Panel](../../../TTaroTeamPanel)** - Various elements
-- **[FPS/Ping Meter](../../../FpsPingMeter)** - Color, style, thresholds for indicator text
+- **[FPS & Ping Meter](../../../FpsPingMeter)** - Color, style, thresholds for indicator text
+- **[Streamer Mode](../../../StreamerModePublic)** - Enable or disable the mod
 
 # Requirements
 You must install the following for this mod to work:
