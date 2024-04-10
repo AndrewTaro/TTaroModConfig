@@ -1,6 +1,14 @@
 (def constant TT_ELEMENT_NAME "'ttaroModConfig'")
-(def constant TT_CONFIG_WINDOW_WIDTH 360)
-(def constant TT_CONFIG_WINDOW_MAXHEIGHT 725)
+(def constant TT_CONFIG_WINDOW_WIDTH 480px)
+(def constant TT_CONFIG_WINDOW_MAXHEIGHT 725px)
+(def constant TT_CONFIG_SECTION_MARGIN 20px)
+
+(def constant TT_CONFIG_OPTION_WIDTH 205px) #Sum of the following consts
+(def constant TT_CONFIG_OPTION_CONTROL_WIDTH 140px)
+(def constant TT_CONFIG_OPTION_VALUE_WIDTH 40px)
+(def constant TT_CONFIG_OPTION_VALUE_MARGIN 7px)
+(def constant TT_CONFIG_RESET_BUTTON_SIZE 18px)
+
 (def constant TT_ELEMENT_SIZE {
 	WIDTH: 50,
 	HEIGHT: 30
@@ -373,7 +381,7 @@
 
 	(style 
 		(align = "middle|center")
-		(width=364)
+		(width = "TT_CONFIG_WINDOW_WIDTH + 4") # +4 for side
 	)
 
 	(element InfotipSystemBlur)
@@ -391,7 +399,7 @@
 		(style
 			(align = "middle|center")
 			(height = "40px")
-			(marginLeft = 80px)
+			(marginLeft = "-TT_CONFIG_OPTION_CONTROL_WIDTH + 16")
 		)
 		(element TT_DropdownOption _prefKey="TT_ELEMENT_NAME + 'Language'" _args="languageOptions" _userPrefsNum="_userPrefsNum")
 	)
@@ -475,6 +483,7 @@
 		(content
 			(style
 				(width = "TT_CONFIG_WINDOW_WIDTH")
+				(align = "middle|center")
 			)
 
 			(controller $Repeat renderer='TT_SectionElement' name='TT_SectionElementRepeat'
@@ -507,9 +516,9 @@
 
 	(style
 		(align = "middle|center")
-		(width=100%)
-		(marginBottom = 15px)
-		(bind marginTop "$index == 0 ? 10px : 0")
+		(width = 90%)
+		(marginBottom = "TT_CONFIG_SECTION_MARGIN")
+		(bind marginTop "$index == 0 ? TT_CONFIG_SECTION_MARGIN : 0")
 	)
 
 	(element TT_SectionTitleElement _data="_sectionData" _userPrefsNum="_userPrefsNum")
@@ -547,10 +556,15 @@
 		(var hintTranslations:array = "hintKey ? TT_CONFIG_LOCALIZATIONS[hintKey] : null")
 		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
 		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
+
+		(macro MOUSE_HANDLER_SCOPE)
 	)
+
+	(macro MOUSE_EVENTS_DISPATCHER)
 
 	(style
 		(alpha = 0)
+		(width = 100%)
 	)
 	(controller $Animation
 		(bindcall play
@@ -560,14 +574,39 @@
 			(bind trigger "isConfigEnabled")
 		)
 	)
+
+	(block
+		# For background highlight
+		(class $FullsizeAbsolute)
+		(style
+			(backgroundColor = 0x1FFFFFFF)
+			(alpha = 0)
+		)
+		(controller $Animation
+			(bindcall play
+				duration = 0.1
+				to		 = { alpha: 1 }
+				action="killAll"
+				(event "evRollOver")
+			)
+			(bindcall play
+				duration = 0.1
+				to		 = { alpha: 0 }
+				action="killAll"
+				(event "evRollOut")
+			)
+		)
+	)
+
 	(hblock
 		(style
 			(align = "middle|center")
-			#(width = 100%) it breaks layout for some reason
+			(width = 100%) #~~it breaks layout for some reason~~ parent element must have width. In this case the width=100% above^
 			(marginBottom = 4px)
 			(marginTop = 4px)
-			(backgroundColor = 0x01000000)
+			(backgroundColor = 0x01000000) # For tooltip hittest
 		)
+		
 
 		(element TT_ConfigTitleElement _data="_configData" _userPrefsNum="_userPrefsNum")
 
@@ -580,15 +619,15 @@
 				_userPrefsNum="_userPrefsNum"
 			)
 		)
+	)
 
-		(controller $Tooltip (renderer = 'SimpleStatusTooltip')
-			(bind enabled "hintKey")
-			(args
-				_text = "localizedHintText"
-				_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.INFO"
-			)
-			(macro TT_TOOLTIP_BEHAVIOUR)
+	(controller $Tooltip (renderer = 'SimpleStatusTooltip')
+		(bind enabled "hintKey")
+		(args
+			_text = "localizedHintText"
+			_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.INFO"
 		)
+		(macro TT_TOOLTIP_BEHAVIOUR)
 	)
 )
 
@@ -619,15 +658,15 @@
 		(var localizedTitleText:str = "isValidLocalization ? translations[languageIndex] : translations[0]")
 	)
 	(style
-		(width= 100%)
-		(align = "middle|center")
+		(width = 100%)
+		#(align = "middle|center")
 	)
 	(tf
 		(class $TextDefaultBold)
 		(bind text "localizedTitleText")
 		(style
-			(fontSize = 18)
-			(textAlign = "center")
+			(fontSize = 21)
+			#(textAlign = "center")
 			(width = 100%)
 			(bind textColor "titleColor")
 		)
@@ -643,14 +682,33 @@
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
 		(var isTitleValidLocalization:bool = "titleTranslations.length > languageIndex && !isIn(titleTranslations[languageIndex], ['', ' '])")
 		(var localizedTitleText:str = "isTitleValidLocalization ? titleTranslations[languageIndex] : titleTranslations[0]")
+
+		(var hasTooltip:bool = "'tooltipHint' in _data && _data.tooltipHint ? true : false")
 	)
-	(tf
-		(bind text "localizedTitleText")
-		(class $TextDefaultNM)
+	(style
+		(width = 50%)
+	)
+	(hblock
 		(style
-			(width = 80)
-			(leading = -5)
-			(bind textColor "titleColor")
+			(width = 100%)
+			(align = "middle|center")
+		)
+		(tf
+			(bind text "localizedTitleText")
+			(class $TextDefault)
+			(style
+				(width = 100%)
+				(leading = -5)
+				(bind textColor "titleColor")
+			)
+		)
+		(block
+			(bind visible "hasTooltip")
+			(style
+				(width = 19px) (height = 19px) (backgroundSize = "fill")
+				(marginLeft = 5px) (marginRight = 5px)
+				(bind backgroundImage "'url:../service_kit/unified_status_icons/icon_info.png'")
+			)
 		)
 	)
 )
@@ -665,26 +723,33 @@
 		(var saveMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(!prefValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
 
+	(style
+		(width = "50%")
+	)
+
 	(hblock
 		(style
-			(width = "200px")
+			(width = "TT_CONFIG_OPTION_WIDTH")
 			(height = "23px")
 			(align = "left|middle")
 		)
-		(element SwitchWithoutLabel
-			_state = "prefValue"
-			_methods = "saveMethods"
+		(hblock
 			(style
-				(width = 185)
-				(paddingLeft = 25%)
+				(width = "TT_CONFIG_OPTION_CONTROL_WIDTH")
+				(align = "middle|center")
+				(marginRight = "TT_CONFIG_OPTION_VALUE_WIDTH + TT_CONFIG_OPTION_VALUE_MARGIN")
+			)
+			(element SwitchWithoutLabel
+				_state = "prefValue"
+				_methods = "saveMethods"
 			)
 		)
 
 		(controller $Instance renderer='ImageButton'
 			(bind enabled "prefValue != defaultValue")
 			(args
-				_width = 18
-				_height = 18
+				_width = "TT_CONFIG_RESET_BUTTON_SIZE"
+				_height = "TT_CONFIG_RESET_BUTTON_SIZE"
 				_backgroundImage = 'url:../service_kit/buttons/context/update.png'
 				_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
 				_methods = "resetMethods"
@@ -713,33 +778,44 @@
 	#(macro trace "steps") (macro trace "step") (macro trace "defaultValue") (macro trace "prefValue")
 	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged")(event "evValueReset"))
 
+	(style
+		(width = "50%")
+	)
+
 	(hblock
 		(style
-			(width = "200px")
+			(width = "TT_CONFIG_OPTION_WIDTH")
 			(height = "23px")
 			(align = "left|middle")
 		)
-		(element DefaultSlider
-			_value = "prefValue"
-			_intervalsCount = "steps"
-			_unitsInStepInterval = "step"
-			_width = 140
-		)
-		(tf
-			(class $TextDefault)
-			(alpha = "TA")
-			(bind text "displayedCount")
+		(hblock
 			(style
-				(marginLeft = 5px)
-				(width = 40px)
+				#(width = "TT_CONFIG_OPTION_CONTROL_WIDTH")
+				(align = "middle|center")
+			)
+			(element DefaultSlider
+				_value = "prefValue"
+				_intervalsCount = "steps"
+				_unitsInStepInterval = "step"
+				_width = "TT_CONFIG_OPTION_CONTROL_WIDTH"
+			)
+			(tf
+				(class $TextDefault)
+				(alpha = "TA")
+				(bind text "displayedCount")
+				(style
+					(textAlign = "right")
+					(marginRight = "TT_CONFIG_OPTION_VALUE_MARGIN")
+					(width = "TT_CONFIG_OPTION_VALUE_WIDTH")
+				)
 			)
 		)
 		(block
 			(bind visible "prefValue != defaultValue")
 			(controller $Instance renderer='ImageButton'
 				(args
-					_width = 18
-					_height = 18
+					_width = "TT_CONFIG_RESET_BUTTON_SIZE"
+					_height = "TT_CONFIG_RESET_BUTTON_SIZE"
 					_backgroundImage = 'url:../service_kit/buttons/context/update.png'
 					_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
 					_dispatchedEv = "'evValueReset'"
@@ -762,12 +838,16 @@
 		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': defaultValue + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
 
+	(style
+		(width = "50%")
+	)
+
 	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.selectedIndex + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "ItemChooser_ValueSelected"))
 	(dispatch evMenuClosed dir="EventDirection.DOWN" args="{}" on='removedFromStage') #To close dropdown menu when parent tooltip is closed
 
 	(hblock
 		(style
-			(width = "200px")
+			(width = "TT_CONFIG_OPTION_WIDTH")
 			(height = "23px")
 			(align = "left|middle")
 		)
@@ -777,13 +857,13 @@
 			_listItemRenderer = "'TextListItemRenderer'"
 			_choosedItemRenderer = "'DefaultItemChooserPickedItemRenderer'"
 			_onItemSelectedEvent = "'ValueSelected'"
-			_selectedMaxWidth = "200"
+			_selectedMaxWidth = "TT_CONFIG_OPTION_CONTROL_WIDTH + 18"
 			_dropDownWidth = "200"
 			_maxDropDownHeight = "300"
 			_curIndex = "prefValue"
 			(style
-				(width = 150px)
-				(marginRight = 35px)
+				(width = "TT_CONFIG_OPTION_CONTROL_WIDTH + 18")
+				(marginRight = "TT_CONFIG_OPTION_VALUE_WIDTH + TT_CONFIG_OPTION_VALUE_MARGIN - 18")
 				(align = "middle|center")
 			)
 		)
@@ -791,8 +871,8 @@
 		(controller $Instance renderer='ImageButton'
 			(bind enabled "prefValue != defaultValue")
 			(args
-				_width = 18
-				_height = 18
+				_width = "TT_CONFIG_RESET_BUTTON_SIZE"
+				_height = "TT_CONFIG_RESET_BUTTON_SIZE"
 				_backgroundImage = 'url:../service_kit/buttons/context/update.png'
 				_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
 				_methods = "resetMethods"
@@ -804,8 +884,9 @@
 (def macro TT_HorizontalDeviderShort() layout=true
 	(element HorizontalDivider
 		(style
-			(paddingLeft = 40)
-			(paddingRight = 40)
+			#(paddingLeft = 30)
+			#(paddingRight = 30)
+			#(width = 90%)
 			(marginTop = 5px)
 			(marginBottom = 5px)
 			(alpha = 2)
