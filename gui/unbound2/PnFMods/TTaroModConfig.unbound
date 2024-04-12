@@ -285,6 +285,49 @@
 	},
 ])
 
+(def constant MOD_DAMAGEMETER_CONFIGS [
+	{
+		sectionTitle: 'IDS_TT_TITLE_GENERAL',
+		sectionElements: [
+			{configTitle: 'IDS_TT_THEME',			key: 'dDamageMeterFontStyleIndex',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['Default', 'Blue', 'Golden', 'Green', 'Orange'], default: 0}},
+			{configTitle: 'IDS_TT_UI_SCALE',		key: 'dDamageMeterScale',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
+			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	key: 'dDamageMeterVisibleOnAlt',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+			{configTitle: 'IDS_TT_INCOMING_DAMAGE',	key: 'dDamageMeterIncomingDamageVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_OUTGOING_DAMAGE',	key: 'dDamageMeterOutgoingDamageVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'IDS_TT_PLAYER_INFO',
+		sectionElements: [
+			{configTitle: 'IDS_TT_CLAN_NAME',		key: 'dDamageMeterClanTagVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+			{configTitle: 'IDS_TT_PLAYER_NAME',		key: 'dDamageMeterPlayerNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_COLUMN_WIDTH',	key: 'dDamageMeterPlayerInfoWidth',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
+		]
+	},
+	{
+		sectionTitle: 'IDS_TT_SHIP_INFO',
+		sectionElements: [
+			{configTitle: 'IDS_TT_SHIP_NAME',		key: 'dDamageMeterShipNameVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_CLASS_ICON',		key: 'dDamageMeterShipTypeVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_COLUMN_WIDTH',	key: 'dDamageMeterShipInfoWidth',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
+		]
+	},
+	{
+		sectionTitle: 'IDS_TT_ADVANCED_SETTINGS',
+		sectionElements: [
+			{configTitle: 'IDS_TT_LAST_DAMAGE',		key: 'dDamageMeterLastDamageVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_ROW_COUNTS',		key: 'dDamageMeterNumRows',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 1, max: 10, default: 3, step: 1}},
+		]
+	},
+		{
+		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
+		sectionElements: [
+			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	key: 'dDamageMeterBackgroundVisibleOnAlt',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
+			{configTitle: 'IDS_TT_OPACITY',			key: 'dDamageMeterBackgroundOpacity',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.4, step:0.1}},
+		]
+	},
+])
+
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
 
 ])
@@ -304,7 +347,9 @@
 	{modName: 'Team Panel',				configSections: "MOD_TEAMPANEL_CONFIGS",	isInstalled: "TT_TEAMPANEL_INSTALLED"},
 	{modName: 'FPS/Ping Meter',			configSections: "MOD_FPSPINGMETER_CONFIGS",	isInstalled: "TT_FPSPINGMETER_INSTALLED"},
 	{modName: 'Streamer Mode',			configSections: "MOD_STREAMERMODE_CONFIGS",	isInstalled: "TT_STREAMERMODE_INSTALLED"},
+	{modName: 'Damage Meter',			configSections: "MOD_DAMAGEMETER_CONFIGS",	isInstalled: "TT_DAMAGEMETER_INSTALLED"},
 ])
+
 
 	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
 	#{modName: 'Module State Viewer',	configSections: "MOD_MODULESTATEVIEWER_CONFIGS"},
