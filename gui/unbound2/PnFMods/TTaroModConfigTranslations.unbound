@@ -92,8 +92,11 @@
     IDS_TT_INCOMING_DAMAGE                       : ['Damage Received', '受けたダメージ', '', '', '', '', '', '', '', '', ],
     IDS_TT_OUTGOING_DAMAGE                       : ['Damage Caused', '与えたダメージ', '', '', '', '', '', '', '', '', ],
     IDS_TT_COLUMN_WIDTH                          : ['Column Width', '列の幅', '', '', '', '', '', '', '', '', ],
+    IDS_TT_ROW_HEIGHT                            : ['Row Height', '行の幅', '', '', '', '', '', '', '', '', ],
     IDS_TT_PLAYER_INFO                           : ['Player Info', 'プレイヤー情報', '', '', '', '', '', '', '', '', ],
     IDS_TT_SHIP_INFO                             : ['Ship Info', '艦艇情報', '', '', '', '', '', '', '', '', ],
     IDS_TT_LAST_DAMAGE                           : ['Damage Difference', '差分ダメージ', '', '', '', '', '', '', '', '', ],
     IDS_TT_ROW_COUNTS                            : ['Number of Rows', '行数', '', '', '', '', '', '', '', '', ],
+    IDS_TT_ROW_INDEX                             : ['Row Index', '行のインデックス', '', '', '', '', '', '', '', '', ],
+    IDS_TT_REVERSE_ROWS                          : ['Reverse Row Order', '行の逆順配置', '', '', '', '', '', '', '', '', ],
 })
