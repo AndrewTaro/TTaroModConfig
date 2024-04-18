@@ -475,6 +475,7 @@
 	#DO NOT USE PEPEAT!: IT freezes the screen as the number of elements increases
 	#(element TT_ModElement "TT_MODS_CONFIG_LIST[selectedIndex]" _userPrefsNum="_userPrefsNum")
 	(controller $Instance (renderer='TT_ModElement')
+		(bind enabled "selectedIndex >= 0")
 		(bindcall recreate (bind trigger "selectedIndex"))
 		(args
 			_modConfigsData = "TT_MODS_CONFIG_LIST[selectedIndex]"
