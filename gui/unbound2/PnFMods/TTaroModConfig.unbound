@@ -316,10 +316,12 @@
 	{
 		sectionTitle: 'IDS_TT_ADVANCED_SETTINGS',
 		sectionElements: [
+			{configTitle: 'IDS_TT_LAST_DAMAGE',		key: 'dDamageMeterLastDamageVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_REVERSE_ROWS',	key: 'dDamageMeterReverseRows',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 			{configTitle: 'IDS_TT_ROW_INDEX',		key: 'dDamageMeterRowIndexVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_LAST_DAMAGE',		key: 'dDamageMeterLastDamageVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_ROW_COUNTS',		key: 'dDamageMeterNumRows',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 1, max: 10, default: 3, step: 1, round: 0}},
+			{configTitle: 'IDS_TT_ROW_HEIGHT',		key: 'dDamageMeterRowHeight',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 1, max: 10, default: 2, step: 1, round: 0}},
+			
 		]
 	},
 		{
