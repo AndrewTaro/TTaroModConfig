@@ -294,6 +294,7 @@
 			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	key: 'dDamageMeterVisibleOnAlt',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 			{configTitle: 'IDS_TT_INCOMING_DAMAGE',	key: 'dDamageMeterIncomingDamageVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_OUTGOING_DAMAGE',	key: 'dDamageMeterOutgoingDamageVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',	key: 'dDamageMeterDisableDragDrop',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 		]
 	},
 	{
@@ -333,6 +334,15 @@
 	},
 ])
 
+(def constant MOD_SCORETIMER_CONFIGS [
+	{
+		sectionTitle: 'IDS_TT_TITLE_GENERAL',
+		sectionElements: [
+			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',	key: 'scoreTimerDisableDragDrop',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+		]
+	},
+])
+
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
 
 ])
@@ -353,6 +363,7 @@
 	{modName: 'FPS/Ping Meter',			configSections: "MOD_FPSPINGMETER_CONFIGS",	isInstalled: "TT_FPSPINGMETER_INSTALLED"},
 	{modName: 'Streamer Mode',			configSections: "MOD_STREAMERMODE_CONFIGS",	isInstalled: "TT_STREAMERMODE_INSTALLED"},
 	{modName: 'Damage Meter',			configSections: "MOD_DAMAGEMETER_CONFIGS",	isInstalled: "TT_DAMAGEMETER_INSTALLED"},
+	{modName: 'Score Timer',			configSections: "MOD_SCORETIMER_CONFIGS",	isInstalled: "TT_SCORETIMER_INSTALLED"},
 ])
 
 
