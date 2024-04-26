@@ -186,6 +186,7 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	key: 'ttTeamPanelShipStatsVisibleOnAlt',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 			{configTitle: 'IDS_TT_SHOW_UNIT',		key: 'ttTeamPanelShipStatsUnitsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_BOLD_FONT',		key: 'ttTeamPanelShipStatsUseBoldFont',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 		]
 	},
 	{
