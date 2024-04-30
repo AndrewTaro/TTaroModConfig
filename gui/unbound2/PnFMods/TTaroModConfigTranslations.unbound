@@ -99,7 +99,7 @@
     IDS_TT_ROW_COUNTS                            : ['Number of Rows', '行数', '행 수', 'Количество строк', 'Кількість рядків', 'Ilość rzędów', 'Počet řádků', '', 'Nombre de ligne', '', ],
     IDS_TT_ROW_INDEX                             : ['Row Index', '行のインデックス', '행 인덱스', 'Номер строки ', 'Номер рядка', 'Numeracja linii', 'Číslování řádků', '', 'Indice de ligne', '', ],
     IDS_TT_REVERSE_ROWS                          : ['Reverse Row Order', '行の逆順配置', '행 역순 배치', 'Обратный порядок строк', 'Обернений порядок рядків', 'Odwróć kolejność wierszy', 'Obrátit pořadí řádků', '', 'Inverser l\'ordre des lignes', '', ],
-    IDS_TT_DISABLE_DRAG_DROP                     : ['Disable Drag-Drop', 'ドラッグドロップの無効化', '', '', '', '', '', '', '', '', ],
-    IDS_TT_HINT_DISABLE_DRAG_DROP                : ['Disable drag-drop and Lock the mod elements at the current position', 'ドラッグドロップを無効化し、Modを現在の位置に固定します。', '', '', '', '', '', '', '', '', ],
-    IDS_TT_BOLD_FONT                             : ['Use Bold Font', '太字フォントを使用', '', '', '', '', '', '', '', '', ],
+    IDS_TT_DISABLE_DRAG_DROP                     : ['Disable Drag-Drop', 'ドラッグドロップの無効化', '', '', '', 'Wyłącz przeciąganie i upuszczanie', '', '', 'Désactiver le glisser-déposer', '', ],
+    IDS_TT_HINT_DISABLE_DRAG_DROP                : ['Disable drag-drop and Lock the mod elements at the current position', 'ドラッグドロップを無効化し、Modを現在の位置に固定します。', '', '', '', 'Wyłącz przeciąganie i upuszczanie i zablokuj elementy moda w bieżącej pozycji', '', '', 'Désactiver le glisser-déposer et vérouiller la position actuelle', '', ],
+    IDS_TT_BOLD_FONT                             : ['Use Bold Font', '太字フォントを使用', '', '', '', 'Użyj pogrubionej czcionki', '', '', 'Utiliser une police en gras', '', ],
 })

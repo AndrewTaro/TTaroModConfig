@@ -831,7 +831,7 @@
 		(var step:number = "'step' in _args ? _args.step : 1")
 		(var steps:number = "(maxValue - minValue) / step")
 		(var default:number = "'default' in _args ? _args.default : 0")
-		(var defaultValue:number = "(default - minValue) / step")
+		(var defaultValue:number = "round((default - minValue) / step)")
 		(var rounding:number = "'round' in _args ? _args.round : 2")
 		#watch=false is necessary to prevent the slider from flickering
 		(var prefValue:number = "prefKey in _userPrefsNum ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false)
