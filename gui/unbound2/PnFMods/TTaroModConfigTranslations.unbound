@@ -102,4 +102,5 @@
     IDS_TT_DISABLE_DRAG_DROP                     : ['Disable Drag-Drop', 'ドラッグドロップの無効化', '', '', '', 'Wyłącz przeciąganie i upuszczanie', '', '', 'Désactiver le glisser-déposer', '', ],
     IDS_TT_HINT_DISABLE_DRAG_DROP                : ['Disable drag-drop and Lock the mod elements at the current position', 'ドラッグドロップを無効化し、Modを現在の位置に固定します。', '', '', '', 'Wyłącz przeciąganie i upuszczanie i zablokuj elementy moda w bieżącej pozycji', '', '', 'Désactiver le glisser-déposer et vérouiller la position actuelle', '', ],
     IDS_TT_BOLD_FONT                             : ['Use Bold Font', '太字フォントを使用', '', '', '', 'Użyj pogrubionej czcionki', '', '', 'Utiliser une police en gras', '', ],
+    IDS_TT_HIGHLIGHT_PREMIUM_TIER                : ['Highlight Tier of Premium Ships', 'プレミアム艦艇のTierをハイライト', '', '', '', '', '', '', '', '', ],
 })

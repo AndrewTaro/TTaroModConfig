@@ -173,6 +173,7 @@
 			{configTitle: 'IDS_TT_SHIP_NAME',		key: 'ttTeamPanelShipNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_NATIONAL_FLAG',	key: 'ttTeamPanelShipNationVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 			{configTitle: 'IDS_TT_TIER',			key: 'ttTeamPanelShipTierVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_HIGHLIGHT_PREMIUM_TIER',	key: 'ttTeamPanelHighlightPremiumTier',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 			{configTitle: 'IDS_TT_CLASS_ICON',		key: 'ttTeamPanelShipIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_CLASS_ICON_COLOR',key: 'ttTeamPanelShipIconColorPreset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['None', 'Aslain v1', 'Aslain v2', 'AutoSpy', 'Roslich', 'DeCease', 'Hakabase'], default: 0}},
 			{configTitle: 'IDS_TT_KILL_COUNT',		key: 'ttTeamPanelPlayerKillsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
