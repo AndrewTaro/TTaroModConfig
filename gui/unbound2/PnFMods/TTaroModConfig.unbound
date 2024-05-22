@@ -159,7 +159,7 @@
 	{
 		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
 		sectionElements: [
-			{configTitle: 'IDS_TT_USE_BLUR',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: true}},
+			{configTitle: 'IDS_TT_USE_BLUR',				tooltipHint: 'IDS_TT_HINT_BLUR_PERFORMANCE_WARNING', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
 			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
 			{configTitle: 'IDS_TT_OPACITY',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.0, step:0.1}},
 		]
