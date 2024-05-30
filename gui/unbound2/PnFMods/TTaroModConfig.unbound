@@ -180,7 +180,7 @@
 			{configTitle: 'IDS_TT_DETECTION',		key: 'ttTeamPanelShipDetectionVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_BAR_OPACITY',		key: 'ttTeamPanelHealthBarOpacity',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
 			{configTitle: 'IDS_TT_BAR_WIDTH',		key: 'ttTeamPanelHealthBarWidth',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 5, default: 0, step:1}},
-			{configTitle: 'IDS_TT_TEAM_CONSUMABLE',	key: 'ttTeamPanelTeamConsumablesVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+			{configTitle: 'IDS_TT_TEAM_CONSUMABLE',	key: 'ttTeamPanelTeamConsumablesVisible',		tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 		]
 	},
 	{
