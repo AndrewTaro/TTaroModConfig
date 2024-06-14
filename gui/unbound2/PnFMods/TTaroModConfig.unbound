@@ -349,8 +349,9 @@
 	{
 		sectionTitle: 'IDS_TT_TITLE_GENERAL',
 		sectionElements: [
-			{configTitle: 'IDS_TT_UI_SCALE',		key: 'buildViewerScale',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
+			{configTitle: 'IDS_TT_UI_SCALE',			key: 'buildViewerScale',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
 			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP',	tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',		key: 'buildViewerDisableDragDrop',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+			{configTitle: 'IDS_TT_DISABLE_ALLY_BUILDS',	key: 'buildViewerDisableAllyBuilds',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 		]
 	},
 	{
