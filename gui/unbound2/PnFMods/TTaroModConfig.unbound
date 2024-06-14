@@ -1,6 +1,5 @@
 (def constant TT_ELEMENT_NAME "'ttaroModConfig'")
 (def constant TT_CONFIG_WINDOW_WIDTH 480px)
-(def constant TT_CONFIG_WINDOW_MAXHEIGHT 725px)
 (def constant TT_CONFIG_SECTION_MARGIN 20px)
 
 (def constant TT_CONFIG_OPTION_WIDTH 205px) #Sum of the following consts
@@ -16,10 +15,10 @@
 
 (def constant TT_CONFIG_RENDERER_ELEMENTS {
 	TITLE:			'TT_TT_TitleElement',
-	SWITCH:			'TT_SwitchOption',
-	SLIDER_FLOAT:	'TT_SliderOption',
-	SLIDER_INT:		'TT_SliderOption',
-	DROPDOWN:		'TT_DropdownOption',
+	SWITCH:			'TT_SwitchOptionElement',
+	SLIDER_FLOAT:	'TT_SliderOptionElement',
+	SLIDER_INT:		'TT_SliderOptionElement',
+	DROPDOWN:		'TT_DropdownOptionElement',
 })
 
 (def constant MOD_3DRADAR_CONFIGS [
@@ -346,6 +345,22 @@
 	},
 ])
 
+(def constant MOD_BUILDVIEWER_CONFIGS [
+	{
+		sectionTitle: 'IDS_TT_TITLE_GENERAL',
+		sectionElements: [
+			{configTitle: 'IDS_TT_UI_SCALE',		key: 'buildViewerScale',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
+			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP',	tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',		key: 'buildViewerDisableDragDrop',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+		]
+	},
+	{
+		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
+		sectionElements: [
+			{configTitle: 'IDS_TT_OPACITY',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'buildViewerBackgroundOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.4, step:0.1}},
+		]
+	},
+])
+
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
 
 ])
@@ -367,11 +382,12 @@
 	{modName: 'Streamer Mode',			configSections: "MOD_STREAMERMODE_CONFIGS",	isInstalled: "TT_STREAMERMODE_INSTALLED"},
 	{modName: 'Damage Meter',			configSections: "MOD_DAMAGEMETER_CONFIGS",	isInstalled: "TT_DAMAGEMETER_INSTALLED"},
 	{modName: 'Score Timer',			configSections: "MOD_SCORETIMER_CONFIGS",	isInstalled: "TT_SCORETIMER_INSTALLED"},
+	{modName: 'Build Viewer',			configSections: "MOD_BUILDVIEWER_CONFIGS",	isInstalled: "TT_BUILDVIEWER_INSTALLED"},
 ])
 
 
-	#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
-	#{modName: 'Module State Viewer',	configSections: "MOD_MODULESTATEVIEWER_CONFIGS"},
+#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
+#{modName: 'Module State Viewer',	configSections: "MOD_MODULESTATEVIEWER_CONFIGS"},
 
 (def element TTaroModConfig() layout=true
 	(scope
@@ -389,34 +405,27 @@
 		)
 		(element ModDraggableElement _wndName="TT_ELEMENT_NAME" _defaults="defaultPos" _elmSize="{width: TT_ELEMENT_SIZE.WIDTH, height: TT_ELEMENT_SIZE.HEIGHT}")
 		(hblock
-			(element TT_OptionButton)
+			(element TT_OptionButtonElement)
 			(element TT_DragTitleElement)
 		)
 	)
 )
 
-(def element TT_OptionButton () layout=true
+(def element TT_OptionButtonElement () layout=true
 	(scope
 		(event evHideInfotip)
-		(event evOnButtonClicked)
 
 		(var mouse:gfx = "$datahub.getSingleComponent(CC.mouse)")
 		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
 
-		(var infotipVisible:bool = false)
 		(macro TT_GET_UPREFS)
 	)
 	(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
 
 	(controller $Tooltip
-		(renderer='TT_ModConfigs')
+		(renderer='TT_ModConfigsWindowElement')
 		(args _userPrefsNum = "_userPrefsNum")
-		(bindcall show animation={duration:0.1, easing:"Easing.cubic_in", from:{alpha:1}, to:{alpha:1}} (event "evOnButtonClicked"))
-		(bindcall hide animation={duration:0.1, easing:"Easing.cubic_out", from:{alpha:1}, to:{alpha:0}} on='evClickOutside' (event "evHideInfotip"))
-		(bind infotipVisible "true" init=false on='evShow')
-		(bind infotipVisible "false" init=false on='evHide')
-		(priority=1)
-		(macro MINIMAP_TOOLTIP_COMMON_PARAMS)
+		(macro TT_CONFIG_BEHAVIOUR)
 	)
 
 	(style
@@ -434,7 +443,7 @@
 	)
 )
 
-(def element TT_ModConfigs (_userPrefsNum:dict=null)layout=true
+(def element TT_ModConfigsWindowElement (_userPrefsNum:gfx=null)layout=true
 	(scope
 		(event evTabClicked)
 		(var selectedIndex:number = "-1")
@@ -448,15 +457,7 @@
 		(width = "TT_CONFIG_WINDOW_WIDTH + 4") # +4 for side
 	)
 
-	(element InfotipSystemBlur)
-
-	(mc contrast_panel
-		(class $FullsizeAbsolute)
-		(style
-			(alpha = "0.4")
-			(hitTest = "true")
-		)
-	)
+	(element TT_BackgroundElement)
 
 	#Tab Buttons
 	(block
@@ -465,7 +466,7 @@
 			(height = "40px")
 			(marginLeft = "-TT_CONFIG_OPTION_CONTROL_WIDTH + 16")
 		)
-		(element TT_DropdownOption _prefKey="TT_ELEMENT_NAME + 'Language'" _args="languageOptions" _userPrefsNum="_userPrefsNum")
+		(element TT_DropdownOptionElement _prefKey="TT_ELEMENT_NAME + 'Language'" _args="languageOptions" _userPrefsNum="_userPrefsNum")
 	)
 	(hblock
 		(style
@@ -489,8 +490,8 @@
 
 	#Config Elements
 	#DO NOT USE PEPEAT!: IT freezes the screen as the number of elements increases
-	#(element TT_ModElement "TT_MODS_CONFIG_LIST[selectedIndex]" _userPrefsNum="_userPrefsNum")
-	(controller $Instance (renderer='TT_ModElement')
+	#(element TT_ModConfigsElement "TT_MODS_CONFIG_LIST[selectedIndex]" _userPrefsNum="_userPrefsNum")
+	(controller $Instance (renderer='TT_ModConfigsElement')
 		(bind enabled "selectedIndex >= 0")
 		(bindcall recreate (bind trigger "selectedIndex"))
 		(args
@@ -500,9 +501,11 @@
 	)
 )
 
-(def element TT_ModElement (_modConfigsData:dict, _userPrefsNum:dict=null)layout=true
+(def element TT_ModConfigsElement (_modConfigsData:dict, _userPrefsNum:gfx=null)layout=true
 	(scope
 		(macro MOUSE_HANDLER_SCOPE) #THIS IS MANDATORY FOR SCROLL IN BATTLE
+		(macro STAGE_SIZE)
+		(var clampedMaxHeight:number = "min(stageHeight - 300, stageHeight * 0.7)")
 	)
 	(style
 		(align = "middle|center")
@@ -515,16 +518,20 @@
 		(bindcall play duration="0.25"  from={alpha:0} to={alpha:1} watch=false action="killAll" easing="Easing.cubic_in" (bind trigger "_modConfigsData"))
 	)
 
-	#THIS IS MANDATORY FOR SCROLL IN BATTLE
+	# THIS IS MANDATORY FOR SCROLL IN BATTLE
 	(bindcall externalCall 'inputMapping.onAction' "['battleChat.rollOverChanged', { rollOver: rollOver }]" init=false watch=false (bind trigger "rollOver"))
 	(macro MOUSE_EVENTS_DISPATCHER)
-	#THIS IS MANDATORY FOR SCROLL IN BATTLE
+	# THIS IS MANDATORY FOR SCROLL IN BATTLE
 
 	(scrollArea
 		(style
 			(backgroundColor = 0x01000000) #THIS IS MANDATORY FOR SCROLL IN BATTLE
 			(width = "TT_CONFIG_WINDOW_WIDTH")
-			(maxHeight = "TT_CONFIG_WINDOW_MAXHEIGHT")
+			(bind maxHeight "clampedMaxHeight")
+			# Use stageHeight instead of constant
+			# so that the tooltip doesn't disappear on the resolution of Windows XP era...
+			# Apparently the game's minimum requirement is 1280x720
+			# :(
 		)
 
 		(verticalSlider='ScrollBarVLight')
@@ -562,7 +569,7 @@
 	)
 )
 
-(def element TT_SectionElement (_sectionData:dict, _userPrefsNum:dict=null) layout=true
+(def element TT_SectionElement (_sectionData:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(var isSectionEnabled:bool = false)
 
@@ -588,7 +595,7 @@
 
 	(element TT_SectionTitleElement _data="_sectionData" _userPrefsNum="_userPrefsNum")
 
-	(macro TT_HorizontalDeviderShort)
+	(macro TT_HORIZONTAL_DEVIDER)
 
 	(controller $Repeat renderer='TT_ConfigElement'
 		(bind enabled "isSectionEnabled")
@@ -600,7 +607,7 @@
 	)
 )
 
-(def element TT_ConfigElement (_configData:dict, _userPrefsNum:dict=null)layout=true
+(def element TT_ConfigElement (_configData:dict, _userPrefsNum:gfx=null)layout=true
 	(scope
 		(var isConfigEnabled:bool = false)
 
@@ -615,8 +622,7 @@
 		)
 
 		# For tooltip hint
-		(var languagePrefKey:str = "TT_ELEMENT_NAME + 'Language'")
-		(var languageIndex:number = "(_userPrefsNum && languagePrefKey in _userPrefsNum) ? round(_userPrefsNum[languagePrefKey]) : 0")
+		(macro TT_GET_LANGUAGE_INDEX)
 		(var hintKey:str = "'tooltipHint' in _configData ? _configData.tooltipHint : null")
 		(var hintTranslations:array = "hintKey ? TT_CONFIG_LOCALIZATIONS[hintKey] : null")
 		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
@@ -712,12 +718,11 @@
 	)
 )
 
-(def element TT_SectionTitleElement (_data:dict, _userPrefsNum:dict=null) layout=true
+(def element TT_SectionTitleElement (_data:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(var titleKey:str = "_data.sectionTitle")
 		(var translations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
-		(var languagePrefKey:str = "TT_ELEMENT_NAME + 'Language'")
-		(var languageIndex:number = "(_userPrefsNum && languagePrefKey in _userPrefsNum) ? round(_userPrefsNum[languagePrefKey]) : 0")
+		(macro TT_GET_LANGUAGE_INDEX)
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
 		(var isValidLocalization:bool = "translations.length > languageIndex && !isIn(translations[languageIndex], ['', ' '])")
 		(var localizedTitleText:str = "isValidLocalization ? translations[languageIndex] : translations[0]")
@@ -738,12 +743,11 @@
 	)
 )
 
-(def element TT_ConfigTitleElement (_data:dict, _userPrefsNum:dict=null) layout=true
+(def element TT_ConfigTitleElement (_data:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(var titleKey:str = "_data.configTitle")
 		(var titleTranslations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
-		(var languagePrefKey:str = "TT_ELEMENT_NAME + 'Language'")
-		(var languageIndex:number = "(_userPrefsNum && languagePrefKey in _userPrefsNum) ? round(_userPrefsNum[languagePrefKey]) : 0")
+		(macro TT_GET_LANGUAGE_INDEX)
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
 		(var isTitleValidLocalization:bool = "titleTranslations.length > languageIndex && !isIn(titleTranslations[languageIndex], ['', ' '])")
 		(var localizedTitleText:str = "isTitleValidLocalization ? titleTranslations[languageIndex] : titleTranslations[0]")
@@ -778,12 +782,12 @@
 	)
 )
 
-(def element TT_SwitchOption (_prefKey:str, _args:dict, _userPrefsNum:dict=null) layout=true
+(def element TT_SwitchOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		#(macro TT_GET_UPREFS)
 		(var prefKey:str = "_prefKey")
 		(var defaultValue:number = "'default' in _args ? _args.default : false")
-		(var prefValue:number = "prefKey in _userPrefsNum ? round(_userPrefsNum[prefKey]) : defaultValue")
+		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue")
 		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(defaultValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 		(var saveMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(!prefValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
@@ -823,10 +827,11 @@
 	)
 )
 
-(def element TT_SliderOption (_prefKey:str, _args:dict, _userPrefsNum:dict=null) layout=true
+(def element TT_SliderOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(event evSliderValueChanged) #slider event
 		(event evValueReset) #image button event
+		(event evShow)
 		(var prefKey:str = "_prefKey")
 		(var minValue:number = "'min' in _args ? _args.min : 0")
 		(var maxValue:number = "'max' in _args ? _args.max : 10")
@@ -836,11 +841,11 @@
 		(var defaultValue:number = "round((default - minValue) / step)")
 		(var rounding:number = "'round' in _args ? _args.round : 2")
 		#watch=false is necessary to prevent the slider from flickering
-		(var prefValue:number = "prefKey in _userPrefsNum ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false)
+		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false (event "evShow"))
 		(bind prefValue "$event.value" watch=false init=false (event "evValueReset")(event "evSliderValueChanged"))
 		(var displayedCount:str = "formatFloatingPoint(minValue + prefValue * step, rounding)")
 	)
-	#(macro trace "steps") (macro trace "step") (macro trace "defaultValue") (macro trace "prefValue")
+	(dispatch evShow args="{}" on='addedToStage')
 	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged")(event "evValueReset"))
 
 	(style
@@ -891,7 +896,7 @@
 	)
 )
 
-(def element TT_DropdownOption (_prefKey:str, _args:dict, _userPrefsNum:dict=null) layout=true
+(def element TT_DropdownOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(event ItemChooser_ValueSelected)
 		(event evMenuClosed) #To close dropdown menu when parent tooltip is closed
@@ -899,7 +904,7 @@
 		(var prefKey:str = "_prefKey")
 		(var defaultValue:number = "'default' in _args ? _args.default : 0")
 		(var items:array = "'items' in _args ? _args.items : []")
-		(var prefValue:number = "prefKey in _userPrefsNum ? round(_userPrefsNum[prefKey]) : defaultValue")
+		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue")
 		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': defaultValue + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
 
@@ -946,7 +951,83 @@
 	)
 )
 
-(def macro TT_HorizontalDeviderShort() layout=true
+(def element TT_BackgroundElement()
+	(scope
+		(macro HIGH_CONTRAST_DATA_SCOPE)
+	)
+	
+	(class $FullsizeAbsolute)
+
+	(controller $Instance renderer='InfotipSystemBlur'
+		(bind enabled "!isHighContrast")
+		(exprs
+			(style
+				(zindex = "ZIndex.BACKGROUND")
+			)
+		)
+	)
+
+	(mc contrast_panel
+		(class $FullsizeAbsolute)
+		(style
+			(bind alpha "!isHighContrast ? 0.4 : 1.3")
+			(hitTest = "true")
+		)
+	)
+)
+
+(def element TT_TooltipConfigElement(_modIndex:number)
+	# For mods to directly call the mod config window
+	# _modIndex: number 
+	# Mod config's index in TT_MODS_CONFIG_LIST
+	(scope
+		(macro TT_GET_UPREFS)
+	)
+
+	(element TT_BackgroundElement)
+
+	(element TT_ModConfigsElement
+		_modConfigsData = "TT_MODS_CONFIG_LIST[_modIndex]"
+		_userPrefsNum = "_userPrefsNum"
+	)
+)
+
+
+(def element TT_ConfigButtonElement (_modIndex:number) layout=true
+	# For other mods to directly call the config window!
+	# _modIndex:number is indexOf(modConfig, TT_MODS_CONFIG_LIST)
+	(scope
+		(event evHideInfotip)
+		(var mouse:gfx = "$datahub.getSingleComponent(CC.mouse)")
+		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
+		(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
+	)
+
+	(style
+		(position = "absolute")
+		(width = 30px)
+		(height = 30px)
+		(align = "middle|center")
+	)
+
+	(controller $Tooltip
+		(renderer='TT_TooltipConfigElement')
+		(args _modIndex = "_modIndex")
+		(macro TT_CONFIG_BEHAVIOUR)
+	)
+
+	(element ButtonSettingsSmall
+		(bind visible "isMouseActive")
+		(alpha = 0.7)
+		(style
+			#(position = "absolute")
+			#(left = "4px")
+			#(top = "3px")
+		)
+	)
+)
+
+(def macro TT_HORIZONTAL_DEVIDER() layout=true
 	(element HorizontalDivider
 		(style
 			#(paddingLeft = 30)
@@ -961,7 +1042,12 @@
 
 (def macro TT_GET_UPREFS ()
 	(var userPrefsComponent:gfx = "$datahub.getSingleComponent(CC.userPrefs)")
-	(var _userPrefsNum:dict = "userPrefsComponent.userPrefs.chatBoxWidth" (event "userPrefsComponent.evUserPrefsChanged"))
+	(var _userPrefsNum:gfx = "userPrefsComponent.userPrefs.chatBoxWidth" watch=false (event "userPrefsComponent.evUserPrefsChanged"))
+)
+
+(def macro TT_GET_LANGUAGE_INDEX()
+	(var languagePrefKey:str = "TT_ELEMENT_NAME + 'Language'")
+	(var languageIndex:number = "(_userPrefsNum && isNumber(_userPrefsNum[languagePrefKey])) ? round(_userPrefsNum[languagePrefKey]) : 0")
 )
 
 (def macro TT_TOOLTIP_BEHAVIOUR (_priority:expression = "0")
@@ -995,4 +1081,30 @@
 
 	(align="bottom|right")
 	(position="trackMouse")
+)
+
+(def macro TT_CONFIG_BEHAVIOUR (_priority:expression = "0")
+	(bindcall show animation =	{	duration:	"0.15",
+									easing:		"Easing.quint_in",
+									from:		{ alpha: 0, top: 10 },
+									to:			{ alpha: 1, top: 0 }
+								}
+								on='click'
+	)
+
+	(bindcall hide animation =	{	duration:	"0.15",
+									easing:		"Easing.quint_out",
+									from:		{ alpha: 1, top: 0 },
+									to:			{ alpha: 0, top: 10 }
+								}
+								on='evClickOutside'
+								(event "evHideInfotip")
+	)
+	(screenBoundsOffset = {			left:	"TT_ELEMENT_SIZE.WIDTH",
+									top:	"TT_ELEMENT_SIZE.HEIGHT",
+									right:	"TT_ELEMENT_SIZE.WIDTH",
+									bottom:	"TT_ELEMENT_SIZE.HEIGHT"})
+	(position="border")
+	(align="innerTop|outerRight")
+	(priority = "_priority")
 )
