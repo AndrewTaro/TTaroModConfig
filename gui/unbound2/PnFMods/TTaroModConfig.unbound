@@ -362,6 +362,23 @@
 	},
 ])
 
+(def constant MOD_REGENASSISTANT_CONFIGS [
+	{
+		sectionTitle: 'IDS_TT_TITLE_GENERAL',
+		sectionElements: [
+			{configTitle: 'IDS_TT_UI_SCALE',			key: 'regenAssistantScale',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
+			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP',	key: 'regenAssistantDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
+			{configTitle: 'IDS_TT_REGEN_WARNING_ANIMATION_REPEATS',	key: 'regenAssistantWarningAnimationRepeats', tooltipHint: 'IDS_TT_HINT_REGEN_WARNING_ANIMATION_REPEATS', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 7, default: 3, step:1, maxLabel: '∞', round: 0}},
+		]
+	},
+	{
+		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
+		sectionElements: [
+			{configTitle: 'IDS_TT_OPACITY',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenAssistantBackgroundOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.0, step:0.1}},
+		]
+	},
+])
+
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
 
 ])
@@ -384,6 +401,7 @@
 	{modName: 'Damage Meter',			configSections: "MOD_DAMAGEMETER_CONFIGS",	isInstalled: "TT_DAMAGEMETER_INSTALLED"},
 	{modName: 'Score Timer',			configSections: "MOD_SCORETIMER_CONFIGS",	isInstalled: "TT_SCORETIMER_INSTALLED"},
 	{modName: 'Build Viewer',			configSections: "MOD_BUILDVIEWER_CONFIGS",	isInstalled: "TT_BUILDVIEWER_INSTALLED"},
+	{modName: 'Regen Assistant',		configSections: "MOD_REGENASSISTANT_CONFIGS",	isInstalled: "TT_REGENASSISTANT_INSTALLED"},
 ])
 
 
@@ -836,15 +854,22 @@
 		(var prefKey:str = "_prefKey")
 		(var minValue:number = "'min' in _args ? _args.min : 0")
 		(var maxValue:number = "'max' in _args ? _args.max : 10")
+		(var minLabel:str = "'minLabel' in _args ? _args.minLabel : ''")
+		(var maxLabel:str = "'maxLabel' in _args ? _args.maxLabel : ''")
 		(var step:number = "'step' in _args ? _args.step : 1")
-		(var steps:number = "(maxValue - minValue) / step")
+		(var steps:number = "round((maxValue - minValue) / step)")
 		(var default:number = "'default' in _args ? _args.default : 0")
 		(var defaultValue:number = "round((default - minValue) / step)")
 		(var rounding:number = "'round' in _args ? _args.round : 2")
 		#watch=false is necessary to prevent the slider from flickering
 		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false (event "evShow"))
 		(bind prefValue "$event.value" watch=false init=false (event "evValueReset")(event "evSliderValueChanged"))
-		(var displayedCount:str = "formatFloatingPoint(minValue + prefValue * step, rounding)")
+		(var isMinLabelAvailable:bool = "prefValue == 0 && minLabel")
+		(var isMaxLabelAvailable:bool = "prefValue == steps && maxLabel")
+		(var displayedCount:str = "	isMinLabelAvailable ? minLabel :
+									isMaxLabelAvailable ? maxLabel :
+									formatFloatingPoint(minValue + prefValue * step, rounding)"
+		)
 	)
 	(dispatch evShow args="{}" on='addedToStage')
 	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged")(event "evValueReset"))
@@ -993,8 +1018,7 @@
 	)
 )
 
-
-(def element TT_ConfigButtonElement (_modIndex:number) layout=true
+(def element TT_ConfigButtonElement (_modIndex:number, _tooltipPosition:number="border", _tooltipAlign:number="innerTop|outerLeft") layout=true
 	# For other mods to directly call the config window!
 	# _modIndex:number is indexOf(modConfig, TT_MODS_CONFIG_LIST)
 	(scope
@@ -1014,17 +1038,12 @@
 	(controller $Tooltip
 		(renderer='TT_TooltipConfigElement')
 		(args _modIndex = "_modIndex")
-		(macro TT_CONFIG_BEHAVIOUR)
+		(macro TT_CONFIG_BEHAVIOUR _position="_tooltipPosition" _align="_tooltipAlign")
 	)
 
 	(element ButtonSettingsSmall
 		(bind visible "isMouseActive")
 		(alpha = 0.7)
-		(style
-			#(position = "absolute")
-			#(left = "4px")
-			#(top = "3px")
-		)
 	)
 )
 
@@ -1084,7 +1103,7 @@
 	(position="trackMouse")
 )
 
-(def macro TT_CONFIG_BEHAVIOUR (_priority:expression = "0")
+(def macro TT_CONFIG_BEHAVIOUR (_priority:expression = "1", _position:expression="border", _align:expression="innerTop|outerLeft")
 	(bindcall show animation =	{	duration:	"0.15",
 									easing:		"Easing.quint_in",
 									from:		{ alpha: 0, top: 10 },
@@ -1105,7 +1124,7 @@
 									top:	"TT_ELEMENT_SIZE.HEIGHT",
 									right:	"TT_ELEMENT_SIZE.WIDTH",
 									bottom:	"TT_ELEMENT_SIZE.HEIGHT"})
-	(position="border")
-	(align="innerTop|outerRight")
+	(position = "_position")
+	(align = "_align")
 	(priority = "_priority")
 )
