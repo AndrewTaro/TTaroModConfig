@@ -48,6 +48,7 @@
     IDS_TT_SHIP_NAME                             : ['Ship Name', '艦艇名', '함선 이름', 'Название корабля', 'Назва корабля', 'Nazwa Okrętu', 'Název lodi', 'Schiffsname', 'Nom du navire', 'Nome do Navio', ],
     IDS_TT_TIER                                  : ['Tier', 'Tier', '단계', 'Уровень ', 'Рівень корабля', 'Poziom', 'Úroveň', 'Stufe', 'Rang', 'Tier', ],
     IDS_TT_CLASS_ICON                            : ['Class Icon', '艦種アイコン', '함종 아이콘', 'Иконка класса', 'Іконка класу', 'Ikonka Okrętu', 'Ikona třídy', 'Klassensymbol', 'Icône de classe', 'Ícone de Classe', ],
+    IDS_TT_CLASS_ICON_STATUS                     : ['Icon Status Color', 'アイコン ステータス カラー', '아이콘 상태 색상', 'Значок Цвет состояния', 'Іконка Статус Колір Колір', 'Kolor statusu ikony', 'Ikona Stav Barva', 'Icon Status Farbe', 'Icône État Couleur', 'Cor do status do ícone', ],
     IDS_TT_CLASS_ICON_COLOR                      : ['Class Color', '艦種毎の色', '함종 색상', 'Цвет класса', 'Колір іконки класу', 'Kolor Okrętu', 'Barva třídy', 'Klassenfarbe', 'Couleur des classes', 'Cor de Classe', ],
     IDS_TT_NATIONAL_FLAG                         : ['National Flag', '国旗', '국기', 'Национальный флаг', 'Національний прапор', 'Flagi Narodowe', 'Národní vlajka', '', 'Pavillon national', 'Bandeira Nacional', ],
     IDS_TT_KILL_COUNT                            : ['Kill Count', 'キル数', '킬 수', 'Кол-во убийств', 'Кількість фрагів', 'Ilość Zatopień', 'Počítadlo potopení', 'Zerstört', 'Compteur de destruction', 'Contador de Kills', ],
