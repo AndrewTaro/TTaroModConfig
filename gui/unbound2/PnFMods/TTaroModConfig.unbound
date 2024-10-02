@@ -175,7 +175,7 @@
 			{configTitle: 'IDS_TT_HIGHLIGHT_PREMIUM_TIER',	key: 'ttTeamPanelHighlightPremiumTier',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
 			{configTitle: 'IDS_TT_CLASS_ICON',		key: 'ttTeamPanelShipIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_CLASS_ICON_COLOR',key: 'ttTeamPanelShipIconColorPreset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['None', 'Aslain v1', 'Aslain v2', 'AutoSpy', 'Roslich', 'DeCease', 'Hakabase'], default: 0}},
-			{configTitle: 'IDS_TT_CLASS_ICON_STATUS',	key: 'ttTeamPanelShipIconStatusColor',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
+			{configTitle: 'IDS_TT_CLASS_ICON_STATUS',	key: 'ttTeamPanelShipIconStatusColor', tooltipHint: 'IDS_TT_HINT_CLASS_ICON_STATUS',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_KILL_COUNT',		key: 'ttTeamPanelPlayerKillsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_DETECTION',		key: 'ttTeamPanelShipDetectionVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
 			{configTitle: 'IDS_TT_BAR_OPACITY',		key: 'ttTeamPanelHealthBarOpacity',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
@@ -380,6 +380,17 @@
 	},
 ])
 
+(def constant MOD_PENCALCULATOR_CONFIGS [
+	{
+		sectionTitle: 'IDS_TT_TITLE_GENERAL',
+		sectionElements: [
+			{configTitle: 'IDS_TT_THEME',						key: 'penCalcFontStyleIndex',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",  args: {items:['Default', 'Blue', 'Golden', 'Green', 'Orange'], default: 0}},
+			{configTitle: 'IDS_TT_ALWAYS_SHOW_IMPACT_ANGLE',	key: 'penCalcImpactAngleAlwaysVisible',			tooltipHint: 'IDS_TT_HINT_ALWAYS_SHOW_IMPACT_ANGLE', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: false}},
+			{configTitle: 'IDS_TT_DISPLAY_HEIGHT_OFFSET',		key: 'penCalcHeightOffset',						titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 1, max: 5, default: 1, step: 1, round: 0}},
+		]
+	},
+])
+
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
 
 ])
@@ -391,18 +402,19 @@
 
 
 (def constant TT_MODS_CONFIG_LIST [
-	{modName: '3D Radar',				configSections: "MOD_3DRADAR_CONFIGS", 		isInstalled: "TT_3DRADAR_INSTALLED"},
-	{modName: '3D Hydro',				configSections: "MOD_3DHYDRO_CONFIGS", 		isInstalled: "TT_3DHYDRO_INSTALLED"},
-	{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",		isInstalled: "TT_3DRADIO_INSTALLED"},
-	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", isInstalled: "TT_REGENMONITOR_INSTALLED"},
-	{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",	isInstalled: "TT_SMOKEMARKER_INSTALLED"},
-	{modName: 'Team Panel',				configSections: "MOD_TEAMPANEL_CONFIGS",	isInstalled: "TT_TEAMPANEL_INSTALLED"},
-	{modName: 'FPS/Ping Meter',			configSections: "MOD_FPSPINGMETER_CONFIGS",	isInstalled: "TT_FPSPINGMETER_INSTALLED"},
-	{modName: 'Streamer Mode',			configSections: "MOD_STREAMERMODE_CONFIGS",	isInstalled: "TT_STREAMERMODE_INSTALLED"},
-	{modName: 'Damage Meter',			configSections: "MOD_DAMAGEMETER_CONFIGS",	isInstalled: "TT_DAMAGEMETER_INSTALLED"},
-	{modName: 'Score Timer',			configSections: "MOD_SCORETIMER_CONFIGS",	isInstalled: "TT_SCORETIMER_INSTALLED"},
-	{modName: 'Build Viewer',			configSections: "MOD_BUILDVIEWER_CONFIGS",	isInstalled: "TT_BUILDVIEWER_INSTALLED"},
+	{modName: '3D Radar',				configSections: "MOD_3DRADAR_CONFIGS", 			isInstalled: "TT_3DRADAR_INSTALLED"},
+	{modName: '3D Hydro',				configSections: "MOD_3DHYDRO_CONFIGS", 			isInstalled: "TT_3DHYDRO_INSTALLED"},
+	{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",			isInstalled: "TT_3DRADIO_INSTALLED"},
+	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", 	isInstalled: "TT_REGENMONITOR_INSTALLED"},
+	{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",		isInstalled: "TT_SMOKEMARKER_INSTALLED"},
+	{modName: 'Team Panel',				configSections: "MOD_TEAMPANEL_CONFIGS",		isInstalled: "TT_TEAMPANEL_INSTALLED"},
+	{modName: 'FPS/Ping Meter',			configSections: "MOD_FPSPINGMETER_CONFIGS",		isInstalled: "TT_FPSPINGMETER_INSTALLED"},
+	{modName: 'Streamer Mode',			configSections: "MOD_STREAMERMODE_CONFIGS",		isInstalled: "TT_STREAMERMODE_INSTALLED"},
+	{modName: 'Damage Meter',			configSections: "MOD_DAMAGEMETER_CONFIGS",		isInstalled: "TT_DAMAGEMETER_INSTALLED"},
+	{modName: 'Score Timer',			configSections: "MOD_SCORETIMER_CONFIGS",		isInstalled: "TT_SCORETIMER_INSTALLED"},
+	{modName: 'Build Viewer',			configSections: "MOD_BUILDVIEWER_CONFIGS",		isInstalled: "TT_BUILDVIEWER_INSTALLED"},
 	{modName: 'Regen Assistant',		configSections: "MOD_REGENASSISTANT_CONFIGS",	isInstalled: "TT_REGENASSISTANT_INSTALLED"},
+	{modName: 'Pen Calculator',			configSections: "MOD_PENCALCULATOR_CONFIGS",	isInstalled: "TT_PENCALCULATOR_INSTALLED"},
 ])
 
 
