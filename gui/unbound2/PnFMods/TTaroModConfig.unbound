@@ -409,37 +409,37 @@
 		sectionTitle: 'IDS_TT_TITLE_SHIP_INFO',
 		sectionElements: [
 			{configTitle: 'IDS_TT_SHIP_NAME',					key: 'ttChatShipNameVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-			{configTitle: 'IDS_TT_CLASS_ICON',					key: 'ttChatClassIconVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
+			{configTitle: 'IDS_TT_CLASS_ICON',					key: 'ttChatShipClassIconVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
 			{configTitle: 'IDS_TT_TIER',						key: 'ttChatShipTierVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
 		]
 	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_ENEMY_CHAT',
-		sectionElements: [
-			{configTitle: 'IDS_TT_PLAYER_CHATS',				key: 'ttChatEnemyChatsVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-			{configTitle: 'IDS_TT_ACHIEVEMENT_CHATS',			key: 'ttChatEnemyAchievementsVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-			{configTitle: 'IDS_TT_WELL_DONE_CHATS',				key: 'ttChatEnemyWellDoneVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_GOOD_LUCK_CHATS',				key: 'ttChatEnemyGoodLuckVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_WTF_CHATS',					key: 'ttChatEnemyWTFVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_ALLY_CHAT',
-		sectionElements: [
-			{configTitle: 'IDS_TT_PLAYER_CHATS',				key: 'ttChatAllyChatsVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-			{configTitle: 'IDS_TT_ACHIEVEMENT_CHATS',			key: 'ttChatAllyAchievementsVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-			{configTitle: 'IDS_TT_WELL_DONE_CHATS',				key: 'ttChatAllyWellDoneVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_GOOD_LUCK_CHATS',				key: 'ttChatAllyGoodLuckVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_WTF_CHATS',					key: 'ttChatAllyWTFVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_AFFIRMITIVE_CHATS',			key: 'ttChatAllyAffirmitiveVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_NEGATIVE_CHATS',				key: 'ttChatAllyNegativeVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_GET_BACK_CHATS',				key: 'ttChatAllyGetBackVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_NEED_SMOKE_CHATS',			key: 'ttChatAllyNeedSmokeVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_NEED_SUPPORT_CHATS',			key: 'ttChatAllyNeedSupportVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_NEED_AIR_DEFENSE_CHATS',		key: 'ttChatAllyNeedAirDefenseVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_NEED_SPOTTING_CHATS',			key: 'ttChatAllyNeedSpottingVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-		]
-	},
+	# {
+	# 	sectionTitle: 'IDS_TT_TITLE_ENEMY_CHAT',
+	# 	sectionElements: [
+	# 		{configTitle: 'IDS_TT_PLAYER_CHATS',				key: 'ttChatEnemyChatsVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_ACHIEVEMENT_CHATS',			key: 'ttChatEnemyAchievementsVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_WELL_DONE_CHATS',				key: 'ttChatEnemyWellDoneVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_GOOD_LUCK_CHATS',				key: 'ttChatEnemyGoodLuckVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_WTF_CHATS',					key: 'ttChatEnemyWTFVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 	]
+	# },
+	# {
+	# 	sectionTitle: 'IDS_TT_TITLE_ALLY_CHAT',
+	# 	sectionElements: [
+	# 		{configTitle: 'IDS_TT_PLAYER_CHATS',				key: 'ttChatAllyChatsVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_ACHIEVEMENT_CHATS',			key: 'ttChatAllyAchievementsVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_WELL_DONE_CHATS',				key: 'ttChatAllyWellDoneVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_GOOD_LUCK_CHATS',				key: 'ttChatAllyGoodLuckVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_WTF_CHATS',					key: 'ttChatAllyWTFVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_AFFIRMITIVE_CHATS',			key: 'ttChatAllyAffirmitiveVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_NEGATIVE_CHATS',				key: 'ttChatAllyNegativeVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_GET_BACK_CHATS',				key: 'ttChatAllyGetBackVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_NEED_SMOKE_CHATS',			key: 'ttChatAllyNeedSmokeVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_NEED_SUPPORT_CHATS',			key: 'ttChatAllyNeedSupportVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_NEED_AIR_DEFENSE_CHATS',		key: 'ttChatAllyNeedAirDefenseVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 		{configTitle: 'IDS_TT_NEED_SPOTTING_CHATS',			key: 'ttChatAllyNeedSpottingVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
+	# 	]
+	# },
 ])
 
 (def constant MOD_CONSUMABLESMONITOR_CONFIGS [
@@ -466,7 +466,7 @@
 	{modName: 'Build Viewer',			configSections: "MOD_BUILDVIEWER_CONFIGS",		isInstalled: "TT_BUILDVIEWER_INSTALLED"},
 	{modName: 'Regen Assistant',		configSections: "MOD_REGENASSISTANT_CONFIGS",	isInstalled: "TT_REGENASSISTANT_INSTALLED"},
 	{modName: 'Pen Calculator',			configSections: "MOD_PENCALCULATOR_CONFIGS",	isInstalled: "TT_PENCALCULATOR_INSTALLED"},
-	{modName: 'Chat',					configSections: "MOD_TTAROCHAT_CONFIGS",		isInstalled: "TT_TTAROCHAT_INSTALLED"},
+	# {modName: 'Chat',					configSections: "MOD_TTAROCHAT_CONFIGS",		isInstalled: "TT_TTAROCHAT_INSTALLED"},
 ])
 
 
