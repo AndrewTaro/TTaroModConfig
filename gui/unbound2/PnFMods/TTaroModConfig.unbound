@@ -498,7 +498,7 @@
 	{modName: 'Build Viewer',			configSections: "MOD_BUILDVIEWER_CONFIGS",		isInstalled: "TT_BUILDVIEWER_INSTALLED"},
 	{modName: 'Regen Assistant',		configSections: "MOD_REGENASSISTANT_CONFIGS",	isInstalled: "TT_REGENASSISTANT_INSTALLED"},
 	{modName: 'Pen Calculator',			configSections: "MOD_PENCALCULATOR_CONFIGS",	isInstalled: "TT_PENCALCULATOR_INSTALLED"},
-	{modName: 'Damage Monitor'			configSections: "MOD_DAMAGEMONITOR_CONFIGS",	isInstalled: "TT_DAMAGEMONITOR_INSTALLED"},
+	{modName: 'Damage Monitor',			configSections: "MOD_DAMAGEMONITOR_CONFIGS",	isInstalled: "TT_DAMAGEMONITOR_INSTALLED"},
 	# {modName: 'Chat',					configSections: "MOD_TTAROCHAT_CONFIGS",		isInstalled: "TT_TTAROCHAT_INSTALLED"},
 ])
 
