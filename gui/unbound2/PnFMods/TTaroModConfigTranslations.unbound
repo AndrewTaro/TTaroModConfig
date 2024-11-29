@@ -132,4 +132,6 @@
     IDS_TT_GET_BACK_CHATS                        : ['Get Back!', '戻れ！', '', '', '', 'Zawróć!', '', '', 'En arrière', '', ],
     IDS_TT_THANK_YOU_CHATS                       : ['Thank You!', '感謝する！', '', '', '', 'Dziękuję!', '', '', 'Merci', '', ],
     IDS_TT_WTF_CHATS                             : ['$%*#@!', '$%*#@!', '', '', '', '$%*#@!', '', '', '$%*#@!', '', ],
+    IDS_TT_TITLE_SECTOR_COLOR_ALLY               : ['Sector Color (Ally\'s RPF)', 'セクターの色(味方のRPF)', '', '', '', '', '', '', '', '', ],
+    IDS_TT_TITLE_SECTOR_COLOR_SELF               : ['Sector Color (Own RPF)', 'セクターの色(自分のRPF)', '', '', '', '', '', '', '', '', ],
 })
