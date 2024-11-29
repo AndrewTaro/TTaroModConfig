@@ -476,7 +476,7 @@
 
 (def constant MOD_2DRADIO_CONFIGS [
 	{
-		sectionTitle: 'IDS_TT_TITLE_SECTOR_COLOR_ALLY',
+		sectionTitle: 'IDS_TT_TITLE_SECTOR_COLOR_SELF',
 		sectionElements: [
 			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '2dRadioSelfSectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.1, step:0.1}},
 			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: '2dRadioSelfSectorColorRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
@@ -485,7 +485,7 @@
 		]
 	},
 	{
-		sectionTitle: 'IDS_TT_TITLE_SECTOR_COLOR_SELF',
+		sectionTitle: 'IDS_TT_TITLE_SECTOR_COLOR_ALLY',
 		sectionElements: [
 			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '2dRadioAllySectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.1, step:0.1}},
 			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: '2dRadioAllySectorColorRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
