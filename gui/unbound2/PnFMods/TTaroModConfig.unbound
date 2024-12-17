@@ -18,6 +18,7 @@
 	SWITCH				: 'TT_SwitchOptionElement',
 	SLIDER				: 'TT_SliderOptionElement',
 	DROPDOWN			: 'TT_DropdownOptionElement',
+
 	MINIMAP_SWITCH		: 'TT_MinimapSwitchOptionElement',
 	MINIMAP_SLIDER		: 'TT_MinimapSliderOptionElement',
 	MINIMAP_DROPDOWN	: 'TT_MinimapDropdownOptionElement',
@@ -504,39 +505,30 @@
 			{configTitle: 'IDS_TT_CONTESTED_CAPS',					tooltipHint: 'IDS_TT_HINT_CONTESTED_CAPS',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapContestedCapsVisible',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
 			{configTitle: 'IDS_TT_NEARBY_RADAR_RANGE',				tooltipHint: 'IDS_TT_HINT_NEARBY_RADAR_RANGE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapNearbyRadarRangeVisible',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",		args: {default: false}},
 			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP',				tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapDisableDragDrop',				renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",		args: {default: false}},
-			{configTitle: 'IDS_TT_FONT_SIZE',						tooltipHint: 'IDS_TT_HINT_FONT_SIZE_MARKER',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapMarkerFontSize',					renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",args: {min: 9, max: 16, default: 9, step: 1, round: 0}},
+			{configTitle: 'IDS_TT_FONT_SIZE',						tooltipHint: 'IDS_TT_HINT_FONT_SIZE_MARKER',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapMarkerFontSize',					renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",		args: {min: 9, max: 16, default: 9, step: 1, round: 0}},
+			{configTitle: 'IDS_MINIMAP_OPTIONS_MINIMAPROTATIONENABLED',														titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: "SC.Battle.MINIMAP_OPTION.minimapRotationEnabled",	renderer: "TT_CONFIG_RENDERER_ELEMENTS.MINIMAP_SWITCH",	args: {default: false}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_SHIP_MARKERS',
 		sectionElements: [
-			{configTitle: 'IDS_TT_PLAYER_NAME',						tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapPlayerNameDisplayMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'],	itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
-			{configTitle: 'IDS_TT_SHIP_NAME',						tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: "SC.Battle.MINIMAP_OPTION.shipNamesDisplayEnabled", renderer: "TT_CONFIG_RENDERER_ELEMENTS.MINIMAP_DROPDOWN", args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'],	itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 1}},
-			{configTitle: 'IDS_TT_LAST_SPOTTED_TIMER_ON_ALT',		tooltipHint: 'IDS_TT_HINT_LAST_SPOTTED_TIMER_ON_ALT',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapLastSpottedTimerVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-			{configTitle: 'IDS_TT_NEARBY_AA_RANGE',					tooltipHint: 'IDS_TT_HINT_NEARBY_AA_RANGE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapNearbyAARangeVisible',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: false}},
-			{configTitle: 'IDS_TT_DETECTION',						tooltipHint: 'IDS_TT_HINT_DETECTION_HIGHLIGHT',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAllyDetectionVisible',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",		args: {default: false}},
+			{configTitle: 'IDS_TT_PLAYER_NAME',						tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapPlayerNameDisplayMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'],	itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
+			{configTitle: 'IDS_TT_SHIP_NAME',						tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: "SC.Battle.MINIMAP_OPTION.shipNamesDisplayEnabled", renderer: "TT_CONFIG_RENDERER_ELEMENTS.MINIMAP_DROPDOWN", 			args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'],	itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 1}},
+			{configTitle: 'IDS_TT_LAST_SPOTTED_TIMER_ON_ALT',		tooltipHint: 'IDS_TT_HINT_LAST_SPOTTED_TIMER_ON_ALT',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapLastSpottedTimerVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",		hasBottomDivider: true,	args: {default: true}, parentPrefs: [{key: "SC.Battle.MINIMAP_OPTION.shipNamesDisplayEnabled", validValues: ["TMap_DISPLAY_MODES.ENABLE"], default: "TMap_DISPLAY_MODES.DISABLE", isMinimapOption: true}]},
+			{configTitle: 'IDS_TT_NEARBY_AA_RANGE',					tooltipHint: 'IDS_TT_HINT_NEARBY_AA_RANGE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapNearbyAARangeVisible',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 							args: {default: false}},
+			{configTitle: 'IDS_TT_DETECTION',						tooltipHint: 'IDS_TT_HINT_DETECTION_HIGHLIGHT',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAllyDetectionVisible',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",		hasBottomDivider: true,	args: {default: false}},
+			{configTitle: 'IDS_TT_HEALTH_ALLY',						tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHealthAllyDisplayMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
+			{configTitle: 'IDS_TT_HEALTH_ENEMY',					tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHealthEnemyDisplayMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
+			{configTitle: 'IDS_TT_HEALTH_MAX_HIDE',					tooltipHint: 'IDS_TT_HINT_HEALTH_MAX_HIDE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHealthMaxHide',					renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",								args: {default: false}, parentPrefs: [{key: 'ttMinimapHealthAllyDisplayMode', validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]", default: "TMap_DISPLAY_MODES.DISABLE"}, {key: 'ttMinimapHealthEnemyDisplayMode', validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]", default: "TMap_DISPLAY_MODES.DISABLE"}] },
+			{configTitle: 'IDS_TT_ENEMY_DIRECTIONAL_LINE',			tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapDirEnemyShipDisplayMode',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",  	hasTopivider: true,		args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
 		]
 	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_SQUADRON_MARKERS',
 		sectionElements: [
-			{configTitle: 'IDS_TT_PLAYER_NAME',						tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSquadronOwnerNameDisplayMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
-			{configTitle: 'IDS_TT_SHIP_NAME',						tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSquadronOwnerShipDisplayMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_HEALTH_INFO',
-		sectionElements: [
-			{configTitle: 'IDS_TT_HEALTH_ALLY',						tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHealthAllyDisplayMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
-			{configTitle: 'IDS_TT_HEALTH_ENEMY',					tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHealthEnemyDisplayMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
-			{configTitle: 'IDS_TT_HEALTH_MAX_HIDE',					tooltipHint: 'IDS_TT_HINT_HEALTH_MAX_HIDE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHealthMaxHide',					renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",		args: {default: false}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_DIRECTIONAL_LINE',
-		sectionElements: [
-			{configTitle: 'IDS_TT_ALL_ENEMY_SHIPS',					tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapDirEnemyShipDisplayMode',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",  	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
-			{configTitle: 'IDS_TT_ALL_ENEMY_SQUADRONS',				tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapDirEnemySquadronDisplayMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",  	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
+			{configTitle: 'IDS_TT_PLAYER_NAME',						tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSquadronOwnerNameDisplayMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
+			{configTitle: 'IDS_TT_SHIP_NAME',						tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSquadronOwnerShipDisplayMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",	hasBottomDivider: true,	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
+			{configTitle: 'IDS_TT_ENEMY_DIRECTIONAL_LINE',			tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapDirEnemySquadronDisplayMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",  							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
 		]
 	},
 	{
@@ -553,20 +545,27 @@
 		sectionTitle: 'IDS_TT_TITLE_RPF_ALLY',
 		sectionElements: [
 			{configTitle: 'IDS_TT_DISPLAY_MODE',					tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRPFAllyDisplayMode',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",  args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], itemRenderer: 'TT_DropdownKeyItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenKeyItemRendererElement', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 1}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRPFAllyOpacity',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", args: {min: 0, max: 1, default: 0.1, step:0.1}},
-			{configTitle: 'IDS_TT_RED',																						titleColor: "0xFFFF6666",							key: 'ttMinimapRPFAllyRed',				renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',																					titleColor: "0xFF66FF66",							key: 'ttMinimapRPFAllyGreen',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',																					titleColor: "0xFF6666FF",							key: 'ttMinimapRPFAllyBlue',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRPFAllyOpacity',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", args: {min: 0, max: 1, default: 0.1, step:0.1}, parentPrefs: [{key: 'ttMinimapRPFAllyDisplayMode', validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]", default: "TMap_DISPLAY_MODES.ENABLE"}] },
+			{configTitle: 'IDS_TT_RED',																						titleColor: "0xFFFF6666",							key: 'ttMinimapRPFAllyRed',				renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapRPFAllyDisplayMode', validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]", default: "TMap_DISPLAY_MODES.ENABLE"}] },
+			{configTitle: 'IDS_TT_GREEN',																					titleColor: "0xFF66FF66",							key: 'ttMinimapRPFAllyGreen',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapRPFAllyDisplayMode', validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]", default: "TMap_DISPLAY_MODES.ENABLE"}] },
+			{configTitle: 'IDS_TT_BLUE',																					titleColor: "0xFF6666FF",							key: 'ttMinimapRPFAllyBlue',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapRPFAllyDisplayMode', validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]", default: "TMap_DISPLAY_MODES.ENABLE"}] },
 		]
 	},
 	# MinimapRanges
+	{
+		sectionTitle: 'IDS_TT_TITLE_RANGE_CIRCLES',
+		sectionElements: [
+			{configTitle: 'IDS_TT_CIRCLE_OPACITY',					tooltipHint: 'IDS_TT_HINT_RANGE_CIRCLE_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: "SC.Battle.MINIMAP_OPTION.rangesAlpha",	renderer: "TT_CONFIG_RENDERER_ELEMENTS.MINIMAP_SLIDER", args: {min: 20, max: 100, default: 100, step: 5, round: 0}},
+			{configTitle: 'IDS_MINIMAP_OPTIONS_DISTANCEDISPLAYENABLED',														titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: "SC.Battle.MINIMAP_OPTION.distanceDisplayEnabled",	renderer: "TT_CONFIG_RENDERER_ELEMENTS.MINIMAP_SWITCH",	args: {default: true}},
+		]
+	},
 	{
 		sectionTitle: 'IDS_TT_TITLE_SEA_DETECTION_RANGE',
 		sectionElements: [
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilitySeaDisplayMode',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilitySeaSolidLine',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: false}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilitySeaFillCircle',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilitySeaOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilitySeaOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapVisibilitySeaFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilitySeaColorIndex',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_SEA_DETECTION_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -576,7 +575,7 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilityAirDisplayMode',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilityAirSolidLine',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: false}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilityAirFillCircle',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilityAirOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilityAirOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapVisibilityAirFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapVisibilityAirColorIndex',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_AIR_DETECTION_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -586,7 +585,7 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapMainArmamentDisplayMode',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapMainArmamentSolidLine',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: true}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapMainArmamentFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapMainArmamentOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapMainArmamentOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapMainArmamentFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapMainArmamentColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_MAIN_ARMAMENT_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -596,7 +595,7 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSecondaryDisplayMode',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSecondarySolidLine',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: true}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSecondaryFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSecondaryOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSecondaryOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapSecondaryFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSecondaryColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_SECONDARY_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -606,7 +605,7 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapTorpedoDisplayMode',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapTorpedoSolidLine',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: true}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapTorpedoFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapTorpedoOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapTorpedoOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapTorpedoFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapTorpedoColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_MAIN_ARMAMENT_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -616,7 +615,7 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAirSupportDisplayMode',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAirSupportSolidLine',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: true}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAirSupportFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAirSupportOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAirSupportOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapAirSupportFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAirSupportColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_MAIN_ARMAMENT_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -626,7 +625,7 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAntiAirDisplayMode',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAntiAirSolidLine',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: true}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAntiAirFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAntiAirOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAntiAirOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapAntiAirFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAntiAirColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_AA_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -637,7 +636,7 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarSelfDisplayMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarSelfSolidLine',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: false}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarSelfFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarSelfOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarSelfOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapRadarSelfFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarSelfColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_SURFACE_CONSUMABLE_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -647,9 +646,9 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',					tooltipHint: 'IDS_TT_HINT_ALLY_CONSUMABLES_ONLY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarAllyVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
 			{configTitle: 'IDS_TT_DISPLAY_ON_ACTIVATION',			tooltipHint: 'IDS_TT_HINT_ALLY_CONSUMABLES_ONLY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarAllyVisibleOnActivation',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarAllyFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: true}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarAllyOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", 	args: {min: 0, max: 1, default: 0.1, step:0.1}},
-			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarAllyColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('23', TMap_RANGE_COLORS.ALL)"}},
+			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarAllyFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: true}, parentPrefs: [{key: 'ttMinimapRadarAllyVisibleOnAlt', validValues: [1], default: 0}, {key: 'ttMinimapRadarAllyVisibleOnActivation', validValues: [1], default: 0}] },
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarAllyOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", 	args: {min: 0, max: 1, default: 0.1, step:0.1}, parentPrefs: [{key: 'ttMinimapRadarAllyVisibleOnAlt', validValues: [1], default: 0}, {key: 'ttMinimapRadarAllyVisibleOnActivation', validValues: [1], default: 0}] },
+			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapRadarAllyColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('23', TMap_RANGE_COLORS.ALL)"}, parentPrefs: [{key: 'ttMinimapRadarAllyVisibleOnAlt', validValues: [1], default: 0}, {key: 'ttMinimapRadarAllyVisibleOnActivation', validValues: [1], default: 0}] },
 		]
 	},
 	{
@@ -658,7 +657,7 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroSelfDisplayMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroSelfSolidLine',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: false}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroSelfFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroSelfOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroSelfOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapHydroSelfFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroSelfColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_SURFACE_CONSUMABLE_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -668,9 +667,9 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',					tooltipHint: 'IDS_TT_HINT_ALLY_CONSUMABLES_ONLY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroAllyVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
 			{configTitle: 'IDS_TT_DISPLAY_ON_ACTIVATION',			tooltipHint: 'IDS_TT_HINT_ALLY_CONSUMABLES_ONLY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroAllyVisibleOnActivation',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroAllyFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: true}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroAllyOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", 	args: {min: 0, max: 1, default: 0.1, step:0.1}},
-			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroAllyColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('23', TMap_RANGE_COLORS.ALL)"}},
+			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroAllyFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: true}, parentPrefs: [{key: 'ttMinimapHydroAllyVisibleOnAlt', validValues: [1], default: 0}, {key: 'ttMinimapHydroAllyVisibleOnActivation', validValues: [1], default: 0}] },
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroAllyOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", 	args: {min: 0, max: 1, default: 0.1, step:0.1}, parentPrefs: [{key: 'ttMinimapHydroAllyVisibleOnAlt', validValues: [1], default: 0}, {key: 'ttMinimapHydroAllyVisibleOnActivation', validValues: [1], default: 0}] },
+			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydroAllyColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('23', TMap_RANGE_COLORS.ALL)"}, parentPrefs: [{key: 'ttMinimapHydroAllyVisibleOnAlt', validValues: [1], default: 0}, {key: 'ttMinimapHydroAllyVisibleOnActivation', validValues: [1], default: 0}] },
 		]
 	},
 	{
@@ -679,7 +678,7 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarSelfDisplayMode',renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarSelfSolidLine',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: false}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarSelfFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarSelfOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarSelfOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapSubRadarSelfFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarSelfColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_SURFACE_CONSUMABLE_RANGE', TMap_RANGE_COLORS.ALL)"}},
 		]
 	},
@@ -689,9 +688,9 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',					tooltipHint: 'IDS_TT_HINT_ALLY_CONSUMABLES_ONLY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarAllyVisibleOnAlt',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
 			{configTitle: 'IDS_TT_DISPLAY_ON_ACTIVATION',			tooltipHint: 'IDS_TT_HINT_ALLY_CONSUMABLES_ONLY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarAllyVisibleOnActivation',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarAllyFillCircle',				renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: true}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarAllyOpacity',				renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", 	args: {min: 0, max: 1, default: 0.1, step:0.1}},
-			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarAllyColorIndex',				renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('26', TMap_RANGE_COLORS.ALL)"}},
+			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarAllyFillCircle',				renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: true}, parentPrefs: [{key: 'ttMinimapSubRadarAllyVisibleOnAlt', validValues: [1], default: 0}, {key: 'ttMinimapSubRadarAllyVisibleOnActivation', validValues: [1], default: 0}] },
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarAllyOpacity',				renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER", 	args: {min: 0, max: 1, default: 0.1, step:0.1}, parentPrefs: [{key: 'ttMinimapSubRadarAllyVisibleOnAlt', validValues: [1], default: 0}, {key: 'ttMinimapSubRadarAllyVisibleOnActivation', validValues: [1], default: 0}] },
+			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSubRadarAllyColorIndex',				renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('26', TMap_RANGE_COLORS.ALL)"}, parentPrefs: [{key: 'ttMinimapSubRadarAllyVisibleOnAlt', validValues: [1], default: 0}, {key: 'ttMinimapSubRadarAllyVisibleOnActivation', validValues: [1], default: 0}]},
 		]
 	},
 	{
@@ -700,8 +699,24 @@
 			{configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE',				tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydrophoneSelfDisplayMode',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",		args: {items:['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], itemRenderer: 'TT_DropdownTextItemRendererElement', chosenItemRenderer: 'TT_DropdownChosenTextItemRendererElement', default: 2}},
 			{configTitle: 'IDS_TT_SOLID_LINE',						tooltipHint: 'IDS_TT_HINT_SOLID_LINE',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydrophoneSelfSolidLine',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: false}},
 			{configTitle: 'IDS_TT_CIRCLE_FILL',						tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydrophoneSelfFillCircle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydrophoneSelfOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}},
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydrophoneSelfOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",	args: {min: 0, max: 1, default: 1.0, step:0.1}, parentPrefs: [{key: 'ttMinimapHydrophoneSelfFillCircle', validValues: [1], default: 0}] },
 			{configTitle: 'IDS_TT_COLOR',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHydrophoneSelfColorIndex',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:"TMap_RANGE_COLORS.ALL", itemRenderer: 'TT_DropdownColorPaletteItemRendererElement', dropdownRenderer: 'TT_ColorPaletteDropdownElement', chosenItemRenderer: 'TT_DropdownChosenColorItemRendererElement', extraData: "TMap_RANGE_COLORS", default: "indexOf('IDS_TT_TITLE_SURFACE_CONSUMABLE_RANGE', TMap_RANGE_COLORS.ALL)"}},
+		]
+	},
+	# BG
+	{
+		sectionTitle: 'IDS_OPTIONS_QUICKCOMMANDS_SOUND',
+		sectionElements: [
+			{configTitle: 'IDS_MINIMAP_OPTIONS_MOUSECOMMANDSENABLED',														titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: "SC.Battle.MINIMAP_OPTION.mouseCommandsEnabled",	renderer: "TT_CONFIG_RENDERER_ELEMENTS.MINIMAP_SWITCH",	args: {default: true}},
+			{configTitle: 'IDS_MINIMAP_OPTIONS_POINTATTENTIONENABLED',														titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: "SC.Battle.MINIMAP_OPTION.pointAttentionEnabled",	renderer: "TT_CONFIG_RENDERER_ELEMENTS.MINIMAP_SWITCH",	args: {default: true}},
+		]
+	},
+	{
+		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
+		sectionElements: [
+			{configTitle: 'IDS_TT_OPACITY',																					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: "SC.Battle.MINIMAP_OPTION.waterAlpha",		renderer: "TT_CONFIG_RENDERER_ELEMENTS.MINIMAP_SLIDER", args: {min: 0, max: 100, default: 100, step: 5, round: 0}},
+			{configTitle: 'IDS_TT_USE_BLUR',						tooltipHint: 'IDS_TT_HINT_BLUR_PERFORMANCE_WARNING',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapUseBlur',						renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",			args: {default: false}},
+			{configTitle: 'IDS_TT_BLUR_LEVEL',																				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapBlurIntensity',					renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER",			args: {min: 0.2, max: 1, default: 0.3, step: 0.1}, parentPrefs: [{key: 'ttMinimapUseBlur', validValues: [1], default: 0}] },
 		]
 	},
 ])
@@ -995,6 +1010,21 @@
 			)
 		)
 
+		(var hasBottomDivider:bool = "'hasBottomDivider' in _configData ? _configData.hasBottomDivider : false")
+		(var hasTopivider:bool = "'hasTopivider' in _configData ? _configData.hasTopivider : false")
+		
+
+		(event evChangeParentPref)
+		(var parentPrefs:array = "'parentPrefs' in _configData ? _configData.parentPrefs : []")
+		(var parentPrefsCount:number = "parentPrefs.length")
+
+		# The elements inside will be recreated but the scope variables remain?
+		# Switching between tabs will screw up this counter.
+		(var enabledParentPrefCount:number = 0)
+		(var isOptionVisible:bool = "parentPrefsCount == 0 ? true : enabledParentPrefCount > 0") # or condition. For and, use parentPrefsCount == enabledParentPrefsCount
+		
+		(bind enabledParentPrefCount "enabledParentPrefCount + $event.isEnabled" watch=false init=false (event "evChangeParentPref"))
+
 		# For tooltip hint
 		(macro TT_GET_LANGUAGE_INDEX)
 		(var hintKey:str = "'tooltipHint' in _configData ? _configData.tooltipHint : null")
@@ -1005,11 +1035,21 @@
 		(macro MOUSE_HANDLER_SCOPE)
 	)
 
+	(bind visible "isOptionVisible")
+
+	# Config Checker
+	(controller $Repeat renderer='TT_ParentPrefCheckerElement'
+		(bind count "parentPrefsCount")
+		(bind enabled "parentPrefsCount > 0")
+		(args _parentPref="parentPrefs[$index]" _userPrefsNum="_userPrefsNum")
+	)
+	#
+
 	(macro MOUSE_EVENTS_DISPATCHER)
 
 	(style
 		(alpha = 0)
-		(width = 100%)
+		(width = 96%)
 		(bind hitTest "_isConfigurable")
 	)
 	(controller $Animation
@@ -1021,62 +1061,113 @@
 		)
 	)
 
+	(controller $Instance renderer='TT_HorizontalDivider'
+		(bind enabled "hasTopivider")
+	)
+
 	(block
-		# For background highlight
-		(class $FullsizeAbsolute)
 		(style
-			(backgroundColor = 0x1FFFFFFF)
-			(alpha = 0)
+			(width = 100%)
 		)
-		(controller $Animation
-			(bindcall play
-				duration = 0.1
-				to		 = { alpha: 1 }
-				action="killAll"
-				(event "evRollOver")
+		(block
+			# For background highlight
+			(class $FullsizeAbsolute)
+			(style
+				(backgroundColor = 0x1FFFFFFF)
+				(alpha = 0)
 			)
-			(bindcall play
-				duration = 0.1
-				to		 = { alpha: 0 }
-				action="killAll"
-				(event "evRollOut")
+			(controller $Animation
+				(bindcall play
+					duration = 0.1
+					to		 = { alpha: 1 }
+					action="killAll"
+					(event "evRollOver")
+				)
+				(bindcall play
+					duration = 0.1
+					to		 = { alpha: 0 }
+					action="killAll"
+					(event "evRollOut")
+				)
 			)
 		)
-	)
 
-	(hblock
-		(style
-			(align = "middle|center")
-			(width = 100%) #~~it breaks layout for some reason~~ parent element must have width. In this case the width=100% above^
-			(marginBottom = 4px)
-			(marginTop = 4px)
-			(backgroundColor = 0x01000000) # For tooltip hittest
+		# Main: title and option
+		(hblock
+			(style
+				(align = "middle|center")
+				(width = 100%) #~~it breaks layout for some reason~~ parent element must have width. In this case the width=100% above^
+				(marginBottom = 4px)
+				(marginTop = 4px)
+				(backgroundColor = 0x01000000) # For tooltip hittest
+			)
+			
+
+			(element TT_ConfigTitleElement _data="_configData" _userPrefsNum="_userPrefsNum")
+
+			(controller $Instance
+				(bind renderer "_configData.renderer")
+				(bind enabled "isConfigEnabled")
+				(args
+					_prefKey="_configData.key"
+					_args="_configData.args"
+					_userPrefsNum="_userPrefsNum"
+				)
+			)
 		)
-		
 
-		(element TT_ConfigTitleElement _data="_configData" _userPrefsNum="_userPrefsNum")
-
-		(controller $Instance
-			(bind renderer "_configData.renderer")
-			(bind enabled "isConfigEnabled")
+		# Hint
+		(controller $Tooltip (renderer = 'RepeatStatusTooltip')
+			# SimpleStatus does not support multilines.
+			(bind enabled "hintKey")
 			(args
-				_prefKey="_configData.key"
-				_args="_configData.args"
-				_userPrefsNum="_userPrefsNum"
+				_tooltipDataArray="[{text: localizedHintText, unifiedStatus: SC.Ui_styles.UNIFIED_STATUS.INFO}]"
+				_text = "localizedHintText"
+				_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.INFO"
 			)
+			(macro TT_TOOLTIP_BEHAVIOUR)
 		)
 	)
 
-	(controller $Tooltip (renderer = 'RepeatStatusTooltip')
-		# SimpleStatus does not support multilines.
-		(bind enabled "hintKey")
-		(args
-			_tooltipDataArray="[{text: localizedHintText, unifiedStatus: SC.Ui_styles.UNIFIED_STATUS.INFO}]"
-			_text = "localizedHintText"
-			_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.INFO"
-		)
-		(macro TT_TOOLTIP_BEHAVIOUR)
+	(controller $Instance renderer='TT_HorizontalDivider'
+		(bind enabled "hasBottomDivider")
 	)
+)
+
+(def element TT_ParentPrefCheckerElement (_parentPref:dict, _userPrefsNum:gfx=null) layout=false
+	(scope
+		(event evChangeParentPref)
+
+		(var validValues:array = "'validValues' in _parentPref ? _parentPref.validValues : []")
+		(var key:str = "'key' in _parentPref ? _parentPref.key : ''")
+		(var default:number = "'default' in _parentPref ? _parentPref.default : -1")
+
+		# For minimap
+		(var isMinimapOption:bool = "'isMinimapOption' in _parentPref ? _parentPref.isMinimapOption : false")
+		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, key)")
+		(var optionEntity:gfx = "entityWatcher.entity" (event "entityWatcher.event"))
+		(var minimapOption:gfx = "optionEntity ? optionEntity.minimapOption : null")
+		(var mapPrefValue:number = "minimapOption ? minimapOption.value > 0 : default" (event "minimapOption.evValueChanged"))
+
+		# For userprefs
+		(var userPrefValue:number = "isNumber(_userPrefsNum[key]) ? round(_userPrefsNum[key]) : default")
+
+		(var value:number = "isMinimapOption ? mapPrefValue : userPrefValue")
+		(var isOptionEnabled:bool = "value in validValues")
+
+		# The elements inside will be recreated but the scope variables remain?
+		# Switching between tabs will screw up this counter.
+		#
+		# init=true does not trigger when the element is reused.
+		(var isFirstTime:bool = true)
+		(bind isFirstTime "false" watch=false init=false (event "evChangeParentPref"))
+	)
+
+	(dispatch evChangeParentPref dir="EventDirection.UP" args="{isEnabled: isOptionEnabled ? 1 : -1}" watch=false init=false (bind trigger "isOptionEnabled"))
+
+	# For init only!
+	# Dont decrement the count for the first time
+	(dispatch evChangeParentPref dir="EventDirection.UP" args="{isEnabled: isOptionEnabled ? 1 : 0}" watch=false on=addedToStage (bind enabled "isFirstTime"))
 )
 
 (def element TT_DragTitleElement () layout=true
@@ -1100,6 +1191,7 @@
 		(var titleKey:str = "_data.sectionTitle")
 		(var translations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
 		(macro TT_GET_LANGUAGE_INDEX)
+		(var isInGameString:bool = "tr(titleKey) != titleKey")
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
 		(var isValidLocalization:bool = "translations.length > languageIndex && !isIn(translations[languageIndex], ['', ' '])")
 		(var localizedTitleText:str = "isValidLocalization ? translations[languageIndex] : translations[0]")
@@ -1110,7 +1202,7 @@
 	)
 	(tf
 		(class $TextDefaultBold)
-		(bind text "localizedTitleText")
+		(bind text "isInGameString ? tr(titleKey) : localizedTitleText")
 		(style
 			(fontSize = 21)
 			#(textAlign = "center")
@@ -1125,6 +1217,7 @@
 		(var titleKey:str = "_data.configTitle")
 		(var titleTranslations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
 		(macro TT_GET_LANGUAGE_INDEX)
+		(var isInGameString:bool = "tr(titleKey) != titleKey")
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
 		(var isTitleValidLocalization:bool = "titleTranslations.length > languageIndex && !isIn(titleTranslations[languageIndex], ['', ' '])")
 		(var localizedTitleText:str = "isTitleValidLocalization ? titleTranslations[languageIndex] : titleTranslations[0]")
@@ -1140,7 +1233,7 @@
 			(align = "middle|center")
 		)
 		(tf
-			(bind text "localizedTitleText")
+			(bind text "isInGameString ? tr(titleKey) : localizedTitleText")
 			(class $TextDefault)
 			(style
 				(width = 100%)
@@ -2052,21 +2145,25 @@
 		(var maxLabel:str = "'maxLabel' in _args ? _args.maxLabel : ''")
 		(var step:number = "'step' in _args ? _args.step : 1")
 		(var steps:number = "round((maxValue - minValue) / step)")
-		(var default:number = "'default' in _args ? _args.default : 20")
-		(var defaultValue:number = "round((default - minValue) / step)")
+		(var defaultValue:number = "'default' in _args ? _args.default : 20")
+		(var defaultSliderValue:number = "round((defaultValue - minValue) / step)")
 		(var rounding:number = "'round' in _args ? _args.round : 0")
-		(var isMinLabelAvailable:bool = "prefValue == 0 && minLabel")
-		(var isMaxLabelAvailable:bool = "prefValue == steps && maxLabel")
+
+		(var sliderValue:number = "round((prefValue - minValue) / step)" watch=false (event "evShow")) # without evShow: when re-opening the tooltip the slider won't update
+		(bind sliderValue "$event.value" watch=false init=false (event "evValueReset") (event "evSliderValueChanged"))
+		
+		(var isMinLabelAvailable:bool = "prefValue == minValue && minLabel")
+		(var isMaxLabelAvailable:bool = "prefValue == maxValue && maxLabel")
 		(var displayedCount:str = "	isMinLabelAvailable ? minLabel :
 									isMaxLabelAvailable ? maxLabel :
-									formatFloatingPoint(minValue + prefValue * step, rounding)"
+									formatFloatingPoint(prefValue, rounding)"
 		)
 	)
 
 	(bind visible "isOptionAvailable")
 
 	(dispatch evShow args="{}" on='addedToStage')
-	(bindcall externalCall 'direct.action' "['battle.saveMinimapOption', [minimapOption.key, $event.value]]" init=false watch=false (event "evSliderValueChanged"))
+	(bindcall externalCall 'direct.action' "['battle.saveMinimapOption', [minimapOption.key, $event.value * step + minValue]]" init=false watch=false (event "evSliderValueChanged") (event "evValueReset"))
 
 	(style
 		(width = "50%")
@@ -2084,7 +2181,7 @@
 				(align = "middle|center")
 			)
 			(element DefaultSlider
-				_value = "prefValue"
+				_value = "sliderValue"
 				_intervalsCount = "steps"
 				_unitsInStepInterval = "step"
 				_width = "TT_CONFIG_OPTION_CONTROL_WIDTH"
@@ -2109,7 +2206,7 @@
 					_backgroundImage = 'url:../service_kit/buttons/context/update.png'
 					_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
 					_dispatchedEv = "'evValueReset'"
-					_dispatchParams = "{'value': defaultValue}"
+					_dispatchParams = "{'value': defaultSliderValue}"
 				)
 			)
 		)
@@ -2258,8 +2355,26 @@
 	)
 )
 
-(def macro TT_HORIZONTAL_DEVIDER() layout=true
+# TODO: fix duplication
+(def element TT_HorizontalDivider()
+	(style
+		(width = 100%)
+		(marginTop = 3px)
+		(marginBottom = 3px)
+		(align = "middle|center")
+		(hitTest = false)
+		(alpha = 1.5)
+	)
 	(element HorizontalDivider
+		(style
+			#(width = 90%)
+		)
+	)
+)
+
+# TODO: fix duplication
+(def macro TT_HORIZONTAL_DEVIDER() layout=true
+	(element HorizontalDividerTwoPx
 		(style
 			#(paddingLeft = 30)
 			#(paddingRight = 30)
