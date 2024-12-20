@@ -539,13 +539,13 @@
 		sectionElements: [
 			{configTitle: 'IDS_TT_PLAYER_NAME',						tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapPlayerNameDisplayMode',			renderer: "TT_CONFIG_RENDERERS.DROPDOWN",							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'],	type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
 			{configTitle: 'IDS_TT_SHIP_NAME',						tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: "SC.Battle.MINIMAP_OPTION.shipNamesDisplayEnabled", renderer: "TT_CONFIG_RENDERERS.MINIMAP_DROPDOWN", 			args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'],	type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 1}},
-			{configTitle: 'IDS_TT_LAST_SPOTTED_TIMER_ON_ALT',		tooltipHint: 'IDS_TT_HINT_LAST_SPOTTED_TIMER_ON_ALT',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapLastSpottedTimerVisibleOnAlt',	renderer: "TT_CONFIG_RENDERERS.SWITCH",		hasBottomDivider: true,	args: {default: true}, parentPrefs: [{key: "SC.Battle.MINIMAP_OPTION.shipNamesDisplayEnabled", validValues: "[TMap_DISPLAY_MODES.ENABLE]", default: "TMap_DISPLAY_MODES.DISABLE", isMinimapOption: true}]},
+			{configTitle: 'IDS_TT_LAST_SPOTTED_TIMER_ON_ALT',		tooltipHint: 'IDS_TT_HINT_LAST_SPOTTED_TIMER_ON_ALT',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapLastSpottedTimerVisibleOnAlt',	renderer: "TT_CONFIG_RENDERERS.SWITCH",		divider: "bottom",	args: {default: true}, parentPrefs: [{key: "SC.Battle.MINIMAP_OPTION.shipNamesDisplayEnabled", validValues: "[TMap_DISPLAY_MODES.ENABLE]", default: "TMap_DISPLAY_MODES.DISABLE", isMinimapOption: true}]},
 			{configTitle: 'IDS_TT_NEARBY_AA_RANGE',					tooltipHint: 'IDS_TT_HINT_NEARBY_AA_RANGE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapNearbyAARangeVisible',			renderer: "TT_CONFIG_RENDERERS.SWITCH", 							args: {default: false}},
-			{configTitle: 'IDS_TT_DETECTION',						tooltipHint: 'IDS_TT_HINT_DETECTION_HIGHLIGHT',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAllyDetectionVisible',			renderer: "TT_CONFIG_RENDERERS.SWITCH",		hasBottomDivider: true,	args: {default: false}},
+			{configTitle: 'IDS_TT_DETECTION',						tooltipHint: 'IDS_TT_HINT_DETECTION_HIGHLIGHT',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapAllyDetectionVisible',			renderer: "TT_CONFIG_RENDERERS.SWITCH",		divider: "bottom",	args: {default: false}},
 			{configTitle: 'IDS_TT_HEALTH_ALLY',						tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHealthAllyDisplayMode',			renderer: "TT_CONFIG_RENDERERS.DROPDOWN",							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
 			{configTitle: 'IDS_TT_HEALTH_ENEMY',					tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHealthEnemyDisplayMode',			renderer: "TT_CONFIG_RENDERERS.DROPDOWN",							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
 			{configTitle: 'IDS_TT_HEALTH_MAX_HIDE',					tooltipHint: 'IDS_TT_HINT_HEALTH_MAX_HIDE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapHealthMaxHide',					renderer: "TT_CONFIG_RENDERERS.SWITCH",								args: {default: false}, parentPrefs: [{key: 'ttMinimapHealthAllyDisplayMode', validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]", default: "TMap_DISPLAY_MODES.DISABLE"}, {key: 'ttMinimapHealthEnemyDisplayMode', validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]", default: "TMap_DISPLAY_MODES.DISABLE"}] },
-			{configTitle: 'IDS_TT_ENEMY_DIRECTIONAL_LINE',			tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapDirEnemyShipDisplayMode',		renderer: "TT_CONFIG_RENDERERS.DROPDOWN",  	hasTopivider: true,		args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
+			{configTitle: 'IDS_TT_ENEMY_DIRECTIONAL_LINE',			tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapDirEnemyShipDisplayMode',		renderer: "TT_CONFIG_RENDERERS.DROPDOWN",  	divider: "top",		args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
 		]
 	},
 	# Sqd Marker
@@ -553,7 +553,7 @@
 		sectionTitle: 'IDS_TT_TITLE_SQUADRON_MARKERS',
 		sectionElements: [
 			{configTitle: 'IDS_TT_PLAYER_NAME',						tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSquadronOwnerNameDisplayMode',	renderer: "TT_CONFIG_RENDERERS.DROPDOWN",							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
-			{configTitle: 'IDS_TT_SHIP_NAME',						tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSquadronOwnerShipDisplayMode',	renderer: "TT_CONFIG_RENDERERS.DROPDOWN",	hasBottomDivider: true,	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
+			{configTitle: 'IDS_TT_SHIP_NAME',						tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapSquadronOwnerShipDisplayMode',	renderer: "TT_CONFIG_RENDERERS.DROPDOWN",	divider: "bottom",	args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
 			{configTitle: 'IDS_TT_ENEMY_DIRECTIONAL_LINE',			tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttMinimapDirEnemySquadronDisplayMode',	renderer: "TT_CONFIG_RENDERERS.DROPDOWN",  							args: {items:['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {IDS_ALT_VISION_MODE_1: 'CMD_ICONS'}, default: 0}},
 		]
 	},
@@ -1025,8 +1025,9 @@
 
 (def element TT_ConfigElement (_configData:dict, _isConfigurable:bool, _userPrefsNum:gfx=null)layout=true
 	(scope
-		(var hasBottomDivider:bool = "'hasBottomDivider' in _configData ? _configData.hasBottomDivider : false")
-		(var hasTopivider:bool = "'hasTopivider' in _configData ? _configData.hasTopivider : false")
+		(var dividerPos:number = "'divider' in _configData ? _configData.divider : -1")
+		(var hasTopDivider:bool = "top == dividerPos")
+		(var hasBottomDivider:bool = "bottom == dividerPos")
 		
 		(event evChangeParentPref)
 		(var parentPrefs:array = "'parentPrefs' in _configData ? _configData.parentPrefs : []")
@@ -1064,8 +1065,8 @@
 
 	# Config Checker
 	(controller $Repeat renderer='TT_ParentPrefCheckerElement'
-		(bind count "parentPrefsCount")
 		(bind enabled "parentPrefsCount > 0")
+		(bind count "parentPrefsCount")
 		(args _parentPref="parentPrefs[$index]" _userPrefsNum="_userPrefsNum")
 	)
 	#
@@ -1078,7 +1079,7 @@
 	)
 
 	(controller $Instance renderer='TT_HorizontalDivider'
-		(bind enabled "hasTopivider")
+		(bind enabled "hasTopDivider")
 	)
 
 	(block
@@ -1167,8 +1168,9 @@
 		(event evChangeParentPref)
 
 		(var validValues:array = "'validValues' in _parentPref ? _parentPref.validValues : []")
-		(var key:str = "'key' in _parentPref ? _parentPref.key : ''")
-		(var default:number = "'default' in _parentPref ? _parentPref.default : -1")
+		(var pref:dict = "'pref' in _parentPref ? _parentPref.pref : {}")
+		(var key:str = "'KEY' in pref ? pref.key : ''")
+		(var default:number = "'DEFAULT' in pref ? pref.DEFAULT : -1")
 
 		# For minimap
 		(var isMinimapOption:bool = "'isMinimapOption' in _parentPref ? _parentPref.isMinimapOption : false")
