@@ -1527,9 +1527,14 @@
 
 		(var defaultValue:number = "'default' in _args ? _args.default : 0")
 		(var items:array = "'items' in _args ? _args.items : []")
-		(var dropdownRenderer:str = "'dropdownRenderer' in _args ? _args.dropdownRenderer : 'ItemChooserDropdown'")
-		(var itemRenderer:str = "'itemRenderer' in _args ? _args.itemRenderer : 'TextListItemRenderer'")
-		(var chosenItemRenderer:str = "'chosenItemRenderer' in _args ? _args.chosenItemRenderer : 'DefaultItemChooserPickedItemRenderer'")
+
+		(var type:str = "'type' in _args ? _args.type : ''")
+		(var renderers:dict = "type in TT_DROPWDOWN_RENDERERS ? TT_DROPWDOWN_RENDERERS[type] : {}")
+
+		(var dropdownRenderer:str = "'DROPDOWN' in renderers ? renderers.DROPDOWN : 'ItemChooserDropdown'")
+		(var itemRenderer:str = "'ITEM' in renderers ? renderers.ITEM : 'TextListItemRenderer'")
+		(var chosenItemRenderer:str = "'CHOSEN_ITEM' in renderers ? renderers.CHOSEN_ITEM : 'DefaultItemChooserPickedItemRenderer'")
+		
 		(var extraData:dict = "'extraData' in _args ? _args.extraData : {}")
 
 		(var resetMethods:array = "[{ type: 'direct.action', name: 'battle.saveMinimapOption', args: [ minimapOption.key, defaultValue ] }]")
