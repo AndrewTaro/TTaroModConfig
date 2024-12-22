@@ -636,6 +636,7 @@
         sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
         sectionElements: [
             {configTitle: 'IDS_TT_OPACITY', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: "SC.Battle.MINIMAP_OPTION.waterAlpha", renderer: "TT_CONFIG_RENDERERS.MINIMAP_SLIDER", args: { min: 0, max: 100, default: 100, step: 5, round: 0 }},
+            {configTitle: 'IDS_TT_GRADIENT_BACKGROUND', tooltipHint: 'IDS_TT_HINT_GRADIENT_BACKGROUND', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapGradientBackgroundMode', renderer: "TT_CONFIG_RENDERERS.DROPDOWN", args: { default: 0, items: ['IDS_TURN_OFF', '0°', '45°'] }},
             {configTitle: 'IDS_TT_USE_BLUR', tooltipHint: 'IDS_TT_HINT_BLUR_PERFORMANCE_WARNING', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapUseBlur', renderer: "TT_CONFIG_RENDERERS.SWITCH", args: { default: false }},
             {configTitle: 'IDS_TT_BLUR_LEVEL', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapBlurIntensity', renderer: "TT_CONFIG_RENDERERS.SLIDER", parentPrefs: [{pref: "TMap_PREFS.USE_BLUR", validValues: [1]}], args: { min: 0.2, max: 1, default: 0.3, step: 0.1 }}
         ]
@@ -996,6 +997,7 @@
     FAKE_FILL_CIRCLE: {KEY: '', DEFAULT: false},
     FAKE_ALPHA: {KEY: '', DEFAULT: 1, OFFSET: 0, MODIFIER: 0.1},
     FAKE_COLOR_INDEX: {KEY: '', DEFAULT: "indexOf('IDS_TT_TITLE_SEA_DETECTION_RANGE', TMap_RANGE_COLORS.ALL)", OFFSET: 0, MODIFIER: 1},
+    GRADIENT_BACKGROUND_MODE: {KEY: 'ttMinimapGradientBackgroundMode', DEFAULT: 0, OFFSET: 0, MODIFIER: 1},
     USE_BLUR: {KEY: 'ttMinimapUseBlur', DEFAULT: false},
     BLUR_INTENSITY: {KEY: 'ttMinimapBlurIntensity', DEFAULT: 0.3, OFFSET: 0.2, MODIFIER: 0.1},
 })
