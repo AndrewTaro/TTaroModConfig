@@ -434,7 +434,8 @@
         sectionElements: [
             {configTitle: 'IDS_TT_PLAYER_NAME', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapPlayerNameDisplayMode', renderer: "TT_CONFIG_RENDERERS.DROPDOWN", args: { default: 0, items: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'} }},
             {configTitle: 'IDS_TT_SHIP_NAME', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: "SC.Battle.MINIMAP_OPTION.shipNamesDisplayEnabled", renderer: "TT_CONFIG_RENDERERS.MINIMAP_DROPDOWN", args: { default: 1, items: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'} }},
-            {configTitle: 'IDS_TT_LAST_SPOTTED_TIMER_ON_ALT', tooltipHint: 'IDS_TT_HINT_LAST_SPOTTED_TIMER_ON_ALT', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapLastSpottedTimerVisibleOnAlt', renderer: "TT_CONFIG_RENDERERS.SWITCH", divider: "bottom", args: { default: true }},
+            {configTitle: 'IDS_TT_LAST_SPOTTED_TIMER_ON_ALT', tooltipHint: 'IDS_TT_HINT_LAST_SPOTTED_TIMER_ON_ALT', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapLastSpottedTimerVisibleOnAlt', renderer: "TT_CONFIG_RENDERERS.SWITCH", args: { default: true }},
+            {configTitle: 'IDS_TT_SHOW_DEAD', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapShowDeadPlayer', renderer: "TT_CONFIG_RENDERERS.SWITCH", divider: "bottom", args: { default: false }},
             {configTitle: 'IDS_TT_NEARBY_AA_RANGE', tooltipHint: 'IDS_TT_HINT_NEARBY_AA_RANGE', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapNearbyAARangeVisible', renderer: "TT_CONFIG_RENDERERS.SWITCH", args: { default: false }},
             {configTitle: 'IDS_TT_DETECTION', tooltipHint: 'IDS_TT_HINT_DETECTION_HIGHLIGHT', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapAllyDetectionVisible', renderer: "TT_CONFIG_RENDERERS.SWITCH", divider: "bottom", args: { default: false }},
             {configTitle: 'IDS_TT_HEALTH_ALLY', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'ttMinimapHealthAllyDisplayMode', renderer: "TT_CONFIG_RENDERERS.DROPDOWN", args: { default: 0, items: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], type: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'} }},
@@ -897,6 +898,7 @@
     MARKER_FONT_SIZE: {KEY: 'ttMinimapMarkerFontSize', DEFAULT: 9, OFFSET: 9, MODIFIER: 1},
     PLAYER_NAME_DISPLAY_MODE: {KEY: 'ttMinimapPlayerNameDisplayMode', DEFAULT: 0, OFFSET: 0, MODIFIER: 1},
     LAST_SPOTTED_ON_ALT: {KEY: 'ttMinimapLastSpottedTimerVisibleOnAlt', DEFAULT: true},
+    SHOW_DEAD: {KEY: 'ttMinimapShowDeadPlayer', DEFAULT: false},
     NEARBY_AA_RANGE: {KEY: 'ttMinimapNearbyAARangeVisible', DEFAULT: false},
     DETECTION: {KEY: 'ttMinimapAllyDetectionVisible', DEFAULT: false},
     HEALTH_ALLY: {KEY: 'ttMinimapHealthAllyDisplayMode', DEFAULT: 0, OFFSET: 0, MODIFIER: 1},
