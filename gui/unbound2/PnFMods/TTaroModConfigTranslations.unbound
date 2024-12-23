@@ -203,4 +203,6 @@
     IDS_TT_HINT_DIRECTIONAL_LINE                 : ["'Display the direction of all the visible enemies, including ones that you are not locking onto.'", "'ターゲットロックをしていない時も、可視状態の敵艦艇の向きを表示します'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_GRADIENT_BACKGROUND                   : ["'Gradient Background'", "'グラデーション背景'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_HINT_GRADIENT_BACKGROUND              : ["'Apply the gradient transparency on water to keep the clearer view near the center of the screen.'", "'グラデーションの透過を背景に適用し、画面中央部の視界をクリアに保ちます'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_TITLE_AIM_MARKERS                     : ["'Aim Marker'", "'照準マーカー'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_AIM_MARKER_TYPE                       : ["'Shape'", "'形'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
 })
