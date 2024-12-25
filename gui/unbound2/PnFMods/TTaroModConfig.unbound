@@ -107,7 +107,7 @@
 		(var selectedIndex:number = "-1")
 		(bind selectedIndex "$event.index" init=false (event "evTabClicked"))
 
-		(var languageOptions:dict = "{key: TT_ELEMENT_NAME + 'Language', items: TT_CONFIG_LANGUAGES, default: 0}")
+		(var languageOptions:dict = "{key: TT_ELEMENT_NAME + 'Language', dropdownItems: TT_CONFIG_LANGUAGES, default: 0}")
 	)
 
 	(style 
