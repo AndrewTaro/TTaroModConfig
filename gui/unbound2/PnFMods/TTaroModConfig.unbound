@@ -7,526 +7,45 @@
 (def constant TT_CONFIG_OPTION_VALUE_WIDTH 40px)
 (def constant TT_CONFIG_OPTION_VALUE_MARGIN 7px)
 (def constant TT_CONFIG_RESET_BUTTON_SIZE 18px)
+(def constant TT_CONFIG_COLOR_PALETTE_SIZE 30px)
 
 (def constant TT_ELEMENT_SIZE {
 	WIDTH: 50,
 	HEIGHT: 30
 })
 
-(def constant TT_CONFIG_RENDERER_ELEMENTS {
-	TITLE:			'TT_TT_TitleElement',
-	SWITCH:			'TT_SwitchOptionElement',
-	SLIDER_FLOAT:	'TT_SliderOptionElement',
-	SLIDER_INT:		'TT_SliderOptionElement',
-	DROPDOWN:		'TT_DropdownOptionElement',
+(def constant TT_CONFIG_RENDERERS {
+	SWITCH				: 'TT_SwitchOptionElement',
+	SLIDER				: 'TT_SliderOptionElement',
+	DROPDOWN			: 'TT_DropdownOptionElement',
+
+	MINIMAP_SWITCH		: 'TT_MinimapSwitchOptionElement',
+	MINIMAP_SLIDER		: 'TT_MinimapSliderOptionElement',
+	MINIMAP_DROPDOWN	: 'TT_MinimapDropdownOptionElement',
 })
 
-(def constant MOD_3DRADAR_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_CIRCLE_OPACITY',
-		sectionElements: [
-			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleOpacityReady',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.7, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReload',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.7, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dRadarCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-		]
+(def constant TT_DROPWDOWN_RENDERERS {
+	COLOR_PALETTE: {
+		DROPDOWN	: 'TT_ColorPaletteDropdownElement' ,
+		ITEM		: 'TT_DropdownColorPaletteItemRendererElement' ,
+		CHOSEN_ITEM	: 'TT_DropdownChosenColorItemRendererElement' ,
 	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_CIRCLE_OPACITY_WITH_ENEMY',
-		sectionElements: [
-			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.7, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dRadarCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.7, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dRadarCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 1.0, step:0.1}},
-		]
+	COLOR_TEXT: {
+		# DROPDOWN	: use default
+		ITEM		: 'TT_DropdownColorItemRendererElement' ,
+		CHOSEN_ITEM	: 'TT_DropdownChosenColorItemRendererElement' ,
 	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_WITH_ENEMY_DISTANCE_OFFSET',
-		sectionElements: [
-			{configTitle: 'IDS_TT_DISTANCE_OFFSET',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadarCircleRangeOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 1.0, step:0.5}},
-		]
+	KEY: {
+		# DROPDOWN	: use default
+		ITEM		: 'TT_DropdownKeyItemRendererElement' ,
+		CHOSEN_ITEM	: 'TT_DropdownChosenKeyItemRendererElement' ,
 	},
-])
-
-(def constant MOD_3DHYDRO_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_CIRCLE_OPACITY',
-		sectionElements: [
-			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleOpacityReady',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.2, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dHydroCircleOpacityReload',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.2, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dHydroCircleOpacityActive',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.2, step:0.1}},
-		]
+	CUSTOM_TEXT: {
+		# DROPDOWN	: use default
+		ITEM		: 'TT_DropdownTextItemRendererElement' ,
+		CHOSEN_ITEM	: 'TT_DropdownChosenTextItemRendererElement' ,
 	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_CIRCLE_OPACITY_WITH_ENEMY',
-		sectionElements: [
-			{configTitle: 'IDS_TT_CONSUMABLE_READY',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleOpacityReadyWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.2, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_RELOAD',	titleColor: "SC.Ui_styles.SERVICE_COLORS.ORANGE",	key: '3dHydroCircleOpacityReloadWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.2, step:0.1}},
-			{configTitle: 'IDS_TT_CONSUMABLE_ACTIVE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN",	key: '3dHydroCircleOpacityActiveWithEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1.0, default: 0.5, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_WITH_ENEMY_DISTANCE_OFFSET',
-		sectionElements: [
-			{configTitle: 'IDS_TT_DISTANCE_OFFSET',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dHydroCircleRangeOffset',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 1.0, step:0.5}},
-		]
-	},
-])
-
-(def constant MOD_3DRADIO_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_DISPLAY_MODE',
-		sectionElements: [
-			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_LINE_COLOR',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioLineOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.2, step:0.1}},
-			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: '3dRadioLineColorRed',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: '3dRadioLineColorGreen',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: '3dRadioLineColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_SECTOR_COLOR',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioSectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 0.1, default: 0.04, step:0.01}},
-			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: '3dRadioSectorColorRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: '3dRadioSectorColorGreen',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: '3dRadioSectorColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_RPF_ANIMATION',
-		sectionElements: [
-			{configTitle: 'IDS_TT_MAX_BRIGHTNESS',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '3dRadioAnimationMaxOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 10, default: 2.0, step:1.0}},
-		]
-	},
-])
-
-(def constant MOD_REGENMONITOR_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_REGENBAR_COLOR_ALLY',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
-			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'regenMonitorBarRedAlly',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'regenMonitorBarGreenAlly',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'regenMonitorBarBlueAlly',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_REGENBAR_COLOR_ENEMY',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenMonitorBarOpacityEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
-			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'regenMonitorBarRedEnemy',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'regenMonitorBarGreenEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'regenMonitorBarBlueEnemy',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.9, step:0.1}},
-		]
-	},
-])
-
-(def constant MOD_SMOKEMARKER_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_SMOKEMARKER_COLOR_MINIMAP',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'smokeMarkerMinimapOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
-			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'smokeMarkerMinimapRed',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'smokeMarkerMinimapGreen',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'smokeMarkerMinimapBlue',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.8, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_SMOKEMARKER_COLOR_WORLD',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'smokeMarkerWorldOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: 'smokeMarkerWorldRed',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: 'smokeMarkerWorldGreen',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: 'smokeMarkerWorldBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-		]
-	},
-])
-
-(def constant MOD_TEAMPANEL_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_GENERAL',
-		sectionElements: [
-			{configTitle: 'IDS_TT_SHOW_DEAD',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", 	key: 'ttTeamPanelDeadPlayerVisible',renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_DISPLAY_HEIGHT_OFFSET',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelPosOffset',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 5, default: 0, step:1}},
-			{configTitle: 'IDS_TT_UI_SCALE',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelScaleOffset',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 5, default: 0, step:1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
-		sectionElements: [
-			{configTitle: 'IDS_TT_USE_BLUR',				tooltipHint: 'IDS_TT_HINT_BLUR_PERFORMANCE_WARNING', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurMode',			renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurVisibleOnAlt',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'ttTeamPanelBlurOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.0, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_BASIC_INFO',
-		sectionElements: [
-			{configTitle: 'IDS_TT_CLAN_NAME',		key: 'ttTeamPanelClanNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_CLAN_ICON',		key: 'ttTeamPanelClanIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_PLAYER_NAME',		key: 'ttTeamPanelPlayerNameVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_SHIP_NAME',		key: 'ttTeamPanelShipNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_NATIONAL_FLAG',	key: 'ttTeamPanelShipNationVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_TIER',			key: 'ttTeamPanelShipTierVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_HIGHLIGHT_PREMIUM_TIER',	key: 'ttTeamPanelHighlightPremiumTier',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_CLASS_ICON',		key: 'ttTeamPanelShipIconVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_CLASS_ICON_COLOR',key: 'ttTeamPanelShipIconColorPreset',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['None', 'Aslain v1', 'Aslain v2', 'AutoSpy', 'Roslich', 'DeCease', 'Hakabase'], default: 0}},
-			{configTitle: 'IDS_TT_CLASS_ICON_STATUS',	key: 'ttTeamPanelShipIconStatusColor', tooltipHint: 'IDS_TT_HINT_CLASS_ICON_STATUS',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_KILL_COUNT',		key: 'ttTeamPanelPlayerKillsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_DETECTION',		key: 'ttTeamPanelShipDetectionVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_BAR_OPACITY',		key: 'ttTeamPanelHealthBarOpacity',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.4, step:0.1}},
-			{configTitle: 'IDS_TT_BAR_WIDTH',		key: 'ttTeamPanelHealthBarWidth',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: -5, max: 5, default: 0, step:1}},
-			{configTitle: 'IDS_TT_TEAM_CONSUMABLE',	key: 'ttTeamPanelTeamConsumablesVisible',		tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_SHIP_STATS',
-		sectionElements: [
-			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	key: 'ttTeamPanelShipStatsVisibleOnAlt',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_SHOW_UNIT',		key: 'ttTeamPanelShipStatsUnitsVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_BOLD_FONT',		key: 'ttTeamPanelShipStatsUseBoldFont',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_ARTILLERY',
-		sectionElements: [
-			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelArtilleryRangeVisible', 	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_RELOAD',			key: 'ttTeamPanelArtilleryReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_TORPEDO',
-		sectionElements: [
-			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelTorpedoRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			#{configTitle: 'IDS_TT_RELOAD',			key: 'ttTeamPanelTorpedoReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_ATBA',
-		sectionElements: [
-			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelAtbaRangeVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_AIR_DEFENSE',
-		sectionElements: [
-			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelAntiAirRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_RATING',			key: 'ttTeamPanelAntiAirRateVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_AIR_STRIKE',
-		sectionElements: [
-			{configTitle: 'IDS_TT_RANGE',			key: 'ttTeamPanelAirSupportRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_RELOAD',			key: 'ttTeamPanelAirSupportReloadVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_SPEED',
-		sectionElements: [
-			{configTitle: 'IDS_TT_SURFACE',			key: 'ttTeamPanelSpeedSurfaceVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_UNDERWATER',		key: 'ttTeamPanelSpeedUnderwaterVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_VISIBILITY',
-		sectionElements: [
-			{configTitle: 'IDS_TT_SURFACE',		key: 'ttTeamPanelVisibilitySurfaceVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_AIR',			key: 'ttTeamPanelVisibilityAirVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_SURFACE_CONSUMABLE_RANGE',
-		sectionElements: [
-			{configTitle: 'IDS_TT_HYDRO',		key: 'ttTeamPanelHydroRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_RADAR',		key: 'ttTeamPanelRadarRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_SUBMARINE_CONSUMABLE_RANGE',
-		sectionElements: [
-			{configTitle: 'IDS_TT_SUB_HYDRO',		key: 'ttTeamPanelSubHydroRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_SUB_RADAR',		key: 'ttTeamPanelSubRadarRangeVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-])
-
-(def constant MOD_FPSPINGMETER_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_FONT_STYLE',
-		sectionElements: [
-			{configTitle: 'IDS_TT_SIZE',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterFontSize',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['Default', 'Medium', 'Big'], default: 0}},
-			{configTitle: 'IDS_TT_THEME',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterFontStyle',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['Default', 'Light'], default: 0}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_FPS_THRESHOLD',
-		sectionElements: [
-			{configTitle: 'IDS_TT_WARNING',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterFpsWarnThreshold',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 30, max: 150, default: 55, step:5, round: 0}},
-			{configTitle: 'IDS_TT_CRITICAL',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterFpsCritThreshold',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 30, max: 150, default: 30, step:5, round: 0}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_PING_THRESHOLD',
-		sectionElements: [
-			{configTitle: 'IDS_TT_WARNING',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterPingWarnThreshold',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 50, max: 150, default: 100, step:10, round: 0}},
-			{configTitle: 'IDS_TT_CRITICAL',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'fpsPingMeterPingCritThreshold',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 50, max: 150, default: 150, step:10, round: 0}},
-		]
-	},
-])
-
-(def constant MOD_STREAMERMODE_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_ANONYMOUS_MODE',
-		sectionElements: [
-			{configTitle: 'IDS_TT_ANONYMIZE_MODE',	tooltipHint: 'IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH',	key: 'streamerModeEnabled',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-		]
-	},
-])
-
-(def constant MOD_DAMAGEMETER_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_GENERAL',
-		sectionElements: [
-			{configTitle: 'IDS_TT_THEME',			key: 'dDamageMeterFontStyleIndex',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['Default', 'Blue', 'Golden', 'Green', 'Orange'], default: 0}},
-			{configTitle: 'IDS_TT_UI_SCALE',		key: 'dDamageMeterScale',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
-			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	key: 'dDamageMeterVisibleOnAlt',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_INCOMING_DAMAGE',	key: 'dDamageMeterIncomingDamageVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_OUTGOING_DAMAGE',	key: 'dDamageMeterOutgoingDamageVisible',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',	key: 'dDamageMeterDisableDragDrop',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_PLAYER_INFO',
-		sectionElements: [
-			{configTitle: 'IDS_TT_CLAN_NAME',		key: 'dDamageMeterClanTagVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_PLAYER_NAME',		key: 'dDamageMeterPlayerNameVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_COLUMN_WIDTH',	key: 'dDamageMeterPlayerInfoWidth',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_SHIP_INFO',
-		sectionElements: [
-			{configTitle: 'IDS_TT_SHIP_NAME',		key: 'dDamageMeterShipNameVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_CLASS_ICON',		key: 'dDamageMeterShipTypeVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_CLASS_ICON_COLOR',key: 'dDamageMeterShipTypeStyleIndex',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", 		args: {items:['None', 'Aslain v1', 'Aslain v2', 'AutoSpy', 'Roslich', 'DeCease', 'Hakabase'], default: 0}},
-			{configTitle: 'IDS_TT_COLUMN_WIDTH',	key: 'dDamageMeterShipInfoWidth',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_ADVANCED_SETTINGS',
-		sectionElements: [
-			{configTitle: 'IDS_TT_LAST_DAMAGE',		key: 'dDamageMeterLastDamageVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_REVERSE_ROWS',	key: 'dDamageMeterReverseRows',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_ROW_INDEX',		key: 'dDamageMeterRowIndexVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_ROW_COUNTS',		key: 'dDamageMeterNumRows',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 1, max: 10, default: 3, step: 1, round: 0}},
-			{configTitle: 'IDS_TT_ROW_HEIGHT',		key: 'dDamageMeterRowHeight',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 1, max: 10, default: 2, step: 1, round: 0}},
-			
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
-		sectionElements: [
-			{configTitle: 'IDS_TT_DISPLAY_ON_ALT',	key: 'dDamageMeterBackgroundVisibleOnAlt',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 		args: {default: false}},
-			{configTitle: 'IDS_TT_OPACITY',			key: 'dDamageMeterBackgroundOpacity',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.4, step:0.1}},
-		]
-	},
-])
-
-(def constant MOD_SCORETIMER_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_GENERAL',
-		sectionElements: [
-			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',	key: 'scoreTimerDisableDragDrop',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-		]
-	},
-])
-
-(def constant MOD_BUILDVIEWER_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_GENERAL',
-		sectionElements: [
-			{configTitle: 'IDS_TT_UI_SCALE',			key: 'buildViewerScale',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
-			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP',	tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',		key: 'buildViewerDisableDragDrop',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_DISABLE_ALLY_BUILDS',	key: 'buildViewerDisableAllyBuilds',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'buildViewerBackgroundOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.4, step:0.1}},
-		]
-	},
-])
-
-(def constant MOD_REGENASSISTANT_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_GENERAL',
-		sectionElements: [
-			{configTitle: 'IDS_TT_UI_SCALE',			key: 'regenAssistantScale',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
-			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP',	key: 'regenAssistantDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',	titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			{configTitle: 'IDS_TT_REGEN_WARNING_ANIMATION_REPEATS',	key: 'regenAssistantWarningAnimationRepeats', tooltipHint: 'IDS_TT_HINT_REGEN_WARNING_ANIMATION_REPEATS', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 7, default: 3, step:1, maxLabel: '∞', round: 0}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: 'regenAssistantBackgroundOpacity',		renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.0, step:0.1}},
-		]
-	},
-])
-
-(def constant MOD_PENCALCULATOR_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_GENERAL',
-		sectionElements: [
-			{configTitle: 'IDS_TT_THEME',						key: 'penCalcFontStyleIndex',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN",  args: {items:['Default', 'Blue', 'Golden', 'Green', 'Orange'], default: 0}},
-			{configTitle: 'IDS_TT_ALWAYS_SHOW_IMPACT_ANGLE',	key: 'penCalcImpactAngleAlwaysVisible',			tooltipHint: 'IDS_TT_HINT_ALWAYS_SHOW_IMPACT_ANGLE', titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: false}},
-			{configTitle: 'IDS_TT_DISPLAY_HEIGHT_OFFSET',		key: 'penCalcHeightOffset',						titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 1, max: 5, default: 1, step: 1, round: 0}},
-		]
-	},
-])
-
-(def constant MOD_TTAROCHAT_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_GENERAL',
-		sectionElements: [
-			{configTitle: 'IDS_TT_THEME',						key: 'ttChatStyleIndex',						titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.DROPDOWN", args: {items:['Roslich', 'AutoSpy', 'TTaro'], default: 0}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_PLAYER_INFO',
-		sectionElements: [
-			{configTitle: 'IDS_TT_PLAYER_NAME',					key: 'ttChatPlayerNameVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-			{configTitle: 'IDS_TT_CLAN_NAME',					key: 'ttChatClanNameVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_SHIP_INFO',
-		sectionElements: [
-			{configTitle: 'IDS_TT_SHIP_NAME',					key: 'ttChatShipNameVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-			{configTitle: 'IDS_TT_CLASS_ICON',					key: 'ttChatShipClassIconVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-			{configTitle: 'IDS_TT_TIER',						key: 'ttChatShipTierVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-		]
-	},
-	# {
-	# 	sectionTitle: 'IDS_TT_TITLE_ENEMY_CHAT',
-	# 	sectionElements: [
-	# 		{configTitle: 'IDS_TT_PLAYER_CHATS',				key: 'ttChatEnemyChatsVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_ACHIEVEMENT_CHATS',			key: 'ttChatEnemyAchievementsVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_WELL_DONE_CHATS',				key: 'ttChatEnemyWellDoneVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_GOOD_LUCK_CHATS',				key: 'ttChatEnemyGoodLuckVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_WTF_CHATS',					key: 'ttChatEnemyWTFVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 	]
-	# },
-	# {
-	# 	sectionTitle: 'IDS_TT_TITLE_ALLY_CHAT',
-	# 	sectionElements: [
-	# 		{configTitle: 'IDS_TT_PLAYER_CHATS',				key: 'ttChatAllyChatsVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_ACHIEVEMENT_CHATS',			key: 'ttChatAllyAchievementsVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH",  	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_WELL_DONE_CHATS',				key: 'ttChatAllyWellDoneVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_GOOD_LUCK_CHATS',				key: 'ttChatAllyGoodLuckVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_WTF_CHATS',					key: 'ttChatAllyWTFVisible',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_AFFIRMITIVE_CHATS',			key: 'ttChatAllyAffirmitiveVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_NEGATIVE_CHATS',				key: 'ttChatAllyNegativeVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_GET_BACK_CHATS',				key: 'ttChatAllyGetBackVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_NEED_SMOKE_CHATS',			key: 'ttChatAllyNeedSmokeVisible',				titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_NEED_SUPPORT_CHATS',			key: 'ttChatAllyNeedSupportVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_NEED_AIR_DEFENSE_CHATS',		key: 'ttChatAllyNeedAirDefenseVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 		{configTitle: 'IDS_TT_NEED_SPOTTING_CHATS',			key: 'ttChatAllyNeedSpottingVisible',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", 	args: {default: true}},
-	# 	]
-	# },
-])
-
-(def constant MOD_DAMAGEMONITOR_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_GENERAL',
-		sectionElements: [
-			{configTitle: 'IDS_TT_UI_SCALE',		key: 'dMonitorScale',						titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
-			{configTitle: 'IDS_TT_ROW_COUNTS',		key: 'dMonitorRowCounts',					titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 1, max: 12, default: 4, step: 1, round: 0}},
-			{configTitle: 'IDS_TT_INCOMING_DAMAGE',	key: 'dMonitorReceivedDamageVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_OUTGOING_DAMAGE',	key: 'dMonitorInflictedDamageVisible',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: true}},
-			{configTitle: 'IDS_TT_DISABLE_DRAG_DROP', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP',	key: 'dMonitorDisableDragDrop',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SWITCH", args: {default: false}},
-			
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_PLAYER_INFO',
-		sectionElements: [
-			{configTitle: 'IDS_TT_COLUMN_WIDTH',	key: 'dMonitorPlayerInfoWidth',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_SHIP_INFO',
-		sectionElements: [
-			{configTitle: 'IDS_TT_COLUMN_WIDTH',	key: 'dMonitorShipInfoWidth',			titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0.5, max: 1.5, default: 1, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',			key: 'dMonitorBackgroundOpacity',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", 	args: {min: 0, max: 1, default: 0.4, step:0.1}},
-		]
-	},
-])
-
-(def constant MOD_2DRADIO_CONFIGS [
-	{
-		sectionTitle: 'IDS_TT_TITLE_SECTOR_COLOR_SELF',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '2dRadioSelfSectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.1, step:0.1}},
-			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: '2dRadioSelfSectorColorRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: '2dRadioSelfSectorColorGreen',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: '2dRadioSelfSectorColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-		]
-	},
-	{
-		sectionTitle: 'IDS_TT_TITLE_SECTOR_COLOR_ALLY',
-		sectionElements: [
-			{configTitle: 'IDS_TT_OPACITY',		titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE",	key: '2dRadioAllySectorOpacity',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 0.1, step:0.1}},
-			{configTitle: 'IDS_TT_RED',			titleColor: "0xFFFF6666",							key: '2dRadioAllySectorColorRed',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_GREEN',		titleColor: "0xFF66FF66",							key: '2dRadioAllySectorColorGreen',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-			{configTitle: 'IDS_TT_BLUE',		titleColor: "0xFF6666FF",							key: '2dRadioAllySectorColorBlue',	renderer: "TT_CONFIG_RENDERER_ELEMENTS.SLIDER_FLOAT", args: {min: 0, max: 1, default: 1.0, step:0.1}},
-		]
-	},
-])
-
-(def constant MOD_CONSUMABLESMONITOR_CONFIGS [
-
-])
-
-#TODO: should get actual numbers from py code
-(def constant MOD_MODULESTATEVIEWER_CONFIGS [
-
-])
-
-
-(def constant TT_MODS_CONFIG_LIST [
-	{modName: '3D Radar',				configSections: "MOD_3DRADAR_CONFIGS", 			isInstalled: "TT_3DRADAR_INSTALLED"},
-	{modName: '3D Hydro',				configSections: "MOD_3DHYDRO_CONFIGS", 			isInstalled: "TT_3DHYDRO_INSTALLED"},
-	{modName: '3D Radio',				configSections: "MOD_3DRADIO_CONFIGS",			isInstalled: "TT_3DRADIO_INSTALLED"},
-	{modName: 'Regen Monitor',			configSections: "MOD_REGENMONITOR_CONFIGS", 	isInstalled: "TT_REGENMONITOR_INSTALLED"},
-	{modName: 'Smoke Marker',			configSections: "MOD_SMOKEMARKER_CONFIGS",		isInstalled: "TT_SMOKEMARKER_INSTALLED"},
-	{modName: 'Team Panel',				configSections: "MOD_TEAMPANEL_CONFIGS",		isInstalled: "TT_TEAMPANEL_INSTALLED"},
-	{modName: 'FPS/Ping Meter',			configSections: "MOD_FPSPINGMETER_CONFIGS",		isInstalled: "TT_FPSPINGMETER_INSTALLED"},
-	{modName: 'Streamer Mode',			configSections: "MOD_STREAMERMODE_CONFIGS",		isInstalled: "TT_STREAMERMODE_INSTALLED"},
-	{modName: 'Damage Meter',			configSections: "MOD_DAMAGEMETER_CONFIGS",		isInstalled: "TT_DAMAGEMETER_INSTALLED"},
-	{modName: 'Score Timer',			configSections: "MOD_SCORETIMER_CONFIGS",		isInstalled: "TT_SCORETIMER_INSTALLED"},
-	{modName: 'Build Viewer',			configSections: "MOD_BUILDVIEWER_CONFIGS",		isInstalled: "TT_BUILDVIEWER_INSTALLED"},
-	{modName: 'Regen Assistant',		configSections: "MOD_REGENASSISTANT_CONFIGS",	isInstalled: "TT_REGENASSISTANT_INSTALLED"},
-	{modName: 'Pen Calculator',			configSections: "MOD_PENCALCULATOR_CONFIGS",	isInstalled: "TT_PENCALCULATOR_INSTALLED"},
-	{modName: 'Damage Monitor',			configSections: "MOD_DAMAGEMONITOR_CONFIGS",	isInstalled: "TT_DAMAGEMONITOR_INSTALLED"},
-	{modName: '2D Radio',				configSections: "MOD_2DRADIO_CONFIGS",			isInstalled: "TT_2DRADIO_INSTALLED"},
-	# {modName: 'Chat',					configSections: "MOD_TTAROCHAT_CONFIGS",		isInstalled: "TT_TTAROCHAT_INSTALLED"},
-])
-
-
-#{modName: 'Consumables Monitor',	configSections: "MOD_CONSUMABLESMONITOR_CONFIGS"},
-#{modName: 'Module State Viewer',	configSections: "MOD_MODULESTATEVIEWER_CONFIGS"},
+})
 
 (def element TTaroModConfig() layout=true
 	(scope
@@ -588,7 +107,7 @@
 		(var selectedIndex:number = "-1")
 		(bind selectedIndex "$event.index" init=false (event "evTabClicked"))
 
-		(var languageOptions:dict = "{items: TT_CONFIG_LANGUAGES, default: 0}")
+		(var languageOptions:dict = "{key: TT_ELEMENT_NAME + 'Language', dropdownItems: TT_CONFIG_LANGUAGES, default: 0}")
 	)
 
 	(style 
@@ -605,7 +124,7 @@
 			(height = "40px")
 			(marginLeft = "-TT_CONFIG_OPTION_CONTROL_WIDTH + 16")
 		)
-		(element TT_DropdownOptionElement _prefKey="TT_ELEMENT_NAME + 'Language'" _args="languageOptions" _userPrefsNum="_userPrefsNum")
+		(element TT_DropdownOptionElement _pref="languageOptions" _userPrefsNum="_userPrefsNum")
 	)
 	(hblock
 		(style
@@ -721,6 +240,16 @@
 				init	 = true
 			)
 		)
+
+		(macro TT_GET_LANGUAGE_INDEX)
+		
+		(var sectionSettings:dict = "'sectionSettings' in _sectionData ? _sectionData.sectionSettings : {}")
+		(var isConfigurable:bool = "'isEnabled' in sectionSettings ? sectionSettings.isEnabled : true")
+		(var tooltipHint:str = "'tooltipHint' in sectionSettings ? sectionSettings.tooltipHint : ''")
+		(var tooltipExtraData:str = "'tooltipExtraData' in sectionSettings ? sectionSettings.tooltipExtraData : ''")
+		(var hintTranslations:array = "tooltipHint ? TT_CONFIG_LOCALIZATIONS[tooltipHint] : null")
+		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
+		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
 	)
 
 	(bind visible "isSectionEnabled")
@@ -730,6 +259,7 @@
 		(width = 90%)
 		(marginBottom = "TT_CONFIG_SECTION_MARGIN")
 		(bind marginTop "$index == 0 ? TT_CONFIG_SECTION_MARGIN : 0")
+		(backgroundColor = 0x01000000) # For hittest
 	)
 
 	(element TT_SectionTitleElement _data="_sectionData" _userPrefsNum="_userPrefsNum")
@@ -740,29 +270,56 @@
 		(bind enabled "isSectionEnabled")
 		(bind count "_sectionData.sectionElements.length")
 		(args 
-			_configData   = "_sectionData.sectionElements[$index]"
-			_userPrefsNum = "_userPrefsNum"
+			_pref   		= "_sectionData.sectionElements[$index]"
+			_isConfigurable	= "isConfigurable"
+			_userPrefsNum	= "_userPrefsNum"
 		)
+	)
+
+	(controller $Tooltip (renderer = 'DescriptionStatusLineTooltip')
+		(bind enabled "!isConfigurable")
+		(args
+			_descriptionText = "localizedHintText"
+			_statusText = "tooltipExtraData"
+			_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.NEGATIVE"
+		)
+		(macro TT_TOOLTIP_BEHAVIOUR)
 	)
 )
 
-(def element TT_ConfigElement (_configData:dict, _userPrefsNum:gfx=null)layout=true
+(def element TT_ConfigElement (_pref:dict, _isConfigurable:bool, _userPrefsNum:gfx=null)layout=true
 	(scope
-		(var isConfigEnabled:bool = false)
+		(var dividerPos:number = "'divider' in _pref ? _pref.divider : -1")
+		(var hasTopDivider:bool = "top == dividerPos")
+		(var hasBottomDivider:bool = "bottom == dividerPos")
+		
+		(event evChangeParentPref)
+		(var parentPrefs:array = "'parentPrefs' in _pref ? _pref.parentPrefs : []")
+		(var parentPrefsCount:number = "parentPrefs.length")
+
+		# The elements inside will be recreated but the scope variables remain?
+		# Switching between tabs will screw up this counter.
+		(var enabledParentPrefCount:number = 0)
+		(var isOptionEnabled:bool = "parentPrefsCount == 0 ? true : enabledParentPrefCount > 0") # or condition. For and, use parentPrefsCount == enabledParentPrefsCount
+		
+		(bind enabledParentPrefCount "enabledParentPrefCount + $event.isEnabled" watch=false init=false (event "evChangeParentPref"))
+
+		(var isConfigInitialized:bool = false)
+		(var targetAlpha:number = "_isConfigurable && isOptionEnabled ? 1.0 : 0.3")
 
 		(controller $Animation
 			(bindcall play
 				delay = "$index * 0.03"
 				duration = "0.001"
-				from	 = "{ isConfigEnabled: false }"
-				to		 = "{ isConfigEnabled: true }"
+				from	 = "{ isConfigInitialized: false }"
+				to		 = "{ isConfigInitialized: true }"
 				init	 = true
 			)
 		)
 
 		# For tooltip hint
 		(macro TT_GET_LANGUAGE_INDEX)
-		(var hintKey:str = "'tooltipHint' in _configData ? _configData.tooltipHint : null")
+		(var hintKey:str = "'tooltipHint' in _pref ? _pref.tooltipHint : null")
 		(var hintTranslations:array = "hintKey ? TT_CONFIG_LOCALIZATIONS[hintKey] : null")
 		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
 		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
@@ -770,75 +327,140 @@
 		(macro MOUSE_HANDLER_SCOPE)
 	)
 
+	# Config Checker
+	(controller $Repeat renderer='TT_ParentPrefCheckerElement'
+		(bind enabled "parentPrefsCount > 0")
+		(bind count "parentPrefsCount")
+		(args _parentPref="parentPrefs[$index]" _userPrefsNum="_userPrefsNum")
+	)
+	#
+
 	(macro MOUSE_EVENTS_DISPATCHER)
 
 	(style
-		(alpha = 0)
-		(width = 100%)
+		(width = 96%)
+		(bind hitTest "_isConfigurable && isOptionEnabled")
 	)
-	(controller $Animation
-		(bindcall play
-			duration = "0.2"
-			from = "{ alpha: 0 }"
-			to = "{ alpha: 1 }"
-			(bind trigger "isConfigEnabled")
-		)
+
+	(controller $Instance renderer='TT_HorizontalDivider'
+		(bind enabled "hasTopDivider")
 	)
 
 	(block
-		# For background highlight
-		(class $FullsizeAbsolute)
 		(style
-			(backgroundColor = 0x1FFFFFFF)
 			(alpha = 0)
+			(width = 100%)
 		)
 		(controller $Animation
 			(bindcall play
-				duration = 0.1
-				to		 = { alpha: 1 }
+				duration = "0.2"
+				to = "{ alpha: targetAlpha }"
+				watch=true
 				action="killAll"
-				(event "evRollOver")
-			)
-			(bindcall play
-				duration = 0.1
-				to		 = { alpha: 0 }
-				action="killAll"
-				(event "evRollOut")
+				(bind trigger "isConfigInitialized")
 			)
 		)
-	)
 
-	(hblock
-		(style
-			(align = "middle|center")
-			(width = 100%) #~~it breaks layout for some reason~~ parent element must have width. In this case the width=100% above^
-			(marginBottom = 4px)
-			(marginTop = 4px)
-			(backgroundColor = 0x01000000) # For tooltip hittest
+		# BG
+		(block
+			# For background highlight
+			(class $FullsizeAbsolute)
+			(style
+				(backgroundColor = 0x1FFFFFFF)
+				(alpha = 0)
+			)
+			(controller $Animation
+				(bindcall play
+					duration = 0.1
+					to		 = { alpha: 1 }
+					action="killAll"
+					(event "evRollOver")
+				)
+				(bindcall play
+					duration = 0.1
+					to		 = { alpha: 0 }
+					action="killAll"
+					(event "evRollOut")
+				)
+			)
 		)
-		
 
-		(element TT_ConfigTitleElement _data="_configData" _userPrefsNum="_userPrefsNum")
+		# Main: title and option
+		(hblock
+			(style
+				(align = "middle|center")
+				(width = 100%) #~~it breaks layout for some reason~~ parent element must have width. In this case the width=100% above^
+				(marginBottom = 4px)
+				(marginTop = 4px)
+				(backgroundColor = 0x01000000) # For tooltip hittest
+			)
+			
 
-		(controller $Instance
-			(bind renderer "_configData.renderer")
-			(bind enabled "isConfigEnabled")
+			(element TT_ConfigTitleElement _data="_pref" _userPrefsNum="_userPrefsNum")
+
+			(controller $Instance
+				(bind renderer "_pref.renderer")
+				(bind enabled "isConfigInitialized")
+				(args
+					_pref="_pref"
+					_userPrefsNum="_userPrefsNum"
+				)
+			)
+		)
+
+		# Hint
+		(controller $Tooltip (renderer = 'RepeatStatusTooltip')
+			# SimpleStatus does not support multilines.
+			(bind enabled "hintKey")
 			(args
-				_prefKey="_configData.key"
-				_args="_configData.args"
-				_userPrefsNum="_userPrefsNum"
+				_tooltipDataArray="[{text: localizedHintText, unifiedStatus: SC.Ui_styles.UNIFIED_STATUS.INFO}]"
+				_text = "localizedHintText"
+				_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.INFO"
 			)
+			(macro TT_TOOLTIP_BEHAVIOUR)
 		)
 	)
 
-	(controller $Tooltip (renderer = 'SimpleStatusTooltip')
-		(bind enabled "hintKey")
-		(args
-			_text = "localizedHintText"
-			_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.INFO"
-		)
-		(macro TT_TOOLTIP_BEHAVIOUR)
+	(controller $Instance renderer='TT_HorizontalDivider'
+		(bind enabled "hasBottomDivider")
 	)
+)
+
+(def element TT_ParentPrefCheckerElement (_parentPref:dict, _userPrefsNum:gfx=null) layout=false
+	(scope
+		(event evChangeParentPref)
+
+		(var validValues:array = "'validValues' in _parentPref ? _parentPref.validValues : []")
+		(var pref:dict = "'pref' in _parentPref ? _parentPref.pref : {}")
+		(var key:str = "'key' in pref ? pref.key : ''")
+		(var default:number = "'default' in pref ? pref.default : -1")
+
+		# For minimap
+		# (var isMinimapOption:bool = "'isMinimapOption' in _parentPref ? _parentPref.isMinimapOption : false")
+		# (var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, key)")
+		# (var optionEntity:gfx = "entityWatcher.entity" (event "entityWatcher.event"))
+		# (var minimapOption:gfx = "optionEntity ? optionEntity.minimapOption : null")
+		# (var mapPrefValue:number = "minimapOption ? minimapOption.value > 0 : default" (event "minimapOption.evValueChanged"))
+
+		# For userprefs
+		(var value:number = "isNumber(_userPrefsNum[key]) ? round(_userPrefsNum[key]) : default")
+
+		# (var value:number = "isMinimapOption ? mapPrefValue : userPrefValue")
+		(var isOptionEnabled:bool = "value in validValues")
+
+		# The elements inside will be recreated but the scope variables remain?
+		# Switching between tabs will screw up this counter.
+		#
+		# init=true does not trigger when the element is reused.
+		(var isFirstTime:bool = true)
+		(bind isFirstTime "false" watch=false init=false (event "evChangeParentPref"))
+	)
+
+	(dispatch evChangeParentPref dir="EventDirection.UP" args="{isEnabled: isOptionEnabled ? 1 : -1}" watch=false init=false (bind trigger "isOptionEnabled"))
+
+	# For init only!
+	# Dont decrement the count for the first time
+	(dispatch evChangeParentPref dir="EventDirection.UP" args="{isEnabled: isOptionEnabled ? 1 : 0}" watch=false on=addedToStage (bind enabled "isFirstTime"))
 )
 
 (def element TT_DragTitleElement () layout=true
@@ -862,6 +484,7 @@
 		(var titleKey:str = "_data.sectionTitle")
 		(var translations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
 		(macro TT_GET_LANGUAGE_INDEX)
+		(var isInGameString:bool = "tr(titleKey) != titleKey")
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
 		(var isValidLocalization:bool = "translations.length > languageIndex && !isIn(translations[languageIndex], ['', ' '])")
 		(var localizedTitleText:str = "isValidLocalization ? translations[languageIndex] : translations[0]")
@@ -872,7 +495,7 @@
 	)
 	(tf
 		(class $TextDefaultBold)
-		(bind text "localizedTitleText")
+		(bind text "isInGameString ? tr(titleKey) : localizedTitleText")
 		(style
 			(fontSize = 21)
 			#(textAlign = "center")
@@ -887,6 +510,7 @@
 		(var titleKey:str = "_data.configTitle")
 		(var titleTranslations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
 		(macro TT_GET_LANGUAGE_INDEX)
+		(var isInGameString:bool = "tr(titleKey) != titleKey")
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
 		(var isTitleValidLocalization:bool = "titleTranslations.length > languageIndex && !isIn(titleTranslations[languageIndex], ['', ' '])")
 		(var localizedTitleText:str = "isTitleValidLocalization ? titleTranslations[languageIndex] : titleTranslations[0]")
@@ -902,7 +526,7 @@
 			(align = "middle|center")
 		)
 		(tf
-			(bind text "localizedTitleText")
+			(bind text "isInGameString ? tr(titleKey) : localizedTitleText")
 			(class $TextDefault)
 			(style
 				(width = 100%)
@@ -921,11 +545,11 @@
 	)
 )
 
-(def element TT_SwitchOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_SwitchOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		#(macro TT_GET_UPREFS)
-		(var prefKey:str = "_prefKey")
-		(var defaultValue:number = "'default' in _args ? _args.default : false")
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+		(var defaultValue:number = "'default' in _pref ? _pref.default : false")
 		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue")
 		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(defaultValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 		(var saveMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(!prefValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
@@ -966,21 +590,21 @@
 	)
 )
 
-(def element TT_SliderOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_SliderOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(event evSliderValueChanged) #slider event
 		(event evValueReset) #image button event
 		(event evShow)
-		(var prefKey:str = "_prefKey")
-		(var minValue:number = "'min' in _args ? _args.min : 0")
-		(var maxValue:number = "'max' in _args ? _args.max : 10")
-		(var minLabel:str = "'minLabel' in _args ? _args.minLabel : ''")
-		(var maxLabel:str = "'maxLabel' in _args ? _args.maxLabel : ''")
-		(var step:number = "'step' in _args ? _args.step : 1")
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+		(var minValue:number = "'min' in _pref ? _pref.min : 0")
+		(var maxValue:number = "'max' in _pref ? _pref.max : 10")
+		(var minLabel:str = "'minLabel' in _pref ? _pref.minLabel : ''")
+		(var maxLabel:str = "'maxLabel' in _pref ? _pref.maxLabel : ''")
+		(var step:number = "'step' in _pref ? _pref.step : 1")
 		(var steps:number = "round((maxValue - minValue) / step)")
-		(var default:number = "'default' in _args ? _args.default : 0")
+		(var default:number = "'default' in _pref ? _pref.default : 0")
 		(var defaultValue:number = "round((default - minValue) / step)")
-		(var rounding:number = "'round' in _args ? _args.round : 2")
+		(var rounding:number = "'round' in _pref ? _pref.round : 2")
 		#watch=false is necessary to prevent the slider from flickering
 		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false (event "evShow"))
 		(bind prefValue "$event.value" watch=false init=false (event "evValueReset")(event "evSliderValueChanged"))
@@ -990,9 +614,20 @@
 									isMaxLabelAvailable ? maxLabel :
 									formatFloatingPoint(minValue + prefValue * step, rounding)"
 		)
+
+		# Creating this dict here with init=true will prevent
+		# triggering setUserPrefs every single time the elemnt is added to stage.
+		#
+		# Directly using $event.value will trigger the change event, even if the value is the same as before.
+		# Because, obviously, the value is not in scope. There is no way for Unbound to detect a change.
+		#
+		# Dict updates only when prefValue changes.
+		# Thus, if the value loaded from userPref is equal to current value, the update event will not happen.
+		(var prefData:dict = "{value: prefValue + 0.00001, name: 'chatBoxWidth', subName: prefKey}")
 	)
 	(dispatch evShow args="{}" on='addedToStage')
-	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', {'value': $event.value + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}]" init=false watch=false (event "evSliderValueChanged")(event "evValueReset"))
+
+	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', prefData]" init=false)
 
 	(style
 		(width = "50%")
@@ -1042,14 +677,23 @@
 	)
 )
 
-(def element TT_DropdownOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_DropdownOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(event ItemChooser_ValueSelected)
 		(event evMenuClosed) #To close dropdown menu when parent tooltip is closed
 
-		(var prefKey:str = "_prefKey")
-		(var defaultValue:number = "'default' in _args ? _args.default : 0")
-		(var items:array = "'items' in _args ? _args.items : []")
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+		
+		(var type:str = "'dropdownType' in _pref ? _pref.dropdownType : ''")
+		(var renderers:dict = "type in TT_DROPWDOWN_RENDERERS ? TT_DROPWDOWN_RENDERERS[type] : {}")
+		(var dropdownRenderer:str = "'DROPDOWN' in renderers ? renderers.DROPDOWN : 'ItemChooserDropdown'")
+		(var itemRenderer:str = "'ITEM' in renderers ? renderers.ITEM : 'TextListItemRenderer'")
+		(var chosenItemRenderer:str = "'CHOSEN_ITEM' in renderers ? renderers.CHOSEN_ITEM : 'DefaultItemChooserPickedItemRenderer'")
+
+		(var defaultValue:number = "'default' in _pref ? _pref.default : 0")
+		(var items:array = "'dropdownItems' in _pref ? _pref.dropdownItems : []")
+		
+		(var extraData:dict = "'extraData' in _pref ? _pref.extraData : {}")
 		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue")
 		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': defaultValue + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
@@ -1070,12 +714,15 @@
 
 		(element ItemChooser
 			_items = "items"
-			_listItemRenderer = "'TextListItemRenderer'"
-			_choosedItemRenderer = "'DefaultItemChooserPickedItemRenderer'"
+			_listItemRenderer = "itemRenderer"
+			_listItemRendererData = "extraData"
+			_choosedItemRenderer = "chosenItemRenderer"
+			_choosedItemRendererParams = "extraData"
+			_customDropdown = "dropdownRenderer"
 			_onItemSelectedEvent = "'ValueSelected'"
 			_selectedMaxWidth = "TT_CONFIG_OPTION_CONTROL_WIDTH + 18"
-			_dropDownWidth = "200"
-			_maxDropDownHeight = "300"
+			_dropDownWidth = "250"
+			_maxDropDownHeight = "350"
 			_curIndex = "prefValue"
 			(style
 				(width = "TT_CONFIG_OPTION_CONTROL_WIDTH + 18")
@@ -1096,6 +743,856 @@
 		)
 	)
 )
+
+# DropDown for Color Palette
+(def element TT_ColorPaletteDropdownElement (_items:array=[], _listItemRenderer:str='TT_DropdownColorPaletteItemRendererElement', _curItemIndex:number=0, _listItemRendererData:gfx={},
+									_dropDownWidth:number=140, _maxDropDownHeight:number=220) layout=true
+	(scope
+		(var dockDataEntity:gfx = "$datahub.getSingleEntity(CC.dockData)")
+		(var isShipOverviewEnabled:bool = "dockDataEntity ? dockDataEntity.dockData.isShipOverviewEnabled : false" (event "dockDataEntity.dockData.evIsShipOverviewEnabledChanged"))
+
+		
+		(var itemHeight:number = "INFOTIP_DEFAULT_TEXT_LIST_ITEM_RENDERER_ITEM_HEIGHT")
+		(var infotipHeight:number = "_maxDropDownHeight >= _items.length * itemHeight	? _items.length * itemHeight
+																						: _maxDropDownHeight")
+		(var dropDownWidth:number = "TT_CONFIG_COLOR_PALETTE_SIZE * 8")
+		
+	)
+
+	(macro TOOLTIP_SYSTEM_DEFAULT_BACKGROUND "true")
+
+	(style
+		(position = "absolute")
+		(bind width "dropDownWidth")
+		(backgroundImage = 'url:../service_kit/panel_backgrounds/infotip_panel.png')
+		(scale9grid = 3)
+		(bind hitTest "!isShipOverviewEnabled")
+		(bind maxHeight "infotipHeight")
+	)
+
+	(controller $Animation
+		(bindcall play
+			duration = "isShipOverviewEnabled ? 0.4 : 0.25"
+			delay	 = "!isShipOverviewEnabled ? 0.15 : 0.5"
+			easing	 = "Easing.quad_in"
+			from	 = { alpha: 1 }
+			to		 = { alpha: 0 }
+			reverse	 = "!isShipOverviewEnabled"
+			(bind trigger "isShipOverviewEnabled")
+		)
+	)
+
+	(block
+		(name = 'ItemChooserDropdown')
+		(class $FullsizeAbsolute)
+		(style
+			(backgroundColor = 0x01000000)
+			(hitTest = false)
+		)
+	)
+
+	(htile
+		(style
+			(width = "dropDownWidth")
+		)
+
+		(controller $Repeat count="_items.length" renderer="_listItemRenderer"
+			(itemHeight = "TT_CONFIG_COLOR_PALETTE_SIZE")
+			(itemWidth = "TT_CONFIG_COLOR_PALETTE_SIZE")
+			(args
+				_curItemIndex = "_curItemIndex"
+				_listItemRendererData = "_listItemRendererData"
+				_itemText = "_items[$index]"
+			)
+		)
+	)
+)
+
+# DropDown item renderers for Colors with Text and Color Palette
+# They share the same chosen item render.
+(def element TT_DropdownColorPaletteItemRendererElement (_curItemIndex:number=0, _itemText:str='', _listItemRendererData:gfx={}, _isInactive:bool=false) layout=true
+	(scope
+		(event evAddedToStage)
+		(event evMenuClosed)
+
+		(macro MOUSE_HANDLER_SCOPE)
+		(var isSelected:bool = "_curItemIndex == $index")
+
+		(var color:number = "_itemText in _listItemRendererData ? _listItemRendererData[_itemText] + 0xFF000000 : 0xFF000000")
+
+		(macro TT_GET_UPREFS)
+		(macro TT_GET_LANGUAGE_INDEX)
+		(var colorTranslations:array = "_itemText ? TT_CONFIG_LOCALIZATIONS[_itemText] : null")
+		(var isValidLocalization:bool = "colorTranslations.length > languageIndex && !isIn(colorTranslations[languageIndex], ['', ' '])")
+		(var localizedText:str = "isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
+	)
+
+	(bind name "_itemText")
+	(style
+		(width = "TT_CONFIG_COLOR_PALETTE_SIZE")
+		(height = "TT_CONFIG_COLOR_PALETTE_SIZE")
+		(align = "middle|center")
+	)
+	
+	(block
+		(controller $Animation
+			(bindcall play
+				duration = 0.05
+				from	 = { alpha: 1 }
+				to		 = { alpha: 0.7 }
+				reverse	 = "!(mouseDown)"
+				(bind trigger "mouseDown")
+			)
+		)
+
+		(class $FullsizeAbsolute)
+		(style (hitTest = false) (alpha = 1))
+
+		(block
+			(controller $Animation
+				(bindcall play
+					duration = 0.05
+					from	 = { alpha: 1 }
+					to		 = { alpha: 1.75 }
+					reverse	 = "!(rollOver && !mouseDown)"
+					(bind trigger "rollOver && !mouseDown")
+				)
+			)
+
+			(class $FullsizeAbsolute)
+			(style (alpha = 1))
+
+			(block
+				(controller $Animation
+					(bindcall play
+						duration = 0.05
+						from	 = { alpha: 0 }
+						to		 = { alpha: 0.7 }
+						reverse	 = "!(rollOver || isSelected)"
+						(bind trigger "rollOver || isSelected")
+						(event "evAddedToStage")
+					)
+				)
+
+				(block
+					(controller $Animation
+						(bindcall play
+							duration = 2
+							keyframes = [
+								{ percent: 0,	to: {alpha: 0} },
+								{ percent: 50, 	to: {alpha: 1.7} },
+								{ percent: 100, to: {alpha: 0} },
+							]
+							repeatCount= -1
+							(event "evAddedToStage")
+						)
+					)
+					(bind visible "isSelected")
+					(class $FullsizeAbsolute)
+					(style
+						(scale9grid = 3)
+						(bind backgroundImage "_isInactive ? '' : 'url:../service_kit/panel_backgrounds/menu_item_panel.png'")
+					)
+					(bind colorTransform "{redOffset: 0xEE, greenOffset: 0xEE, blueOffset: 0xEE}")
+				)
+
+				(class $FullsizeAbsolute)
+				(style
+					(scale9grid = 3)
+					(bind backgroundImage "_isInactive ? '' : 'url:../service_kit/panel_backgrounds/menu_item_panel.png'")
+				)
+			)
+		)
+	)
+	
+
+	(block
+		(style
+			(bind alpha "_isInactive ? 0.5 : 1")
+			(width = "TT_CONFIG_COLOR_PALETTE_SIZE - 10px")
+			(height = "TT_CONFIG_COLOR_PALETTE_SIZE - 10px")
+			(bind backgroundColor "color")
+		)
+		(bind name "'menu_item_' + _itemText")
+	)
+
+	(controller $Tooltip
+		(bind enabled "localizedText")
+		(renderer = 'SimpleStatusTooltip')
+		(args
+			_text = "localizedText"
+		)
+		(macro TT_TOOLTIP_BEHAVIOUR)
+	)
+
+	(dispatch evMenuClosed dir="EventDirection.UP" on='click' (bind enabled "!_isInactive"))
+	(dispatch evAddedToStage dir="EventDirection.NONE" on=addedToStage)
+	(dispatch "'evItemChooserInner'" args="{ _curItemIndex: $index }" dir="EventDirection.UP" on='click' (bind enabled "!_isInactive"))
+
+	(macro MOUSE_HANDLER
+		_enabled = "!_isInactive"
+		_soundSet = "'button_default'"
+	)
+)
+
+(def element TT_DropdownColorItemRendererElement (_curItemIndex:number=0, _itemText:str='', _listItemRendererData:gfx={}, _isInactive:bool=false) layout=true
+	(scope
+		(event evAddedToStage)
+		(event evMenuClosed)
+
+		(macro MOUSE_HANDLER_SCOPE)
+		(var isSelected:bool = "_curItemIndex == $index")
+
+		(var color:number = "_itemText in _listItemRendererData ? _listItemRendererData[_itemText] + 0xFF000000 : 0xFF000000")
+
+		(macro TT_GET_UPREFS)
+		(macro TT_GET_LANGUAGE_INDEX)
+		(var colorTranslations:array = "_itemText ? TT_CONFIG_LOCALIZATIONS[_itemText] : null")
+		(var isValidLocalization:bool = "colorTranslations.length > languageIndex && !isIn(colorTranslations[languageIndex], ['', ' '])")
+		(var localizedText:str = "isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
+	)
+
+	(bind name "_itemText")
+	(style
+		(width = 100%)
+		(height = "INFOTIP_DEFAULT_TEXT_LIST_ITEM_RENDERER_ITEM_HEIGHT")
+	)
+	
+	(block
+		(controller $Animation
+			(bindcall play
+				duration = 0.05
+				from	 = { alpha: 1 }
+				to		 = { alpha: 0.7 }
+				reverse	 = "!(mouseDown)"
+				(bind trigger "mouseDown")
+			)
+		)
+
+		(class $FullsizeAbsolute)
+		(style (hitTest = false) (alpha = 1))
+
+		(block
+			(controller $Animation
+				(bindcall play
+					duration = 0.05
+					from	 = { alpha: 1 }
+					to		 = { alpha: 1.75 }
+					reverse	 = "!(rollOver && !mouseDown)"
+					(bind trigger "rollOver && !mouseDown")
+				)
+			)
+
+			(class $FullsizeAbsolute)
+			(style (alpha = 1))
+
+			(block
+				(controller $Animation
+					(bindcall play
+						duration = 0.05
+						from	 = { alpha: 0 }
+						to		 = { alpha: 0.7 }
+						reverse	 = "!(rollOver || isSelected)"
+						(bind trigger "rollOver || isSelected")
+						(event "evAddedToStage")
+					)
+				)
+
+				(class $FullsizeAbsolute)
+				(style
+					(scale9grid = 3)
+					(bind backgroundImage "_isInactive ? '' : 'url:../service_kit/panel_backgrounds/menu_item_panel.png'")
+				)
+			)
+		)
+	)
+	
+
+	(block
+		(style
+			(bind alpha "_isInactive ? 0.5 : 1")
+			(align = "middle|center")
+			(width = 100%)
+			(height = 100%)
+		)
+		(bind name "'menu_item_' + _itemText")
+
+		(block
+			(style
+				(position = "absolute")
+				(bind backgroundColor "color")
+				(width = "20px")
+				(height = 20px)
+				(vcenter = 0)
+				(left = 20px)
+			)
+		)
+
+		(tf
+			(bind class "isSelected ? '$DropdownSimpleOptionTextSelected': '$DropdownSimpleOptionText'")
+			(style
+				(alpha = "TA")
+				(elideMode = true)
+				(textAlign = "center")
+			)
+
+			(bind text "localizedText")
+		)
+	)
+
+	(dispatch evMenuClosed dir="EventDirection.UP" on='click' (bind enabled "!_isInactive"))
+	(dispatch evAddedToStage dir="EventDirection.NONE" on=addedToStage)
+	(dispatch "'evItemChooserInner'" args="{ _curItemIndex: $index }" dir="EventDirection.UP" on='click' (bind enabled "!_isInactive"))
+
+	(macro MOUSE_HANDLER
+		_enabled = "!_isInactive"
+		_soundSet = "'button_default'"
+	)
+)
+
+(def element TT_DropdownChosenColorItemRendererElement (_item:str='', _choosedItemRendererParams:gfx={}, _labelMaxWidth:number=0)
+	(scope
+		(var color:number = "_item in _choosedItemRendererParams ? _choosedItemRendererParams[_item] + 0xFF000000 : 0xFF000000")
+
+		(macro TT_GET_UPREFS)
+		(macro TT_GET_LANGUAGE_INDEX)
+		(var colorTranslations:array = "_item ? TT_CONFIG_LOCALIZATIONS[_item] : null")
+		(var isValidLocalization:bool = "colorTranslations.length > languageIndex && !isIn(colorTranslations[languageIndex], ['', ' '])")
+		(var localizedText:str = "isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
+	)
+	(style
+		(height = "L")
+		(hitTest = false)
+		(flow = "Flow.HORIZONTAL")
+		(align = "middle|center")
+	)
+
+	(block
+		(style
+			(bind backgroundColor "color")
+			(bind width "localizedText ? 20px : _labelMaxWidth - 10px")
+			(height = 20px)
+			(marginLeft = 7px)
+		)
+	)
+
+	(tf
+		(bind visible "localizedText")
+
+		(class $TextDefaultBold17NM)
+		(class $FontColorBlueish)
+
+		(style
+			(maxWidth = "_labelMaxWidth - 20px")
+			(marginLeft = 5px)
+			(marginRight = 3px)
+			#(marginTop = 9px)
+			#(marginBottom = 6px)
+
+			(elideMode = true)
+			(textAlign = "left")
+
+			(backgroundColor = 0x8000ff00)
+		)
+
+		(bind text "localizedText")
+	)
+)
+
+# DropDown item renderers for Keys
+(def element TT_DropdownKeyItemRendererElement (_curItemIndex:number=0, _itemText:str='', _listItemRendererData:gfx={}, _isInactive:bool=false) layout=true
+	(scope
+		(event evAddedToStage)
+		(event evMenuClosed)
+
+		(macro MOUSE_HANDLER_SCOPE)
+		(var isSelected:bool = "_curItemIndex == $index")
+
+		(var keyName:str = "_itemText in _listItemRendererData	? '[' + _listItemRendererData[_itemText] + ']'
+																: ''")
+	)
+
+	(bind name "_itemText")
+	(style (width = 100%))
+
+	
+	(block
+		(controller $Animation
+			(bindcall play
+				duration = 0.05
+				from	 = { alpha: 1 }
+				to		 = { alpha: 0.7 }
+				reverse	 = "!(mouseDown)"
+				(bind trigger "mouseDown")
+			)
+		)
+
+		(class $FullsizeAbsolute)
+		(style (hitTest = false) (alpha = 1))
+
+		(block
+			(controller $Animation
+				(bindcall play
+					duration = 0.05
+					from	 = { alpha: 1 }
+					to		 = { alpha: 1.75 }
+					reverse	 = "!(rollOver && !mouseDown)"
+					(bind trigger "rollOver && !mouseDown")
+				)
+			)
+
+			(class $FullsizeAbsolute)
+			(style (alpha = 1))
+
+			(block
+				(controller $Animation
+					(bindcall play
+						duration = 0.05
+						from	 = { alpha: 0 }
+						to		 = { alpha: 0.7 }
+						reverse	 = "!(rollOver || isSelected)"
+						(bind trigger "rollOver || isSelected")
+						(event "evAddedToStage")
+					)
+				)
+
+				(class $FullsizeAbsolute)
+				(style
+					(scale9grid = 3)
+					(bind backgroundImage "_isInactive ? '' : 'url:../service_kit/panel_backgrounds/menu_item_panel.png'")
+				)
+			)
+		)
+	)
+	
+
+	(block
+		(class $SimpleDropdownElement)
+		(style
+			(bind alpha "_isInactive ? 0.5 : 1")
+		)
+
+		(tf
+			(bind name "'menu_item_' + _itemText")
+
+			(bind class "isSelected ? '$DropdownSimpleOptionTextSelected': '$DropdownSimpleOptionText'")
+			(style
+				(alpha = "TA")
+				(elideMode = true)
+				(textAlign = "left")
+				(height = 23px)
+			)
+
+			(bindcall substitute imageOffset=5 sourceText="keyName + tr(_itemText)" init=true)
+		)
+	)
+
+	(dispatch evMenuClosed dir="EventDirection.UP" on='click' (bind enabled "!_isInactive"))
+	(dispatch evAddedToStage dir="EventDirection.NONE" on=addedToStage)
+	(dispatch "'evItemChooserInner'" args="{ _curItemIndex: $index }" dir="EventDirection.UP" on='click' (bind enabled "!_isInactive"))
+
+	(macro MOUSE_HANDLER
+		_enabled = "!_isInactive"
+		_soundSet = "'button_default'"
+	)
+)
+
+(def element TT_DropdownChosenKeyItemRendererElement (_item:str='', _choosedItemRendererParams:gfx={}, _labelMaxWidth:number=0)
+	(scope
+		(var keyName:str = "_item in _choosedItemRendererParams	? '[' + _choosedItemRendererParams[_item] + ']'
+																: ''")
+	)
+	(style
+		(height = "L")
+		(hitTest = false)
+	)
+
+	(tf
+		(class $TextDefaultBold17NM)
+		(class $FontColorBlueish)
+
+		(style
+			(maxWidth = "_labelMaxWidth")
+
+			(marginLeft = 7px)
+			(marginRight = 3px)
+			(marginTop = 9px)
+			(marginBottom = 6px)
+
+			(elideMode = true)
+			(textAlign = "left")
+
+			(backgroundColor = 0x8000ff00)
+		)
+
+		(bindcall substitute imageOffset=6 sourceText="keyName + tr(_item)" init=true)
+	)
+)
+
+# DropDown item renderers for Custom Text
+(def element TT_DropdownTextItemRendererElement (_curItemIndex:number=0, _itemText:str='', _listItemRendererData:gfx={}, _isInactive:bool=false) layout=true
+	(scope
+		(event evAddedToStage)
+		(event evMenuClosed)
+
+		(macro MOUSE_HANDLER_SCOPE)
+		(var isSelected:bool = "_curItemIndex == $index")
+
+		(macro TT_GET_UPREFS)
+		(macro TT_GET_LANGUAGE_INDEX)
+		(var translations:array = "_itemText ? TT_CONFIG_LOCALIZATIONS[_itemText] : null")
+		(var isValidLocalization:bool = "translations.length > languageIndex && !isIn(translations[languageIndex], ['', ' '])")
+		(var localizedText:str = "isValidLocalization ? translations[languageIndex] : translations[0]")
+	)
+
+	(bind name "_itemText")
+	(style
+		(width = 100%)
+		(align = "middle|center")
+	)
+	
+	(block
+		(controller $Animation
+			(bindcall play
+				duration = 0.05
+				from	 = { alpha: 1 }
+				to		 = { alpha: 0.7 }
+				reverse	 = "!(mouseDown)"
+				(bind trigger "mouseDown")
+			)
+		)
+
+		(class $FullsizeAbsolute)
+		(style (hitTest = false) (alpha = 1))
+
+		(block
+			(controller $Animation
+				(bindcall play
+					duration = 0.05
+					from	 = { alpha: 1 }
+					to		 = { alpha: 1.75 }
+					reverse	 = "!(rollOver && !mouseDown)"
+					(bind trigger "rollOver && !mouseDown")
+				)
+			)
+
+			(class $FullsizeAbsolute)
+			(style (alpha = 1))
+
+			(block
+				(controller $Animation
+					(bindcall play
+						duration = 0.05
+						from	 = { alpha: 0 }
+						to		 = { alpha: 0.7 }
+						reverse	 = "!(rollOver || isSelected)"
+						(bind trigger "rollOver || isSelected")
+						(event "evAddedToStage")
+					)
+				)
+
+				(class $FullsizeAbsolute)
+				(style
+					(scale9grid = 3)
+					(bind backgroundImage "_isInactive ? '' : 'url:../service_kit/panel_backgrounds/menu_item_panel.png'")
+				)
+			)
+		)
+	)
+	
+
+	(block
+		(class $SimpleDropdownElement)
+		(style
+			(bind alpha "_isInactive ? 0.5 : 1")
+			(align = "middle|center")
+		)
+
+		(tf
+			(bind name "'menu_item_' + _itemText")
+
+			(bind class "isSelected ? '$DropdownSimpleOptionTextSelected': '$DropdownSimpleOptionText'")
+			(style
+				(alpha = "TA")
+				(elideMode = true)
+				(textAlign = "center")
+			)
+
+			(bind text "localizedText")
+		)
+	)
+
+	(dispatch evMenuClosed dir="EventDirection.UP" on='click' (bind enabled "!_isInactive"))
+	(dispatch evAddedToStage dir="EventDirection.NONE" on=addedToStage)
+	(dispatch "'evItemChooserInner'" args="{ _curItemIndex: $index }" dir="EventDirection.UP" on='click' (bind enabled "!_isInactive"))
+
+	(macro MOUSE_HANDLER
+		_enabled = "!_isInactive"
+		_soundSet = "'button_default'"
+	)
+)
+
+(def element TT_DropdownChosenTextItemRendererElement (_item:str='', _choosedItemRendererParams:gfx={}, _labelMaxWidth:number=0)
+	(scope
+		(macro TT_GET_UPREFS)
+		(macro TT_GET_LANGUAGE_INDEX)
+		(var colorTranslations:array = "_item ? TT_CONFIG_LOCALIZATIONS[_item] : null")
+		(var isValidLocalization:bool = "colorTranslations.length > languageIndex && !isIn(colorTranslations[languageIndex], ['', ' '])")
+		(var localizedText:str = "isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
+	)
+	(style
+		(height = "L")
+		(hitTest = false)
+		(align = "middle|center")
+	)
+
+	(tf
+		(class $TextDefaultBold17NM)
+		(class $FontColorBlueish)
+
+		(style
+			(maxWidth = "_labelMaxWidth")
+
+			(marginLeft = 7px)
+			(marginRight = 3px)
+			(marginTop = 9px)
+			(marginBottom = 6px)
+
+			(elideMode = true)
+			(textAlign = "left")
+
+			(backgroundColor = 0x8000ff00)
+		)
+
+		(bind text "localizedText")
+	)
+)
+
+# Minimaps
+(def element TT_MinimapSwitchOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
+	# args: default
+	(scope
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+
+		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, prefKey)")
+		(var optionEntity:gfx = "entityWatcher.entity" (event "entityWatcher.event"))
+
+		(var minimapOption:gfx = "optionEntity ? optionEntity.minimapOption : null")
+		(var prefValue:bool = "minimapOption ? minimapOption.value > 0 : false" (event "minimapOption.evValueChanged"))
+
+		(var isOptionAvailable:bool = "optionEntity")
+
+		(var defaultValue:bool = "'default' in _pref ? _pref.default : false")
+		(var resetMethods:array = "[ { type: 'direct.action', name: 'battle.saveMinimapOption', args: [ minimapOption.key, defaultValue ] } ]")
+		(var saveMethods:array = "[ { type: 'direct.action', name: 'battle.saveMinimapOption', args: [ minimapOption.key, !prefValue ] } ]")
+	)
+
+	(bind visible "isOptionAvailable")
+
+	(style
+		(width = "50%")
+	)
+
+	(hblock
+		(style
+			(width = "TT_CONFIG_OPTION_WIDTH")
+			(height = "23px")
+			(align = "left|middle")
+		)
+		(hblock
+			(style
+				(width = "TT_CONFIG_OPTION_CONTROL_WIDTH")
+				(align = "middle|center")
+				(marginRight = "TT_CONFIG_OPTION_VALUE_WIDTH + TT_CONFIG_OPTION_VALUE_MARGIN")
+			)
+			(element SwitchWithoutLabel
+				_state = "prefValue"
+				_methods = "saveMethods"
+			)
+		)
+
+		(controller $Instance renderer='ImageButton'
+			(bind enabled "prefValue != defaultValue")
+			(args
+				_width = "TT_CONFIG_RESET_BUTTON_SIZE"
+				_height = "TT_CONFIG_RESET_BUTTON_SIZE"
+				_backgroundImage = 'url:../service_kit/buttons/context/update.png'
+				_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
+				_methods = "resetMethods"
+			)
+		)
+	)
+)
+
+(def element TT_MinimapSliderOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
+	# args: min, max, minLabel, maxLabel, step, default, round, 
+	(scope
+		(event evSliderValueChanged) #slider event
+		(event evValueReset) #image button event
+		(event evShow)
+
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+
+		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, prefKey)")
+		(var optionEntity:gfx = "entityWatcher.entity" (event "entityWatcher.event"))
+
+		(var minimapOption:gfx = "optionEntity ? optionEntity.minimapOption : null")
+		(var prefValue:number = "minimapOption ? minimapOption.value : 0" (event "minimapOption.evValueChanged"))
+
+		(var isOptionAvailable:bool = "optionEntity")
+
+		(var minValue:number = "'min' in _pref ? _pref.min : 0")
+		(var maxValue:number = "'max' in _pref ? _pref.max : 100")
+		(var minLabel:str = "'minLabel' in _pref ? _pref.minLabel : ''")
+		(var maxLabel:str = "'maxLabel' in _pref ? _pref.maxLabel : ''")
+		(var step:number = "'step' in _pref ? _pref.step : 1")
+		(var steps:number = "round((maxValue - minValue) / step)")
+		(var defaultValue:number = "'default' in _pref ? _pref.default : 20")
+		(var defaultSliderValue:number = "round((defaultValue - minValue) / step)")
+		(var rounding:number = "'round' in _pref ? _pref.round : 0")
+
+		(var sliderValue:number = "round((prefValue - minValue) / step)" watch=false (event "evShow")) # without evShow: when re-opening the tooltip the slider won't update
+		(bind sliderValue "$event.value" watch=false init=false (event "evValueReset") (event "evSliderValueChanged"))
+		
+		(var isMinLabelAvailable:bool = "prefValue == minValue && minLabel")
+		(var isMaxLabelAvailable:bool = "prefValue == maxValue && maxLabel")
+		(var displayedCount:str = "	isMinLabelAvailable ? minLabel :
+									isMaxLabelAvailable ? maxLabel :
+									formatFloatingPoint(prefValue, rounding)"
+		)
+	)
+
+	(bind visible "isOptionAvailable")
+
+	(dispatch evShow args="{}" on='addedToStage')
+	(bindcall externalCall 'direct.action' "['battle.saveMinimapOption', [minimapOption.key, $event.value * step + minValue]]" init=false watch=false (event "evSliderValueChanged") (event "evValueReset"))
+
+	(style
+		(width = "50%")
+	)
+
+	(hblock
+		(style
+			(width = "TT_CONFIG_OPTION_WIDTH")
+			(height = "23px")
+			(align = "left|middle")
+		)
+		(hblock
+			(style
+				#(width = "TT_CONFIG_OPTION_CONTROL_WIDTH")
+				(align = "middle|center")
+			)
+			(element DefaultSlider
+				_value = "sliderValue"
+				_intervalsCount = "steps"
+				_unitsInStepInterval = "step"
+				_width = "TT_CONFIG_OPTION_CONTROL_WIDTH"
+			)
+			(tf
+				(class $TextDefault)
+				(alpha = "TA")
+				(bind text "displayedCount")
+				(style
+					(textAlign = "right")
+					(marginRight = "TT_CONFIG_OPTION_VALUE_MARGIN")
+					(width = "TT_CONFIG_OPTION_VALUE_WIDTH")
+				)
+			)
+		)
+		(block
+			(bind visible "prefValue != defaultValue")
+			(controller $Instance renderer='ImageButton'
+				(args
+					_width = "TT_CONFIG_RESET_BUTTON_SIZE"
+					_height = "TT_CONFIG_RESET_BUTTON_SIZE"
+					_backgroundImage = 'url:../service_kit/buttons/context/update.png'
+					_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
+					_dispatchedEv = "'evValueReset'"
+					_dispatchParams = "{'value': defaultSliderValue}"
+				)
+			)
+		)
+	)
+)
+
+(def element TT_MinimapDropdownOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
+	(scope
+		(event ItemChooser_ValueSelected)
+		(event evMenuClosed) #To close dropdown menu when parent tooltip is closed
+
+		(var prefKey:str = "'key' in _pref ? _pref.key : ''")
+
+		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, prefKey)")
+		(var optionEntity:gfx = "entityWatcher.entity" (event "entityWatcher.event"))
+
+		(var minimapOption:gfx = "optionEntity ? optionEntity.minimapOption : null")
+		(var prefValue:number = "minimapOption ? minimapOption.value : 0" (event "minimapOption.evValueChanged"))
+
+		(var isOptionAvailable:bool = "optionEntity")
+
+		(var defaultValue:number = "'default' in _pref ? _pref.default : 0")
+		(var items:array = "'dropdownItems' in _pref ? _pref.dropdownItems : []")
+
+		(var type:str = "'dropdownType' in _pref ? _pref.dropdownType : ''")
+		(var renderers:dict = "type in TT_DROPWDOWN_RENDERERS ? TT_DROPWDOWN_RENDERERS[type] : {}")
+
+		(var dropdownRenderer:str = "'DROPDOWN' in renderers ? renderers.DROPDOWN : 'ItemChooserDropdown'")
+		(var itemRenderer:str = "'ITEM' in renderers ? renderers.ITEM : 'TextListItemRenderer'")
+		(var chosenItemRenderer:str = "'CHOSEN_ITEM' in renderers ? renderers.CHOSEN_ITEM : 'DefaultItemChooserPickedItemRenderer'")
+		
+		(var extraData:dict = "'extraData' in _pref ? _pref.extraData : {}")
+
+		(var resetMethods:array = "[{ type: 'direct.action', name: 'battle.saveMinimapOption', args: [ minimapOption.key, defaultValue ] }]")
+	)
+
+	(style
+		(width = "50%")
+	)
+
+	(bind visible "isOptionAvailable")
+
+	(bindcall externalCall 'direct.action' "['battle.saveMinimapOption', [minimapOption.key, $event.selectedIndex]]" init=false watch=false (event "ItemChooser_ValueSelected"))
+	(dispatch evMenuClosed dir="EventDirection.DOWN" args="{}" on='removedFromStage') #To close dropdown menu when parent tooltip is closed
+
+	(hblock
+		(style
+			(width = "TT_CONFIG_OPTION_WIDTH")
+			(height = "23px")
+			(align = "left|middle")
+		)
+
+		(element ItemChooser
+			_items = "items"
+			_listItemRenderer = "itemRenderer"
+			_listItemRendererData = "extraData"
+			_choosedItemRenderer = "chosenItemRenderer"
+			_choosedItemRendererParams = "extraData"
+			_customDropdown = "dropdownRenderer"
+			_onItemSelectedEvent = "'ValueSelected'"
+			_selectedMaxWidth = "TT_CONFIG_OPTION_CONTROL_WIDTH + 18"
+			_dropDownWidth = "250"
+			_maxDropDownHeight = "350"
+			_curIndex = "prefValue"
+			(style
+				(width = "TT_CONFIG_OPTION_CONTROL_WIDTH + 18")
+				(marginRight = "TT_CONFIG_OPTION_VALUE_WIDTH + TT_CONFIG_OPTION_VALUE_MARGIN - 18")
+				(align = "middle|center")
+			)
+		)
+
+		(controller $Instance renderer='ImageButton'
+			(bind enabled "prefValue != defaultValue")
+			(args
+				_width = "TT_CONFIG_RESET_BUTTON_SIZE"
+				_height = "TT_CONFIG_RESET_BUTTON_SIZE"
+				_backgroundImage = 'url:../service_kit/buttons/context/update.png'
+				_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
+				_methods = "resetMethods"
+			)
+		)
+	)
+)
+#
 
 (def element TT_BackgroundElement()
 	(scope
@@ -1167,8 +1664,26 @@
 	)
 )
 
-(def macro TT_HORIZONTAL_DEVIDER() layout=true
+# TODO: fix duplication
+(def element TT_HorizontalDivider()
+	(style
+		(width = 100%)
+		(marginTop = 3px)
+		(marginBottom = 3px)
+		(align = "middle|center")
+		(hitTest = false)
+		(alpha = 1.5)
+	)
 	(element HorizontalDivider
+		(style
+			#(width = 90%)
+		)
+	)
+)
+
+# TODO: fix duplication
+(def macro TT_HORIZONTAL_DEVIDER() layout=true
+	(element HorizontalDividerTwoPx
 		(style
 			#(paddingLeft = 30)
 			#(paddingRight = 30)
@@ -1237,7 +1752,6 @@
 									from:		{ alpha: 1, top: 0 },
 									to:			{ alpha: 0, top: 10 }
 								}
-								on='evClickOutside'
 								(event "evHideInfotip")
 	)
 	(screenBoundsOffset = {			left:	"TT_ELEMENT_SIZE.WIDTH",
@@ -1247,4 +1761,17 @@
 	(position = "_position")
 	(align = "_align")
 	(priority = "_priority")
+)
+
+(def macro TT_GET_USERPREF()
+	(var userPrefsComponent:gfx = "$datahub.getSingleComponent(CC.userPrefs)")
+	(var _userPrefsNum:gfx = "userPrefsComponent.userPrefs.chatBoxWidth" watch=false (event "userPrefsComponent.evUserPrefsChanged"))
+)
+
+(def macro TT_GET_PREF_NUMBER (_varName:expression, _pref:expression)
+	(var name="_varName" type=number value="_userPrefsNum && isNumber(_userPrefsNum[_pref.key]) ? _pref.min + (round(_userPrefsNum[_pref.key]) * _pref.step) : _pref.default")
+)
+
+(def macro TT_GET_PREF_BOOL (_varName:expression, _pref:expression)
+	(var name="_varName" type=bool value="_userPrefsNum && isNumber(_userPrefsNum[_pref.key]) ? round(_userPrefsNum[_pref.key]) : _pref.default")
 )
