@@ -107,7 +107,7 @@
 		(var selectedIndex:number = "-1")
 		(bind selectedIndex "$event.index" init=false (event "evTabClicked"))
 
-		(var languageOptions:dict = "{items: TT_CONFIG_LANGUAGES, default: 0}")
+		(var languageOptions:dict = "{key: TT_ELEMENT_NAME + 'Language', items: TT_CONFIG_LANGUAGES, default: 0}")
 	)
 
 	(style 
@@ -124,7 +124,7 @@
 			(height = "40px")
 			(marginLeft = "-TT_CONFIG_OPTION_CONTROL_WIDTH + 16")
 		)
-		(element TT_DropdownOptionElement _prefKey="TT_ELEMENT_NAME + 'Language'" _args="languageOptions" _userPrefsNum="_userPrefsNum")
+		(element TT_DropdownOptionElement _pref="languageOptions" _userPrefsNum="_userPrefsNum")
 	)
 	(hblock
 		(style
@@ -402,8 +402,7 @@
 				(bind renderer "_configData.renderer")
 				(bind enabled "isConfigInitialized")
 				(args
-					_prefKey="_configData.key"
-					_args="_configData.args"
+					_pref="_configData"
 					_userPrefsNum="_userPrefsNum"
 				)
 			)
@@ -433,8 +432,8 @@
 
 		(var validValues:array = "'validValues' in _parentPref ? _parentPref.validValues : []")
 		(var pref:dict = "'pref' in _parentPref ? _parentPref.pref : {}")
-		(var key:str = "'KEY' in pref ? pref.KEY : ''")
-		(var default:number = "'DEFAULT' in pref ? pref.DEFAULT : -1")
+		(var key:str = "'key' in pref ? pref.key : ''")
+		(var default:number = "'default' in pref ? pref.default : -1")
 
 		# For minimap
 		# (var isMinimapOption:bool = "'isMinimapOption' in _parentPref ? _parentPref.isMinimapOption : false")
@@ -546,11 +545,11 @@
 	)
 )
 
-(def element TT_SwitchOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_SwitchOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		#(macro TT_GET_UPREFS)
-		(var prefKey:str = "_prefKey")
-		(var defaultValue:number = "'default' in _args ? _args.default : false")
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+		(var defaultValue:number = "'default' in _pref ? _pref.default : false")
 		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue")
 		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(defaultValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 		(var saveMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': toNumber(!prefValue) + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
@@ -591,21 +590,21 @@
 	)
 )
 
-(def element TT_SliderOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_SliderOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(event evSliderValueChanged) #slider event
 		(event evValueReset) #image button event
 		(event evShow)
-		(var prefKey:str = "_prefKey")
-		(var minValue:number = "'min' in _args ? _args.min : 0")
-		(var maxValue:number = "'max' in _args ? _args.max : 10")
-		(var minLabel:str = "'minLabel' in _args ? _args.minLabel : ''")
-		(var maxLabel:str = "'maxLabel' in _args ? _args.maxLabel : ''")
-		(var step:number = "'step' in _args ? _args.step : 1")
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+		(var minValue:number = "'min' in _pref ? _pref.min : 0")
+		(var maxValue:number = "'max' in _pref ? _pref.max : 10")
+		(var minLabel:str = "'minLabel' in _pref ? _pref.minLabel : ''")
+		(var maxLabel:str = "'maxLabel' in _pref ? _pref.maxLabel : ''")
+		(var step:number = "'step' in _pref ? _pref.step : 1")
 		(var steps:number = "round((maxValue - minValue) / step)")
-		(var default:number = "'default' in _args ? _args.default : 0")
+		(var default:number = "'default' in _pref ? _pref.default : 0")
 		(var defaultValue:number = "round((default - minValue) / step)")
-		(var rounding:number = "'round' in _args ? _args.round : 2")
+		(var rounding:number = "'round' in _pref ? _pref.round : 2")
 		#watch=false is necessary to prevent the slider from flickering
 		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue" watch=false (event "evShow"))
 		(bind prefValue "$event.value" watch=false init=false (event "evValueReset")(event "evSliderValueChanged"))
@@ -678,23 +677,23 @@
 	)
 )
 
-(def element TT_DropdownOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_DropdownOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(event ItemChooser_ValueSelected)
 		(event evMenuClosed) #To close dropdown menu when parent tooltip is closed
 
-		(var prefKey:str = "_prefKey")
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
 		
-		(var type:str = "'type' in _args ? _args.type : ''")
+		(var type:str = "'dropdownType' in _pref ? _pref.dropdownType : ''")
 		(var renderers:dict = "type in TT_DROPWDOWN_RENDERERS ? TT_DROPWDOWN_RENDERERS[type] : {}")
 		(var dropdownRenderer:str = "'DROPDOWN' in renderers ? renderers.DROPDOWN : 'ItemChooserDropdown'")
 		(var itemRenderer:str = "'ITEM' in renderers ? renderers.ITEM : 'TextListItemRenderer'")
 		(var chosenItemRenderer:str = "'CHOSEN_ITEM' in renderers ? renderers.CHOSEN_ITEM : 'DefaultItemChooserPickedItemRenderer'")
 
-		(var defaultValue:number = "'default' in _args ? _args.default : 0")
-		(var items:array = "'items' in _args ? _args.items : []")
+		(var defaultValue:number = "'default' in _pref ? _pref.default : 0")
+		(var items:array = "'dropdownItems' in _pref ? _pref.dropdownItems : []")
 		
-		(var extraData:dict = "'extraData' in _args ? _args.extraData : {}")
+		(var extraData:dict = "'extraData' in _pref ? _pref.extraData : {}")
 		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue")
 		(var resetMethods:array = "[{type: 'inputMapping.onAction', name: 'setUserPref', args: {'value': defaultValue + 0.00001, 'name': 'chatBoxWidth', 'subName': prefKey}}]")
 	)
@@ -1370,10 +1369,12 @@
 )
 
 # Minimaps
-(def element TT_MinimapSwitchOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_MinimapSwitchOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	# args: default
 	(scope
-		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, _prefKey)")
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+
+		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, prefKey)")
 		(var optionEntity:gfx = "entityWatcher.entity" (event "entityWatcher.event"))
 
 		(var minimapOption:gfx = "optionEntity ? optionEntity.minimapOption : null")
@@ -1381,7 +1382,7 @@
 
 		(var isOptionAvailable:bool = "optionEntity")
 
-		(var defaultValue:bool = "'default' in _args ? _args.default : false")
+		(var defaultValue:bool = "'default' in _pref ? _pref.default : false")
 		(var resetMethods:array = "[ { type: 'direct.action', name: 'battle.saveMinimapOption', args: [ minimapOption.key, defaultValue ] } ]")
 		(var saveMethods:array = "[ { type: 'direct.action', name: 'battle.saveMinimapOption', args: [ minimapOption.key, !prefValue ] } ]")
 	)
@@ -1423,14 +1424,16 @@
 	)
 )
 
-(def element TT_MinimapSliderOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_MinimapSliderOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	# args: min, max, minLabel, maxLabel, step, default, round, 
 	(scope
 		(event evSliderValueChanged) #slider event
 		(event evValueReset) #image button event
 		(event evShow)
 
-		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, _prefKey)")
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+
+		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, prefKey)")
 		(var optionEntity:gfx = "entityWatcher.entity" (event "entityWatcher.event"))
 
 		(var minimapOption:gfx = "optionEntity ? optionEntity.minimapOption : null")
@@ -1438,15 +1441,15 @@
 
 		(var isOptionAvailable:bool = "optionEntity")
 
-		(var minValue:number = "'min' in _args ? _args.min : 0")
-		(var maxValue:number = "'max' in _args ? _args.max : 100")
-		(var minLabel:str = "'minLabel' in _args ? _args.minLabel : ''")
-		(var maxLabel:str = "'maxLabel' in _args ? _args.maxLabel : ''")
-		(var step:number = "'step' in _args ? _args.step : 1")
+		(var minValue:number = "'min' in _pref ? _pref.min : 0")
+		(var maxValue:number = "'max' in _pref ? _pref.max : 100")
+		(var minLabel:str = "'minLabel' in _pref ? _pref.minLabel : ''")
+		(var maxLabel:str = "'maxLabel' in _pref ? _pref.maxLabel : ''")
+		(var step:number = "'step' in _pref ? _pref.step : 1")
 		(var steps:number = "round((maxValue - minValue) / step)")
-		(var defaultValue:number = "'default' in _args ? _args.default : 20")
+		(var defaultValue:number = "'default' in _pref ? _pref.default : 20")
 		(var defaultSliderValue:number = "round((defaultValue - minValue) / step)")
-		(var rounding:number = "'round' in _args ? _args.round : 0")
+		(var rounding:number = "'round' in _pref ? _pref.round : 0")
 
 		(var sliderValue:number = "round((prefValue - minValue) / step)" watch=false (event "evShow")) # without evShow: when re-opening the tooltip the slider won't update
 		(bind sliderValue "$event.value" watch=false init=false (event "evValueReset") (event "evSliderValueChanged"))
@@ -1512,12 +1515,14 @@
 	)
 )
 
-(def element TT_MinimapDropdownOptionElement (_prefKey:str, _args:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_MinimapDropdownOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(event ItemChooser_ValueSelected)
 		(event evMenuClosed) #To close dropdown menu when parent tooltip is closed
 
-		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, _prefKey)")
+		(var prefKey:str = "'key' in _pref ? _pref.key : ''")
+
+		(var entityWatcher:gfx = "$datahub.getPrimWatcher(CC.minimapOption, prefKey)")
 		(var optionEntity:gfx = "entityWatcher.entity" (event "entityWatcher.event"))
 
 		(var minimapOption:gfx = "optionEntity ? optionEntity.minimapOption : null")
@@ -1525,17 +1530,17 @@
 
 		(var isOptionAvailable:bool = "optionEntity")
 
-		(var defaultValue:number = "'default' in _args ? _args.default : 0")
-		(var items:array = "'items' in _args ? _args.items : []")
+		(var defaultValue:number = "'default' in _pref ? _pref.default : 0")
+		(var items:array = "'dropdownItems' in _pref ? _pref.dropdownItems : []")
 
-		(var type:str = "'type' in _args ? _args.type : ''")
+		(var type:str = "'dropdownType' in _pref ? _pref.dropdownType : ''")
 		(var renderers:dict = "type in TT_DROPWDOWN_RENDERERS ? TT_DROPWDOWN_RENDERERS[type] : {}")
 
 		(var dropdownRenderer:str = "'DROPDOWN' in renderers ? renderers.DROPDOWN : 'ItemChooserDropdown'")
 		(var itemRenderer:str = "'ITEM' in renderers ? renderers.ITEM : 'TextListItemRenderer'")
 		(var chosenItemRenderer:str = "'CHOSEN_ITEM' in renderers ? renderers.CHOSEN_ITEM : 'DefaultItemChooserPickedItemRenderer'")
 		
-		(var extraData:dict = "'extraData' in _args ? _args.extraData : {}")
+		(var extraData:dict = "'extraData' in _pref ? _pref.extraData : {}")
 
 		(var resetMethods:array = "[{ type: 'direct.action', name: 'battle.saveMinimapOption', args: [ minimapOption.key, defaultValue ] }]")
 	)
@@ -1764,9 +1769,9 @@
 )
 
 (def macro TT_GET_PREF_NUMBER (_varName:expression, _pref:expression)
-	(var name="_varName" type=number value="_userPrefsNum && isNumber(_userPrefsNum[_pref.KEY]) ? _pref.OFFSET + (round(_userPrefsNum[_pref.KEY]) * _pref.MODIFIER) : _pref.DEFAULT")
+	(var name="_varName" type=number value="_userPrefsNum && isNumber(_userPrefsNum[_pref.key]) ? _pref.min + (round(_userPrefsNum[_pref.key]) * _pref.step) : _pref.default")
 )
 
 (def macro TT_GET_PREF_BOOL (_varName:expression, _pref:expression)
-	(var name="_varName" type=bool value="_userPrefsNum && isNumber(_userPrefsNum[_pref.KEY]) ? round(_userPrefsNum[_pref.KEY]) : _pref.DEFAULT")
+	(var name="_varName" type=bool value="_userPrefsNum && isNumber(_userPrefsNum[_pref.key]) ? round(_userPrefsNum[_pref.key]) : _pref.default")
 )
