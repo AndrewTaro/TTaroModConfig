@@ -270,7 +270,7 @@
 		(bind enabled "isSectionEnabled")
 		(bind count "_sectionData.sectionElements.length")
 		(args 
-			_configData   	= "_sectionData.sectionElements[$index]"
+			_pref   		= "_sectionData.sectionElements[$index]"
 			_isConfigurable	= "isConfigurable"
 			_userPrefsNum	= "_userPrefsNum"
 		)
@@ -287,14 +287,14 @@
 	)
 )
 
-(def element TT_ConfigElement (_configData:dict, _isConfigurable:bool, _userPrefsNum:gfx=null)layout=true
+(def element TT_ConfigElement (_pref:dict, _isConfigurable:bool, _userPrefsNum:gfx=null)layout=true
 	(scope
-		(var dividerPos:number = "'divider' in _configData ? _configData.divider : -1")
+		(var dividerPos:number = "'divider' in _pref ? _pref.divider : -1")
 		(var hasTopDivider:bool = "top == dividerPos")
 		(var hasBottomDivider:bool = "bottom == dividerPos")
 		
 		(event evChangeParentPref)
-		(var parentPrefs:array = "'parentPrefs' in _configData ? _configData.parentPrefs : []")
+		(var parentPrefs:array = "'parentPrefs' in _pref ? _pref.parentPrefs : []")
 		(var parentPrefsCount:number = "parentPrefs.length")
 
 		# The elements inside will be recreated but the scope variables remain?
@@ -319,7 +319,7 @@
 
 		# For tooltip hint
 		(macro TT_GET_LANGUAGE_INDEX)
-		(var hintKey:str = "'tooltipHint' in _configData ? _configData.tooltipHint : null")
+		(var hintKey:str = "'tooltipHint' in _pref ? _pref.tooltipHint : null")
 		(var hintTranslations:array = "hintKey ? TT_CONFIG_LOCALIZATIONS[hintKey] : null")
 		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
 		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
@@ -396,13 +396,13 @@
 			)
 			
 
-			(element TT_ConfigTitleElement _data="_configData" _userPrefsNum="_userPrefsNum")
+			(element TT_ConfigTitleElement _data="_pref" _userPrefsNum="_userPrefsNum")
 
 			(controller $Instance
-				(bind renderer "_configData.renderer")
+				(bind renderer "_pref.renderer")
 				(bind enabled "isConfigInitialized")
 				(args
-					_pref="_configData"
+					_pref="_pref"
 					_userPrefsNum="_userPrefsNum"
 				)
 			)
