@@ -463,6 +463,13 @@
         ]"
     },
     {
+        sectionTitle: 'IDS_TT_TITLE_TORPEDO_MARKERS',
+        sectionSettings: {isEnabled: "TT_ADVANCEDTORPEDOMARKER_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Advanced Torpedo Marker'},
+        sectionElements: "[
+            TMap_PREFS.TORPEDO_MARKER
+        ]"
+    },
+    {
         sectionTitle: 'IDS_TT_TITLE_RPF_SELF',
         sectionElements: "[
             TMap_PREFS.RPF_KEYBIND,
@@ -923,6 +930,7 @@
     DIRECTION_SQUADRONS_COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapDirEnemySquadronColorIndex', default: "indexOf('MARKERS', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS", parentPrefs: [{pref: "TMap_PREFS.DIRECTION_SQUADRONS", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}]},
     AIM_MARKER_TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_AIM_MARKER_TYPE', key: 'ttMinimapAimMarkerType', default: 0, dropdownItems: ['IDS_APPLY_DEFAULT', '+', '×']},
     AIM_MARKER_COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapAimMarkerColorIndex', default: "indexOf('MARKERS', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS"},
+    TORPEDO_MARKER: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TORPEDO_MARKERS', key: 'ttMinimapTorpMarkerVisible', default: true},
     RPF_KEYBIND: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_KEYBIND', key: 'ttMinimapRPFKeybind', tooltipHint: 'IDS_TT_HINT_RPF_KEYBIND', default: 0, dropdownItems: "TMap_RPF_KEYS.ALL", dropdownType: 'KEY', extraData: "TMap_RPF_KEYS"},
     RPF_SELF_ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'ttMinimapRPFSelfOpacity', default: 0.1},
     RPF_SELF_RED: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'ttMinimapRPFSelfRed', default: 1},
