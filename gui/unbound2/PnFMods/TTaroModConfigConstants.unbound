@@ -443,7 +443,8 @@
             TMap_PREFS.HEALTH_MAX_HIDE,
             TMap_PREFS.HEALTH_SCALE,
             TMap_PREFS.DIRECTION_SHIPS,
-            TMap_PREFS.DIRECTION_SHIPS_COLOR_INDEX
+            TMap_PREFS.DIRECTION_SHIPS_COLOR_INDEX,
+            TMap_PREFS.DIRECTION_SHIPS_SCALE
         ]"
     },
     {
@@ -452,7 +453,8 @@
             TMap_PREFS.PLANE_OWNER_NAME_DISPLAY_MODE,
             TMap_PREFS.PLANE_OWNER_SHIP_DISPLAY_MODE,
             TMap_PREFS.DIRECTION_SQUADRONS,
-            TMap_PREFS.DIRECTION_SQUADRONS_COLOR_INDEX
+            TMap_PREFS.DIRECTION_SQUADRONS_COLOR_INDEX,
+            TMap_PREFS.DIRECTION_SQUADRONS_SCALE
         ]"
     },
     {
@@ -923,11 +925,13 @@
     HEALTH_MAX_HIDE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HEALTH_MAX_HIDE', key: 'ttMinimapHealthMaxHide', tooltipHint: 'IDS_TT_HINT_HEALTH_MAX_HIDE', default: false, parentPrefs: [{pref: "TMap_PREFS.HEALTH_ALLY", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}, {pref: "TMap_PREFS.HEALTH_ENEMY", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}]},
     HEALTH_SCALE: {min: 1, max: 2, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BAR_WIDTH', key: 'ttMinimapHealthWidth', default: 1, parentPrefs: [{pref: "TMap_PREFS.HEALTH_ALLY", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}, {pref: "TMap_PREFS.HEALTH_ENEMY", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}]},
     DIRECTION_SHIPS: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ENEMY_DIRECTIONAL_LINE', key: 'ttMinimapDirEnemyShipDisplayMode', tooltipHint: 'IDS_TT_HINT_DIRECTIONAL_LINE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}, divider: "top"},
-    DIRECTION_SHIPS_COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapDirEnemyShipColorIndex', default: "indexOf('MARKERS', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS", parentPrefs: [{pref: "TMap_PREFS.DIRECTION_SHIPS", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}]},
+    DIRECTION_SHIPS_COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapDirEnemyShipColorIndex', default: "indexOf('MARKERS', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS"},
+    DIRECTION_SHIPS_SCALE: {min: 0.1, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'ttMinimapDirEnemyShipScale', default: 0.3, parentPrefs: [{pref: "TMap_PREFS.DIRECTION_SHIPS", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}]},
     PLANE_OWNER_NAME_DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'ttMinimapSquadronOwnerNameDisplayMode', tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     PLANE_OWNER_SHIP_DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHIP_NAME', key: 'ttMinimapSquadronOwnerShipDisplayMode', tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}, divider: "bottom"},
     DIRECTION_SQUADRONS: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ENEMY_DIRECTIONAL_LINE', key: 'ttMinimapDirEnemySquadronDisplayMode', tooltipHint: 'IDS_TT_HINT_DIRECTIONAL_LINE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     DIRECTION_SQUADRONS_COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapDirEnemySquadronColorIndex', default: "indexOf('MARKERS', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS", parentPrefs: [{pref: "TMap_PREFS.DIRECTION_SQUADRONS", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}]},
+    DIRECTION_SQUADRONS_SCALE: {min: 0.1, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'ttMinimapDirEnemySquadronScale', default: 0.3, parentPrefs: [{pref: "TMap_PREFS.DIRECTION_SQUADRONS", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}]},
     AIM_MARKER_TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_AIM_MARKER_TYPE', key: 'ttMinimapAimMarkerType', default: 0, dropdownItems: ['IDS_APPLY_DEFAULT', '+', '×']},
     AIM_MARKER_COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapAimMarkerColorIndex', default: "indexOf('MARKERS', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS"},
     TORPEDO_MARKER: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TORPEDO_MARKERS', key: 'ttMinimapTorpMarkerVisible', default: true},
