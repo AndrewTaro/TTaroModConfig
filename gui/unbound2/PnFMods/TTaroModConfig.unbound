@@ -1674,7 +1674,7 @@
 		(hitTest = false)
 		(alpha = 1.5)
 	)
-	(element HorizontalDivider
+	(element HorizontalDividerTwoPx
 		(style
 			#(width = 90%)
 		)
