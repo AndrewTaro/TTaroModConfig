@@ -207,4 +207,6 @@
     IDS_TT_AIM_MARKER_TYPE                       : ["'Shape'", "'形'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_TITLE_TORPEDO_MARKERS                 : ["'Torpedo Markers'", "'魚雷マーカー'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_TORPEDO_MARKERS                       : ["'Torpedoes on Minimap'", "'ミニマップ上の魚雷表示'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_EXTEND_SCALE                          : ["'Extended Scale'", "'拡大スケール'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_HINT_EXTEND_SCALE                     : ["'This option allows you to enlarge the minimap more than it originally can.'", "'ミニマップを本来の上限より拡大することができます'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
 })

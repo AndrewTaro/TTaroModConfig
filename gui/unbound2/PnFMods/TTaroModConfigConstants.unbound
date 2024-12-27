@@ -424,9 +424,10 @@
         sectionElements: "[
             TMap_PREFS.CONTESTED_CAPS,
             TMap_PREFS.NEARBY_RADAR_RANGE,
-            TMap_PREFS.DISABLE_DRAG_DROP,
             TMap_PREFS.MARKER_FONT_SIZE,
-            TMap_PREFS.ROTATE_MINIMAP
+            TMap_PREFS.DISABLE_DRAG_DROP,
+            TMap_PREFS.ROTATE_MINIMAP,
+            TMap_PREFS.EXTEND_SCALE
         ]"
     },
     {
@@ -911,9 +912,10 @@
 (def constant TMap_PREFS {
     CONTESTED_CAPS: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CONTESTED_CAPS', key: 'ttMinimapContestedCapsVisible', tooltipHint: 'IDS_TT_HINT_CONTESTED_CAPS', default: true},
     NEARBY_RADAR_RANGE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_NEARBY_RADAR_RANGE', key: 'ttMinimapNearbyRadarRangeVisible', tooltipHint: 'IDS_TT_HINT_NEARBY_RADAR_RANGE', default: false},
-    DISABLE_DRAG_DROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'ttMinimapDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
     MARKER_FONT_SIZE: {min: 9, max: 16, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_FONT_SIZE', key: 'ttMinimapMarkerFontSize', tooltipHint: 'IDS_TT_HINT_FONT_SIZE_MARKER', default: 9, round: 0},
+    DISABLE_DRAG_DROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'ttMinimapDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false, divider: "top"},
     ROTATE_MINIMAP: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.MINIMAP_SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_MINIMAP_OPTIONS_MINIMAPROTATIONENABLED', key: "SC.Battle.MINIMAP_OPTION.minimapRotationEnabled", default: false},
+    EXTEND_SCALE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_EXTEND_SCALE', key: 'ttMinimapExtendScale', tooltipHint: 'IDS_TT_HINT_EXTEND_SCALE', default: false},
     PLAYER_NAME_DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'ttMinimapPlayerNameDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     SHIP_NAME_DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.MINIMAP_DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHIP_NAME', key: "SC.Battle.MINIMAP_OPTION.shipNamesDisplayEnabled", tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 1, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     LAST_SPOTTED_ON_ALT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_LAST_SPOTTED_TIMER_ON_ALT', key: 'ttMinimapLastSpottedTimerVisibleOnAlt', tooltipHint: 'IDS_TT_HINT_LAST_SPOTTED_TIMER_ON_ALT', default: true},
