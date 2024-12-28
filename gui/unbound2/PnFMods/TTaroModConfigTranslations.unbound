@@ -209,4 +209,6 @@
     IDS_TT_TORPEDO_MARKERS                       : ["'Torpedoes on Minimap'", "'ミニマップ上の魚雷表示'", "''", "''", "''", "'Torpedy na minimapce'", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_EXTEND_SCALE                          : ["'Extended Scale'", "'拡大スケール'", "''", "''", "''", "'Powiększ skalę'", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_HINT_EXTEND_SCALE                     : ["'This option allows you to enlarge the minimap more than it originally can.'", "'ミニマップを本来の上限より拡大することができます'", "''", "''", "''", "'Opcja ta pozwala powiększyć minimapę bardziej niż jest to pierwotnie możliwe.'", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_MAIN_SQUADRON                         : ["'Player-Controlled Squadrons'", "'プレイヤーの操作する艦載機'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_AIR_STRIKE                            : ["'Air Strike'", "'空襲'", "'공습'", "'Авиаудар'", "'Авіаудар'", "'Nalot/wsparcie'", "'Nálety/Hlubinné nálety'", "'Luftschlag'", "'Frappe aérienne'", "'Ataque Aéreo'", "'Flyganfall'", "'Luchtaanval'", "'Vazdušni napad'", "''", ],
 })
