@@ -83,6 +83,12 @@
 		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
 
 		(macro TT_GET_UPREFS)
+
+		(event evItemChooserOpened)
+		(event evItemChooserClosed)
+		(var isChooserOpen:bool = false watch=false)
+		(bind isChooserOpen "true"  watch=false init=false (event "evItemChooserOpened"))
+		(bind isChooserOpen "false" watch=false init=false (event "evItemChooserClosed"))
 	)
 	(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
 
@@ -2056,6 +2062,12 @@
 		(var mouse:gfx = "$datahub.getSingleComponent(CC.mouse)")
 		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
 		(dispatch evHideInfotip args="{}" (bind trigger "isMouseActive"))
+
+		(event evItemChooserOpened)
+		(event evItemChooserClosed)
+		(var isChooserOpen:bool = false watch=false)
+		(bind isChooserOpen "true"  watch=false init=false (event "evItemChooserOpened"))
+		(bind isChooserOpen "false" watch=false init=false (event "evItemChooserClosed"))
 	)
 
 	(style
@@ -2167,6 +2179,7 @@
 								}
 								(event "evHideInfotip")
 	)
+	(dispatch evHideInfotip args="{}" on='evClickOutside' (bind enabled "!isChooserOpen"))
 	(screenBoundsOffset = {			left:	"TT_ELEMENT_SIZE.WIDTH",
 									top:	"TT_ELEMENT_SIZE.HEIGHT",
 									right:	"TT_ELEMENT_SIZE.WIDTH",
