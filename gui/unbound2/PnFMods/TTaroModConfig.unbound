@@ -1659,10 +1659,13 @@
 		(macro MOUSE_HANDLER_SCOPE)
 		(var isSelected:bool = "_curItemIndex == $index")
 
+		(var ingameText:str = "tr(_itemText)")
+		(var isIngameText:bool = "ingameText != _itemText")
+
 		(macro TT_GET_LANGUAGE_INDEX)
 		(var translations:array = "_itemText in TT_CONFIG_LOCALIZATIONS ? TT_CONFIG_LOCALIZATIONS[_itemText] : null")
 		(var isValidLocalization:bool = "translations.length > languageIndex && !isIn(translations[languageIndex], ['', ' '])")
-		(var localizedText:str = "isValidLocalization ? translations[languageIndex] : translations[0]")
+		(var localizedText:str = "isIngameText ? ingameText : isValidLocalization ? translations[languageIndex] : translations[0]")
 	)
 
 	(bind name "_itemText")
@@ -1754,10 +1757,13 @@
 
 (def element TT_DropdownChosenTextItemRendererElement (_item:str='', _choosedItemRendererParams:gfx={}, _labelMaxWidth:number=0, _userPrefsNum:gfx=null)
 	(scope
+		(var ingameText:str = "tr(_item)")
+		(var isIngameText:bool = "ingameText != _item")
+
 		(macro TT_GET_LANGUAGE_INDEX)
 		(var colorTranslations:array = "_item in TT_CONFIG_LOCALIZATIONS ? TT_CONFIG_LOCALIZATIONS[_item] : []")
 		(var isValidLocalization:bool = "colorTranslations.length > languageIndex && !isIn(colorTranslations[languageIndex], ['', ' '])")
-		(var localizedText:str = "isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
+		(var localizedText:str = "isIngameText ? ingameText : isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
 	)
 	(style
 		(height = "L")
