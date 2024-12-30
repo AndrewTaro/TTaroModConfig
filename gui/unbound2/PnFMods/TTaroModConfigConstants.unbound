@@ -475,6 +475,14 @@
         ]"
     },
     {
+        sectionTitle: 'IDS_TT_TITLE_ATTENTION_MARKERS',
+        sectionElements: "[
+            TMap_PREFS.ATTENTION_MARKER,
+            TMap_PREFS.ATTENTION_MARKER_NAME_DISPLAY_MODE,
+            TMap_PREFS.ATTENTION_MARKER_DISTANCE_DISPLAY_MODE
+        ]"
+    },
+    {
         sectionTitle: 'IDS_TT_TITLE_RPF_SELF',
         sectionElements: "[
             TMap_PREFS.RPF_KEYBIND,
@@ -958,6 +966,9 @@
     AIM_MARKER_TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_AIM_MARKER_TYPE', key: 'ttMinimapAimMarkerType', default: 0, dropdownItems: ['IDS_APPLY_DEFAULT', '+', '×']},
     AIM_MARKER_COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapAimMarkerColorIndex', default: "indexOf('MARKERS', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS"},
     TORPEDO_MARKER: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TORPEDO_MARKERS', key: 'ttMinimapTorpMarkerVisible', default: true},
+    ATTENTION_MARKER: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_IN_WORLD', key: 'ttMinimapAttentionMarkerWorldVisible', tooltipHint: 'IDS_TT_HINT_DISPLAY_IN_WORLD', default: true},
+    ATTENTION_MARKER_NAME_DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'ttMinimapAttentionMarkerNameDisplayMode', tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER', default: 2, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}, parentPrefs: [{pref: "TMap_PREFS.ATTENTION_MARKER", validValues: [1] }]},
+    ATTENTION_MARKER_DISTANCE_DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISTANCE', key: 'ttMinimapAttentionMarkerDistanceDisplayMode', tooltipHint: 'IDS_TT_HINT_SQUADRON_OWNER', default: 2, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}, parentPrefs: [{pref: "TMap_PREFS.ATTENTION_MARKER", validValues: [1] }]},
     RPF_KEYBIND: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_KEYBIND', key: 'ttMinimapRPFKeybind', tooltipHint: 'IDS_TT_HINT_RPF_KEYBIND', default: 0, dropdownItems: "TMap_RPF_KEYS.ALL", dropdownType: 'KEY', extraData: "TMap_RPF_KEYS"},
     RPF_SELF_ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'ttMinimapRPFSelfOpacity', default: 0.1},
     RPF_SELF_RED: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'ttMinimapRPFSelfRed', default: 1},
