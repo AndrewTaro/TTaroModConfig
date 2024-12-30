@@ -924,6 +924,7 @@
 				_item = "_items[_curIndex]"
 				_choosedItemRendererParams = "_choosedItemRendererParams"
 				_labelMaxWidth = "selectedItemMaxWidth - selectedItemRightPadding"
+				_userPrefsNum = "_userPrefsNum"
 			)
 		)
 	)
