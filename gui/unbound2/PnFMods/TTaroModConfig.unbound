@@ -337,7 +337,6 @@
 		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
 
 		(var imageName:str = "'tooltipImage' in _pref ? _pref.tooltipImage : null")
-		(var imagePath:str = "imageName ? 'url:../ttaro_mod_config/' + imageName : null")
 
 		(macro MOUSE_HANDLER_SCOPE)
 	)
@@ -426,11 +425,11 @@
 		# Hint
 		(controller $Tooltip (renderer = 'TT_TooltipHintElement')
 			# SimpleStatus does not support multilines.
-			(bind enabled "hintKey || imagePath")
+			(bind enabled "hintKey || imageName")
 			(args
 				_text = "localizedHintText"
 				_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.INFO"
-				_image="imagePath"
+				_image="imageName"
 			)
 			(macro TT_TOOLTIP_BEHAVIOUR)
 		)
@@ -2024,6 +2023,21 @@
 #
 
 (def element TT_TooltipHintElement (_text:str, _unifiedStatus:str="SC.Ui_styles.UNIFIED_STATUS.INFO", _image:str=null)
+	(scope
+		# im sure someone will copy paste this section soon lmao
+		(var hasVisaulContent:bool = "_image")
+		
+		(var isMovie:bool = "hasVisaulContent && '.webm' in _image")
+		(var isImage:bool = "hasVisaulContent && !isMovie")
+		(var imagePath:str = "isMovie	? 'coui://gui/ttaro_mod_config/' + _image
+										: 'url:../ttaro_mod_config/' + _image "
+		)
+
+		(var gfName:str = "SC.Gameface.DATA_PROVIDER_NAME.SHIP_DESTRUCTION + 'ttaroModHint'")
+		(var gfPath:str = "'gui/ttaro_mod_config/gameface/index.html'")
+
+		(bindcall externalCall 'inputMapping.onAction' "['setNewVideoSource', {videoSourcePath: imagePath}]" init="isMovie" watch=false)
+	)
 	(style
 		(width = 320)
 		(hitTest = false)
@@ -2043,12 +2057,27 @@
 			
 		)
 		(block
-			(bind visible "_image")
+			(bind visible "isImage")
 			(style
 				(bind marginTop "_text ? 10px : 0")
 				(width = 100%)
-				(bind backgroundImage "_image")
+				(bind backgroundImage "imagePath")
 				(backgroundSize = "autosize")
+			)
+		)
+		(block
+			(bind visible "isMovie")
+			(style
+				(width = 100%)
+				(height = 300px)
+				(bind marginTop "_text ? 10px : 0")
+			)
+			(controller $Instance renderer='GamefaceWidget'
+				(bind enabled "isMovie")
+				(args
+					_gfPath = "gfPath"
+					_gfName = "gfName"
+				)
 			)
 		)
 	)
