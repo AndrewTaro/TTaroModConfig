@@ -506,7 +506,8 @@
         sectionTitle: 'IDS_TT_TITLE_RANGE_CIRCLES',
         sectionElements: "[
             TMap_PREFS.RANGE_CIRCLE_ALPHA,
-            TMap_PREFS.RANGE_NUMERICL_VALUES
+            TMap_PREFS.RANGE_NUMERICL_VALUES,
+            TMap_PREFS.RANGE_OUTLINE_FIX
         ]"
     },
     {
@@ -981,6 +982,7 @@
     RPF_ALLY_BLUE: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'ttMinimapRPFAllyBlue', default: 1, parentPrefs: [{pref: "TMap_PREFS.RPF_ALLY_DISPLAY_MODE", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}]},
     RANGE_CIRCLE_ALPHA: {min: 20, max: 100, step: 5, renderer: "TT_CONFIG_RENDERERS.MINIMAP_SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CIRCLE_OPACITY', key: "SC.Battle.MINIMAP_OPTION.rangesAlpha", tooltipHint: 'IDS_TT_HINT_RANGE_CIRCLE_OPACITY', default: 100, round: 0},
     RANGE_NUMERICL_VALUES: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.MINIMAP_SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_MINIMAP_OPTIONS_DISTANCEDISPLAYENABLED', key: "SC.Battle.MINIMAP_OPTION.distanceDisplayEnabled", default: true},
+    RANGE_OUTLINE_FIX: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OUTLINE_THICKNESS_FIX', key: 'ttMinimapRangeOutlineFix', tooltipHint: 'IDS_TT_HINT_OUTLINE_THICKNESS_FIX', default: false},
     VISIBILITY_SEA: {
         DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE', key: 'ttMinimapVisibilitySeaDisplayMode', tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE', default: 2, dropdownItems: ['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], dropdownType: 'CUSTOM_TEXT', divider: "bottom"},
         LINE_TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OUTLINE_STYLE', key: 'ttMinimapVisibilitySeaOutlineType', default: 2, dropdownItems: ['IDS_TURN_OFF', 'IDS_TT_DOTTED_LINE', 'IDS_TT_DASHED_LINE', 'IDS_TT_SOLID_LINE'], dropdownType: 'CUSTOM_TEXT'},
