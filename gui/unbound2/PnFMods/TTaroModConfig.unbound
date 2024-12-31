@@ -336,6 +336,9 @@
 		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
 		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
 
+		(var imageName:str = "'tooltipImage' in _pref ? _pref.tooltipImage : null")
+		(var imagePath:str = "imageName ? 'url:../ttaro_mod_config/' + imageName : null")
+
 		(macro MOUSE_HANDLER_SCOPE)
 	)
 
@@ -421,13 +424,13 @@
 		)
 
 		# Hint
-		(controller $Tooltip (renderer = 'RepeatStatusTooltip')
+		(controller $Tooltip (renderer = 'TT_TooltipHintElement')
 			# SimpleStatus does not support multilines.
-			(bind enabled "hintKey")
+			(bind enabled "hintKey || imagePath")
 			(args
-				_tooltipDataArray="[{text: localizedHintText, unifiedStatus: SC.Ui_styles.UNIFIED_STATUS.INFO}]"
 				_text = "localizedHintText"
 				_unifiedStatus = "SC.Ui_styles.UNIFIED_STATUS.INFO"
+				_image="imagePath"
 			)
 			(macro TT_TOOLTIP_BEHAVIOUR)
 		)
@@ -2019,6 +2022,37 @@
 	)
 )
 #
+
+(def element TT_TooltipHintElement (_text:str, _unifiedStatus:str="SC.Ui_styles.UNIFIED_STATUS.INFO", _image:str=null)
+	(style
+		(width = 320)
+		(hitTest = false)
+	)
+	(macro TOOLTIP_SYSTEM_DEFAULT_BACKGROUND)
+
+	(element TOOLTIP_SYSTEM_DEFAULT_CONTAINER
+		(style
+			(align = "middle|center")
+		)
+		(controller $Instance renderer='TooltipSystemStatusLine'
+			(bind enabled "_text")
+			(args
+				_text="_text"
+				_unifiedStatus="_unifiedStatus"
+			)
+			
+		)
+		(block
+			(bind visible "_image")
+			(style
+				(bind marginTop "_text ? 10px : 0")
+				(width = 100%)
+				(bind backgroundImage "_image")
+				(backgroundSize = "autosize")
+			)
+		)
+	)
+)
 
 (def element TT_BackgroundElement()
 	(scope
