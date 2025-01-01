@@ -965,7 +965,7 @@
 	(scope
 		(var dockDataEntity:gfx = "$datahub.getSingleEntity(CC.dockData)")
 		(var isShipOverviewEnabled:bool = "dockDataEntity ? dockDataEntity.dockData.isShipOverviewEnabled : false" (event "dockDataEntity.dockData.evIsShipOverviewEnabledChanged"))
-
+		(macro MOUSE_HANDLER_SCOPE) #THIS IS MANDATORY FOR SCROLL IN BATTLE
 		
 		(var itemHeight:number = "INFOTIP_DEFAULT_TEXT_LIST_ITEM_RENDERER_ITEM_HEIGHT")
 		(var infotipHeight:number = "_maxDropDownHeight >= _items.length * itemHeight	? _items.length * itemHeight
@@ -974,6 +974,9 @@
 	)
 
 	(macro TOOLTIP_SYSTEM_DEFAULT_BACKGROUND "true")
+
+	(bindcall externalCall 'inputMapping.onAction' "['battleChat.rollOverChanged', { rollOver: rollOver }]" init=false watch=false (bind trigger "rollOver"))
+	(macro MOUSE_EVENTS_DISPATCHER)
 
 	(style
 		(position = "absolute")
