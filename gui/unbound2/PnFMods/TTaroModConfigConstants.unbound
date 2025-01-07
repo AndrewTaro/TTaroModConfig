@@ -259,7 +259,12 @@
     {
         sectionTitle: 'IDS_TT_TITLE_ANONYMOUS_MODE',
         sectionElements: "[
-            StM_PREFS.ENABLE
+            StM_PREFS.ENABLE,
+            StM_PREFS.FRIEND_NAME,
+            StM_PREFS.CLANMATE_NAME,
+            StM_PREFS.DIVMATE_NAME,
+            StM_PREFS.CLAN_NAME,
+            StM_PREFS.OWN_NAME
         ]"
     }
 ])
@@ -905,7 +910,12 @@
 })
 
 (def constant StM_PREFS {
-    ENABLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ANONYMIZE_MODE', key: 'streamerModeEnabled', tooltipHint: 'IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH', default: true},
+    ENABLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ANONYMIZE_MODE', key: 'streamerModeEnabled', tooltipHint: 'IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH', default: true, divider: "bottom"},
+    FRIEND_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_MY_CONTACTS', key: 'streamerModeFriendNameEnabled', tooltipHint: 'IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH', default: true, parentPrefs: [{pref: "StM_PREFS.ENABLE", validValues: "[1]"}]},
+    CLANMATE_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLANMATE', key: 'streamerModeClanmateNameEnabled', tooltipHint: 'IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH', default: true, parentPrefs: [{pref: "StM_PREFS.ENABLE", validValues: "[1]"}]},
+    DIVMATE_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_OPTIONS_DIVISION', key: 'streamerModeDivmateNameEnabled', tooltipHint: 'IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH', default: true, parentPrefs: [{pref: "StM_PREFS.ENABLE", validValues: "[1]"}]},
+    CLAN_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLAN_NAME', key: 'streamerModeClanNameEnabled', tooltipHint: 'IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH', default: true, parentPrefs: [{pref: "StM_PREFS.ENABLE", validValues: "[1]"}]},
+    OWN_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OWN_PLAYER_NAME', key: 'streamerModeOwnPlayerNameEnabled', tooltipHint: 'IDS_TT_HINT_SETTING_AFFECTS_NEXT_MATCH', default: true, parentPrefs: [{pref: "StM_PREFS.ENABLE", validValues: "[1]"}]},
 })
 
 (def constant ADM_PREFS {
