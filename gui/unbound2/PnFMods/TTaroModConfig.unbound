@@ -231,6 +231,7 @@
 			(controller $Repeat renderer='TT_SectionElement' name='TT_SectionElementRepeat'
 				(bind count "_modConfigsData.configSections.length")
 				(args
+					_modName	  = "_modConfigsData.modName"
 					_sectionData  = "_modConfigsData.configSections[$index]"
 					_userPrefsNum = "_userPrefsNum"
 				)
@@ -239,7 +240,7 @@
 	)
 )
 
-(def element TT_SectionElement (_sectionData:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_SectionElement (_modName:str, _sectionData:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(var isSectionEnabled:bool = false)
 
@@ -262,7 +263,30 @@
 		(var hintTranslations:array = "tooltipHint ? TT_CONFIG_LOCALIZATIONS[tooltipHint] : []")
 		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
 		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
+
+		# Expand
+		(macro MOUSE_HANDLER_SCOPE "'sectionExpand_'")
+		(event evSwitchExpand)
+		(event evOnButtonClicked)
+		(var sectionPrefKey:str = "_modName + _sectionData.sectionTitle + 'Expanded'")
+		(var isExpandedDefault:bool = "'isExpanded' in sectionSettings ? sectionSettings.isExpanded : true")
+
+		(var isExpanded:bool = "isNumber(_userPrefsNum[sectionPrefKey]) ? round(_userPrefsNum[sectionPrefKey]) : isExpandedDefault")
+		(var prefData:dict = "{value: toNumber(!isExpanded) + 0.00001, name: 'chatBoxWidth', subName: sectionPrefKey}" watch=false (event "evSwitchExpand")(event "evOnButtonClicked"))
+
+		(var animatedAlpha:number = "toNumber(isExpanded)" watch=false)
+		(controller $Animation		
+			(bindcall play
+				duration = "0.3"
+				from	 = "{ animatedAlpha: 1 }"
+				to		 = "{ animatedAlpha: 0 }"
+				reverse  = "isExpanded"
+				(bind trigger "isExpanded")
+			)
+		)
 	)
+
+	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', prefData]" init=false watch=false (event "evSwitchExpand")(event "evOnButtonClicked"))
 
 	(bind visible "isSectionEnabled")
 
@@ -274,17 +298,53 @@
 		(backgroundColor = 0x01000000) # For hittest
 	)
 
-	(element TT_SectionTitleElement _data="_sectionData" _userPrefsNum="_userPrefsNum")
-
 	(macro TT_HORIZONTAL_DEVIDER)
 
-	(controller $Repeat renderer='TT_ConfigElement'
-		(bind enabled "isSectionEnabled")
-		(bind count "_sectionData.sectionElements.length")
-		(args 
-			_pref   		= "_sectionData.sectionElements[$index]"
-			_isConfigurable	= "isConfigurable"
-			_userPrefsNum	= "_userPrefsNum"
+	# Title
+	(hblock
+		(style
+			(width = 100%)
+			(align = "middle|center")
+		)
+		(block
+			(style
+				(position = "absolute")
+				(left = -15px)
+				(vcenter = 0%)
+				(alpha = "0.7")
+			)
+			(element ButtonExpand
+				_isInOverState="sectionExpand_rollOver && !sectionExpand_mouseDown"
+				_isInDownState="sectionExpand_rollOver && sectionExpand_mouseDown"
+				_expanded="isExpanded"
+			)
+		)
+		(element TT_SectionTitleElement _data="_sectionData" _userPrefsNum="_userPrefsNum")
+		(macro MOUSE_HANDLER
+			_prefix = "'sectionExpand_'"
+			_dispatchedEv = "'evSwitchExpand'"
+			_soundSet = "'dropdown'"
+		)
+	)
+
+	# Sections
+	(block
+		(bind visible "isExpanded")
+		# Instead of (animatedAlpha > 0), this will allow quick collapse & animated expand
+		# It looks better than animating both the appear and disappear
+		(style
+			(width = 100%)
+			(align = "middle|center")
+			(bind alpha "animatedAlpha")
+		)
+		(controller $Repeat renderer='TT_ConfigElement'
+			(bind enabled "isSectionEnabled")
+			(bind count "_sectionData.sectionElements.length")
+			(args 
+				_pref   		= "_sectionData.sectionElements[$index]"
+				_isConfigurable	= "isConfigurable"
+				_userPrefsNum	= "_userPrefsNum"
+			)
 		)
 	)
 

@@ -467,6 +467,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_AIM_MARKERS',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.AIM_MARKER_TYPE,
             TMap_PREFS.AIM_MARKER_SCALE,
@@ -475,13 +476,14 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_TORPEDO_MARKERS',
-        sectionSettings: {isEnabled: "TT_ADVANCEDTORPEDOMARKER_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Advanced Torpedo Marker'},
+        sectionSettings: {isEnabled: "TT_ADVANCEDTORPEDOMARKER_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Advanced Torpedo Marker', isExpanded: false},
         sectionElements: "[
             TMap_PREFS.TORPEDO_MARKER
         ]"
     },
     {
         sectionTitle: 'IDS_TT_TITLE_ATTENTION_MARKERS',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.ATTENTION_MARKER,
             TMap_PREFS.ATTENTION_MARKER_NAME_DISPLAY_MODE,
@@ -500,6 +502,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_RPF_ALLY',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.RPF_ALLY_DISPLAY_MODE,
             TMap_PREFS.RPF_ALLY_ALPHA,
@@ -518,6 +521,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_SEA_DETECTION_RANGE',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.VISIBILITY_SEA.DISPLAY_MODE,
             TMap_PREFS.VISIBILITY_SEA.LINE_TYPE,
@@ -529,6 +533,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_AIR_DETECTION_RANGE',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.VISIBILITY_AIR.DISPLAY_MODE,
             TMap_PREFS.VISIBILITY_AIR.LINE_TYPE,
@@ -540,6 +545,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_MAIN_ARMAMENT_RANGE',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.MAIN_ARMAMENT.DISPLAY_MODE,
             TMap_PREFS.MAIN_ARMAMENT.LINE_TYPE,
@@ -551,6 +557,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_SECONDARY_RANGE',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.SECONDARY.DISPLAY_MODE,
             TMap_PREFS.SECONDARY.LINE_TYPE,
@@ -562,6 +569,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_TORPEDO_RANGE',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.TORPEDO.DISPLAY_MODE,
             TMap_PREFS.TORPEDO.LINE_TYPE,
@@ -573,6 +581,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_AIRSUPPORT_RANGE',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.AIRSUPPORT.DISPLAY_MODE,
             TMap_PREFS.AIRSUPPORT.LINE_TYPE,
@@ -584,6 +593,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_AA_RANGE',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.ANTIAIR.DISPLAY_MODE,
             TMap_PREFS.ANTIAIR.LINE_TYPE,
@@ -606,6 +616,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_RADAR_RANGE_SELF',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.RADAR_SELF.DISPLAY_MODE,
             TMap_PREFS.RADAR_SELF.LINE_TYPE,
@@ -617,7 +628,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_RADAR_RANGE_ALLY',
-        sectionSettings: {isEnabled: "TT_CONSUMABLESMONITOR_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Consumables Monitor'},
+        sectionSettings: {isEnabled: "TT_CONSUMABLESMONITOR_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Consumables Monitor', isExpanded: false},
         sectionElements: "[
             TMap_PREFS.RADAR_ALLY.VISIBLE_ON_ALT,
             TMap_PREFS.RADAR_ALLY.VISIBLE_ON_ACTIVATION,
@@ -630,6 +641,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_RADAR_RANGE_ENEMY',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.RADAR_ENEMY.DISPLAY_MODE,
             TMap_PREFS.RADAR_ENEMY.LINE_TYPE,
@@ -641,6 +653,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_HYDRO_RANGE_SELF',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.HYDRO_SELF.DISPLAY_MODE,
             TMap_PREFS.HYDRO_SELF.LINE_TYPE,
@@ -652,7 +665,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_HYDRO_RANGE_ALLY',
-        sectionSettings: {isEnabled: "TT_CONSUMABLESMONITOR_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Consumables Monitor'},
+        sectionSettings: {isEnabled: "TT_CONSUMABLESMONITOR_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Consumables Monitor', isExpanded: false},
         sectionElements: "[
             TMap_PREFS.HYDRO_ALLY.VISIBLE_ON_ALT,
             TMap_PREFS.HYDRO_ALLY.VISIBLE_ON_ACTIVATION,
@@ -665,6 +678,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_HYDRO_RANGE_ENEMY',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.HYDRO_ENEMY.DISPLAY_MODE,
             TMap_PREFS.HYDRO_ENEMY.LINE_TYPE,
@@ -676,6 +690,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_SUBRADAR_RANGE_SELF',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.SUBRADAR_SELF.DISPLAY_MODE,
             TMap_PREFS.SUBRADAR_SELF.LINE_TYPE,
@@ -687,7 +702,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_SUBRADAR_RANGE_ALLY',
-        sectionSettings: {isEnabled: "TT_CONSUMABLESMONITOR_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Consumables Monitor'},
+        sectionSettings: {isEnabled: "TT_CONSUMABLESMONITOR_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Consumables Monitor', isExpanded: false},
         sectionElements: "[
             TMap_PREFS.SUBRADAR_ALLY.VISIBLE_ON_ALT,
             TMap_PREFS.SUBRADAR_ALLY.VISIBLE_ON_ACTIVATION,
@@ -700,6 +715,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_SUBRADAR_RANGE_ENEMY',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.SUBRADAR_ENEMY.DISPLAY_MODE,
             TMap_PREFS.SUBRADAR_ENEMY.LINE_TYPE,
@@ -711,6 +727,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_HYDROPHONE_RANGE_SELF',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.HYDROPHONE_SELF.DISPLAY_MODE,
             TMap_PREFS.HYDROPHONE_SELF.LINE_TYPE,
@@ -722,6 +739,7 @@
     },
     {
         sectionTitle: 'IDS_OPTIONS_QUICKCOMMANDS_SOUND',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TMap_PREFS.MOUSE_COMMANDS,
             TMap_PREFS.POINT_ATTENTION
