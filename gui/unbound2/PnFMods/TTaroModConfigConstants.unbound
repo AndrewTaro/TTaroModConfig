@@ -531,6 +531,30 @@
         ]"
     },
     {
+        sectionTitle: 'IDS_TT_TITLE_SEA_DETECTION_RANGE_ALLY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.VISIBILITY_SEA_ALLY.DISPLAY_MODE,
+            TMap_PREFS.VISIBILITY_SEA_ALLY.LINE_TYPE,
+            TMap_PREFS.VISIBILITY_SEA_ALLY.LINE_THICKNESS,
+            TMap_PREFS.VISIBILITY_SEA_ALLY.FILL_CIRCLE,
+            TMap_PREFS.VISIBILITY_SEA_ALLY.ALPHA,
+            TMap_PREFS.VISIBILITY_SEA_ALLY.COLOR_INDEX
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_SEA_DETECTION_RANGE_ENEMY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.VISIBILITY_SEA_ENEMY.DISPLAY_MODE,
+            TMap_PREFS.VISIBILITY_SEA_ENEMY.LINE_TYPE,
+            TMap_PREFS.VISIBILITY_SEA_ENEMY.LINE_THICKNESS,
+            TMap_PREFS.VISIBILITY_SEA_ENEMY.FILL_CIRCLE,
+            TMap_PREFS.VISIBILITY_SEA_ENEMY.ALPHA,
+            TMap_PREFS.VISIBILITY_SEA_ENEMY.COLOR_INDEX
+        ]"
+    },
+    {
         sectionTitle: 'IDS_TT_TITLE_AIR_DETECTION_RANGE',
         sectionSettings: {isExpanded: false},
         sectionElements: "[
@@ -540,6 +564,30 @@
             TMap_PREFS.VISIBILITY_AIR.FILL_CIRCLE,
             TMap_PREFS.VISIBILITY_AIR.ALPHA,
             TMap_PREFS.VISIBILITY_AIR.COLOR_INDEX
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_AIR_DETECTION_RANGE_ALLY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.VISIBILITY_AIR_ALLY.DISPLAY_MODE,
+            TMap_PREFS.VISIBILITY_AIR_ALLY.LINE_TYPE,
+            TMap_PREFS.VISIBILITY_AIR_ALLY.LINE_THICKNESS,
+            TMap_PREFS.VISIBILITY_AIR_ALLY.FILL_CIRCLE,
+            TMap_PREFS.VISIBILITY_AIR_ALLY.ALPHA,
+            TMap_PREFS.VISIBILITY_AIR_ALLY.COLOR_INDEX
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_AIR_DETECTION_RANGE_ENEMY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.VISIBILITY_AIR_ENEMY.DISPLAY_MODE,
+            TMap_PREFS.VISIBILITY_AIR_ENEMY.LINE_TYPE,
+            TMap_PREFS.VISIBILITY_AIR_ENEMY.LINE_THICKNESS,
+            TMap_PREFS.VISIBILITY_AIR_ENEMY.FILL_CIRCLE,
+            TMap_PREFS.VISIBILITY_AIR_ENEMY.ALPHA,
+            TMap_PREFS.VISIBILITY_AIR_ENEMY.COLOR_INDEX
         ]"
     },
     {
@@ -555,6 +603,30 @@
         ]"
     },
     {
+        sectionTitle: 'IDS_TT_TITLE_MAIN_ARMAMENT_RANGE_ALLY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.MAIN_ARMAMENT_ALLY.DISPLAY_MODE,
+            TMap_PREFS.MAIN_ARMAMENT_ALLY.LINE_TYPE,
+            TMap_PREFS.MAIN_ARMAMENT_ALLY.LINE_THICKNESS,
+            TMap_PREFS.MAIN_ARMAMENT_ALLY.FILL_CIRCLE,
+            TMap_PREFS.MAIN_ARMAMENT_ALLY.ALPHA,
+            TMap_PREFS.MAIN_ARMAMENT_ALLY.COLOR_INDEX
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_MAIN_ARMAMENT_RANGE_ENEMY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.MAIN_ARMAMENT_ENEMY.DISPLAY_MODE,
+            TMap_PREFS.MAIN_ARMAMENT_ENEMY.LINE_TYPE,
+            TMap_PREFS.MAIN_ARMAMENT_ENEMY.LINE_THICKNESS,
+            TMap_PREFS.MAIN_ARMAMENT_ENEMY.FILL_CIRCLE,
+            TMap_PREFS.MAIN_ARMAMENT_ENEMY.ALPHA,
+            TMap_PREFS.MAIN_ARMAMENT_ENEMY.COLOR_INDEX
+        ]"
+    },
+    {
         sectionTitle: 'IDS_TT_TITLE_SECONDARY_RANGE',
         sectionSettings: {isExpanded: false},
         sectionElements: "[
@@ -564,6 +636,30 @@
             TMap_PREFS.SECONDARY.FILL_CIRCLE,
             TMap_PREFS.SECONDARY.ALPHA,
             TMap_PREFS.SECONDARY.COLOR_INDEX
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_SECONDARY_RANGE_ALLY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.SECONDARY_ALLY.DISPLAY_MODE,
+            TMap_PREFS.SECONDARY_ALLY.LINE_TYPE,
+            TMap_PREFS.SECONDARY_ALLY.LINE_THICKNESS,
+            TMap_PREFS.SECONDARY_ALLY.FILL_CIRCLE,
+            TMap_PREFS.SECONDARY_ALLY.ALPHA,
+            TMap_PREFS.SECONDARY_ALLY.COLOR_INDEX
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_SECONDARY_RANGE_ENEMY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.SECONDARY_ENEMY.DISPLAY_MODE,
+            TMap_PREFS.SECONDARY_ENEMY.LINE_TYPE,
+            TMap_PREFS.SECONDARY_ENEMY.LINE_THICKNESS,
+            TMap_PREFS.SECONDARY_ENEMY.FILL_CIRCLE,
+            TMap_PREFS.SECONDARY_ENEMY.ALPHA,
+            TMap_PREFS.SECONDARY_ENEMY.COLOR_INDEX
         ]"
     },
     {
@@ -579,6 +675,30 @@
         ]"
     },
     {
+        sectionTitle: 'IDS_TT_TITLE_TORPEDO_RANGE_ALLY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.TORPEDO_ALLY.DISPLAY_MODE,
+            TMap_PREFS.TORPEDO_ALLY.LINE_TYPE,
+            TMap_PREFS.TORPEDO_ALLY.LINE_THICKNESS,
+            TMap_PREFS.TORPEDO_ALLY.FILL_CIRCLE,
+            TMap_PREFS.TORPEDO_ALLY.ALPHA,
+            TMap_PREFS.TORPEDO_ALLY.COLOR_INDEX
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_TORPEDO_RANGE_ENEMY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.TORPEDO_ENEMY.DISPLAY_MODE,
+            TMap_PREFS.TORPEDO_ENEMY.LINE_TYPE,
+            TMap_PREFS.TORPEDO_ENEMY.LINE_THICKNESS,
+            TMap_PREFS.TORPEDO_ENEMY.FILL_CIRCLE,
+            TMap_PREFS.TORPEDO_ENEMY.ALPHA,
+            TMap_PREFS.TORPEDO_ENEMY.COLOR_INDEX
+        ]"
+    },
+    {
         sectionTitle: 'IDS_TT_TITLE_AIRSUPPORT_RANGE',
         sectionSettings: {isExpanded: false},
         sectionElements: "[
@@ -588,6 +708,30 @@
             TMap_PREFS.AIRSUPPORT.FILL_CIRCLE,
             TMap_PREFS.AIRSUPPORT.ALPHA,
             TMap_PREFS.AIRSUPPORT.COLOR_INDEX
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_AIRSUPPORT_RANGE_ALLY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.AIRSUPPORT_ALLY.DISPLAY_MODE,
+            TMap_PREFS.AIRSUPPORT_ALLY.LINE_TYPE,
+            TMap_PREFS.AIRSUPPORT_ALLY.LINE_THICKNESS,
+            TMap_PREFS.AIRSUPPORT_ALLY.FILL_CIRCLE,
+            TMap_PREFS.AIRSUPPORT_ALLY.ALPHA,
+            TMap_PREFS.AIRSUPPORT_ALLY.COLOR_INDEX
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_AIRSUPPORT_RANGE_ENEMY',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.AIRSUPPORT_ENEMY.DISPLAY_MODE,
+            TMap_PREFS.AIRSUPPORT_ENEMY.LINE_TYPE,
+            TMap_PREFS.AIRSUPPORT_ENEMY.LINE_THICKNESS,
+            TMap_PREFS.AIRSUPPORT_ENEMY.FILL_CIRCLE,
+            TMap_PREFS.AIRSUPPORT_ENEMY.ALPHA,
+            TMap_PREFS.AIRSUPPORT_ENEMY.COLOR_INDEX
         ]"
     },
     {
@@ -1021,7 +1165,7 @@
     PLAYER_NAME_DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'ttMinimapPlayerNameDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     SHIP_NAME_DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.MINIMAP_DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHIP_NAME', key: "SC.Battle.MINIMAP_OPTION.shipNamesDisplayEnabled", tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 1, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     LAST_SPOTTED_ON_ALT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_LAST_SPOTTED_TIMER_ON_ALT', key: 'ttMinimapLastSpottedTimerVisibleOnAlt', tooltipHint: 'IDS_TT_HINT_LAST_SPOTTED_TIMER_ON_ALT', tooltipImage: 'ttaro_minimap/last_spotted_timer.png', default: true},
-    SHOW_DEAD: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHOW_DEAD', key: 'ttMinimapShowDeadPlayer', default: false},
+    SHOW_DEAD: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHOW_DEAD', key: 'ttMinimapShowDeadPlayer', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     DETECTION: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DETECTION', key: 'ttMinimapAllyDetectionVisible', tooltipHint: 'IDS_TT_HINT_DETECTION_HIGHLIGHT', default: false, divider: "bottom"},
     HEALTH_ALLY: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HEALTH_ALLY', key: 'ttMinimapHealthAllyDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     HEALTH_ENEMY: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HEALTH_ENEMY', key: 'ttMinimapHealthEnemyDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
