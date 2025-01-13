@@ -231,7 +231,7 @@
 			(controller $Repeat renderer='TT_SectionElement' name='TT_SectionElementRepeat'
 				(bind count "_modConfigsData.configSections.length")
 				(args
-					_modName	  = "_modConfigsData.modName"
+					_modTag		  = "_modConfigsData.modTag"
 					_sectionData  = "_modConfigsData.configSections[$index]"
 					_userPrefsNum = "_userPrefsNum"
 				)
@@ -240,7 +240,7 @@
 	)
 )
 
-(def element TT_SectionElement (_modName:str, _sectionData:dict, _userPrefsNum:gfx=null) layout=true
+(def element TT_SectionElement (_modTag:str, _sectionData:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(var isSectionEnabled:bool = false)
 
@@ -268,7 +268,7 @@
 		(macro MOUSE_HANDLER_SCOPE "'sectionExpand_'")
 		(event evSwitchExpand)
 		(event evOnButtonClicked)
-		(var sectionPrefKey:str = "_modName + _sectionData.sectionTitle + 'Expanded'")
+		(var sectionPrefKey:str = "_modTag + '_' + _sectionData.sectionTitle + '_' + 'Expanded'")
 		(var isExpandedDefault:bool = "'isExpanded' in sectionSettings ? sectionSettings.isExpanded : true")
 
 		(var isExpanded:bool = "isNumber(_userPrefsNum[sectionPrefKey]) ? round(_userPrefsNum[sectionPrefKey]) : isExpandedDefault")
