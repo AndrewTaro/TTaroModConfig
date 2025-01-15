@@ -697,11 +697,11 @@
 		#
 		# Dict updates only when prefValue changes.
 		# Thus, if the value loaded from userPref is equal to current value, the update event will not happen.
-		(var prefData:dict = "{value: prefValue + 0.00001, name: 'chatBoxWidth', subName: prefKey}")
+		(var prefData:dict = "{value: prefValue + 0.00001, name: 'chatBoxWidth', subName: prefKey}" watch=false (event "evValueReset")(event "evSliderValueChanged"))
 	)
 	(dispatch evShow args="{}" on='addedToStage')
 
-	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', prefData]" init=false)
+	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', prefData]" init=false watch=false (event "evValueReset")(event "evSliderValueChanged"))
 
 	(style
 		(width = "50%")

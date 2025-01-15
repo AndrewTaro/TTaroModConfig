@@ -923,6 +923,85 @@
     }
 ])
 
+(def constant TT_MOD_SUBSHIGHLIGHT_CONFIGS [
+    {
+        sectionTitle: 'IDS_TT_TITLE_PERISCOPE_HIT_LOCK',
+        sectionElements: "[
+            SubHL_PREFS.PS_HIT_LOCK.ALPHA,
+            SubHL_PREFS.PS_HIT_LOCK.RED,
+            SubHL_PREFS.PS_HIT_LOCK.GREEN,
+            SubHL_PREFS.PS_HIT_LOCK.BLUE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_PERISCOPE_HIT_NO_LOCK',
+        sectionElements: "[
+            SubHL_PREFS.PS_HIT_NO_LOCK.ALPHA,
+            SubHL_PREFS.PS_HIT_NO_LOCK.RED,
+            SubHL_PREFS.PS_HIT_NO_LOCK.GREEN,
+            SubHL_PREFS.PS_HIT_NO_LOCK.BLUE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_PERISCOPE_NO_HIT_LOCK',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            SubHL_PREFS.PS_NO_HIT_LOCK.ALPHA,
+            SubHL_PREFS.PS_NO_HIT_LOCK.RED,
+            SubHL_PREFS.PS_NO_HIT_LOCK.GREEN,
+            SubHL_PREFS.PS_NO_HIT_LOCK.BLUE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_PERISCOPE_NO_HIT_NO_LOCK',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            SubHL_PREFS.PS_NO_HIT_NO_LOCK.ALPHA,
+            SubHL_PREFS.PS_NO_HIT_NO_LOCK.RED,
+            SubHL_PREFS.PS_NO_HIT_NO_LOCK.GREEN,
+            SubHL_PREFS.PS_NO_HIT_NO_LOCK.BLUE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_UNDERWATER_HIT_LOCK',
+        sectionElements: "[
+            SubHL_PREFS.UW_HIT_LOCK.ALPHA,
+            SubHL_PREFS.UW_HIT_LOCK.RED,
+            SubHL_PREFS.UW_HIT_LOCK.GREEN,
+            SubHL_PREFS.UW_HIT_LOCK.BLUE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_UNDERWATER_HIT_NO_LOCK',
+        sectionElements: "[
+            SubHL_PREFS.UW_HIT_NO_LOCK.ALPHA,
+            SubHL_PREFS.UW_HIT_NO_LOCK.RED,
+            SubHL_PREFS.UW_HIT_NO_LOCK.GREEN,
+            SubHL_PREFS.UW_HIT_NO_LOCK.BLUE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_UNDERWATER_NO_HIT_LOCK',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            SubHL_PREFS.UW_NO_HIT_LOCK.ALPHA,
+            SubHL_PREFS.UW_NO_HIT_LOCK.RED,
+            SubHL_PREFS.UW_NO_HIT_LOCK.GREEN,
+            SubHL_PREFS.UW_NO_HIT_LOCK.BLUE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_UNDERWATER_NO_HIT_NO_LOCK',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            SubHL_PREFS.UW_NO_HIT_NO_LOCK.ALPHA,
+            SubHL_PREFS.UW_NO_HIT_NO_LOCK.RED,
+            SubHL_PREFS.UW_NO_HIT_NO_LOCK.GREEN,
+            SubHL_PREFS.UW_NO_HIT_NO_LOCK.BLUE
+        ]"
+    }
+])
+
 
 
 (def constant TT_MODS_CONFIG_LIST [
@@ -943,6 +1022,7 @@
     {modName: '2D Radio', modTag: '2DRADIO', configSections: "TT_MOD_2DRADIO_CONFIGS", isInstalled: "TT_2DRADIO_INSTALLED"},
     {modName: 'Minimap', modTag: 'MINIMAP', configSections: "TT_MOD_MINIMAP_CONFIGS", isInstalled: "TT_MINIMAP_INSTALLED"},
     {modName: 'Chat', modTag: 'CHAT', configSections: "TT_MOD_CHAT_CONFIGS", isInstalled: "TT_CHAT_INSTALLED"},
+    {modName: 'Subs Highlight', modTag: 'SUBSHIGHLIGHT', configSections: "TT_MOD_SUBSHIGHLIGHT_CONFIGS", isInstalled: "TT_SUBSHIGHLIGHT_INSTALLED"},
 ])
 
 (def constant TDRadar_PREFS {
@@ -1486,5 +1566,56 @@
     ALLY_NEED_AIR_SUPPORT_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_NEED_AIR_DEFENSE_CHATS', key: 'ttChatAllyNeedAirDefenseVisible', default: true},
     ALLY_NEED_SPOTTING_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_NEED_SPOTTING_CHATS', key: 'ttChatAllyNeedSpottingVisible', default: true},
     DEFAULT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: '# default case', key: '', default: true},
+})
+
+(def constant SubHL_PREFS {
+    PS_HIT_LOCK: {
+        ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightPeriscopeHitLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.8},
+        RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightPeriscopeHitLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.8},
+        GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightPeriscopeHitLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.05},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightPeriscopeHitLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 1},
+    },
+    PS_HIT_NO_LOCK: {
+        ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightPeriscopeHitNoLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.4},
+        RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightPeriscopeHitNoLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.8},
+        GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightPeriscopeHitNoLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.05},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightPeriscopeHitNoLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 1},
+    },
+    PS_NO_HIT_LOCK: {
+        ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightPeriscopeNoHitLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 1},
+        RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightPeriscopeNoHitLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+        GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightPeriscopeNoHitLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightPeriscopeNoHitLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+    },
+    PS_NO_HIT_NO_LOCK: {
+        ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightPeriscopeNoHitNoLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.5},
+        RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightPeriscopeNoHitNoLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+        GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightPeriscopeNoHitNoLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightPeriscopeNoHitNoLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+    },
+    UW_HIT_LOCK: {
+        ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightUnderwaterHitLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.2},
+        RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightUnderwaterHitLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.8},
+        GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightUnderwaterHitLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.05},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightUnderwaterHitLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+    },
+    UW_HIT_NO_LOCK: {
+        ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightUnderwaterHitNoLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.1},
+        RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightUnderwaterHitNoLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.8},
+        GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightUnderwaterHitNoLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.05},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightUnderwaterHitNoLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 1},
+    },
+    UW_NO_HIT_LOCK: {
+        ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightUnderwaterNoHitLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 1},
+        RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightUnderwaterNoHitLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+        GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightUnderwaterNoHitLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightUnderwaterNoHitLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+    },
+    UW_NO_HIT_NO_LOCK: {
+        ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightUnderwaterNoHitNoLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.5},
+        RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightUnderwaterNoHitNoLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+        GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightUnderwaterNoHitNoLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightUnderwaterNoHitNoLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
+    },
 })
 
