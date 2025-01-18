@@ -375,23 +375,33 @@
     {
         sectionTitle: 'IDS_TT_TITLE_GENERAL',
         sectionElements: "[
-            DMonitor_PREFS.UI_SCALE,
-            DMonitor_PREFS.ROW_COUNTS,
+            DMonitor_PREFS.DISPLAY_MODE,
             DMonitor_PREFS.RECEIVED_DAMAGE_VISIBLE,
             DMonitor_PREFS.INFLICTED_DAMAGE_VISIBLE,
+            DMonitor_PREFS.UI_SCALE,
+            DMonitor_PREFS.BAR_ALPHA,
+            DMonitor_PREFS.ROW_COUNTS,
+            DMonitor_PREFS.ROW_HEIGHT,
+            DMonitor_PREFS.FONT_STYLE_INDEX,
+            DMonitor_PREFS.HIDE_OTHERS,
             DMonitor_PREFS.DISABLE_DRAGDROP
         ]"
     },
     {
         sectionTitle: 'IDS_TT_TITLE_PLAYER_INFO',
         sectionElements: "[
-            DMonitor_PREFS.PLAYER_INFO_WIDTH
+            DMonitor_PREFS.PLAYER_INFO.PLAYER_NAME,
+            DMonitor_PREFS.PLAYER_INFO.CLAN_NAME,
+            DMonitor_PREFS.PLAYER_INFO.WIDTH
         ]"
     },
     {
         sectionTitle: 'IDS_TT_TITLE_SHIP_INFO',
         sectionElements: "[
-            DMonitor_PREFS.SHIP_INFO_WIDTH
+            DMonitor_PREFS.SHIP_INFO.SHIP_NAME,
+            DMonitor_PREFS.SHIP_INFO.CLASS_ICON,
+            DMonitor_PREFS.SHIP_INFO.CLASS_ICON_STYLE_INDEX,
+            DMonitor_PREFS.SHIP_INFO.WIDTH
         ]"
     },
     {
@@ -920,6 +930,45 @@
             TTChat_PREFS.SHIP_ICON_VISIBLE,
             TTChat_PREFS.SHIP_TIER_VISIBLE
         ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_TRANSLATIONS',
+        sectionElements: "[
+            TTChat_PREFS.TRANSLATION_LANG
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_ENEMY_CHAT',
+        sectionElements: "[
+            TTChat_PREFS.ENEMY_CHATS_VISIBLE,
+            TTChat_PREFS.ENEMY_ACHIEVEMENTS_VISIBLE,
+            TTChat_PREFS.ENEMY_WELL_DONE_VISIBLE,
+            TTChat_PREFS.ENEMY_GOOD_LUCK_VISIBLE,
+            TTChat_PREFS.ENEMY_WTF_VISIBLE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_ALLY_CHAT',
+        sectionElements: "[
+            TTChat_PREFS.ALLY_CHATS_VISIBLE,
+            TTChat_PREFS.ALLY_ACHIEVEMENTS_VISIBLE,
+            TTChat_PREFS.ALLY_WELL_DONE_VISIBLE,
+            TTChat_PREFS.ALLY_GOOD_LUCK_VISIBLE,
+            TTChat_PREFS.ALLY_WTF_VISIBLE,
+            TTChat_PREFS.ALLY_AFFIRMITIVE_VISIBLE,
+            TTChat_PREFS.ALLY_NEGATIVE_VISIBLE,
+            TTChat_PREFS.ALLY_GET_BACK_VISIBLE,
+            TTChat_PREFS.ALLY_NEED_SMOKE_VISIBLE,
+            TTChat_PREFS.ALLY_NEED_SUPPORT_VISIBLE,
+            TTChat_PREFS.ALLY_NEED_AIR_SUPPORT_VISIBLE,
+            TTChat_PREFS.ALLY_NEED_SPOTTING_VISIBLE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_DIVISION_CHAT',
+        sectionElements: "[
+            TTChat_PREFS.DIV_ACHIEVEMENTS_VISIBLE
+        ]"
     }
 ])
 
@@ -1207,15 +1256,28 @@
 })
 
 (def constant DMonitor_PREFS {
-    UI_SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'dMonitorScale', default: 1},
-    ROW_COUNTS: {min: 1, max: 12, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ROW_COUNTS', key: 'dMonitorRowCounts', default: 4, round: 0},
+    DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'dMonitorDamageDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 1, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     RECEIVED_DAMAGE_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_INCOMING_DAMAGE', key: 'dMonitorReceivedDamageVisible', default: true},
-    INFLICTED_DAMAGE_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OUTGOING_DAMAGE', key: 'dMonitorInflictedDamageVisible', default: true},
+    INFLICTED_DAMAGE_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OUTGOING_DAMAGE', key: 'dMonitorInflictedDamageVisible', default: true, divider: "bottom"},
+    UI_SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'dMonitorScale', default: 1},
+    BAR_ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BAR_OPACITY', key: 'dMonitorBarOpacity', default: 0.7},
+    ROW_COUNTS: {min: 1, max: 12, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ROW_COUNTS', key: 'dMonitorRowCounts', default: 4, round: 0},
+    ROW_HEIGHT: {min: 0, max: 10, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ROW_HEIGHT', key: 'dMonitorRowHeight', default: 5, round: 0},
+    FONT_STYLE_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TITLE_FONT_STYLE', key: 'dMonitorFontStyleIndex', default: "indexOf('DEFAULT', DMonitor_FONT_COLORS.ALL)", dropdownItems: "DMonitor_FONT_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "DMonitor_FONT_COLORS"},
+    HIDE_OTHERS: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_NONPLAYER_DAMAGES', key: 'dMonitorHideOthers', default: false, divider: "top"},
     DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'dMonitorDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
-    PLAYER_INFO_WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLUMN_WIDTH', key: 'dMonitorPlayerInfoWidth', default: 1},
-    SHIP_INFO_WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLUMN_WIDTH', key: 'dMonitorShipInfoWidth', default: 1},
+    PLAYER_INFO: {
+        PLAYER_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'dMonitorPlayerInfoPlayerNameVisible', default: true},
+        CLAN_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLAN_NAME', key: 'dMonitorPlayerInfoClanNameVisible', default: true, parentPrefs: [{pref: "DMonitor_PREFS.PLAYER_INFO.PLAYER_NAME", validValues: "[1]"}]},
+        WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLUMN_WIDTH', key: 'dMonitorPlayerInfoWidth', default: 1},
+    },
+    SHIP_INFO: {
+        SHIP_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHIP_NAME', key: 'dMonitorShipInfoShipNameVisible', default: true},
+        CLASS_ICON: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLASS_ICON', key: 'dMonitorShipInfoClassIconVisible', default: true},
+        CLASS_ICON_STYLE_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLASS_ICON_COLOR', key: 'dMonitorShipInfoClassIconStyleIndex', default: 0, dropdownItems: ['None', 'Aslain v1', 'Aslain v2', 'AutoSpy', 'Roslich', 'DeCease', 'Hakabase']},
+        WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLUMN_WIDTH', key: 'dMonitorShipInfoWidth', default: 1},
+    },
     BACKGROUND_ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'dMonitorBackgroundOpacity', default: 0.4},
-    DAMAGE_PANEL_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: 'dMonitorDamagePanelVisible', default: true},
 })
 
 (def constant RPF_PREFS {
@@ -1548,13 +1610,14 @@
     SHIP_NAME_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHIP_NAME', key: 'ttChatShipNameVisible', default: true},
     SHIP_ICON_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLASS_ICON', key: 'ttChatShipClassIconVisible', default: true},
     SHIP_TIER_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TIER', key: 'ttChatShipTierVisible', default: true},
-    ENEMY_CHATS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_CHATS', key: 'ttChatEnemyChatsVisible', default: true},
-    ENEMY_ACHIEVEMENTS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ACHIEVEMENT_CHATS', key: 'ttChatEnemyAchievementsVisible', default: true},
+    TRANSLATION_LANG: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TARGET_LANGUAGE', key: 'ttChatTargetLanguage', default: 6, dropdownItems: ['Arabic', 'Bulgarian', 'Czech', 'Danish', 'German', 'Greek', 'English (British)', 'English (American)', 'Spanish', 'Estonian', 'Finnish', 'French', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Lithuanian', 'Latvian', 'Norwegian Bokmål', 'Dutch', 'Polish', 'Portuguese (Brazilian)', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Swedish', 'Turkish', 'Ukranian', 'Chinese (Simplified)', 'Chinese (Traditional)']},
+    ENEMY_CHATS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_CHATS', key: 'ttChatEnemyChatsVisible', default: true, divider: "bottom"},
+    ENEMY_ACHIEVEMENTS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ACHIEVEMENT_CHATS', key: 'ttChatEnemyAchievementsVisible', default: true, divider: "bottom"},
     ENEMY_WELL_DONE_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_WELL_DONE_CHATS', key: 'ttChatEnemyWellDoneVisible', default: true},
     ENEMY_GOOD_LUCK_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_GOOD_LUCK_CHATS', key: 'ttChatEnemyGoodLuckVisible', default: true},
     ENEMY_WTF_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_WTF_CHATS', key: 'ttChatEnemyWTFVisible', default: true},
-    ALLY_CHATS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_CHATS', key: 'ttChatAllyChatsVisible', default: true},
-    ALLY_ACHIEVEMENTS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ACHIEVEMENT_CHATS', key: 'ttChatAllyAchievementsVisible', default: true},
+    ALLY_CHATS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_CHATS', key: 'ttChatAllyChatsVisible', default: true, divider: "bottom"},
+    ALLY_ACHIEVEMENTS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ACHIEVEMENT_CHATS', key: 'ttChatAllyAchievementsVisible', default: true, divider: "bottom"},
     ALLY_WELL_DONE_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_WELL_DONE_CHATS', key: 'ttChatAllyWellDoneVisible', default: true},
     ALLY_GOOD_LUCK_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_GOOD_LUCK_CHATS', key: 'ttChatAllyGoodLuckVisible', default: true},
     ALLY_WTF_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_WTF_CHATS', key: 'ttChatAllyWTFVisible', default: true},
@@ -1565,6 +1628,7 @@
     ALLY_NEED_SUPPORT_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_NEED_SUPPORT_CHATS', key: 'ttChatAllyNeedSupportVisible', default: true},
     ALLY_NEED_AIR_SUPPORT_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_NEED_AIR_DEFENSE_CHATS', key: 'ttChatAllyNeedAirDefenseVisible', default: true},
     ALLY_NEED_SPOTTING_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_NEED_SPOTTING_CHATS', key: 'ttChatAllyNeedSpottingVisible', default: true},
+    DIV_ACHIEVEMENTS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ACHIEVEMENT_CHATS', key: 'ttChatDivAchievementsVisible', default: true},
     DEFAULT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: '# default case', key: '', default: true},
 })
 
@@ -1573,13 +1637,13 @@
         ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightPeriscopeHitLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.8},
         RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightPeriscopeHitLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.8},
         GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightPeriscopeHitLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.05},
-        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightPeriscopeHitLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 1},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightPeriscopeHitLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
     },
     PS_HIT_NO_LOCK: {
         ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightPeriscopeHitNoLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.4},
         RED: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFFFF6666", configTitle: 'IDS_TT_RED', key: 'subHighlightPeriscopeHitNoLockRed', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.8},
         GREEN: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.GREEN", configTitle: 'IDS_TT_GREEN', key: 'subHighlightPeriscopeHitNoLockGreen', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0.05},
-        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightPeriscopeHitNoLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 1},
+        BLUE: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "0xFF6666FF", configTitle: 'IDS_TT_BLUE', key: 'subHighlightPeriscopeHitNoLockBlue', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 0},
     },
     PS_NO_HIT_LOCK: {
         ALPHA: {min: 0, max: 1, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'subHighlightPeriscopeNoHitLockOpacity', tooltipHint: 'IDS_TT_HINT_RELOCK_TO_APPLY', default: 1},
