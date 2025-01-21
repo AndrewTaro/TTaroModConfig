@@ -1187,7 +1187,6 @@
     RADAR_RANGE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_RADAR', key: 'ttTeamPanelRadarRangeVisible', default: true},
     SUB_HYDRO_RANGE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SUB_HYDRO', key: 'ttTeamPanelSubHydroRangeVisible', default: true},
     SUB_RADAR_RANGE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SUB_RADAR', key: 'ttTeamPanelSubRadarRangeVisible', default: true},
-    HIDE_ALLY_BUILDS: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", key: "BV_PREFS.DISABLE_ALLY_BUILDS", default: false},
 })
 
 (def constant FPM_PREFS {

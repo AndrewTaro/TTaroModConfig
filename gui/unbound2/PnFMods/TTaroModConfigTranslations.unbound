@@ -258,5 +258,5 @@
     IDS_TT_TITLE_TRANSLATIONS                    : ["'Chat Translation'", "'チャット翻訳'", "''", "''", "''", "'Tłumaczenie czatu'", "''", "''", "'Traduction du chat'", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_TARGET_LANGUAGE                       : ["'Translate Into'", "'翻訳先の言語'", "''", "''", "''", "'Przetłumacz na'", "''", "''", "'Traduire en'", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_TITLE_DIVISION_CHAT                   : ["'Division Chat'", "'分隊チャット'", "''", "''", "''", "''", "''", "''", "'Chat de la division'", "''", "''", "''", "''", "''", "''", "''", ],
-    IDS_TT_DISABLE_NONPLAYER_DAMAGES             : ["'Hide Damage Stats of Other Players'", "'他プレイヤーのダメージを表示しない'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_DISABLE_NONPLAYER_DAMAGES             : ["'Hide Damage Stats of Other Players'", "'他プレイヤーのダメージを表示しない'", "''", "''", "''", "''", "''", "''", "'Masquer les statistiques de dommages des autres joueurs'", "''", "''", "''", "''", "''", "''", "''", ],
 })
