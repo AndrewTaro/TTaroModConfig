@@ -129,7 +129,8 @@
         sectionElements: "[
             TP_PREFS.DEAD_PLAYER_VISIBLE,
             TP_PREFS.POS_OFFSET_MODIFIER,
-            TP_PREFS.SCALE_OFFSET
+            TP_PREFS.SCALE_OFFSET,
+            TP_PREFS.ALL_ALT_VISIBLE
         ]"
     },
     {
@@ -156,8 +157,28 @@
             TP_PREFS.KILL_COUNT,
             TP_PREFS.SHIP_DETECTION,
             TP_PREFS.HEALTHBAR_OPACITY,
-            TP_PREFS.HEALTHBAR_WIDTH,
+            TP_PREFS.HEALTHBAR_WIDTH
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_MOD_CONSUMABLES_MONITOR',
+        sectionSettings: {isEnabled: "TT_CONSUMABLESMONITOR_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Consumables Monitor'},
+        sectionElements: "[
             TP_PREFS.TEAM_CONSUMABLES
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_MOD_DAMAGE_MONITOR',
+        sectionSettings: {isEnabled: "TT_DAMAGEMONITOR_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Damage Monitor'},
+        sectionElements: "[
+            TP_PREFS.HIDE_DAMAGE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_MOD_BUILD_VIEWER',
+        sectionSettings: {isEnabled: "TT_BUILDVIEWER_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Build Viewer'},
+        sectionElements: "[
+            TP_PREFS.HIDE_BUILD
         ]"
     },
     {
@@ -1162,6 +1183,7 @@
     DEAD_PLAYER_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHOW_DEAD', key: 'ttTeamPanelDeadPlayerVisible', default: true},
     POS_OFFSET_MODIFIER: {min: -5, max: 5, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_HEIGHT_OFFSET', key: 'ttTeamPanelPosOffset', default: 0},
     SCALE_OFFSET: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'ttTeamPanelScaleOffset', default: 1},
+    ALL_ALT_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_ONLY_ON_ALT', key: 'ttTeamPanelVisibleOnAlt', default: false},
     BLUR_MODE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_USE_BLUR', key: 'ttTeamPanelBlurMode', tooltipHint: 'IDS_TT_HINT_BLUR_PERFORMANCE_WARNING', default: false},
     BLUR_ALT_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_ONLY_ON_ALT', key: 'ttTeamPanelBlurVisibleOnAlt', default: false},
     BLUR_ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'ttTeamPanelBlurOpacity', default: 0},
@@ -1180,6 +1202,8 @@
     HEALTHBAR_OPACITY: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BAR_OPACITY', key: 'ttTeamPanelHealthBarOpacity', default: 0.4},
     HEALTHBAR_WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BAR_WIDTH', key: 'ttTeamPanelHealthBarWidth', default: 1, divider: "bottom"},
     TEAM_CONSUMABLES: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TEAM_CONSUMABLE', key: 'ttTeamPanelTeamConsumablesVisible', tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING', default: false},
+    HIDE_DAMAGE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_NONPLAYER_DAMAGES', key: 'ttTeamPanelHideNonPlayerDamages', default: false},
+    HIDE_BUILD: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_ALLY_BUILDS', key: 'ttTeamPanelHideAllyBuilds', default: false},
     STATS_ALT_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_ONLY_ON_ALT', key: 'ttTeamPanelShipStatsVisibleOnAlt', default: false},
     UNITS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHOW_UNIT', key: 'ttTeamPanelShipStatsUnitsVisible', default: true},
     STATS_BOLD_FONT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BOLD_FONT', key: 'ttTeamPanelShipStatsUseBoldFont', default: false},

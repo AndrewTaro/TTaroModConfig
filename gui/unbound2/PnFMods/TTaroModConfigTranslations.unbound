@@ -261,4 +261,7 @@
     IDS_TT_DISABLE_NONPLAYER_DAMAGES             : ["'Hide Damage Stats of Other Players'", "'他プレイヤーのダメージを表示しない'", "'다른 플레이어의 피해량 정보 숨기기'", "''", "'Приховати шкоду від інших гравців'", "'Ukryj statystyki uszkodzeń innych graczy'", "''", "''", "'Masquer les statistiques de dommages des autres joueurs'", "''", "''", "''", "''", "''", "'隐藏其他玩家的伤害数据'", "'隱藏其他玩家傷害資訊'", ],
     IDS_TT_TITLE_SMOKE_DETECTION_RANGE           : ["'Range of Detection after Firing in Smoke'", "'煙幕内発砲発見距離'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_DISPLAY_IN_SMOKE                      : ["'Visible while in Smoke'", "'煙幕内にいる場合に表示'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_MOD_BUILD_VIEWER                      : ["'Build Viewer'", "'Build Viewer'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_MOD_CONSUMABLES_MONITOR               : ["'Consumables Monitor'", "'Consumables Monitor'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_MOD_DAMAGE_MONITOR                    : ["'Damage Monitor'", "'Damage Monitor'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
 })
