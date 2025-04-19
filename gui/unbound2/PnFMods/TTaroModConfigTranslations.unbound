@@ -272,6 +272,7 @@
     IDS_TT_BLOCK_HEALTH                          : ["'Health per Block'", "'ブロックあたりのHP'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_BLOCK_MARGIN                          : ["'Margin between Blocks'", "'ブロック間の余白'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_BLOCK_WIDTH                           : ["'Block Width'", "'ブロック横幅'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_BLOCK_HEIGHT                          : ["'Block Height'", "'ブロック縦幅'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_TITLE_HEALTH_ALLY                     : ["'Health of Ally'", "'味方HP'", "'아군 체력'", "'Боеспособность союзников'", "'Хітпоінти союзника'", "'Życie sojusznika'", "'Životy spojence'", "'Gesundheit (alliiert)'", "'Points de vie (allié)'", "''", "'Allierad hälsa'", "''", "'HP saigrača'", "''", "'队友生命值'", "'隊友生命值'", ],
     IDS_TT_TITLE_HEALTH_ENEMY                    : ["'Health of Enemy'", "'敵HP'", "'적군 체력'", "'Боеспособность противников'", "'Хітпоінти супротивника'", "'Życie przeciwnika'", "'Životy protivníka'", "'Gesundheit (Gegner)'", "'Points de vie (ennemi)'", "''", "'Fiendes hälsa'", "''", "'HP neprijatelja'", "''", "'敌方生命值'", "'敵方生命值'", ],
     IDS_TT_REVERSE_ELEMENTS                      : ["'Reverse Elements'", "'要素を反転'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
