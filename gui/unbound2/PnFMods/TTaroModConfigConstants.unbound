@@ -1102,13 +1102,15 @@
     {
         sectionTitle: 'IDS_TT_TITLE_HEALTH_ALLY',
         sectionElements: "[
-            THP_PREFS.ALLY.REVERSE
+            THP_PREFS.ALLY.STYLE_INDEX,
+            THP_PREFS.ALLY.BAR_DIRECTION
         ]"
     },
     {
         sectionTitle: 'IDS_TT_TITLE_HEALTH_ENEMY',
         sectionElements: "[
-            THP_PREFS.ENEMY.REVERSE
+            THP_PREFS.ENEMY.STYLE_INDEX,
+            THP_PREFS.ENEMY.BAR_DIRECTION
         ]"
     }
 ])
@@ -1762,15 +1764,17 @@
     DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'teamHPDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 1, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     HEALTH_TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HEALTH_TYPE', key: 'teamHPHealthType', tooltipHint: 'IDS_TT_HINT_HEALTH_TYPE', default: 0, dropdownItems: ['IDS_TT_RELATIVE', 'IDS_TT_ABSOLUTE'], dropdownType: 'CUSTOM_TEXT'},
     BLOCK_COUNT: {min: 10, max: 30, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_COUNT', key: 'teamHPBlockCount', default: 20, round: 0, parentPrefs: [{pref: "THP_PREFS.HEALTH_TYPE", validValues: [0]}]},
-    BLOCK_HEALTH: {min: 10000, max: 50000, step: 5000, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_HEALTH', key: 'teamHPBlockHealth', default: 25000, round: 0, parentPrefs: [{pref: "THP_PREFS.HEALTH_TYPE", validValues: [1]}]},
+    BLOCK_HEALTH: {min: 10000, max: 50000, step: 5000, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_HEALTH', key: 'teamHPBlockHealth', default: 30000, round: 0, parentPrefs: [{pref: "THP_PREFS.HEALTH_TYPE", validValues: [1]}]},
     BLOCK_MARGIN: {min: 0, max: 2, step: 0.5, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_MARGIN', key: 'teamHPBlockMargin', default: 1},
     BLOCK_WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_WIDTH', key: 'teamHPWidthScale', default: 1},
     BLOCK_HEIGHT: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_HEIGHT', key: 'teamHPHeightScale', default: 1},
     ALLY: {
-        REVERSE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_REVERSE_ELEMENTS', key: 'teamHPAllyReverseElements', tooltipHint: 'IDS_TT_HINT_REVERSE_ELEMENTS', default: true},
+        STYLE_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_STYLE', key: 'teamHPAllyStyleIndex', default: 0, dropdownItems: ['HP + Bar', 'Bar + HP']},
+        BAR_DIRECTION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HP_BAR_DIRECTION', key: 'teamHPAllyBarDirection', default: 0, dropdownItems: ['-->', '<--']},
     },
     ENEMY: {
-        REVERSE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_REVERSE_ELEMENTS', key: 'teamHPEnemyReverseElements', tooltipHint: 'IDS_TT_HINT_REVERSE_ELEMENTS', default: false},
+        STYLE_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_STYLE', key: 'teamHPEnemyStyleIndex', default: 1, dropdownItems: ['HP + Bar', 'Bar + HP']},
+        BAR_DIRECTION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HP_BAR_DIRECTION', key: 'teamHPEnemyBarDirection', default: 1, dropdownItems: ['-->', '<--']},
     },
 })
 

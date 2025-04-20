@@ -275,6 +275,6 @@
     IDS_TT_BLOCK_HEIGHT                          : ["'Block Height'", "'ブロック縦幅'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_TITLE_HEALTH_ALLY                     : ["'Health of Ally'", "'味方HP'", "'아군 체력'", "'Боеспособность союзников'", "'Хітпоінти союзника'", "'Życie sojusznika'", "'Životy spojence'", "'Gesundheit (alliiert)'", "'Points de vie (allié)'", "''", "'Allierad hälsa'", "''", "'HP saigrača'", "''", "'队友生命值'", "'隊友生命值'", ],
     IDS_TT_TITLE_HEALTH_ENEMY                    : ["'Health of Enemy'", "'敵HP'", "'적군 체력'", "'Боеспособность противников'", "'Хітпоінти супротивника'", "'Życie przeciwnika'", "'Životy protivníka'", "'Gesundheit (Gegner)'", "'Points de vie (ennemi)'", "''", "'Fiendes hälsa'", "''", "'HP neprijatelja'", "''", "'敌方生命值'", "'敵方生命值'", ],
-    IDS_TT_REVERSE_ELEMENTS                      : ["'Reverse Elements'", "'要素を反転'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
-    IDS_TT_HINT_REVERSE_ELEMENTS                 : ["'Reverse the order of elements so that they are mirrored to the other.'", "'要素の順番を逆にし、ミラー表示にします。'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_STYLE                                 : ["'Style'", "'スタイル'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_HP_BAR_DIRECTION                      : ["'HP Bar Direction'", "'HPバーの方向'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
 })
