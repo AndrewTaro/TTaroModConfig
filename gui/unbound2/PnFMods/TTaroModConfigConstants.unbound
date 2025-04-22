@@ -475,6 +475,7 @@
             TMap_PREFS.SHOW_DEAD,
             TMap_PREFS.DETECTION,
             TMap_PREFS.DETECTION_COLOR_INDEX,
+            TMap_PREFS.DETECTION_ALPHA,
             TMap_PREFS.HEALTH_ALLY,
             TMap_PREFS.HEALTH_ENEMY,
             TMap_PREFS.HEALTH_MAX_HIDE,
@@ -1101,6 +1102,13 @@
         ]"
     },
     {
+        sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
+        sectionElements: "[
+            THP_PREFS.BACKGROUND.DISPLAY_MODE,
+            THP_PREFS.BACKGROUND.ALPHA
+        ]"
+    },
+    {
         sectionTitle: 'IDS_TT_TITLE_HEALTH_ALLY',
         sectionElements: "[
             THP_PREFS.ALLY.STYLE_INDEX,
@@ -1377,7 +1385,8 @@
     LAST_SPOTTED_ON_ALT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_LAST_SPOTTED_TIMER_ON_ALT', key: 'ttMinimapLastSpottedTimerVisibleOnAlt', tooltipHint: 'IDS_TT_HINT_LAST_SPOTTED_TIMER_ON_ALT', tooltipImage: 'ttaro_minimap/last_spotted_timer.png', default: true},
     SHOW_DEAD: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHOW_DEAD', key: 'ttMinimapShowDeadPlayer', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     DETECTION: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DETECTION', key: 'ttMinimapAllyDetectionVisible', tooltipHint: 'IDS_TT_HINT_DETECTION_HIGHLIGHT', default: false, divider: "top"},
-    DETECTION_COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapAllyDetectionColorIndex', default: "indexOf('3', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS", divider: "bottom", parentPrefs: [{pref: "TMap_PREFS.DETECTION", validValues: "[1]"}]},
+    DETECTION_COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapAllyDetectionColorIndex', default: "indexOf('3', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS", parentPrefs: [{pref: "TMap_PREFS.DETECTION", validValues: "[1]"}]},
+    DETECTION_ALPHA: {min: 0.1, max: 0.5, step: 0.05, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'ttMinimapAllyDetectionOpacity', default: 0.25, divider: "bottom", parentPrefs: [{pref: "TMap_PREFS.DETECTION", validValues: "[1]"}]},
     HEALTH_ALLY: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HEALTH_ALLY', key: 'ttMinimapHealthAllyDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     HEALTH_ENEMY: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HEALTH_ENEMY', key: 'ttMinimapHealthEnemyDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
     HEALTH_MAX_HIDE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HEALTH_MAX_HIDE', key: 'ttMinimapHealthMaxHide', tooltipHint: 'IDS_TT_HINT_HEALTH_MAX_HIDE', default: false, parentPrefs: [{pref: "TMap_PREFS.HEALTH_ALLY", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}, {pref: "TMap_PREFS.HEALTH_ENEMY", validValues: "[TMap_DISPLAY_MODES.ENABLE, TMap_DISPLAY_MODES.ADAPTIVE]"}]},
@@ -1770,6 +1779,10 @@
     BLOCK_MARGIN: {min: 0, max: 2, step: 0.5, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_MARGIN', key: 'teamHPBlockMargin', default: 1},
     BLOCK_WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_WIDTH', key: 'teamHPWidthScale', default: 1},
     BLOCK_HEIGHT: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_HEIGHT', key: 'teamHPHeightScale', default: 1},
+    BACKGROUND: {
+        DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'teamHPBackgroundDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
+        ALPHA: {min: 0.1, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'teamHPBackgroundOpacity', default: 0.4, parentPrefs: [{pref: "THP_PREFS.BACKGROUND.DISPLAY_MODE", validValues: "[THP_DISPLAY_MODES.ENABLE, THP_DISPLAY_MODES.ADAPTIVE]"}]},
+    },
     ALLY: {
         STYLE_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_STYLE', key: 'teamHPAllyStyleIndex', default: 0, dropdownItems: ['HP + Bar', 'Bar + HP']},
         BAR_DIRECTION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HP_BAR_DIRECTION', key: 'teamHPAllyBarDirection', default: 0, dropdownItems: ['-->', '<--']},
