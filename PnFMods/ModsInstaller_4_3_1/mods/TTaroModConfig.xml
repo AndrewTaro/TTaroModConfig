@@ -8,10 +8,11 @@
 					</element>
 					<attrs>
 						<do_if_not_exist tag="element" type="name" name="unbound2TTaroModConfig"/>
+						<position insert="after_node" tag="element" attr_1="elementName" value_1="MainHud"/>
 					</attrs>
 				</insert>
 			</find_Node>
 		</root_Node>
 	</target_File>
-	<check name="TTaroModConfig" version="1.0.0"/>
+	<check name="TTaroModConfig" version="1.1.0"/>
 </code>
