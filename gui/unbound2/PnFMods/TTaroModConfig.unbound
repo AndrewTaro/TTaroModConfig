@@ -56,7 +56,7 @@
 (def element TTaroModConfig() layout=true
 	(scope
 		(var defaultPos:dict = "{'positionX': 200, 'positionY': 0}")
-		(macro DRAGGABLE_GET_DROP_POSITION _wndName="TT_ELEMENT_NAME" _defaults="defaultPos")
+		(macro DRAGGABLE_GET_DROP_POSITION _elementName="TT_ELEMENT_NAME" _defaultPosition="defaultPos")
 	)
 
 	(block
@@ -67,7 +67,7 @@
 			(width = "TT_ELEMENT_SIZE.WIDTH")
 			(height = "TT_ELEMENT_SIZE.HEIGHT")
 		)
-		(element ModDraggableElement _wndName="TT_ELEMENT_NAME" _defaults="defaultPos" _elmSize="{width: TT_ELEMENT_SIZE.WIDTH, height: TT_ELEMENT_SIZE.HEIGHT}")
+		(element ModDraggableElement _elementName="TT_ELEMENT_NAME" _defaultPosition="defaultPos")
 		(hblock
 			(element TT_OptionButtonElement)
 			(element TT_DragTitleElement)
