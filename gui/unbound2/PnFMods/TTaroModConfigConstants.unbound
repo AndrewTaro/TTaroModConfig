@@ -344,6 +344,13 @@
         sectionElements: "[
             ST2_PREFS.DISABLE_DRAGDROP
         ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_BACKGROUND',
+        sectionElements: "[
+            ST2_PREFS.BACKGROUND.DISPLAY_MODE,
+            ST2_PREFS.BACKGROUND.ALPHA
+        ]"
     }
 ])
 
@@ -1329,6 +1336,10 @@
 
 (def constant ST2_PREFS {
     DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'scoreTimerDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
+    BACKGROUND: {
+        DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'scoreTimerBackgroundDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 1, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
+        ALPHA: {min: 0.1, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'scoreTimerBackgroundOpacity', default: 0.4, parentPrefs: [{pref: "ST2_PREFS.BACKGROUND.DISPLAY_MODE", validValues: "[ST2_DISPLAY_MODES.ENABLE, ST2_DISPLAY_MODES.ADAPTIVE]"}]},
+    },
 })
 
 (def constant BV_PREFS {
