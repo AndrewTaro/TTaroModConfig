@@ -18,6 +18,7 @@
 	SWITCH				: 'TT_SwitchOptionElement',
 	SLIDER				: 'TT_SliderOptionElement',
 	DROPDOWN			: 'TT_DropdownOptionElement',
+	BUTTON				: 'TT_ButtonOptionElement',
 
 	MINIMAP_SWITCH		: 'TT_MinimapSwitchOptionElement',
 	MINIMAP_SLIDER		: 'TT_MinimapSliderOptionElement',
@@ -815,6 +816,32 @@
 				_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
 				_methods = "resetMethods"
 			)
+		)
+	)
+)
+
+(def element TT_ButtonOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
+	(scope
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+		(var methods:array = "'extraData' in _pref ? _pref.extraData : []")
+	)
+
+	(style
+		(width = "50%")
+	)
+
+	(hblock
+		(style
+			(width = "TT_CONFIG_OPTION_WIDTH")
+			(height = "23px")
+			(align = "left|middle")
+		)
+		(element DefaultButton
+			_width = "TT_CONFIG_OPTION_CONTROL_WIDTH"
+			_size = "SIZE.SMALL"
+			_enabled = true
+			_label = 'IDS_RESET'
+			_methods = "methods"
 		)
 	)
 )

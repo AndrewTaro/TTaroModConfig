@@ -299,7 +299,8 @@
             ADM_PREFS.VISIBLE_ON_ALT,
             ADM_PREFS.INCOMING_DAMAGE_VISIBLE,
             ADM_PREFS.OUTGOING_DAMAGE_VISIBLE,
-            ADM_PREFS.DISABLE_DRAGDROP
+            ADM_PREFS.DISABLE_DRAGDROP,
+            ADM_PREFS.RESET_POSITION
         ]"
     },
     {
@@ -342,7 +343,8 @@
     {
         sectionTitle: 'IDS_TT_TITLE_GENERAL',
         sectionElements: "[
-            ST2_PREFS.DISABLE_DRAGDROP
+            ST2_PREFS.DISABLE_DRAGDROP,
+            ST2_PREFS.RESET_POSITION
         ]"
     },
     {
@@ -360,6 +362,7 @@
         sectionElements: "[
             BV_PREFS.SCALE,
             BV_PREFS.DISABLE_DRAGDROP,
+            BV_PREFS.RESET_POSITION,
             BV_PREFS.DISABLE_ALLY_BUILDS
         ]"
     },
@@ -377,6 +380,7 @@
         sectionElements: "[
             RA_PREFS.SCALE,
             RA_PREFS.DISABLE_DRAGDROP,
+            RA_PREFS.RESET_POSITION,
             RA_PREFS.WARNING_REPEATS
         ]"
     },
@@ -412,7 +416,8 @@
             DMonitor_PREFS.ROW_HEIGHT,
             DMonitor_PREFS.FONT_STYLE_INDEX,
             DMonitor_PREFS.HIDE_OTHERS,
-            DMonitor_PREFS.DISABLE_DRAGDROP
+            DMonitor_PREFS.DISABLE_DRAGDROP,
+            DMonitor_PREFS.RESET_POSITION
         ]"
     },
     {
@@ -469,6 +474,7 @@
             TMap_PREFS.NEARBY_RADAR_RANGE,
             TMap_PREFS.MARKER_FONT_SIZE,
             TMap_PREFS.DISABLE_DRAG_DROP,
+            TMap_PREFS.RESET_POSITION,
             TMap_PREFS.ROTATE_MINIMAP,
             TMap_PREFS.EXTEND_SCALE
         ]"
@@ -1099,6 +1105,7 @@
         sectionTitle: 'IDS_TT_TITLE_GENERAL',
         sectionElements: "[
             THP_PREFS.DISABLE_DRAGDROP,
+            THP_PREFS.RESET_POSITION,
             THP_PREFS.DISPLAY_MODE,
             THP_PREFS.FONT_SIZE,
             THP_PREFS.HEALTH_TYPE,
@@ -1137,6 +1144,7 @@
         sectionTitle: 'IDS_TT_TITLE_GENERAL',
         sectionElements: "[
             AdvBT_PREFS.DISABLE_DRAGDROP,
+            AdvBT_PREFS.RESET_POSITION,
             AdvBT_PREFS.FONT_SIZE,
             AdvBT_PREFS.WARN_TIME
         ]"
@@ -1318,6 +1326,7 @@
     INCOMING_DAMAGE_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_INCOMING_DAMAGE', key: 'dDamageMeterIncomingDamageVisible', default: true},
     OUTGOING_DAMAGE_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OUTGOING_DAMAGE', key: 'dDamageMeterOutgoingDamageVisible', default: true},
     DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'dDamageMeterDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
+    RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'advancedDamageMeterIncoming_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'advancedDamageMeterIncoming_positionY'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'advancedDamageMeterOutgoing_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'advancedDamageMeterOutgoing_positionY'}}]},
     CLAN_TAG_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLAN_NAME', key: 'dDamageMeterClanTagVisible', default: false},
     PLAYER_NAME_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'dDamageMeterPlayerNameVisible', default: true},
     PLAYER_INFO_WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLUMN_WIDTH', key: 'dDamageMeterPlayerInfoWidth', default: 1},
@@ -1336,6 +1345,7 @@
 
 (def constant ST2_PREFS {
     DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'scoreTimerDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
+    RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'scoreTimer2Ally_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'scoreTimer2Ally_positionY'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'scoreTimer2Enemy_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'scoreTimer2Enemy_positionY'}}]},
     BACKGROUND: {
         DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'scoreTimerBackgroundDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 1, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
         ALPHA: {min: 0.1, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'scoreTimerBackgroundOpacity', default: 0.4, parentPrefs: [{pref: "ST2_PREFS.BACKGROUND.DISPLAY_MODE", validValues: "[ST2_DISPLAY_MODES.ENABLE, ST2_DISPLAY_MODES.ADAPTIVE]"}]},
@@ -1345,6 +1355,7 @@
 (def constant BV_PREFS {
     SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'buildViewerScale', default: 1},
     DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'buildViewerDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
+    RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'buildViewer_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'buildViewer_positionY'}}], divider: "bottom"},
     DISABLE_ALLY_BUILDS: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_ALLY_BUILDS', key: 'buildViewerDisableAllyBuilds', default: false},
     BACKGROUND_ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'buildViewerBackgroundOpacity', default: 0.4},
 })
@@ -1352,6 +1363,7 @@
 (def constant RA_PREFS {
     SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'regenAssistantScale', default: 1},
     DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'regenAssistantDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
+    RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'regenAssistant_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'regenAssistant_positionY'}}], divider: "bottom"},
     WARNING_REPEATS: {min: 0, max: 7, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_REGEN_WARNING_ANIMATION_REPEATS', key: 'regenAssistantWarningAnimationRepeats', tooltipHint: 'IDS_TT_HINT_REGEN_WARNING_ANIMATION_REPEATS', default: 3, round: 0, maxLabel: '∞'},
     BACKGROUND_ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'regenAssistantBackgroundOpacity', default: 0},
 })
@@ -1372,7 +1384,8 @@
     ROW_HEIGHT: {min: 0, max: 10, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ROW_HEIGHT', key: 'dMonitorRowHeight', default: 5, round: 0},
     FONT_STYLE_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TITLE_FONT_STYLE', key: 'dMonitorFontStyleIndex', default: "indexOf('DEFAULT', DMonitor_FONT_COLORS.ALL)", dropdownItems: "DMonitor_FONT_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "DMonitor_FONT_COLORS"},
     HIDE_OTHERS: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_NONPLAYER_DAMAGES', key: 'dMonitorHideOthers', default: false, divider: "top"},
-    DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'dMonitorDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
+    DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'dMonitorDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false, divider: "top"},
+    RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'damageMonitor_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'damageMonitor_positionY'}}], divider: "bottom"},
     PLAYER_INFO: {
         PLAYER_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'dMonitorPlayerInfoPlayerNameVisible', default: true},
         CLAN_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLAN_NAME', key: 'dMonitorPlayerInfoClanNameVisible', default: true, parentPrefs: [{pref: "DMonitor_PREFS.PLAYER_INFO.PLAYER_NAME", validValues: "[1]"}]},
@@ -1409,6 +1422,7 @@
     NEARBY_RADAR_SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'ttMinimapNearbyRadarRangeScale', default: 1},
     MARKER_FONT_SIZE: {min: 9, max: 16, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_FONT_SIZE', key: 'ttMinimapMarkerFontSize', tooltipHint: 'IDS_TT_HINT_FONT_SIZE_MARKER', default: 9, round: 0},
     DISABLE_DRAG_DROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'ttMinimapDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false, divider: "top"},
+    RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'TTaroMinimap_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'TTaroMinimap_positionY'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'TTaroMinimapRadarWarning_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'TTaroMinimapRadarWarning_positionY'}}], divider: "bottom"},
     ROTATE_MINIMAP: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.MINIMAP_SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_MINIMAP_OPTIONS_MINIMAPROTATIONENABLED', key: "SC.Battle.MINIMAP_OPTION.minimapRotationEnabled", default: false},
     EXTEND_SCALE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_EXTEND_SCALE', key: 'ttMinimapExtendScale', tooltipHint: 'IDS_TT_HINT_EXTEND_SCALE', default: false},
     PLAYER_NAME_DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'ttMinimapPlayerNameDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
@@ -1803,9 +1817,10 @@
 
 (def constant THP_PREFS {
     DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'teamHPDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
+    RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'teamHPAlly_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'teamHPAlly_positionY'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'teamHPEnemy_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'teamHPEnemy_positionY'}}], divider: "bottom"},
     DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'teamHPDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 1, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}, divider: "bottom"},
     FONT_SIZE: {min: 13, max: 23, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_FONT_SIZE', key: 'teamHPFontSize', default: 18, round: 0, divider: "bottom"},
-    HEALTH_TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HEALTH_TYPE', key: 'teamHPHealthType', tooltipHint: 'IDS_TT_HINT_HEALTH_TYPE', default: 0, dropdownItems: ['IDS_TT_RELATIVE', 'IDS_TT_ABSOLUTE'], dropdownType: 'CUSTOM_TEXT', divider: "bottom"},
+    HEALTH_TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HEALTH_TYPE', key: 'teamHPHealthType', tooltipHint: 'IDS_TT_HINT_HEALTH_TYPE', tooltipImage: 'team_hp/health_type.png', default: 0, dropdownItems: ['IDS_TT_RELATIVE', 'IDS_TT_ABSOLUTE'], dropdownType: 'CUSTOM_TEXT', divider: "bottom"},
     BLOCK_COUNT: {min: 10, max: 30, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_COUNT', key: 'teamHPBlockCount', default: 20, round: 0, parentPrefs: [{pref: "THP_PREFS.HEALTH_TYPE", validValues: [0]}]},
     BLOCK_HEALTH: {min: 10000, max: 50000, step: 5000, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_HEALTH', key: 'teamHPBlockHealth', default: 30000, round: 0, parentPrefs: [{pref: "THP_PREFS.HEALTH_TYPE", validValues: [1]}]},
     BLOCK_MARGIN: {min: 0, max: 2, step: 0.5, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BLOCK_MARGIN', key: 'teamHPBlockMargin', default: 1},
@@ -1827,6 +1842,7 @@
 
 (def constant AdvBT_PREFS {
     DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'advBattleTimerDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
+    RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'advBattleTimer_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'advBattleTimer_positionY'}}], divider: "bottom"},
     FONT_SIZE: {min: 13, max: 23, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_FONT_SIZE', key: 'advBattleTimerFontSize', default: 17, round: 0},
     WARN_TIME: {min: 0, max: 10, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_WARN_REMAINING_TIME', key: 'advBattleTimerLeftTimeThreshold', tooltipHint: 'IDS_TT_HINT_WARN_REMAINING_TIME', default: 5, round: 0},
     BACKGROUND: {
