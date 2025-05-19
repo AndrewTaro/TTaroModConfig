@@ -2290,6 +2290,13 @@
 	(var languageIndex:number = "(_userPrefsNum && isNumber(_userPrefsNum[languagePrefKey])) ? round(_userPrefsNum[languagePrefKey]) : 0")
 )
 
+(def macro TT_GET_TRANSLATION (_varName:expression, _key:expression)
+	(var name="_varName" type=str value="
+		_key in TT_CONFIG_LOCALIZATIONS ? TT_CONFIG_LOCALIZATIONS[_key].length > languageIndex && TT_CONFIG_LOCALIZATIONS[_key][languageIndex] != ''	? TT_CONFIG_LOCALIZATIONS[_key][languageIndex]
+																																						: TT_CONFIG_LOCALIZATIONS[_key][0]
+										: 'Invalid Translation'")
+)
+
 (def macro TT_TOOLTIP_BEHAVIOUR (_priority:expression = "0")
 
 	(bindcall show animation =	{	duration:	"0.15",
