@@ -971,14 +971,8 @@
     {
         sectionTitle: 'IDS_TT_TITLE_GENERAL',
         sectionElements: "[
-            TTChat_PREFS.STYLE_INDEX
-        ]"
-    },
-    {
-        sectionTitle: 'IDS_TT_TITLE_PLAYER_INFO',
-        sectionElements: "[
-            TTChat_PREFS.PLAYER_NAME_VISIBLE,
-            TTChat_PREFS.CLAN_NAME_VISIBLE
+            TTChat_PREFS.BOLD_FONT,
+            TTChat_PREFS.EXPORT_CHAT
         ]"
     },
     {
@@ -987,12 +981,6 @@
             TTChat_PREFS.SHIP_NAME_VISIBLE,
             TTChat_PREFS.SHIP_ICON_VISIBLE,
             TTChat_PREFS.SHIP_TIER_VISIBLE
-        ]"
-    },
-    {
-        sectionTitle: 'IDS_TT_TITLE_TRANSLATIONS',
-        sectionElements: "[
-            TTChat_PREFS.TRANSLATION_LANG
         ]"
     },
     {
@@ -1773,13 +1761,11 @@
 })
 
 (def constant TTChat_PREFS {
-    STYLE_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_THEME', key: 'ttChatStyleIndex', default: 0, dropdownItems: ['Roslich', 'AutoSpy', 'TTaro']},
-    PLAYER_NAME_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'ttChatPlayerNameVisible', default: true},
-    CLAN_NAME_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLAN_NAME', key: 'ttChatClanNameVisible', default: true},
+    BOLD_FONT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BOLD_FONT', key: 'ttChatUseBoldFont', default: false, divider: "bottom"},
+    EXPORT_CHAT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_EXPORT_CHAT', key: 'ttChatExportChat', tooltipHint: 'IDS_TT_HINT_EXPORT_CHAT', default: true},
     SHIP_NAME_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHIP_NAME', key: 'ttChatShipNameVisible', default: true},
     SHIP_ICON_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLASS_ICON', key: 'ttChatShipClassIconVisible', default: true},
     SHIP_TIER_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TIER', key: 'ttChatShipTierVisible', default: true},
-    TRANSLATION_LANG: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TARGET_LANGUAGE', key: 'ttChatTargetLanguage', default: 6, dropdownItems: ['Arabic', 'Bulgarian', 'Czech', 'Danish', 'German', 'Greek', 'English (British)', 'English (American)', 'Spanish', 'Estonian', 'Finnish', 'French', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Lithuanian', 'Latvian', 'Norwegian Bokmål', 'Dutch', 'Polish', 'Portuguese (Brazilian)', 'Portuguese', 'Romanian', 'Russian', 'Slovak', 'Slovenian', 'Swedish', 'Turkish', 'Ukranian', 'Chinese (Simplified)', 'Chinese (Traditional)']},
     ENEMY_CHATS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_CHATS', key: 'ttChatEnemyChatsVisible', default: true, divider: "bottom"},
     ENEMY_ACHIEVEMENTS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ACHIEVEMENT_CHATS', key: 'ttChatEnemyAchievementsVisible', default: true, divider: "bottom"},
     ENEMY_WELL_DONE_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_WELL_DONE_CHATS', key: 'ttChatEnemyWellDoneVisible', default: true},
