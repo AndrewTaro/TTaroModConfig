@@ -286,4 +286,6 @@
     IDS_TT_BUILD_NOT_AVAILABLE                   : ["'Build is not available.'", "'ビルドを取得できません'", "'빌드 사용 불가'", "''", "''", "'Konfiguracja nie jest dostępna.'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_EXPORT_CHAT                           : ["'Export Chat Data'", "'チャットの外部保存'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_HINT_EXPORT_CHAT                      : ["'If this setting is enabled, the mod will export the chat messages to your local machine, allowing external applications to work with them.'", "'この設定を有効にすると、チャットメッセージはあなたのコンピュータに共有され、外部のアプリケーションで利用できるようになります。'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_WIDTH                                 : ["'Width'", "'幅'", "''", "'Mod names translation below just in case they\'re ever needed (in order)'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_HEIGHT                                : ["'Height'", "'高さ'", "''", "'3D РЛС/ГАП'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
 })
