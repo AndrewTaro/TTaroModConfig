@@ -1195,7 +1195,8 @@
         sectionElements: "[
             AdvSS_PREFS.COMPASS.DISABLE_DRAGDROP,
             AdvSS_PREFS.COMPASS.RESET_POSITION,
-            AdvSS_PREFS.COMPASS.SCALE
+            AdvSS_PREFS.COMPASS.SCALE,
+            AdvSS_PREFS.COMPASS.COMPASS_ROSE
         ]"
     }
 ])
@@ -1952,6 +1953,7 @@
         DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'advSSCompassDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: true},
         RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'AdvSSCompass_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'AdvSSCompass_positionY'}}], divider: "bottom"},
         SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'advSSCompassScale', default: 1},
+        COMPASS_ROSE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COMPASS_ROSE', key: 'advSSCompassRoseVisible', default: true},
     },
 })
 
