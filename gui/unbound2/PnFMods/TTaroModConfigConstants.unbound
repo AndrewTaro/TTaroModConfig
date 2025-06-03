@@ -1171,6 +1171,35 @@
     }
 ])
 
+(def constant TT_MOD_ADVSHIPSTATUS_CONFIGS [
+    {
+        sectionTitle: 'IDS_TT_TITLE_HEALTH_BAR',
+        sectionElements: "[
+            AdvSS_PREFS.HP_BAR.DISABLE_DRAGDROP,
+            AdvSS_PREFS.HP_BAR.RESET_POSITION,
+            AdvSS_PREFS.HP_BAR.SCALE,
+            AdvSS_PREFS.HP_BAR.TYPE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_TELEGRAPH',
+        sectionElements: "[
+            AdvSS_PREFS.TELEGRAPH.DISABLE_DRAGDROP,
+            AdvSS_PREFS.TELEGRAPH.RESET_POSITION,
+            AdvSS_PREFS.TELEGRAPH.SCALE,
+            AdvSS_PREFS.TELEGRAPH.ENABLE_ON_PLANE
+        ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_TITLE_COMPASS',
+        sectionElements: "[
+            AdvSS_PREFS.COMPASS.DISABLE_DRAGDROP,
+            AdvSS_PREFS.COMPASS.RESET_POSITION,
+            AdvSS_PREFS.COMPASS.SCALE
+        ]"
+    }
+])
+
 
 
 (def constant TT_MODS_CONFIG_LIST [
@@ -1194,6 +1223,7 @@
     {modName: 'Subs Highlight', modTag: 'SUBSHIGHLIGHT', configSections: "TT_MOD_SUBSHIGHLIGHT_CONFIGS", isInstalled: "TT_SUBSHIGHLIGHT_INSTALLED"},
     {modName: 'TeamHP', modTag: 'TEAMHP', configSections: "TT_MOD_TEAMHP_CONFIGS", isInstalled: "TT_TEAMHP_INSTALLED"},
     {modName: 'Battle Timer', modTag: 'BATTLETIMER', configSections: "TT_MOD_BATTLETIMER_CONFIGS", isInstalled: "TT_BATTLETIMER_INSTALLED"},
+    {modName: 'Adv Ship Status', modTag: 'ADVSHIPSTATUS', configSections: "TT_MOD_ADVSHIPSTATUS_CONFIGS", isInstalled: "TT_ADVSHIPSTATUS_INSTALLED"},
 ])
 
 (def constant TDRadar_PREFS {
@@ -1902,6 +1932,26 @@
     BACKGROUND: {
         DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'advBattleTimerBackgroundDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},
         ALPHA: {min: 0.1, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'advBattleTimerBackgroundOpacity', default: 0.4, parentPrefs: [{pref: "AdvBT_PREFS.BACKGROUND.DISPLAY_MODE", validValues: "[AdvBT_DISPLAY_MODES.ENABLE, AdvBT_DISPLAY_MODES.ADAPTIVE]"}]},
+    },
+})
+
+(def constant AdvSS_PREFS {
+    HP_BAR: {
+        DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'advSSHealthBarDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: true},
+        RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'AdvSSHealthBar_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'AdvSSHealthBar_positionY'}}], divider: "bottom"},
+        SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'advSSHealthBarScale', default: 1},
+        TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_HP_BAR_SHAPE', key: 'advSSHealthBarType', default: 0, dropdownItems: ['IDS_TT_SHIP_CONTOUR', 'IDS_TT_SIMPLE_BAR'], dropdownType: 'CUSTOM_TEXT'},
+    },
+    TELEGRAPH: {
+        DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'advSSTelegraphDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: true},
+        RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'AdvSSTelegraph_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'AdvSSTelegraph_positionY'}}], divider: "bottom"},
+        SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'advSSTelegraphScale', default: 1},
+        ENABLE_ON_PLANE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_ENABLE_TELEGRAPH_ON_PLANE', key: 'advSSTelegraphEnableOnCv', default: true},
+    },
+    COMPASS: {
+        DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'advSSCompassDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: true},
+        RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'AdvSSCompass_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'AdvSSCompass_positionY'}}], divider: "bottom"},
+        SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'advSSCompassScale', default: 1},
     },
 })
 
