@@ -1,4 +1,6 @@
 (def constant TT_ELEMENT_NAME "'ttaroModConfig'")
+(def constant TT_INVALID_TRANSLATION 'Invalid Translation')
+
 (def constant TT_CONFIG_WINDOW_WIDTH 480px)
 (def constant TT_CONFIG_SECTION_MARGIN 20px)
 
@@ -121,6 +123,9 @@
 		(bind selectedIndex "$event.index" init=false (event "evTabClicked"))
 
 		(var languageOptions:dict = "{key: TT_ELEMENT_NAME + 'Language', dropdownItems: TT_CONFIG_LANGUAGES, default: 0}")
+
+		(macro TT_GET_LANGUAGE_INDEX)
+		(macro TT_GET_TRANSLATION _varName="'noModSelectedText'" _key="'IDS_TT_SELECT_MOD_TO_CONFIGURE'")
 	)
 
 	(style 
@@ -130,7 +135,7 @@
 
 	(element TT_BackgroundElement)
 
-	#Tab Buttons
+	# Tab Buttons
 	(block
 		(style
 			(align = "middle|center")
@@ -159,15 +164,32 @@
 		)
 	)
 
-	#Config Elements
-	#DO NOT USE PEPEAT!: IT freezes the screen as the number of elements increases
-	#(element TT_ModConfigsElement "TT_MODS_CONFIG_LIST[selectedIndex]" _userPrefsNum="_userPrefsNum")
+	# Config Elements
+	# DO NOT USE PEPEAT!: IT freezes the screen as the number of elements increases
 	(controller $Instance (renderer='TT_ModConfigsElement')
 		(bind enabled "selectedIndex >= 0")
 		(bindcall recreate (bind trigger "selectedIndex"))
 		(args
 			_modConfigsData = "TT_MODS_CONFIG_LIST[selectedIndex]"
 			_userPrefsNum   = "_userPrefsNum"
+		)
+	)
+	(block
+		(bind visible "selectedIndex < 0")
+		(style
+			(marginTop = 20px)
+			(marginBottom = 20px)
+			(width = 100%)
+			(align = "middle|center")
+		)
+		(element TT_HorizontalDivider _margin=5px _alpha=2)
+		(tf
+			(style
+				(marginTop = 5px)
+				(alpha = "TS")
+			)
+			(class $TextDefaultBold17NM)
+			(bind text "noModSelectedText")
 		)
 	)
 )
@@ -182,7 +204,6 @@
 		(align = "middle|center")
 		(width="TT_CONFIG_WINDOW_WIDTH")
 		(marginBottom = 15px)
-		#(maxHeight = 800)
 	)
 
 	(controller $Animation
@@ -261,9 +282,8 @@
 		(var isConfigurable:bool = "'isEnabled' in sectionSettings ? sectionSettings.isEnabled : true")
 		(var tooltipHint:str = "'tooltipHint' in sectionSettings ? sectionSettings.tooltipHint : ''")
 		(var tooltipExtraData:str = "'tooltipExtraData' in sectionSettings ? sectionSettings.tooltipExtraData : ''")
-		(var hintTranslations:array = "tooltipHint ? TT_CONFIG_LOCALIZATIONS[tooltipHint] : []")
-		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
-		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
+
+		(macro TT_GET_TRANSLATION _varName="'localizedHintText'" _key="tooltipHint")
 
 		# Expand
 		(macro MOUSE_HANDLER_SCOPE "'sectionExpand_'")
@@ -299,7 +319,7 @@
 		(backgroundColor = 0x01000000) # For hittest
 	)
 
-	(macro TT_HORIZONTAL_DEVIDER)
+	(element TT_HorizontalDivider _margin=5px _alpha=2)
 
 	# Title
 	(hblock
@@ -393,9 +413,8 @@
 		# For tooltip hint
 		(macro TT_GET_LANGUAGE_INDEX)
 		(var hintKey:str = "'tooltipHint' in _pref ? _pref.tooltipHint : null")
-		(var hintTranslations:array = "hintKey ? TT_CONFIG_LOCALIZATIONS[hintKey] : []")
-		(var isHintValidLocalization:bool = "hintTranslations.length > languageIndex && !isIn(hintTranslations[languageIndex], ['', ' '])")
-		(var localizedHintText:str = "isHintValidLocalization ? hintTranslations[languageIndex] : hintTranslations[0]")
+
+		(macro TT_GET_TRANSLATION _varName="'localizedHintText'" _key="hintKey")
 
 		(var imageName:str = "'tooltipImage' in _pref ? _pref.tooltipImage : null")
 
@@ -557,23 +576,19 @@
 (def element TT_SectionTitleElement (_data:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(var titleKey:str = "_data.sectionTitle")
-		(var translations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
 		(macro TT_GET_LANGUAGE_INDEX)
+		(macro TT_GET_TRANSLATION _varName="'localizedTitleText'" _key="titleKey")
 		(var isInGameString:bool = "tr(titleKey) != titleKey")
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
-		(var isValidLocalization:bool = "translations.length > languageIndex && !isIn(translations[languageIndex], ['', ' '])")
-		(var localizedTitleText:str = "isValidLocalization ? translations[languageIndex] : translations[0]")
 	)
 	(style
 		(width = 100%)
-		#(align = "middle|center")
 	)
 	(tf
 		(class $TextDefaultBold)
 		(bind text "isInGameString ? tr(titleKey) : localizedTitleText")
 		(style
 			(fontSize = 21)
-			#(textAlign = "center")
 			(width = 100%)
 			(bind textColor "titleColor")
 		)
@@ -583,12 +598,10 @@
 (def element TT_ConfigTitleElement (_data:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(var titleKey:str = "_data.configTitle")
-		(var titleTranslations:array = "TT_CONFIG_LOCALIZATIONS[titleKey]")
 		(macro TT_GET_LANGUAGE_INDEX)
+		(macro TT_GET_TRANSLATION _varName="'localizedTitleText'" _key="titleKey")
 		(var isInGameString:bool = "tr(titleKey) != titleKey")
 		(var titleColor:number = "'titleColor' in _data ? _data.titleColor : 0xFFFFFF")
-		(var isTitleValidLocalization:bool = "titleTranslations.length > languageIndex && !isIn(titleTranslations[languageIndex], ['', ' '])")
-		(var localizedTitleText:str = "isTitleValidLocalization ? titleTranslations[languageIndex] : titleTranslations[0]")
 
 		(var hasTooltip:bool = "'tooltipHint' in _data && _data.tooltipHint ? true : false")
 	)
@@ -1336,9 +1349,7 @@
 		(var color:number = "_itemText in _listItemRendererData ? _listItemRendererData[_itemText] + 0xFF000000 : 0xFF000000")
 
 		(macro TT_GET_LANGUAGE_INDEX)
-		(var colorTranslations:array = "_itemText in TT_CONFIG_LOCALIZATIONS ? TT_CONFIG_LOCALIZATIONS[_itemText] : []")
-		(var isValidLocalization:bool = "colorTranslations.length > languageIndex && !isIn(colorTranslations[languageIndex], ['', ' '])")
-		(var localizedText:str = "isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
+		(macro TT_GET_TRANSLATION _varName="'localizedText'" _key="_itemText")
 	)
 
 	(bind name "_itemText")
@@ -1431,7 +1442,7 @@
 	)
 
 	(controller $Tooltip
-		(bind enabled "localizedText")
+		(bind enabled "localizedText != TT_INVALID_TRANSLATION")
 		(renderer = 'SimpleStatusTooltip')
 		(args
 			_text = "localizedText"
@@ -1460,9 +1471,7 @@
 		(var color:number = "_itemText in _listItemRendererData ? _listItemRendererData[_itemText] + 0xFF000000 : 0xFF000000")
 
 		(macro TT_GET_LANGUAGE_INDEX)
-		(var colorTranslations:array = "_itemText in TT_CONFIG_LOCALIZATIONS ? TT_CONFIG_LOCALIZATIONS[_itemText] : []")
-		(var isValidLocalization:bool = "colorTranslations.length > languageIndex && !isIn(colorTranslations[languageIndex], ['', ' '])")
-		(var localizedText:str = "isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
+		(macro TT_GET_TRANSLATION _varName="'localizedText'" _key="_itemText")
 	)
 
 	(bind name "_itemText")
@@ -1568,9 +1577,8 @@
 		(var color:number = "_item in _choosedItemRendererParams ? _choosedItemRendererParams[_item] + 0xFF000000 : 0xFF000000")
 
 		(macro TT_GET_LANGUAGE_INDEX)
-		(var colorTranslations:array = "_item in TT_CONFIG_LOCALIZATIONS ? TT_CONFIG_LOCALIZATIONS[_item] : []")
-		(var isValidLocalization:bool = "colorTranslations.length > languageIndex && !isIn(colorTranslations[languageIndex], ['', ' '])")
-		(var localizedText:str = "isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
+		(macro TT_GET_TRANSLATION _varName="'localizedText'" _key="_item")
+		(var isValidLocalization:bool = "localizedText != TT_INVALID_TRANSLATION")
 	)
 	(style
 		(height = "L")
@@ -1582,14 +1590,14 @@
 	(block
 		(style
 			(bind backgroundColor "color")
-			(bind width "localizedText ? 20px : _labelMaxWidth - 10px")
+			(bind width "isValidLocalization ? 20px : _labelMaxWidth - 10px")
 			(height = 20px)
 			(marginLeft = 7px)
 		)
 	)
 
 	(tf
-		(bind visible "localizedText")
+		(bind visible "isValidLocalization")
 
 		(class $TextDefaultBold17NM)
 		(class $FontColorBlueish)
@@ -1754,9 +1762,7 @@
 		(var isIngameText:bool = "ingameText != _itemText")
 
 		(macro TT_GET_LANGUAGE_INDEX)
-		(var translations:array = "_itemText in TT_CONFIG_LOCALIZATIONS ? TT_CONFIG_LOCALIZATIONS[_itemText] : null")
-		(var isValidLocalization:bool = "translations.length > languageIndex && !isIn(translations[languageIndex], ['', ' '])")
-		(var localizedText:str = "isIngameText ? ingameText : isValidLocalization ? translations[languageIndex] : translations[0]")
+		(macro TT_GET_TRANSLATION _varName="'localizedText'" _key="_itemText")
 	)
 
 	(bind name "_itemText")
@@ -1852,14 +1858,11 @@
 		(var isIngameText:bool = "ingameText != _item")
 
 		(macro TT_GET_LANGUAGE_INDEX)
-		(var colorTranslations:array = "_item in TT_CONFIG_LOCALIZATIONS ? TT_CONFIG_LOCALIZATIONS[_item] : []")
-		(var isValidLocalization:bool = "colorTranslations.length > languageIndex && !isIn(colorTranslations[languageIndex], ['', ' '])")
-		(var localizedText:str = "isIngameText ? ingameText : isValidLocalization ? colorTranslations[languageIndex] : colorTranslations[0]")
+		(macro TT_GET_TRANSLATION _varName="'localizedText'" _key="_item")
 	)
 	(style
 		(height = "L")
 		(hitTest = false)
-		(align = "middle|center")
 	)
 
 	(tf
@@ -2248,35 +2251,16 @@
 	)
 )
 
-# TODO: fix duplication
-(def element TT_HorizontalDivider()
+(def element TT_HorizontalDivider(_margin:number="3px", _alpha:number=1.5)
 	(style
 		(width = 100%)
-		(marginTop = 3px)
-		(marginBottom = 3px)
+		(bind marginTop "_margin")
+		(bind marginBottom "_margin")
 		(align = "middle|center")
 		(hitTest = false)
-		(alpha = 1.5)
+		(bind alpha "_alpha")
 	)
-	(element HorizontalDividerTwoPx
-		(style
-			#(width = 90%)
-		)
-	)
-)
-
-# TODO: fix duplication
-(def macro TT_HORIZONTAL_DEVIDER() layout=true
-	(element HorizontalDividerTwoPx
-		(style
-			#(paddingLeft = 30)
-			#(paddingRight = 30)
-			#(width = 90%)
-			(marginTop = 5px)
-			(marginBottom = 5px)
-			(alpha = 2)
-		)
-	)
+	(element HorizontalDividerTwoPx)
 )
 
 (def macro TT_GET_LANGUAGE_INDEX()
@@ -2288,7 +2272,7 @@
 	(var name="_varName" type=str value="
 		_key in TT_CONFIG_LOCALIZATIONS ? TT_CONFIG_LOCALIZATIONS[_key].length > languageIndex && TT_CONFIG_LOCALIZATIONS[_key][languageIndex] != ''	? TT_CONFIG_LOCALIZATIONS[_key][languageIndex]
 																																						: TT_CONFIG_LOCALIZATIONS[_key][0]
-										: 'Invalid Translation'")
+										: TT_INVALID_TRANSLATION")
 )
 
 (def macro TT_TOOLTIP_BEHAVIOUR (_priority:expression = "0")
