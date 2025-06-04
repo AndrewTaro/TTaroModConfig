@@ -174,15 +174,16 @@
 			_userPrefsNum   = "_userPrefsNum"
 		)
 	)
+	
 	(block
 		(bind visible "selectedIndex < 0")
 		(style
-			(marginTop = 20px)
-			(marginBottom = 20px)
+			(marginTop = "TT_CONFIG_SECTION_MARGIN")
+			(marginBottom = "TT_CONFIG_SECTION_MARGIN")
 			(width = 100%)
 			(align = "middle|center")
 		)
-		(element TT_HorizontalDivider _margin=5px _alpha=2)
+		(element TT_HorizontalDivider _margin=5px _alpha=2 _width=90%)
 		(tf
 			(style
 				(marginTop = 5px)
@@ -2251,9 +2252,9 @@
 	)
 )
 
-(def element TT_HorizontalDivider(_margin:number="3px", _alpha:number=1.5)
+(def element TT_HorizontalDivider(_margin:number="3px", _alpha:number=1.5, _width:number=100%)
 	(style
-		(width = 100%)
+		(bind width "_width")
 		(bind marginTop "_margin")
 		(bind marginBottom "_margin")
 		(align = "middle|center")
