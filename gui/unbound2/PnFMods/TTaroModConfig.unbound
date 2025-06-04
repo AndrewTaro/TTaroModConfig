@@ -83,7 +83,7 @@
 		(var mouse:gfx = "$datahub.getSingleComponent(CC.mouse)")
 		(var isMouseActive:bool = "mouse.active" (event "mouse.evActiveChanged"))
 
-		(macro TT_GET_UPREFS)
+		(macro TT_GET_USERPREF)
 
 		(event evItemChooserOpened)
 		(event evItemChooserClosed)
@@ -622,7 +622,6 @@
 
 (def element TT_SwitchOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
-		#(macro TT_GET_UPREFS)
 		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
 		(var defaultValue:number = "'default' in _pref ? _pref.default : false")
 		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : defaultValue")
@@ -2203,7 +2202,7 @@
 	# _modIndex: number 
 	# Mod config's index in TT_MODS_CONFIG_LIST
 	(scope
-		(macro TT_GET_UPREFS)
+		(macro TT_GET_USERPREF)
 	)
 
 	(element TT_BackgroundElement)
@@ -2280,11 +2279,6 @@
 	)
 )
 
-(def macro TT_GET_UPREFS ()
-	(var userPrefsComponent:gfx = "$datahub.getSingleComponent(CC.userPrefs)")
-	(var _userPrefsNum:gfx = "userPrefsComponent.userPrefs.chatBoxWidth" watch=false (event "userPrefsComponent.evUserPrefsChanged"))
-)
-
 (def macro TT_GET_LANGUAGE_INDEX()
 	(var languagePrefKey:str = "TT_ELEMENT_NAME + 'Language'")
 	(var languageIndex:number = "(_userPrefsNum && isNumber(_userPrefsNum[languagePrefKey])) ? round(_userPrefsNum[languagePrefKey]) : 0")
@@ -2299,23 +2293,23 @@
 
 (def macro TT_TOOLTIP_BEHAVIOUR (_priority:expression = "0")
 
-	(bindcall show animation =	{	duration:	"0.15",
-									delay:		"0.01",
-									easing:		"Easing.cubic_out",
-									from:		{ alpha: 0, top: 5 },
-									to:			{ alpha: 1, top: 0 }
-								}
-								on = 'rollOver'
-	)
+	(showAnimation = {
+		duration: 0.05,
+		delay	: 0.0,
+		from	: {alpha: 0, top: 5},
+		to		: {alpha: 1, top: 0}
+	})
+	(hideAnimation = {
+		duration: 0.05,
+		delay	: 0.0,
+		from	: {alpha:1},
+		to		: {alpha:0, top: -5}
+	})
 
-	(bindcall hide animation = {	duration:	"0.05",
-									delay:		"0",
-									easing:		"Easing.cubic_out",
-									from:		{ alpha: 1, top: 0 },
-									to:			{ alpha: 0, top: -5}
-								}
-								on = 'rollOut'
-	)
+	(bindcall show on='rollOver')
+
+	(bindcall hide on='rollOut')
+	(bindcall hide on='removedFromStage')
 
 	(offset = {	x: 0, y: 15})
 
@@ -2331,26 +2325,32 @@
 )
 
 (def macro TT_CONFIG_BEHAVIOUR (_priority:expression = "1", _position:expression="border", _align:expression="innerTop|outerLeft")
-	(bindcall show animation =	{	duration:	"0.15",
-									easing:		"Easing.quint_in",
-									from:		{ alpha: 0, top: 10 },
-									to:			{ alpha: 1, top: 0 }
-								}
-								on='click'
+	(bindcall show
+		animation = {
+			duration: 0.15,
+			easing	: "Easing.quint_in",
+			from	: { alpha: 0, top: 10 },
+			to		: { alpha: 1, top: 0 }
+		}
+		on='click'
 	)
 
-	(bindcall hide animation =	{	duration:	"0.15",
-									easing:		"Easing.quint_out",
-									from:		{ alpha: 1, top: 0 },
-									to:			{ alpha: 0, top: 10 }
-								}
-								(event "evHideInfotip")
+	(bindcall hide
+		animation =	{
+			duration: 0.1,
+			easing	: "Easing.quint_out",
+			from	: { alpha: 1, top: 0 },
+			to		: { alpha: 0, top: 10 }
+		}
+		(event "evHideInfotip")
 	)
 	(dispatch evHideInfotip args="{}" on='evClickOutside' (bind enabled "!isChooserOpen"))
-	(screenBoundsOffset = {			left:	"TT_ELEMENT_SIZE.WIDTH",
-									top:	"TT_ELEMENT_SIZE.HEIGHT",
-									right:	"TT_ELEMENT_SIZE.WIDTH",
-									bottom:	"TT_ELEMENT_SIZE.HEIGHT"})
+	(screenBoundsOffset = {
+		left	: "TT_ELEMENT_SIZE.WIDTH",
+		top		: "TT_ELEMENT_SIZE.HEIGHT",
+		right	: "TT_ELEMENT_SIZE.WIDTH",
+		bottom	: "TT_ELEMENT_SIZE.HEIGHT"
+	})
 	(position = "_position")
 	(align = "_align")
 	(priority = "_priority")
