@@ -818,6 +818,7 @@
         sectionTitle: 'IDS_TT_TITLE_AA_RANGE_ENEMY',
         sectionElements: "[
             TMap_PREFS.NEARBY_AA.VISIBLE,
+            TMap_PREFS.NEARBY_AA.RANGE_OFFSET,
             TMap_PREFS.NEARBY_AA.LINE_TYPE,
             TMap_PREFS.NEARBY_AA.LINE_THICKNESS,
             TMap_PREFS.NEARBY_AA.FILL_CIRCLE,
@@ -1702,6 +1703,7 @@
     },
     NEARBY_AA: {
         VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_NEARBY_AA_RANGE', key: 'ttMinimapNearbyAARangeVisible', tooltipHint: 'IDS_TT_HINT_NEARBY_AA_RANGE', tooltipImage: 'ttaro_minimap/nearby_aa.png', default: false},
+        RANGE_OFFSET: {min: 0, max: 6, step: 0.5, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISTANCE_OFFSET', key: 'ttMinimapNearbyAARangeRangeOffset', tooltipHint: 'IDS_TT_HINT_ENEMY_RANGE_OFFSET', default: 2.5, maxLabel: '∞', divider: "top", parentPrefs: [{pref: "TMap_PREFS.NEARBY_AA.VISIBLE", validValues: [1]}]},
         LINE_TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OUTLINE_STYLE', key: 'ttMinimapNearbyAARangeOutlineType', default: 2, dropdownItems: ['IDS_TURN_OFF', 'IDS_TT_DOTTED_LINE', 'IDS_TT_DASHED_LINE', 'IDS_TT_SOLID_LINE'], dropdownType: 'CUSTOM_TEXT', divider: "top", parentPrefs: [{pref: "TMap_PREFS.NEARBY_AA.VISIBLE", validValues: [1]}]},
         LINE_THICKNESS: {min: 1, max: 10, step: 0.5, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_LINE_THICKNESS', key: 'ttMinimapNearbyAARangeOutlineThickness', default: 1, parentPrefs: [{pref: "TMap_PREFS.NEARBY_AA.VISIBLE", validValues: [1]}]},
         FILL_CIRCLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CIRCLE_FILL', key: 'ttMinimapNearbyAARangeFillCircle', tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL', default: false, divider: "top", parentPrefs: [{pref: "TMap_PREFS.NEARBY_AA.VISIBLE", validValues: [1]}]},
