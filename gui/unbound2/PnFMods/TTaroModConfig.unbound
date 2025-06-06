@@ -57,6 +57,12 @@
 	},
 })
 
+(def constant TT_SUBPREFS_RENDERERS {
+	SUBPREFS_SHIP_CLASS	: 'TT_SubPrefsTitleShipClassRenderer',
+
+	DEFAULT				: 'TT_SubPrefsTitleShipClassRenderer',
+})
+
 (def element TTaroModConfig() layout=true
 	(scope
 		(var defaultPos:dict = "{'positionX': 200, 'positionY': 0}")
@@ -867,6 +873,8 @@
 	(scope
 		(var prefs:array = "'dropdownItems' in _pref ? _pref.dropdownItems : []")
 		(var extraData:array = "'extraData' in _pref ? _pref.extraData : []")
+		(var type:str = "'dropdownType' in _pref ? _pref.dropdownType : 'DEFAULT'")
+		(var titleRenderer:str = "type in TT_SUBPREFS_RENDERERS ? TT_SUBPREFS_RENDERERS[type] : TT_SUBPREFS_RENDERERS.DEFAULT")
 
 		(macro MOUSE_HANDLER_SCOPE)
 
@@ -895,7 +903,7 @@
 		(hblock
 			(style
 				(width = "TT_CONFIG_OPTION_CONTROL_WIDTH")
-				(height = 100%)
+				(height = "L")
 				(align = "middle|center")
 			)
 			(macro MOUSE_HANDLER
@@ -951,7 +959,7 @@
 
 			# Title
 			(controller $Repeat
-				(bind renderer "'TT_SubPrefsTitleShipClassRenderer'") # need to be dynamic in the future
+				(bind renderer "titleRenderer")
 				(bind count "prefs.length")
 				(args
 					_prefs			= "prefs"

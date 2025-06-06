@@ -302,6 +302,6 @@
     IDS_TT_COMPASS_ROSE                          : ["'Compass Rose'", "'羅針図'", "''", "''", "'Роза вітрів'", "'Róża wiatrów'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "'羅盤方位圖'", ],
     IDS_TT_SELECT_MOD_TO_CONFIGURE               : ["'Select a Mod to Configure'", "'設定するModを選択してください'", "''", "''", "'Обрати мод для настроювання'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "'選擇要設定的模組'", ],
     IDS_TT_HINT_ENEMY_RANGE_OFFSET               : ["'Enemy circles become visible when you\'re within their range plus this offset'", "'敵の円は、相手の射程+このオフセット距離内に入った時のみ表示されるようになります'", "''", "''", "'Кола супротивників будуть відображені після наближення до радарної дистанції з урахуванням зазору'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "'當你在 範圍+此偏移量 的距離內，就會看見敵方圓圈'", ],
-    IDS_TT_ENABLE_CIRCLE_CLASSES                 : ["'Visible While Playing'", "'艦種フィルター'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
-    IDS_TT_HINT_ENABLE_CIRCLE_CLASSES            : ["'Show the circle when using the selected ship classes'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_ENABLE_CIRCLE_CLASSES                 : ["'Visible While Playing'", "'プレイ中に表示:'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_HINT_ENABLE_CIRCLE_CLASSES            : ["'Show the circle when using the selected ship classes'", "'選択した艦種をプレイ中にのみ円を表示します'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
 })
