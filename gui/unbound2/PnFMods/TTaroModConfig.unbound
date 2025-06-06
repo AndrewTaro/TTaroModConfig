@@ -2546,7 +2546,13 @@
 	(var name="_varName" type=bool value="_userPrefsNum && isNumber(_userPrefsNum[_pref.key]) ? round(_userPrefsNum[_pref.key]) : _pref.default")
 )
 
-# _pref can be invalid in this macro.
+# 
+# _nullablePref can be invalid/null in this macro.
+# but it must be supplied as a dictionary access instead of attribute
+# otherwise the macro will raise an error.
+#
+# (macro TT_GET_NULLABLE_PREF_NUMBER _varName="'testVar'" _nullablePref="Test_PREFS['PREF_KEY']" _default="0") <- This is okay
+# (macro TT_GET_NULLABLE_PREF_NUMBER _varName="'testVar'" _nullablePref="Test_PREFS.PREF_KEY" _default="0") <- This is bad
 (def macro TT_GET_NULLABLE_PREF_NUMBER (_varName:expression, _nullablePref:expression, _default:expression="0")
 	(var name="_varName" type=number value="_nullablePref && 'key' in _nullablePref ? _userPrefsNum && isNumber(_userPrefsNum[_nullablePref.key]) ? _nullablePref.min + (round(_userPrefsNum[_nullablePref.key]) * _nullablePref.step) : _nullablePref.default : _default")
 )
