@@ -21,6 +21,7 @@
 	SLIDER				: 'TT_SliderOptionElement',
 	DROPDOWN			: 'TT_DropdownOptionElement',
 	BUTTON				: 'TT_ButtonOptionElement',
+	SUBPREFS			: 'TT_SubPrefsOptionElement',
 
 	MINIMAP_SWITCH		: 'TT_MinimapSwitchOptionElement',
 	MINIMAP_SLIDER		: 'TT_MinimapSliderOptionElement',
@@ -387,7 +388,9 @@
 		(var hasTopDivider:bool = "top == dividerPos")
 		(var hasBottomDivider:bool = "bottom == dividerPos")
 		
-		(event evChangeParentPref)
+		#(event evChangeParentPref)
+		(var eventName:str = "'evChangeParentPref' + _pref.configTitle")
+		(event name ="eventName")
 		(var parentPrefs:array = "'parentPrefs' in _pref ? _pref.parentPrefs : []")
 		(var parentPrefsCount:number = "parentPrefs.length")
 
@@ -396,7 +399,7 @@
 		(var enabledParentPrefCount:number = 0)
 		(var isOptionEnabled:bool = "parentPrefsCount == 0 ? true : enabledParentPrefCount > 0") # or condition. For and, use parentPrefsCount == enabledParentPrefsCount
 		
-		(bind enabledParentPrefCount "enabledParentPrefCount + $event.isEnabled" watch=false init=false (event "evChangeParentPref"))
+		(bind enabledParentPrefCount "enabledParentPrefCount + $event.isEnabled" watch=false init=false (event "$scope[eventName]"))
 
 		(var isConfigInitialized:bool = false)
 		(var targetAlpha:number = "_isConfigurable && isOptionEnabled ? 1.0 : 0.3")
@@ -426,7 +429,7 @@
 	(controller $Repeat renderer='TT_ParentPrefCheckerElement'
 		(bind enabled "parentPrefsCount > 0")
 		(bind count "parentPrefsCount")
-		(args _parentPref="parentPrefs[$index]" _userPrefsNum="_userPrefsNum")
+		(args _parentPref="parentPrefs[$index]" _eventName="eventName" _userPrefsNum="_userPrefsNum")
 	)
 	#
 
@@ -521,9 +524,10 @@
 	)
 )
 
-(def element TT_ParentPrefCheckerElement (_parentPref:dict, _userPrefsNum:gfx=null) layout=false
+(def element TT_ParentPrefCheckerElement (_parentPref:dict, _eventName:str, _userPrefsNum:gfx=null) layout=false
 	(scope
-		(event evChangeParentPref)
+		#(event evChangeParentPref)
+		(event name="_eventName")
 
 		(var validValues:array = "'validValues' in _parentPref ? _parentPref.validValues : []")
 		(var pref:dict = "'pref' in _parentPref ? _parentPref.pref : {}")
@@ -548,14 +552,14 @@
 		#
 		# init=true does not trigger when the element is reused.
 		(var isFirstTime:bool = true)
-		(bind isFirstTime "false" watch=false init=false (event "evChangeParentPref"))
+		(bind isFirstTime "false" watch=false init=false (event "$scope[_eventName]"))
 	)
 
-	(dispatch evChangeParentPref dir="EventDirection.UP" args="{isEnabled: isOptionEnabled ? 1 : -1}" watch=false init=false (bind trigger "isOptionEnabled"))
+	(dispatch "_eventName" dir="EventDirection.UP" args="{isEnabled: isOptionEnabled ? 1 : -1}" watch=false init=false (bind trigger "isOptionEnabled"))
 
 	# For init only!
 	# Dont decrement the count for the first time
-	(dispatch evChangeParentPref dir="EventDirection.UP" args="{isEnabled: isOptionEnabled ? 1 : 0}" watch=false on=addedToStage (bind enabled "isFirstTime"))
+	(dispatch "_eventName" dir="EventDirection.UP" args="{isEnabled: isOptionEnabled ? 1 : 0}" watch=false on=addedToStage (bind enabled "isFirstTime"))
 )
 
 (def element TT_DragTitleElement () layout=true
@@ -855,6 +859,159 @@
 			_enabled = true
 			_label = 'IDS_RESET'
 			_methods = "methods"
+		)
+	)
+)
+
+(def element TT_SubPrefsOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
+	(scope
+		(var prefs:array = "'dropdownItems' in _pref ? _pref.dropdownItems : []")
+		(var extraData:array = "'extraData' in _pref ? _pref.extraData : []")
+
+		(macro MOUSE_HANDLER_SCOPE)
+
+		(event evMenuClosed)
+		(event evItemChooserOpened)
+		(event evItemChooserClosed)
+
+		(var isSubPrefsVisible:bool = false)
+		(bind isSubPrefsVisible "true" init=false (event "evItemChooserOpened"))
+		(bind isSubPrefsVisible "false" init=false (event "evItemChooserClosed"))
+	)
+
+	(style
+		(width = "50%")
+	)
+
+	(dispatch evMenuClosed dir="EventDirection.DOWN" args="{}" on='removedFromStage') #To close dropdown menu when parent tooltip is closed
+
+	(hblock
+		(style
+			(width = "TT_CONFIG_OPTION_WIDTH")
+			(height = "23px")
+			(align = "left|middle")
+		)
+		
+		(hblock
+			(style
+				(width = "TT_CONFIG_OPTION_CONTROL_WIDTH")
+				(height = 100%)
+				(align = "middle|center")
+			)
+			(macro MOUSE_HANDLER
+				_soundSet = "'dropdown'"
+			)
+
+			# BG
+			(block
+				(class $FullsizeAbsolute)
+				(style
+					(hitTest = false)
+				)
+
+				(block
+					(class $FullsizeAbsolute)
+					(style
+						(alpha = 0)
+						(scale9grid = 4)
+						(backgroundImage = 'url:../service_kit/buttons/button_dock/over.png')
+					)
+
+					(controller $Animation
+						(bindcall play
+							duration = 0.15
+							from	 = { alpha: 0 }
+							to		 = { alpha: 1 }
+							reverse	 = "!(rollOver && !mouseDown)"
+							(bind trigger "rollOver && !mouseDown")
+							(bind enabled "!isSubPrefsVisible")
+						)
+					)
+				)
+
+				(block
+					(class $FullsizeAbsolute)
+					(style
+						(alpha = 0)
+						(scale9grid = 4)
+						(backgroundImage = 'url:../service_kit/buttons/button_dock/down.png')
+					)
+
+					(controller $Animation
+						(bindcall play
+							duration = 0.15
+							from	 = { alpha: 0 }
+							to		 = { alpha: 1 }
+							reverse	 = "!(mouseDown || isSubPrefsVisible)"
+							(bind trigger "mouseDown || isSubPrefsVisible")
+						)
+					)
+				)
+			)
+
+			# Title
+			(controller $Repeat
+				(bind renderer "'TT_SubPrefsTitleShipClassRenderer'") # need to be dynamic in the future
+				(bind count "prefs.length")
+				(args
+					_prefs			= "prefs"
+					_extraData		= "extraData"
+					_userPrefsNum	= "_userPrefsNum"
+				)
+			)
+
+			# Main
+			(controller $Tooltip
+				(renderer = 'TT_CustomPrefsInfotipElement')
+				(args
+					_prefs			= "prefs"
+					_isEnabled		= true
+					_userPrefsNum	= "_userPrefsNum"
+				)
+
+				(macro DEFAULT_INFOTIP_ANIMATIONS)
+				(bindcall show on='click')
+				(bindcall hide on='evClickOutside' (event "evMenuClosed"))
+
+				# Mod
+				(dispatch evItemChooserOpened dir="EventDirection.UP" args="{}" on=evShow)
+				(dispatch evItemChooserClosed dir="EventDirection.UP" args="{}" on=evHide)
+				#
+
+				(priority = 1)
+				(offset = { x: 0, y: 4 })
+				(align = "bottom|center")
+				(position = "border")
+				(screenBoundsOffset = "{ left: M, top: M, right: M, bottom: M }")
+
+				(pinTop='InfotipPinTop')
+				(pinBottom='InfotipPinBottom')
+
+				(cache = false)
+			)
+		)
+	)
+)
+
+# SubPrefs Title
+(def element TT_SubPrefsTitleShipClassRenderer(_prefs:array, _extraData:array=[], _userPrefsNum:gfx=null)
+	(scope
+		(macro TT_GET_PREF_BOOL _varName="'isClassEnabled'" _pref="_prefs[$index]")
+		(var shipType:str = "_extraData[$index]")
+		(var iconUrl:str = "'url:../battle_hud/markers/ship/icon_white_' + toLower(shipType) + '.png'")
+	)
+	(bind visible "isClassEnabled")
+	(style
+		(flow = "Flow.HORIZONTAL")
+		(align = "middle|center")
+		(width = 27px)
+		(height = 0px)
+		(hitTest = false)
+	)
+	(block
+		(style
+			(bind backgroundImage "iconUrl")
+			(backgroundSize = "autosize")
 		)
 	)
 )
@@ -1764,6 +1921,8 @@
 
 		(macro TT_GET_LANGUAGE_INDEX)
 		(macro TT_GET_TRANSLATION _varName="'localizedText'" _key="_itemText")
+
+		(var text:str = "isIngameText ? ingameText : localizedText")
 	)
 
 	(bind name "_itemText")
@@ -1839,7 +1998,7 @@
 				(textAlign = "center")
 			)
 
-			(bind text "localizedText")
+			(bind text "text")
 		)
 	)
 
@@ -1860,6 +2019,8 @@
 
 		(macro TT_GET_LANGUAGE_INDEX)
 		(macro TT_GET_TRANSLATION _varName="'localizedText'" _key="_item")
+
+		(var text:str = "isIngameText ? ingameText : localizedText")
 	)
 	(style
 		(height = "L")
@@ -2264,6 +2425,29 @@
 	(element HorizontalDividerTwoPx)
 )
 
+(def element TT_CustomPrefsInfotipElement(_prefs:array, _isEnabled:bool=false, _userPrefsNum:gfx=null)
+	(style
+		(bind hitTest "_isEnabled")
+	)
+	(macro TOOLTIP_SYSTEM_DEFAULT_BACKGROUND)
+
+	(element TOOLTIP_SYSTEM_DEFAULT_CONTAINER
+		(style
+			(width = "TT_CONFIG_WINDOW_WIDTH")
+			(align = "middle|center")
+		)
+
+		(controller $Repeat renderer='TT_ConfigElement'
+			(bind count "_prefs.length")
+			(args
+				_pref			= "_prefs[$index]"
+				_isConfigurable	= "true" # false: all grayed out
+				_userPrefsNum	= "_userPrefsNum"
+			)
+		)
+	)
+)
+
 (def macro TT_GET_LANGUAGE_INDEX()
 	(var languagePrefKey:str = "TT_ELEMENT_NAME + 'Language'")
 	(var languageIndex:number = "(_userPrefsNum && isNumber(_userPrefsNum[languagePrefKey])) ? round(_userPrefsNum[languagePrefKey]) : 0")
@@ -2352,4 +2536,13 @@
 
 (def macro TT_GET_PREF_BOOL (_varName:expression, _pref:expression)
 	(var name="_varName" type=bool value="_userPrefsNum && isNumber(_userPrefsNum[_pref.key]) ? round(_userPrefsNum[_pref.key]) : _pref.default")
+)
+
+# _pref can be invalid in this macro.
+(def macro TT_GET_NULLABLE_PREF_NUMBER (_varName:expression, _nullablePref:expression, _default:expression="0")
+	(var name="_varName" type=number value="_nullablePref && 'key' in _nullablePref ? _userPrefsNum && isNumber(_userPrefsNum[_nullablePref.key]) ? _nullablePref.min + (round(_userPrefsNum[_nullablePref.key]) * _nullablePref.step) : _nullablePref.default : _default")
+)
+
+(def macro TT_GET_NULLABLE_PREF_BOOL (_varName:expression, _nullablePref:expression, _default:expression="false")
+	(var name="_varName" type=bool value="_nullablePref && 'key' in _nullablePref ? _userPrefsNum && isNumber(_userPrefsNum[_nullablePref.key]) ? round(_userPrefsNum[_nullablePref.key]) : _nullablePref.default : _default")
 )
