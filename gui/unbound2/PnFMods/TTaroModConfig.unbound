@@ -2053,7 +2053,7 @@
 			(backgroundColor = 0x8000ff00)
 		)
 
-		(bind text "localizedText")
+		(bind text "text")
 	)
 )
 
