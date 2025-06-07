@@ -306,4 +306,6 @@
     IDS_TT_HINT_ENABLE_CIRCLE_CLASSES            : ["'Show the circle when using the selected ship classes'", "'選択した艦種をプレイ中にのみ円を表示します'", "'설정한 함종을 플레이할 때 원 표시'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_DISTANCE_KM                           : ["'Distance (km)'", "'距離 (km)'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_HINT_ALLY_RANGE_DISTANCE              : ["'Ally circles become visible when you\'re withint this threshold.'", "'味方の円は、自艦がこの距離内にいる場合のみ表示されるようになります'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_SECTOR_ANGLE                          : ["'Sector Angle'", "'円周の大きさ'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_HINT_SECTOR_ANGLE                     : ["'You can use sector instead of a perfect ciricle.' + NEW_LINE + 'This will prevent the minimap from cluttering even when you enable the multiple circles for enemy range.'", "'真円の代わりに扇形を使用できます。' + NEW_LINE + '複数の敵円を表示する場合でも、ミニマップを見やすく保つことができます。'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
 })
