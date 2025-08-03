@@ -857,6 +857,18 @@
         ]"
     },
     {
+        sectionTitle: 'IDS_TT_TITLE_PINGER_RANGE',
+        sectionSettings: {isExpanded: false},
+        sectionElements: "[
+            TMap_PREFS.PINGER.DISPLAY_MODE,
+            TMap_PREFS.PINGER.LINE_TYPE,
+            TMap_PREFS.PINGER.LINE_THICKNESS,
+            TMap_PREFS.PINGER.FILL_CIRCLE,
+            TMap_PREFS.PINGER.ALPHA,
+            TMap_PREFS.PINGER.COLOR_INDEX
+        ]"
+    },
+    {
         sectionTitle: 'IDS_TT_TITLE_RADAR_RANGE_SELF',
         sectionSettings: {isExpanded: false},
         sectionElements: "[
@@ -1841,6 +1853,14 @@
         FILL_CIRCLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CIRCLE_FILL', key: 'ttMinimapNearbyAARangeFillCircle', tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL', default: false, divider: "top", parentPrefs: [{pref: "TMap_PREFS.NEARBY_AA.VISIBLE", validValues: [1]}]},
         ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'ttMinimapNearbyAARangeOpacity', default: 1, parentPrefs: [{pref: "TMap_PREFS.NEARBY_AA.VISIBLE", validValues: [1]}]},
         COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapNearbyAARangeColorIndex', default: "indexOf('3', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS", divider: "top", parentPrefs: [{pref: "TMap_PREFS.NEARBY_AA.VISIBLE", validValues: [1]}]},
+    },
+    PINGER: {
+        DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE', key: 'ttMinimapPingerDisplayMode', tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE', default: 2, dropdownItems: ['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], dropdownType: 'CUSTOM_TEXT'},
+        LINE_TYPE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OUTLINE_STYLE', key: 'ttMinimapPingerOutlineType', default: 3, dropdownItems: ['IDS_TURN_OFF', 'IDS_TT_DOTTED_LINE', 'IDS_TT_DASHED_LINE', 'IDS_TT_SOLID_LINE'], dropdownType: 'CUSTOM_TEXT', divider: "top"},
+        LINE_THICKNESS: {min: 1, max: 10, step: 0.5, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_LINE_THICKNESS', key: 'ttMinimapPingerOutlineThickness', default: 1, parentPrefs: [{pref: "TMap_PREFS.PINGER.LINE_TYPE", validValues: [1,2,3]}]},
+        FILL_CIRCLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CIRCLE_FILL', key: 'ttMinimapPingerFillCircle', tooltipHint: 'IDS_TT_HINT_CIRCLE_FILL', default: false, divider: "top"},
+        ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'ttMinimapPingerOpacity', default: 1, parentPrefs: [{pref: "TMap_PREFS.PINGER.FILL_CIRCLE", validValues: [1]}]},
+        COLOR_INDEX: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COLOR', key: 'ttMinimapPingerColorIndex', default: "indexOf('IDS_TT_TITLE_MAIN_ARMAMENT_RANGE', TMap_RANGE_COLORS.ALL)", dropdownItems: "TMap_RANGE_COLORS.ALL", dropdownType: 'COLOR_PALETTE', extraData: "TMap_RANGE_COLORS", divider: "top"},
     },
     RADAR_SELF: {
         DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_GLOBAL_DISPLAY_MODE', key: 'ttMinimapRadarSelfDisplayMode', tooltipHint: 'IDS_TT_HINT_GLOBAL_DISPLAY_MODE', default: 2, dropdownItems: ['IDS_TT_ALWAYS_OFF', 'IDS_TT_ALWAYS_ON', 'IDS_TT_USE_INDIVIDUAL_SHIP_SETTINGS'], dropdownType: 'CUSTOM_TEXT'},
