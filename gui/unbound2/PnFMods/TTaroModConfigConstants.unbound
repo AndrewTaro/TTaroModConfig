@@ -1173,7 +1173,6 @@
         sectionTitle: 'IDS_TT_TITLE_GENERAL',
         sectionElements: "[
             THP_PREFS.DISABLE_DRAGDROP,
-            THP_PREFS.RESET_POSITION,
             THP_PREFS.DISPLAY_MODE,
             THP_PREFS.FONT_SIZE,
             THP_PREFS.HEALTH_TYPE,
@@ -1203,6 +1202,15 @@
         sectionElements: "[
             THP_PREFS.ENEMY.STYLE_INDEX,
             THP_PREFS.ENEMY.BAR_DIRECTION
+        ]"
+    }
+])
+
+(def constant TT_MOD_TEAMHP_CONFIGS [
+    {
+        sectionTitle: 'IDS_TT_TITLE_GENERAL',
+        sectionElements: "[
+            THP_PREFS.RESET_POSITION
         ]"
     }
 ])
@@ -1256,6 +1264,16 @@
     }
 ])
 
+(def constant TT_MOD_WOWSPAINT_CONFIGS [
+    {
+        sectionTitle: 'IDS_TT_TITLE_GENERAL',
+        sectionElements: "[
+            WPaint_PREFS.DISABLE_DRAGDROP,
+            WPaint_PREFS.RESET_POSITION
+        ]"
+    }
+])
+
 
 
 (def constant TT_MODS_CONFIG_LIST [
@@ -1277,9 +1295,11 @@
     {modName: 'Minimap', modTag: 'MINIMAP', configSections: "TT_MOD_MINIMAP_CONFIGS", isInstalled: "TT_MINIMAP_INSTALLED"},
     {modName: 'Chat', modTag: 'CHAT', configSections: "TT_MOD_CHAT_CONFIGS", isInstalled: "TT_CHAT_INSTALLED"},
     {modName: 'Subs Highlight', modTag: 'SUBSHIGHLIGHT', configSections: "TT_MOD_SUBSHIGHLIGHT_CONFIGS", isInstalled: "TT_SUBSHIGHLIGHT_INSTALLED"},
+    {modName: 'Team HP', modTag: 'TEAMHP', configSections: "TT_MOD_TEAMHP_CONFIGS", isInstalled: "TT_TEAMHP_INSTALLED"},
     {modName: 'TeamHP', modTag: 'TEAMHP', configSections: "TT_MOD_TEAMHP_CONFIGS", isInstalled: "TT_TEAMHP_INSTALLED"},
     {modName: 'Battle Timer', modTag: 'BATTLETIMER', configSections: "TT_MOD_BATTLETIMER_CONFIGS", isInstalled: "TT_BATTLETIMER_INSTALLED"},
     {modName: 'Adv Ship Status', modTag: 'ADVSHIPSTATUS', configSections: "TT_MOD_ADVSHIPSTATUS_CONFIGS", isInstalled: "TT_ADVSHIPSTATUS_INSTALLED"},
+    {modName: 'WoWS Paint', modTag: 'WOWSPAINT', configSections: "TT_MOD_WOWSPAINT_CONFIGS", isInstalled: "TT_WOWSPAINT_INSTALLED"},
 ])
 
 (def constant TDRadar_PREFS {
@@ -2152,5 +2172,10 @@
         SCALE: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'advSSCompassScale', default: 1},
         COMPASS_ROSE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_COMPASS_ROSE', key: 'advSSCompassRoseVisible', default: true},
     },
+})
+
+(def constant WPaint_PREFS {
+    DISABLE_DRAGDROP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_DRAG_DROP', key: 'WoWSPaintDisableDragDrop', tooltipHint: 'IDS_TT_HINT_DISABLE_DRAG_DROP', default: false},
+    RESET_POSITION: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.BUTTON", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DRAGDROP_RESET', key: '', tooltipHint: 'IDS_TT_HINT_DRAGDROP_RESET', default: 0, extraData: [{type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'WoWSPaint_positionX'}}, {type: 'inputMapping.onAction', name: 'clearUserPref', args: {'name': 'chatBoxWidth', 'subName': 'WoWSPaint_positionY'}}]},
 })
 
