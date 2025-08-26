@@ -1173,6 +1173,7 @@
         sectionTitle: 'IDS_TT_TITLE_GENERAL',
         sectionElements: "[
             THP_PREFS.DISABLE_DRAGDROP,
+            THP_PREFS.RESET_POSITION,
             THP_PREFS.DISPLAY_MODE,
             THP_PREFS.FONT_SIZE,
             THP_PREFS.HEALTH_TYPE,
@@ -1202,15 +1203,6 @@
         sectionElements: "[
             THP_PREFS.ENEMY.STYLE_INDEX,
             THP_PREFS.ENEMY.BAR_DIRECTION
-        ]"
-    }
-])
-
-(def constant TT_MOD_TEAMHP_CONFIGS [
-    {
-        sectionTitle: 'IDS_TT_TITLE_GENERAL',
-        sectionElements: "[
-            THP_PREFS.RESET_POSITION
         ]"
     }
 ])
@@ -1296,7 +1288,6 @@
     {modName: 'Chat', modTag: 'CHAT', configSections: "TT_MOD_CHAT_CONFIGS", isInstalled: "TT_CHAT_INSTALLED"},
     {modName: 'Subs Highlight', modTag: 'SUBSHIGHLIGHT', configSections: "TT_MOD_SUBSHIGHLIGHT_CONFIGS", isInstalled: "TT_SUBSHIGHLIGHT_INSTALLED"},
     {modName: 'Team HP', modTag: 'TEAMHP', configSections: "TT_MOD_TEAMHP_CONFIGS", isInstalled: "TT_TEAMHP_INSTALLED"},
-    {modName: 'TeamHP', modTag: 'TEAMHP', configSections: "TT_MOD_TEAMHP_CONFIGS", isInstalled: "TT_TEAMHP_INSTALLED"},
     {modName: 'Battle Timer', modTag: 'BATTLETIMER', configSections: "TT_MOD_BATTLETIMER_CONFIGS", isInstalled: "TT_BATTLETIMER_INSTALLED"},
     {modName: 'Adv Ship Status', modTag: 'ADVSHIPSTATUS', configSections: "TT_MOD_ADVSHIPSTATUS_CONFIGS", isInstalled: "TT_ADVSHIPSTATUS_INSTALLED"},
     {modName: 'WoWS Paint', modTag: 'WOWSPAINT', configSections: "TT_MOD_WOWSPAINT_CONFIGS", isInstalled: "TT_WOWSPAINT_INSTALLED"},
