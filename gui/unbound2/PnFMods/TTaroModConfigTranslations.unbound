@@ -312,7 +312,7 @@
     IDS_TT_HINT_DRAGGABLE_SNAP                   : ["'Hold to enable the Grip Snapping'", "'グリッドスナップを有効化'", "''", "''", "''", "'Przytrzymaj, aby włączyć przyciąganie do siatki'", "''", "''", "''", "''", "''", "''", "''", "''", "'按住以拖拽'", "''", ],
     IDS_TT_HINT_DRAGGABLE_SNAP_DESC              : ["'Drag items with automatic snapping for consistent positioning'", "'アイテムをグリッドに沿って移動させ、一貫性のある配置を可能にします'", "''", "''", "''", "'Przeciągaj elementy z automatycznym przyciąganiem do siatki dla spójnego pozycjonowania'", "''", "''", "''", "''", "''", "''", "''", "''", "'使用自动捕捉功能拖动项目以实现一致定位'", "''", ],
     IDS_TT_HINT_DRAGGABLE_ELEMENT                : ["'Drag-and-Drop Available'", "'ドラッグ&ドロップに対応'", "''", "''", "''", "'Przeciąg i upuść dostępne'", "''", "''", "'Glisser-déposer disponible'", "''", "''", "''", "''", "''", "'启用拖拽模式'", "''", ],
-    IDS_TT_STYLE_MODERN                          : ["'Modern'", "'モダン'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
-    IDS_TT_STYLE_STANDARD                        : ["'Standard'", "'スタンダード'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
-    IDS_TT_STYLE_CLASSIC                         : ["'Classic'", "'クラシック'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_STYLE_MODERN                          : ["'Modern'", "'モダン'", "''", "''", "''", "'Nowoczesny'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_STYLE_STANDARD                        : ["'Standard'", "'スタンダード'", "''", "''", "''", "'Standardowy'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_STYLE_CLASSIC                         : ["'Classic'", "'クラシック'", "''", "''", "''", "'Klasyczny'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
 })
