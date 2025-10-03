@@ -270,7 +270,7 @@
     IDS_TT_ABSOLUTE                              : ["'Absolute'", "'絶対表示'", "'절대적'", "''", "'Абсолютний'", "'Bezwzględny'", "''", "''", "'Absolu'", "''", "''", "''", "''", "''", "'绝对'", "'絕對'", ],
     IDS_TT_BLOCK_COUNT                           : ["'Number of Blocks'", "'ブロック数'", "'블록 수'", "''", "'Кількість сегментів'", "'Liczba bloków'", "''", "''", "'Nombre de blocs'", "''", "''", "''", "''", "''", "'格子数量'", "'格子數量'", ],
     IDS_TT_BLOCK_HEALTH                          : ["'Health per Block'", "'ブロックあたりのHP'", "'블록 당 체력'", "''", "'Боєздатність на сегмент'", "'Życie na blok'", "''", "''", "'PS par bloc'", "''", "''", "''", "''", "''", "'每个格子代表的生命值'", "'每個格子所代表的生命值'", ],
-    IDS_TT_BLOCK_MARGIN                          : ["'Margin between Blocks'", "'ブロック間の余白'", "'블록 사이 여백'", "''", "'Відстань між сегментами'", "'' + NEW_LINE + 'Odstęp między blokami'", "''", "''", "'Espace entre les blocs'", "''", "''", "''", "''", "''", "'格子间距'", "'每個格子的間距'", ],
+    IDS_TT_BLOCK_MARGIN                          : ["'Space between Blocks'", "'ブロック間の余白'", "'블록 사이 여백'", "''", "'Відстань між сегментами'", "'' + NEW_LINE + 'Odstęp między blokami'", "''", "''", "'Espace entre les blocs'", "''", "''", "''", "''", "''", "'格子间距'", "'每個格子的間距'", ],
     IDS_TT_BLOCK_WIDTH                           : ["'Block Width'", "'ブロック横幅'", "'블록 너비'", "''", "'Ширина сегменту'", "'Szerokość bloku'", "''", "''", "'Largeur des blocs'", "''", "''", "''", "''", "''", "'格子宽度'", "'每個格子的寬度'", ],
     IDS_TT_BLOCK_HEIGHT                          : ["'Block Height'", "'ブロック縦幅'", "'블록 높이'", "''", "'Висота сегменту'", "'Wysokość bloku'", "''", "''", "'Hauteur des blocs'", "''", "''", "''", "''", "''", "'格子高'", "'每個格子的高度'", ],
     IDS_TT_TITLE_HEALTH_ALLY                     : ["'Health of Ally'", "'味方HP'", "'아군 체력'", "'Боеспособность союзников'", "'Боєздатність союзника'", "'Życie sojusznika'", "'Životy spojence'", "'Gesundheit (alliiert)'", "'Points de structure (allié)'", "''", "'Allierad hälsa'", "''", "'HP saigrača'", "''", "'队友生命值'", "'隊友生命值'", ],
@@ -315,4 +315,6 @@
     IDS_TT_STYLE_MODERN                          : ["'Modern'", "'モダン'", "''", "''", "''", "'Nowoczesny'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_STYLE_STANDARD                        : ["'Standard'", "'スタンダード'", "''", "''", "''", "'Standardowy'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_STYLE_CLASSIC                         : ["'Classic'", "'クラシック'", "''", "''", "''", "'Klasyczny'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_USE_OWN_NAME                          : ["'Use Your IGN instead of \"You\"'", "'「あなた」の代わりに自分の名前を使用'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_TITLE_STYLE                           : ["'Style'", "'スタイル'", "'스타일'", "''", "'Стиль'", "'Styl'", "''", "''", "'Style'", "''", "''", "''", "''", "''", "'风格'", "'風格'", ],
 })

@@ -327,8 +327,6 @@
 		(backgroundColor = 0x01000000) # For hittest
 	)
 
-	(element TT_HorizontalDivider _margin=5px _alpha=2)
-
 	# Title
 	(hblock
 		(style
@@ -356,11 +354,27 @@
 		)
 	)
 
+	(element TT_HorizontalDivider _margin=5px _alpha=2)
+
 	# Sections
 	(block
 		(bind visible "isExpanded")
 		# Instead of (animatedAlpha > 0), this will allow quick collapse & animated expand
 		# It looks better than animating both the appear and disappear
+		(block
+			(class $FullsizeAbsolute)
+			(style
+				(paddingTop = -5px)
+				(paddingBottom = -5px)
+			)
+			(block
+				(class $FullsizeAbsolute)
+				(style
+					(backgroundColor = "0x22000000")
+					(backgroundSize = "fill")
+				)
+			)
+		)
 		(style
 			(width = 100%)
 			(align = "middle|center")
@@ -442,7 +456,7 @@
 	(macro MOUSE_EVENTS_DISPATCHER)
 
 	(style
-		(width = 96%)
+		(width = 100%)
 		(bind hitTest "_isConfigurable && isOptionEnabled")
 	)
 
@@ -601,6 +615,7 @@
 		(style
 			(fontSize = 21)
 			(width = 100%)
+			(marginLeft = 3px)
 			(bind textColor "titleColor")
 		)
 	)
@@ -630,6 +645,7 @@
 			(style
 				(width = 100%)
 				(leading = -5)
+				(marginLeft = 8px)
 				(bind textColor "titleColor")
 			)
 		)
