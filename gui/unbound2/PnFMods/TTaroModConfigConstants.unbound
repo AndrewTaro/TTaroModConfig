@@ -1049,7 +1049,7 @@
             TTChat_PREFS.PLAYER_INFO.FONT_SIZE,
             TTChat_PREFS.PLAYER_INFO.NAME,
             TTChat_PREFS.PLAYER_INFO.CLAN_TAG,
-            TTChat_PREFS.PLAYER_INFO.MY_NAME
+            TTChat_PREFS.PLAYER_INFO.MY_SHIP
         ]"
     },
     {
@@ -2038,7 +2038,7 @@
         FONT_SIZE: {min: 10, max: 20, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_FONT_SIZE', key: 'ttChatPlayerInfoFontSize', default: 15, round: 0, divider: "bottom", parentPrefs: [{pref: "TTChat_PREFS.STYLE_INDEX", validValues: [1, 2]}]},
         NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'ttChatPlayerNameVisible', default: true},
         CLAN_TAG: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLAN_NAME', key: 'ttChatClanNameVisible', default: true, divider: "bottom", parentPrefs: [{pref: "TTChat_PREFS.PLAYER_INFO.NAME", validValues: [1]}]},
-        MY_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_USE_OWN_NAME', key: 'ttChatUseOwnName', default: false},
+        MY_SHIP: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHOW_OWN_SHIP', key: 'ttChatShowOwnShip', default: false},
     },
     SHIP_INFO: {
         BOLD_FONT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BOLD_FONT', key: 'ttChatShipInfoBoldFont', default: true, parentPrefs: [{pref: "TTChat_PREFS.STYLE_INDEX", validValues: [2]}]},
