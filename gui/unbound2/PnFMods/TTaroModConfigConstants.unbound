@@ -142,6 +142,13 @@
         ]"
     },
     {
+        sectionTitle: 'IDS_TT_TITLE_HEALTH_BAR',
+        sectionElements: "[
+            TP_PREFS.HEALTHBAR_OPACITY,
+            TP_PREFS.HEALTHBAR_WIDTH
+        ]"
+    },
+    {
         sectionTitle: 'IDS_TT_TITLE_BASIC_INFO',
         sectionElements: "[
             TP_PREFS.PLAYER_NAME,
@@ -156,13 +163,6 @@
             TP_PREFS.SHIP_ICON_STATUS,
             TP_PREFS.KILL_COUNT,
             TP_PREFS.SHIP_DETECTION
-        ]"
-    },
-    {
-        sectionTitle: 'IDS_TT_TITLE_HEALTH_BAR',
-        sectionElements: "[
-            TP_PREFS.HEALTHBAR_OPACITY,
-            TP_PREFS.HEALTHBAR_WIDTH
         ]"
     },
     {
@@ -1387,6 +1387,8 @@
         MODE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_USE_BLUR', key: 'ttTeamPanelBlurMode', tooltipHint: 'IDS_TT_HINT_BLUR_PERFORMANCE_WARNING', default: true, parentPrefs: [{pref: "TP_PREFS.BACKGROUND.DISPLAY_MODE", validValues: "[1,2]"}]},
         ALPHA: {min: 0.1, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'ttTeamPanelBlurOpacity', default: 0.4, parentPrefs: [{pref: "TP_PREFS.BACKGROUND.DISPLAY_MODE", validValues: "[1,2]"}]},
     },
+    HEALTHBAR_OPACITY: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BAR_OPACITY', key: 'ttTeamPanelHealthBarOpacity', default: 0.4},
+    HEALTHBAR_WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BAR_WIDTH', key: 'ttTeamPanelHealthBarWidth', default: 1, divider: "bottom"},
     PLAYER_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_PLAYER_NAME', key: 'ttTeamPanelPlayerNameVisible', default: true},
     CLAN_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLAN_NAME', key: 'ttTeamPanelClanNameVisible', default: true, divider: "bottom", parentPrefs: [{pref: "TP_PREFS.PLAYER_NAME", validValues: "[1]"}]},
     SHIP_NAME: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHIP_NAME', key: 'ttTeamPanelShipNameVisible', default: true, divider: "bottom"},
@@ -1399,8 +1401,6 @@
     SHIP_ICON_STATUS: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLASS_ICON_STATUS', key: 'ttTeamPanelShipIconStatusColor', tooltipHint: 'IDS_TT_HINT_CLASS_ICON_STATUS', default: true, divider: "bottom"},
     KILL_COUNT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_KILL_COUNT', key: 'ttTeamPanelPlayerKillsVisible', default: true, divider: "bottom"},
     SHIP_DETECTION: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DETECTION', key: 'ttTeamPanelShipDetectionVisible', default: true},
-    HEALTHBAR_OPACITY: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BAR_OPACITY', key: 'ttTeamPanelHealthBarOpacity', default: 0.4},
-    HEALTHBAR_WIDTH: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_BAR_WIDTH', key: 'ttTeamPanelHealthBarWidth', default: 1, divider: "bottom"},
     TEAM_CONSUMABLES: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TEAM_CONSUMABLE', key: 'ttTeamPanelTeamConsumablesVisible', tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING', default: false},
     HIDE_DAMAGE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_NONPLAYER_DAMAGES', key: 'ttTeamPanelHideNonPlayerDamages', default: false},
     HIDE_BUILD: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_ALLY_BUILDS', key: 'ttTeamPanelHideAllyBuilds', default: false},
