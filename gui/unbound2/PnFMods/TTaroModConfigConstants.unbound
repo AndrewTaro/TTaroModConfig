@@ -174,7 +174,12 @@
         sectionTitle: 'IDS_TT_MOD_CONSUMABLES_MONITOR',
         sectionSettings: {isEnabled: "TT_CONSUMABLESMONITOR_INSTALLED", tooltipHint: 'IDS_TT_HINT_MOD_REQUIRED', tooltipExtraData: 'Consumables Monitor'},
         sectionElements: "[
-            TP_PREFS.TEAM_CONSUMABLES
+            TP_PREFS.CONSUMABLES_MONITOR.DISPLAY_MODE,
+            TP_PREFS.CONSUMABLES_MONITOR.HYDRO,
+            TP_PREFS.CONSUMABLES_MONITOR.RADAR,
+            TP_PREFS.CONSUMABLES_MONITOR.SUB_RADAR,
+            TP_PREFS.CONSUMABLES_MONITOR.OTHERS,
+            TP_PREFS.CONSUMABLES_MONITOR.TEAM_CONSUMABLES
         ]"
     },
     {
@@ -1407,7 +1412,14 @@
     SHIP_ICON_STATUS: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_CLASS_ICON_STATUS', key: 'ttTeamPanelShipIconStatusColor', tooltipHint: 'IDS_TT_HINT_CLASS_ICON_STATUS', default: true, divider: "bottom"},
     KILL_COUNT: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_KILL_COUNT', key: 'ttTeamPanelPlayerKillsVisible', default: true, divider: "bottom"},
     SHIP_DETECTION: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DETECTION', key: 'ttTeamPanelShipDetectionVisible', default: true},
-    TEAM_CONSUMABLES: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TEAM_CONSUMABLE', key: 'ttTeamPanelTeamConsumablesVisible', tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING', default: false},
+    CONSUMABLES_MONITOR: {
+        DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'ttTeamPanelConsumablesMonitorDisplayMode', tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING', default: 2, dropdownItems: ['IDS_TURN_OFF', 'IDS_ALT_VISION_MODE_0', 'IDS_ALT_VISION_MODE_2'], divider: "bottom"},
+        HYDRO: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_DOCK_CONSUME_TITLE_PCY016_SONARSEARCHPREMIUM', key: 'ttTeamPanelHydroConsumableVisible', tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING', default: false, parentPrefs: [{pref: "TP_PREFS.CONSUMABLES_MONITOR.DISPLAY_MODE", validValues: "[1, 2]"}]},
+        RADAR: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_DOCK_CONSUME_TITLE_PCY020_RLSSEARCHPREMIUM', key: 'ttTeamPanelRadarConsumableVisible', tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING', default: false, parentPrefs: [{pref: "TP_PREFS.CONSUMABLES_MONITOR.DISPLAY_MODE", validValues: "[1, 2]"}]},
+        SUB_RADAR: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_DOCK_CONSUME_TITLE_PCY048_SUBMARINELOCATOR', key: 'ttTeamPanelSubRadarConsumableVisible', tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING', default: false, divider: "bottom", parentPrefs: [{pref: "TP_PREFS.CONSUMABLES_MONITOR.DISPLAY_MODE", validValues: "[1, 2]"}]},
+        OTHERS: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OTHER_CONSUMABLES', key: 'ttTeamPanelOtherConsumablesVisible', tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING', default: false, divider: "bottom", parentPrefs: [{pref: "TP_PREFS.CONSUMABLES_MONITOR.DISPLAY_MODE", validValues: "[1, 2]"}]},
+        TEAM_CONSUMABLES: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TEAM_CONSUMABLE', key: 'ttTeamPanelTeamConsumablesVisible', tooltipHint: 'IDS_TT_HINT_TEAM_CONSUMABLE_WARNING', default: true, parentPrefs: [{pref: "TP_PREFS.CONSUMABLES_MONITOR.DISPLAY_MODE", validValues: "[1, 2]"}]},
+    },
     HIDE_DAMAGE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_NONPLAYER_DAMAGES', key: 'ttTeamPanelHideNonPlayerDamages', default: false},
     HIDE_BUILD: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_ALLY_BUILDS', key: 'ttTeamPanelHideAllyBuilds', default: false},
     UNITS_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHOW_UNIT', key: 'ttTeamPanelShipStatsUnitsVisible', default: false},
