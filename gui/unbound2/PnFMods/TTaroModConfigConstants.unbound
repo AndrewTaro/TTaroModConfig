@@ -395,6 +395,12 @@
         sectionElements: "[
             BV_PREFS.BACKGROUND_ALPHA
         ]"
+    },
+    {
+        sectionTitle: 'IDS_TT_ADVANCED_SETTINGS',
+        sectionElements: "[
+            BV_PREFS.TARGET_INDICATOR
+        ]"
     }
 ])
 
@@ -1527,6 +1533,7 @@
     DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'buildViewerDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 1, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}, divider: "bottom"},
     DISABLE_ALLY_BUILDS: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISABLE_ALLY_BUILDS', key: 'buildViewerDisableAllyBuilds', default: false},
     BACKGROUND_ALPHA: {min: 0, max: 1, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_OPACITY', key: 'buildViewerBackgroundOpacity', default: 0.4},
+    TARGET_INDICATOR: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_TARGET_INDICATOR', key: 'buildViewerTargetIndicatorVisible', default: true},
 })
 
 (def constant RA_PREFS {
