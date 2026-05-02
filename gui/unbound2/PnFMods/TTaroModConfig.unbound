@@ -22,6 +22,7 @@
 	DROPDOWN			: 'TT_DropdownOptionElement',
 	BUTTON				: 'TT_ButtonOptionElement',
 	SUBPREFS			: 'TT_SubPrefsOptionElement',
+	NUM_INPUT			: 'TT_NumericInputOptionElement',
 
 	MINIMAP_SWITCH		: 'TT_MinimapSwitchOptionElement',
 	MINIMAP_SLIDER		: 'TT_MinimapSliderOptionElement',
@@ -791,6 +792,79 @@
 	)
 )
 
+(def element TT_NumericInputOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
+	(scope
+		(event evValueChanged)
+		(event evValueReset)
+		(event evShow)
+		(var prefKey:str = "'key' in _pref ? _pref.key : '' ")
+		(var minValue:number = "'min' in _pref ? _pref.min : 0")
+		(var maxValue:number = "'max' in _pref ? _pref.max : 10")
+		(var step:number = "'step' in _pref ? _pref.step : 1")
+		(var default:number = "'default' in _pref ? _pref.default : 0")
+		(var prefValue:number = "isNumber(_userPrefsNum[prefKey]) ? round(_userPrefsNum[prefKey]) : default" watch=false (event "evShow"))
+		(bind prefValue "$event.value" watch=false init=false (event "evValueChanged"))
+		(bind prefValue "default" watch=false init=false (event "evValueReset"))
+
+		# Creating this dict here with init=true will prevent
+		# triggering setUserPrefs every single time the elemnt is added to stage.
+		#
+		# Directly using $event.value will trigger the change event, even if the value is the same as before.
+		# Because, obviously, the value is not in scope. There is no way for Unbound to detect a change.
+		#
+		# Dict updates only when prefValue changes.
+		# Thus, if the value loaded from userPref is equal to current value, the update event will not happen.
+		(var prefData:dict = "{value: prefValue + 0.00001, name: 'chatBoxWidth', subName: prefKey}")
+	)
+	(dispatch evShow args="{}" on='addedToStage')
+
+	(bindcall externalCall 'inputMapping.onAction' "['setUserPref', prefData]" init=false)
+
+	(style
+		(width = "50%")
+	)
+
+	(hblock
+		(style
+			(width = "TT_CONFIG_OPTION_WIDTH")
+			(align = "left|middle")
+		)
+		(block
+			(style
+				(width = "TT_CONFIG_OPTION_CONTROL_WIDTH")
+				(align = "middle|center")
+			)
+			(element TT_NumericInputElement
+				_prefValue = "prefValue"
+				_min = "minValue"
+				_max = "maxValue"
+				_step = "step"
+			)
+		)
+		
+		(block
+			(style
+				(marginRight = "TT_CONFIG_OPTION_VALUE_MARGIN")
+				(width = "TT_CONFIG_OPTION_VALUE_WIDTH")
+			)
+		)
+		(block
+			(bind visible "prefValue != default")
+			(controller $Instance renderer='ImageButton'
+				(args
+					_width = "TT_CONFIG_RESET_BUTTON_SIZE"
+					_height = "TT_CONFIG_RESET_BUTTON_SIZE"
+					_backgroundImage = 'url:../service_kit/buttons/context/update.png'
+					_tooltipText = "'IDS_PREFERENCES_CONTEXT_PREF_RESET'"
+					_dispatchedEv = "'evValueReset'"
+					_dispatchParams = "{'value': default}" # Not used
+				)
+			)
+		)
+		
+	)
+)
+
 (def element TT_DropdownOptionElement (_pref:dict, _userPrefsNum:gfx=null) layout=true
 	(scope
 		(event ItemChooser_ValueSelected)
@@ -875,7 +949,7 @@
 			(height = "23px")
 			(align = "left|middle")
 		)
-		(element DefaultButton
+		(element TT_DefaultButton
 			_width = "TT_CONFIG_OPTION_CONTROL_WIDTH"
 			_size = "SIZE.SMALL"
 			_enabled = true
@@ -1037,6 +1111,280 @@
 			(bind backgroundImage "iconUrl")
 			(backgroundSize = "autosize")
 		)
+	)
+)
+
+# Num Input
+# Keycodes are ASCII codes. Not the direct input ones.
+(def constant TT_NUMERIC_KEYS {
+	ZERO	: [0x30, 0x60],
+	ONE		: [0x31, 0x61],
+	TWO		: [0x32, 0x62],
+	THREE	: [0x33, 0x63],
+	FOUR	: [0x34, 0x64],
+	FIVE	: [0x35, 0x65],
+	SIX		: [0x36, 0x66],
+	SEVEN	: [0x37, 0x67],
+	EIGHT	: [0x38, 0x68],
+	NINE	: [0x39, 0x69],
+
+	ALL		: [
+		0x30, # 0
+		0x31, # 1
+		0x32, # 2
+		0x33, # 3
+		0x34, # 4
+		0x35, # 5
+		0x36, # 6
+		0x37, # 7
+		0x38, # 8
+		0x39, # 9
+
+		0x60, # Num0
+		0x61, # Num1
+		0x62, # Num2
+		0x63, # Num3
+		0x64, # Num4
+		0x65, # Num5
+		0x66, # Num6
+		0x67, # Num7
+		0x68, # Num8
+		0x69, # Num9
+		0x60  # Num0
+	]
+})
+(def constant TT_NUMERIC_KEY_TO_VALUE {
+	"0x30": 0,
+	"0x31": 1,
+	"0x32": 2,
+	"0x33": 3,
+	"0x34": 4,
+	"0x35": 5,
+	"0x36": 6,
+	"0x37": 7,
+	"0x38": 8,
+	"0x39": 9,
+
+	"0x60": 0,
+	"0x61": 1,
+	"0x62": 2,
+	"0x63": 3,
+	"0x64": 4,
+	"0x65": 5,
+	"0x66": 6,
+	"0x67": 7,
+	"0x68": 8,
+	"0x69": 9
+})
+(def constant TT_ARROW_KEYS {
+	LEFT	: 0x25,
+	UP		: 0x26,
+	RIGHT	: 0x27,
+	DOWN	: 0x28
+})
+(def constant TT_BACKSPACE_KEY 0x08)
+(def constant TT_DELETE_KEY 0x2e)
+(def constant TT_AVAILABLE_KEYS "[
+	TT_NUMERIC_KEYS.ALL,
+
+	TT_BACKSPACE_KEY,
+	TT_DELETE_KEY,
+	TT_ARROW_KEYS.LEFT,
+	TT_ARROW_KEYS.UP,
+	TT_ARROW_KEYS.RIGHT,
+	TT_ARROW_KEYS.DOWN
+]")
+
+(def element TT_NumericInputElement(_prefValue:number, _min:number, _max:number, _step:number)
+	(scope
+		(event evInput)
+		(event evValidatedInput)
+		(event evNumberInput)
+		(event evArrowInput)
+		(event evBackspaceInput)
+		(event evDeleteInput)
+		(event evValidateValue)
+
+		(event evValueChanged)
+
+		(event evFocus)
+		(event evMenuClosed)
+		(event evItemChooserOpened)
+		(event evItemChooserClosed)
+
+		(var currentValue:number = "_prefValue")
+		(bind currentValue "currentValue * 10 + $event.value" watch=false init=false (event "evNumberInput"))
+		(bind currentValue "round(floor(currentValue / 10) / _step) * _step" watch=false init=false (event "evBackspaceInput"))
+		(bind currentValue "min(max(_min, round(currentValue / _step) * _step), _max)" watch=false init=false (event "evValidateValue"))
+
+		(var lastInput:number = -1)
+		(bind lastInput "$event.keyCode" watch=false init=false (event "evValidatedInput"))
+
+		(var isValidInput:bool = true)
+		(bind isValidInput "!isValidInput" watch=false init=false (event "evInput"))
+		# stageKeyDown occurs 2 times per frame for some reason so we have to ignore one of these
+
+		(var isFocused:bool = false)
+		(bind isFocused "true" watch=false init=false (event "evItemChooserOpened"))
+		(bind isFocused "false" watch=false init=false (event "evItemChooserClosed"))
+	)
+	(dispatch evValueChanged args="{value: currentValue}" dir="EventDirection.UP" init=false watch=false (event "evValidateValue"))
+	(style
+		(width = 100%)
+		(align = "middle|center")
+		(backgroundImage = 'url:../service_kit/slider/slider_track.png')
+		(backgroundSize = "fill")
+		(scale9grid = "[4, 4, 4, 4]")
+	)
+	(tf
+		(class $TextDefault)
+		(style
+			(width = 100%)
+			(textAlign = "center")
+		)
+		(bind text "currentValue")
+	)
+	(block
+		(style
+			(position = "absolute")
+			(right = 4px)
+			(top = 50%)
+			(marginTop = -50%)
+			(width = 14px)
+			(height = 14px)
+			(backgroundImage = 'url:../service_kit/buttons/icon_navigate/down.png')
+		)
+	)
+
+	(dispatch evValidateValue args="{}" reset=true delay=0.8 (bind trigger "currentValue"))
+	(dispatch evInput args="{keyCode: $event ? $event.keyCode : null}" watch=false init=false on=stageKeyUp (bind enabled "isFocused"))
+	(dispatch evValidatedInput (bind enabled "isValidInput") (event "evInput"))
+
+	(dispatch evNumberInput args="{value: $event ? TT_NUMERIC_KEY_TO_VALUE[$event.keyCode] : ''}" watch=false init=false (bind enabled "lastInput in TT_NUMERIC_KEYS.ALL")(event "evValidatedInput"))
+	(dispatch evBackspaceInput args="{}" watch=false init=false (bind enabled "lastInput == TT_BACKSPACE_KEY")(event "evValidatedInput"))
+	# (dispatch evDeleteInput args="{}" watch=false init=false (bind enabled "lastInput == TT_DELETE_KEY")(event "evValidatedInput"))
+
+	(dispatch evMenuClosed dir="EventDirection.DOWN" args="{}" on='removedFromStage')
+
+	(controller $Tooltip
+		(renderer = 'TT_NumPadElement')
+		(args
+		)
+
+		(macro DEFAULT_INFOTIP_ANIMATIONS)
+		(bindcall show on='click')
+		(bindcall hide on='evClickOutside' (event "evMenuClosed"))
+
+		# Mod
+		(dispatch evItemChooserOpened dir="EventDirection.UP" args="{}" on=evShow)
+		(dispatch evItemChooserClosed dir="EventDirection.UP" args="{}" on=evHide)
+		#
+
+		(priority = 1)
+		(offset = { x: 0, y: 8 })
+		(align = "bottom|center")
+		(position = "border")
+		(screenBoundsOffset = "{ left: M, top: M, right: M, bottom: M }")
+
+		(pinTop='InfotipPinTop')
+		(pinBottom='InfotipPinBottom')
+
+		(cache = false)
+	)
+)
+(def element TT_NumPadElement ()
+	(style
+		(align = "center|middle")
+	)
+	(block
+		(class $FullsizeAbsolute)
+		(style
+			(backgroundImage = 'url:../service_kit/panel_backgrounds/infotip_panel.png')
+			(scale9grid = 3)	
+			(alpha = 2)
+		)
+	)
+	(block
+		(style
+			(gap = 2px)
+			(padding = 12px)
+			(align = "center|middle")
+		)
+		(element TT_NumPadRowElement _startNum=6)
+		(element TT_NumPadRowElement _startNum=3)
+		(element TT_NumPadRowElement _startNum=0)
+		(hblock
+			(style
+				(gap = 2px)
+			)
+			(element TT_NumPadKeyElement _num=0)
+			(element TT_NumPadBackspaceElement)
+			(element TT_NumPadResetElement)
+		)
+	)
+)
+(def element TT_NumPadRowElement(_startNum:number=0)
+	(style
+		(flow = "Flow.HORIZONTAL")
+		(gap = 2px)
+	)
+	(controller $Repeat renderer='TT_NumPadKeyElement' count="3"
+		(args _num="_startNum + $index + 1")
+	)
+)
+(def element TT_NumPadKeyElement(_num:number)
+	(scope
+		# (event evNumberInput)
+		(var label:str = "toString(_num)")
+	)
+	(style
+		(height = 24px)
+		(align = "middle|center")
+	)
+	(element TT_DefaultButton
+		_width = "40"
+		_size = "SIZE.SMALL"
+		_enabled = true
+		_label = "label"
+		_labelPadding = 0
+		_dispatchedEv = "'evNumberInput'"
+		_dispatchParams = "{'value': _num}"
+	)
+)
+(def element TT_NumPadBackspaceElement()
+	(scope
+		(event evBackspaceInput)
+	)
+	(style
+		(height = 24px)
+		(align = "middle|center")
+	)
+	(element TT_DefaultButton
+		_width = "40"
+		_size = "SIZE.SMALL"
+		_enabled = true
+		_type = "SC.Ui_styles.BUTTON_TYPE.ACCENT"
+		_label = 'BACK'
+		_labelPadding = 0
+		_dispatchedEv = "'evBackspaceInput'"
+	)
+)
+(def element TT_NumPadResetElement()
+	(scope
+		(event evValueReset)
+	)
+	(style
+		(height = 24px)
+		(align = "middle|center")
+	)
+	(element TT_DefaultButton
+		_width = "40"
+		_size = "SIZE.SMALL"
+		_enabled = true
+		_type = "SC.Ui_styles.BUTTON_TYPE.ACCENT"
+		_label = 'RESET'
+		_labelPadding = 0
+		_dispatchedEv = "'evValueReset'"
 	)
 )
 
@@ -1515,6 +1863,147 @@
 				_userPrefsNum = "_userPrefsNum"
 			)
 		)
+	)
+)
+
+(def element TT_DefaultButton (_name:str='', _enabled:bool=true, _type:str="SC.Ui_styles.BUTTON_TYPE.DEFAULT", _labelPadding:number="S",
+							_size:number="SIZE.MEDIUM", _width:number=0, _label:str='',
+							_focusIndex:number=0, _clickInterval:number=0, _defaultFocused:bool=false,
+							_dispatchedEv:str='', _dispatchParams:gfx={}, _methods:array=[], _tooltipText:str='') layout=true
+	(scope
+		(macro MOUSE_HANDLER_SCOPE)
+		
+		(var isFocused:bool = false)
+		(var isDisabledVisual:bool = "!_enabled")
+		(var isDown:bool = "!isDisabledVisual && mouseDown")
+		(var isRollover:bool = "!isDisabledVisual && rollOver")
+
+		(var isIconBtn:bool = "_type == SC.Ui_styles.BUTTON_TYPE.ICON")
+		(var btnHeight:str = "	isIconBtn				? MS :
+								_size == SIZE.LARGE		? LM :
+								_size == SIZE.SMALL		? MS
+														: L")
+		(var btnWidth:str = "	isIconBtn				? MS :
+								_width					? _width
+														: 'auto'")
+		(var isAutoWidth:bool = "btnWidth == 'auto'")
+
+		(var isSecondaryBtn:bool = "_type ==  SC.Ui_styles.BUTTON_TYPE.SECONDARY")
+		
+		(var ctRollOver:dict = "isSecondaryBtn	?	{ redMultiplier: 1,	greenMultiplier: 1,	blueMultiplier: 1,	alphaMultiplier: 1,
+													  redOffset: 45,	greenOffset: 45,	blueOffset: 45,		alphaOffset: 0 }
+												:	{ redMultiplier: 1,	greenMultiplier: 1,	blueMultiplier: 1,	alphaMultiplier: 1,
+													  redOffset: 15,	greenOffset: 15,	blueOffset: 15,		alphaOffset: 0 }")
+		(var ctDown:dict = "	isSecondaryBtn	?	{ redMultiplier: 1,	greenMultiplier: 1,	blueMultiplier: 1,	alphaMultiplier: 1,
+													  redOffset: -45,	greenOffset: -45,	blueOffset: -45,	alphaOffset: 0 }
+												:	{ redMultiplier: 1,	greenMultiplier: 1,	blueMultiplier: 1,	alphaMultiplier: 1,
+													  redOffset: -15,	greenOffset: -15,	blueOffset: -15,	alphaOffset: 0 }")
+		
+
+		(var focusImage:str = "_type	? 'url:../service_kit/buttons/backgrounds/' + _type + '_focused.png'
+										: 'url:../service_kit/buttons/backgrounds/default_focused.png'")
+		(var backgroundImage:str = "isDisabledVisual && _type	? 'url:../service_kit/buttons/backgrounds/' + _type + '_disabled.png' :
+									_type						? 'url:../service_kit/buttons/backgrounds/' + _type + '.png' :
+									isDisabledVisual 			? 'url:../service_kit/buttons/backgrounds/default_disabled.png'
+																: 'url:../service_kit/buttons/backgrounds/default.png'")
+	)
+
+	(bind name "_name ? _name : null")
+
+	(style
+		(width = "btnWidth")
+		(height = "btnHeight")
+	)
+
+	(block
+		(class $FullsizeAbsolute)
+		(style
+			(hitTest = false)
+			(bind backgroundImage "backgroundImage")
+			(scale9grid = 10)
+		)
+	)
+
+	(block
+		(bind visible "isRollover || isDown")
+		(bind colorTransform "	isRollover && !isDown	? ctRollOver :
+								isDown					? ctDown
+														: CT_NONE")
+		(class $FullsizeAbsolute)
+		(style
+			(hitTest = false)
+			(bind backgroundImage "backgroundImage")
+			(scale9grid = 10)
+		)
+	)
+
+	(hblock
+		(style
+			(hitTest = false)
+			(align = "middle|center")
+			(height = 100%)
+			(bind width "isAutoWidth ? btnWidth : 100%")
+		)
+
+		(bind alpha "	isDown || isDisabledVisual					? TS :
+						isRollover									? 1.1 :
+						_type == SC.Ui_styles.BUTTON_TYPE.SECONDARY	? TC
+																	: TA")
+
+		(block
+			(bind visible "isFocused && !isDisabledVisual")
+			(class $FullsizeAbsolute)
+			(style (backgroundImage = "focusImage") (scale9grid = 2))
+		)
+
+		(block
+			(bind visible "null != _label && _label.length && !isIconBtn")
+
+			(style
+				(align = "center|middle")
+				(bind width "isAutoWidth ? btnWidth : 100%")
+				(bind minWidth "!isAutoWidth	? 0
+												: 110")
+				(bind paddingLeft "	_labelPadding")
+				(bind paddingRight "_labelPadding")
+				(bind marginTop "_size == SIZE.MEDIUM ? -1 : 0")
+			)
+
+			(tf
+				(style
+					(elideMode = true)
+					(textAlign = "center")
+				)
+				(class $FontEnableReadability)
+				(bind class "	_type == SC.Ui_styles.BUTTON_TYPE.ACCENT && _size == SIZE.LARGE	? '$TextDefaultBold25NM' :
+								_size == SIZE.LARGE												? '$TextDefaultBold17NM' :
+								_size == SIZE.SMALL												? '$TextDefaultBold12NM'
+																								: '$TextDefaultBoldNM'")
+
+				(bind text "toUpper(tr(_label))")
+			)
+		)
+	)
+
+	(macro INPUT "_name")
+
+	(macro MOUSE_HANDLER
+		_enabled = "_enabled"
+		_dispatchedEv = "_dispatchedEv"
+		_dispatchParams = "_dispatchParams"
+		_methods = "_methods"
+		_soundSet = "'button_default'"
+	)
+
+	(controller $Tooltip
+		(renderer='SimpleStatusTooltip')
+		(bind enabled "_tooltipText")
+		(args
+			_text = "_tooltipText"
+		)
+		(macro DEFAULT_TOOLTIP_BEHAVIOUR "0")
+		(align = "right|innerTop")
+		(offset = { x: 6, y: -26 })
 	)
 )
 
@@ -2556,6 +3045,10 @@
 
 (def macro TT_GET_PREF_NUMBER (_varName:expression, _pref:expression)
 	(var name="_varName" type=number value="_userPrefsNum && isNumber(_userPrefsNum[_pref.key]) ? _pref.min + (round(_userPrefsNum[_pref.key]) * _pref.step) : _pref.default")
+)
+
+(def macro TT_GET_PREF_NUMBER_RAW (_varName:expression, _pref:expression)
+	(var name="_varName" type=number value="_userPrefsNum && isNumber(_userPrefsNum[_pref.key]) ? round(_userPrefsNum[_pref.key]) : _pref.default")
 )
 
 (def macro TT_GET_PREF_BOOL (_varName:expression, _pref:expression)

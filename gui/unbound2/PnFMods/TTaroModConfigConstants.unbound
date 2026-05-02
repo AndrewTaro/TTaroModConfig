@@ -223,6 +223,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_AIR_STRIKE',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TP_PREFS.AIRSUPPORT.DISPLAY_MODE,
             TP_PREFS.AIRSUPPORT.RANGE,
@@ -239,6 +240,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_ATBA',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TP_PREFS.ATBA.DISPLAY_MODE,
             TP_PREFS.ATBA.RANGE
@@ -277,6 +279,7 @@
     },
     {
         sectionTitle: 'IDS_TT_TITLE_DCP_CONSUMABLE',
+        sectionSettings: {isExpanded: false},
         sectionElements: "[
             TP_PREFS.DCP.DISPLAY_MODE,
             TP_PREFS.DCP.WORK_TIME,
@@ -1407,7 +1410,7 @@
     DEAD_PLAYER_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SHOW_DEAD', key: 'ttTeamPanelDeadPlayerVisible', default: true},
     POS_OFFSET_MODIFIER: {min: -5, max: 5, step: 1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_HEIGHT_OFFSET', key: 'ttTeamPanelPosOffset', default: 0},
     SCALE_OFFSET: {min: 0.5, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_UI_SCALE', key: 'ttTeamPanelScaleOffset', default: 1},
-    SIDE_OFFSET: {min: 0, max: 1.5, step: 0.1, renderer: "TT_CONFIG_RENDERERS.SLIDER", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SIDE_OFFSET', key: 'ttTeamPanelSideOffset', default: 0},
+    SIDE_OFFSET: {min: 0, max: 30000, step: 10, renderer: "TT_CONFIG_RENDERERS.NUM_INPUT", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_SIDE_OFFSET', key: 'ttTeamPanelSideOffset', tooltipHint: 'IDS_TT_HINT_NUMBER_INPUT', default: 0},
     ALL_ALT_VISIBLE: {renderer: "TT_CONFIG_RENDERERS.SWITCH", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_ONLY_ON_ALT', key: 'ttTeamPanelVisibleOnAlt', default: false},
     BACKGROUND: {
         DISPLAY_MODE: {min: 0, max: 0, step: 1, renderer: "TT_CONFIG_RENDERERS.DROPDOWN", titleColor: "SC.Ui_styles.SERVICE_COLORS.WHITE", configTitle: 'IDS_TT_DISPLAY_MODE', key: 'ttTeamPanelBlurDisplayMode', tooltipHint: 'IDS_TT_HINT_DISPLAY_MODE', default: 0, dropdownItems: ['IDS_TURN_OFF', 'IDS_TURN_ON', 'IDS_ALT_VISION_MODE_1'], dropdownType: 'KEY', extraData: {'IDS_ALT_VISION_MODE_1': 'CMD_ICONS'}},

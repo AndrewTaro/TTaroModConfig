@@ -325,4 +325,5 @@
     IDS_TT_TARGET_INDICATOR                      : ["'Target Indicator'", "'ターゲットインジケータ'", "'목표 인디케이터'", "''", "''", "'Wskaźnik celu'", "''", "''", "''", "''", "''", "''", "''", "''", "'目标指示器'", "''", ],
     IDS_TT_SIDE_OFFSET                           : ["'Side Offset'", "'左右のオフセット'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
     IDS_TT_TITLE_DCP_CONSUMABLE                  : ["'Damage Control Party'", "'応急工作班'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
+    IDS_TT_HINT_NUMBER_INPUT                     : ["'You can enter a desired value directly with keyboard, or with the num pad below.' + NEW_LINE + 'Field may have additional validations, such as minimum/maximum, or step between subsequent values.'", "'キーボードまたは下のキーパッドから入力できます。' + NEW_LINE + 'フィールドには、最小/最大値、ステップなどの入力制限が存在する可能性があります。'", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", ],
 })
