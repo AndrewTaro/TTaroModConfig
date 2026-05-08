@@ -1,3 +1,5 @@
+import "coui://gui/gameface/coherent_labs/cohtml.js";
+
 const video = document.getElementById("video");
 const videoUrl = context.videoUrl;
 

@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 html,
 body {
@@ -9,5 +10,6 @@ body {
 }
 video {
 	width: 100%;
+	background-size: contain;
 	height: 100%;
 }
